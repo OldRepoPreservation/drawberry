@@ -1,0 +1,57 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {add = id; }; 
+            CLASS = DBFilterStackDataSource; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_filtersTableView" = NSTableView; 
+                "_layerArrayController" = NSArrayController; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = DBHUDButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {
+            ACTIONS = {
+                addCILayer = id; 
+                lowerAtBottomSelectedLayer = id; 
+                lowerSelectedLayer = id; 
+                raiseAtTopSelectedLayer = id; 
+                raiseSelectedLayer = id; 
+            }; 
+            CLASS = DBLayerWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_layerPanelDrawer" = NSDrawer; 
+                "_layersArrayController" = NSArrayController; 
+                "_layersTableView" = NSTableView; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = DBMenuButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {
+            CLASS = DBReverseArrayController; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSArrayController; 
+        }, 
+        {
+            ACTIONS = {addCILayer = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {togglePanel = id; }; 
+            CLASS = GCollapseWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_disclosureButton" = NSButton; }; 
+            SUPERCLASS = NSPanel; 
+        }, 
+        {CLASS = NFHUDPopUpButton; LANGUAGE = ObjC; SUPERCLASS = NSPopUpButton; }, 
+        {CLASS = NFHUDSlider; LANGUAGE = ObjC; SUPERCLASS = NSSlider; }, 
+        {CLASS = OHScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
+        {CLASS = OHTableView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {CLASS = OHTextField; LANGUAGE = ObjC; SUPERCLASS = NSTextField; }
+    ); 
+    IBVersion = 1; 
+}

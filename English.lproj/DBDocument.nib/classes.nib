@@ -1,0 +1,61 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {close = id; open = id; reload = id; }; 
+            CLASS = DBContextualBar; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_dataSource" = id; }; 
+            SUPERCLASS = NSControl; 
+        }, 
+        {
+            ACTIONS = {delete = id; duplicate = id; }; 
+            CLASS = DBContextualDataSourceController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_bezierView" = NSView; 
+                "_contextualBar" = DBContextualBar; 
+                "_mainView" = DBDrawingView; 
+                "_selectView" = NSView; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {export = id; exportAccessoryViewPopupFormatDidChange = id; }; 
+            CLASS = DBDocument; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_drawingView" = DBDrawingView; 
+                "_exportAccessoryView" = NSView; 
+                "_exportFormatPopUp" = NSPopUpButton; 
+                "_jpgQualitySlider" = NSSlider; 
+                "_layerController" = DBLayerController; 
+            }; 
+            SUPERCLASS = NSDocument; 
+        }, 
+        {
+            CLASS = DBDrawingView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_dataSourceController" = DBContextualDataSourceController; 
+                "_document" = DBDocument; 
+                "_magnifyingGlass" = DBMagnifyingView; 
+            }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {
+            CLASS = DBLayerController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_document" = DBDocument; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            CLASS = DBScrollView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_accessoryView" = NSView; }; 
+            SUPERCLASS = NSScrollView; 
+        }, 
+        {CLASS = DBWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

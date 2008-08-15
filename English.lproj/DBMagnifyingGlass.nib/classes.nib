@@ -1,0 +1,21 @@
+{
+    IBClasses = (
+        {
+            CLASS = DBMagnifyingController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_magnifyingView" = DBMagnifyingView; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {takeZoomValueFrom = id; update = id; }; 
+            CLASS = DBMagnifyingView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_source" = NSView; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {CLASS = DBMagnifyingWindow; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NFHUDPopUpButton; LANGUAGE = ObjC; SUPERCLASS = NSPopUpButton; }
+    ); 
+    IBVersion = 1; 
+}

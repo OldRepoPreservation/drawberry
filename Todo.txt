@@ -1,0 +1,124 @@
+What we have to do in the future (in function of milestone)
+-----------------------------------------------------------
+
+- Version 0.1 : First release
+ 
+	DONE : When editing a layer which is filtered by a CILayer, make it be displayed directly, not through the CILayer render
+
+	FIXED : In the effects stack tableview, make the rows not selectable
+
+	DONE : Create and install icons for the application and tools              
+
+	DONE : Give to the tool palette the following behavior : when a tool has been selected and shape has been created, switch back to the default pointer tool
+
+	FIXED : Change the interface for the core image filters in the layer inspector
+
+	DONE : Add a check box to hide the stroke (add "None" is the stroke mode menu)
+
+	DONE : Add the ability to save the CI layers
+	
+	DONE : Image exporting (PDF, Jpeg, PNG, TIFF, maybe GIF, ...) and printing 
+	
+	FIXED : A responder bug happens when moving a filter control point
+	
+	DONE : Add Sparkle support
+	
+- Version 0.2 : Improving that thing ... 
+
+	DONE : Show the cursor position of the mouse in the rulers
+
+	DONE : Our own Undo-Redo system with the Undo stack and undo save    
+	
+	DONE : Adding some tools : rectangle ( & rounded rects), oval and line tool
+
+	DONE : Add the ability to add and remove control points	
+		   
+ 	FIXED : When pasting a shape, the shape is put on the original layer, not on the selected one
+    
+	FIXED : Fix ruler bugs
+	
+- Version 0.3 : Getting all of that great ...   
+
+	DONE : Add a shadow option for all shapes
+	
+	DONE : Add a blend mode choice for layers and set it with CGContextSetBlendMode
+	
+	DONE (in 0.2) : Switch to HUD interface
+	
+	FIXED : Sometimes, on opening a document, a there is a problem when rendering a CI layer   
+	
+	DONE : A magnifying glass
+	
+- Version 0.4 : Boarfff ...
+
+	DONE : Leopard compatibility ... 
+
+- Version 0.5 : Just put your suggestions into it
+
+    DONE : Add a contextual toolbar
+
+	DONE : Add some editing tools for the bezier curves and polylines (Gael Ferre's suggestion)  
+	
+	DONE : Add the ability to draw text aside a shape	
+	
+	DONE : Add a text tool
+		
+	FIXED : Bugs when filling a path with an image
+
+	FIXED : Shadows can now be saved
+	
+	DONE : Complete the undo features (Add and remove points, convert shape)
+  	
+	FIXED : VERY IMPORTANT correct the bugs with the undo, magnetic path close and convert when zooming
+	
+	FIXED : Finish the interface
+	
+	FIXME : Make a document icon
+
+	FIXED : Finish the localization
+	
+	FIXED : A copy bug (not refreshing and destroying a control point for beziers)
+ 
+- Version 0.6 : 
+   	
+	DONE : Introduce a better import feature of bitmaps
+
+    DONE : Open SVG documents 
+
+    DONE : Save SVG documents 
+	
+	DONE : Can lower and raise shapes
+	
+	DONE : Add boolean operators (need an editable shape hierarchy)
+	
+   	DONE : Color drop on shapes
+    
+	DONE : Alignment Panel
+	
+	FIXME : Fix the multiple selection bug (by Karel Gillissen)
+	
+	FIXED : Bugs with image filling (pb when the image is vectorial PDF)
+	
+	DONE : Color swatch (with drag & drop)
+
+	DONE : A shape panel with predefinded shapes (don't open it at startup)
+	
+	TODO : Contextual Cursors
+	
+	TODO : Write a great help
+	
+- After that
+	       
+	TODO : Save the tab position (opened or closed) and open them at startup
+
+	TODO : Groups
+	
+	TODO : Add the ability to reorder CI filters	
+		
+	TODO : Give to the inspectors window and bar views the ability to have icons
+	
+	TODO : Better inspectors (something like OmniGraffie)
+  	
+	TODO : Add a vectorization plug-in 
+	
+	TODO : LinkBack support

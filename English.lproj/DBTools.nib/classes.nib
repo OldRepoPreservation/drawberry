@@ -1,0 +1,26 @@
+{
+    IBClasses = (
+        {CLASS = DBButtonCell; LANGUAGE = ObjC; SUPERCLASS = NSButtonCell; }, 
+        {CLASS = DBToggleButtonCell; LANGUAGE = ObjC; SUPERCLASS = NSButtonCell; }, 
+        {CLASS = DBToolMatrix; LANGUAGE = ObjC; SUPERCLASS = NSMatrix; }, 
+        {
+            ACTIONS = {inspectorSelectorAction = id; selectToolAction = id; }; 
+            CLASS = DBToolsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_inspectorSelector" = NSMatrix; "_toolButtons" = NSMatrix; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = DBWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {togglePanel = id; }; 
+            CLASS = GCollapseWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_disclosureButton" = NSButton; }; 
+            SUPERCLASS = NSPanel; 
+        }, 
+        {CLASS = OHTextField; LANGUAGE = ObjC; SUPERCLASS = NSTextField; }, 
+        {CLASS = ToolboxButtonCell; LANGUAGE = ObjC; SUPERCLASS = NSButtonCell; }
+    ); 
+    IBVersion = 1; 
+}

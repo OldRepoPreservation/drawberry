@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	089C1660FE840EACC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {816, 626}}";
+			sepNavSelRange = "{87, 0}";
+			sepNavVisRect = "{{0, 0}, {816, 626}}";
+			sepNavWindowFrame = "{{15, 77}, {861, 755}}";
+		};
+	};
+	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 6CF834F40BC7C1100058CCFA /* DrawBerry */;
+		activeTarget = 8D15AC270486D014006FF6A4 /* DrawBerry */;
+		addToTargets = (
+			8D15AC270486D014006FF6A4 /* DrawBerry */,
+		);
+		breakpoints = (
+			6CCE74F00D762BDD0083BB5D /* [NSConcreteTextStorage attributesAtIndex:effectiveRange:] */,
+			6C9448450E22B8470019CD9F /* CFLog */,
+			6CF85CF10E2CD5E6004B9079 /* DBDrawingView.m:496 */,
+			6CF85CF30E2CD5F3004B9079 /* DBContextualDataSourceController.m:148 */,
+			6C4A3DBA0E333F4000039CC1 /* DBShapeLibLayerController.m:81 */,
+			6C874F360E473E1A00933F02 /* DBShapeCollectionDocument.m:59 */,
+		);
+		codeSenseManager = 6CF835070BC7C1120058CCFA /* Code sense */;
+		executables = (
+			6CF834F40BC7C1100058CCFA /* DrawBerry */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					210,
+					20,
+					110,
+					109,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA23EDF0692099D00951B8B" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					207,
+					20,
+					206,
+					206,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXBookmarksDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBookmarksDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					200,
+					191,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBookmarksDataSource_LocationID,
+					PBXBookmarksDataSource_NameID,
+					PBXBookmarksDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					423,
+					131,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					131,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					315,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					257,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolTypeID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					200,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					481,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					203,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 240481981;
+			PBXWorkspaceStateSaveDate = 240481981;
+		};
+		perUserProjectItems = {
+			6CF7B87A0E5577A50050C680 /* PBXTextBookmark */ = 6CF7B87A0E5577A50050C680 /* PBXTextBookmark */;
+			6CF7B87C0E5577A80050C680 /* PBXTextBookmark */ = 6CF7B87C0E5577A80050C680 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 6CF835060BC7C1120058CCFA /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2A37F4BAFDCFA73011CA2CEA /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {581, 210}}";
+			sepNavSelRange = "{38, 0}";
+			sepNavVisRect = "{{0, 0}, {0, 0}}";
+			sepNavWindowFrame = "{{15, 77}, {861, 755}}";
+		};
+	};
+	6C129CA50E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1214, 3834}}";
+			sepNavSelRange = "{1252, 136}";
+			sepNavVisRange = "{957, 477}";
+		};
+	};
+	6C129D150E54E8EB00AD5C61 /* DBGradientWell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 1470}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1570, 511}";
+			sepNavWindowFrame = "{{153, 189}, {750, 558}}";
+		};
+	};
+	6C129D160E54E8EB00AD5C61 /* DBGradientCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 672}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 674}";
+			sepNavWindowFrame = "{{130, 210}, {750, 558}}";
+		};
+	};
+	6C129D180E54E8EB00AD5C61 /* DBGradientCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 348}";
+			sepNavWindowFrame = "{{107, 231}, {750, 558}}";
+		};
+	};
+	6C129D2F0E54E9AA00AD5C61 /* DBContextualDataSourceController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1214, 3360}}";
+			sepNavSelRange = "{2287, 82}";
+			sepNavVisRange = "{1984, 929}";
+		};
+	};
+	6C129D520E54EC1600AD5C61 /* DBDrawingView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 2170}}";
+			sepNavSelRange = "{3556, 1}";
+			sepNavVisRange = "{0, 541}";
+			sepNavWindowFrame = "{{245, 105}, {750, 558}}";
+		};
+	};
+	6C129D750E54EC7400AD5C61 /* DBFill.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {748, 7406}}";
+			sepNavSelRange = "{1901, 21}";
+			sepNavVisRange = "{1704, 502}";
+			sepNavWindowFrame = "{{61, 273}, {750, 558}}";
+		};
+	};
+	6C129E050E54EEE000AD5C61 /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {439, 210}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 256}";
+		};
+	};
+	6C221AB00E30DA3C00B09286 /* DBShapeLibLayerController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DBShapeLibLayerController.m;
+		path = /Users/raphaelbost/Code/DrawBerry/DBShapeLibLayerController.m;
+		sourceTree = "<absolute>";
+	};
+	6C39C5B60BCBCB620015D712 /* closeButton.tiff */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{130, 81}, {932, 747}}";
+		};
+	};
+	6C39C5B70BCBCB620015D712 /* mask_left.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 71}, {861, 761}}";
+		};
+	};
+	6C415A260D7222F60014A6BB /* DBContextualDataSourceController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DBContextualDataSourceController.m;
+		path = /Users/raphaelbost/Code/DrawBerry/DBContextualDataSourceController.m;
+		sourceTree = "<absolute>";
+	};
+	6C4A3DBA0E333F4000039CC1 /* DBShapeLibLayerController.m:81 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 6C221AB00E30DA3C00B09286 /* DBShapeLibLayerController.m */;
+		functionName = "-endEditing";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 81;
+		location = DBShapeLibLayerController.ob;
+		modificationTime = 239806748.700308;
+		state = 2;
+	};
+	6C8444EE0C4C1D3C00FFA2FF /* French */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {556, 224}}";
+			sepNavSelRange = "{68, 0}";
+			sepNavVisRect = "{{0, 0}, {556, 112}}";
+			sepNavWindowFrame = "{{15, 379}, {432, 453}}";
+		};
+	};
+	6C874F360E473E1A00933F02 /* DBShapeCollectionDocument.m:59 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 6CB068720E44A88D00B92FE4 /* DBShapeCollectionDocument.m */;
+		functionName = "-drawingView";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 59;
+		location = DrawBerry;
+		modificationTime = 239806749.111901;
+		state = 0;
+	};
+	6C9448450E22B8470019CD9F /* CFLog */ = {
+		isa = PBXSymbolicBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 1;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		hitCount = 0;
+		ignoreCount = 0;
+		location = CoreFoundation;
+		modificationTime = 239806748.700599;
+		state = 2;
+		symbolName = CFLog;
+	};
+	6CB068720E44A88D00B92FE4 /* DBShapeCollectionDocument.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DBShapeCollectionDocument.m;
+		path = /Users/raphaelbost/Code/DrawBerry/DBShapeCollectionDocument.m;
+		sourceTree = "<absolute>";
+	};
+	6CBF843E0C5642DD00F9554F /* French */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {387, 324}}";
+			sepNavSelRange = "{10, 7}";
+			sepNavVisRect = "{{0, 0}, {387, 324}}";
+			sepNavWindowFrame = "{{61, 438}, {432, 453}}";
+		};
+	};
+	6CCE74F00D762BDD0083BB5D /* [NSConcreteTextStorage attributesAtIndex:effectiveRange:] */ = {
+		isa = PBXSymbolicBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 1;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		hitCount = 0;
+		ignoreCount = 0;
+		location = AppKit;
+		modificationTime = 239806748.70059;
+		state = 2;
+		symbolName = "[NSConcreteTextStorage attributesAtIndex:effectiveRange:]";
+	};
+	6CDC48FE0C4D751400F3128F /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {674, 742}}";
+			sepNavSelRange = "{1708, 0}";
+			sepNavVisRect = "{{0, 311}, {674, 431}}";
+			sepNavWindowFrame = "{{22, 366}, {719, 560}}";
+		};
+	};
+	6CDC49070C4D79C300F3128F /* French */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {887, 742}}";
+			sepNavSelRange = "{1838, 17}";
+			sepNavVisRect = "{{0, 124}, {887, 618}}";
+			sepNavWindowFrame = "{{505, 191}, {932, 747}}";
+		};
+	};
+	6CF7B87A0E5577A50050C680 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D750E54EC7400AD5C61 /* DBFill.m */;
+		rLen = 21;
+		rLoc = 1901;
+		rType = 0;
+	};
+	6CF7B87C0E5577A80050C680 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D750E54EC7400AD5C61 /* DBFill.m */;
+		name = "DBFill.m: 70";
+		rLen = 21;
+		rLoc = 1901;
+		rType = 0;
+		vrLen = 502;
+		vrLoc = 1704;
+	};
+	6CF834F40BC7C1100058CCFA /* DrawBerry */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DrawBerry;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			$cr = 1;
+			$ctr = 1;
+			$lr = 1;
+			$mq = 1;
+			$pc = 1;
+			$ps = 1;
+			$r0 = 1;
+			$r1 = 1;
+			$r10 = 1;
+			$r11 = 1;
+			$r12 = 1;
+			$r13 = 1;
+			$r14 = 1;
+			$r15 = 1;
+			$r16 = 1;
+			$r17 = 1;
+			$r18 = 1;
+			$r19 = 1;
+			$r2 = 1;
+			$r20 = 1;
+			$r21 = 1;
+			$r22 = 1;
+			$r23 = 1;
+			$r24 = 1;
+			$r25 = 1;
+			$r26 = 1;
+			$r27 = 1;
+			$r28 = 1;
+			$r29 = 1;
+			$r3 = 1;
+			$r30 = 1;
+			$r31 = 1;
+			$r4 = 1;
+			$r5 = 1;
+			$r6 = 1;
+			$r7 = 1;
+			$r8 = 1;
+			$r9 = 1;
+			$v0 = 1;
+			$v1 = 1;
+			$v10 = 1;
+			$v11 = 1;
+			$v12 = 1;
+			$v13 = 1;
+			$v14 = 1;
+			$v15 = 1;
+			$v16 = 1;
+			$v17 = 1;
+			$v18 = 1;
+			$v19 = 1;
+			$v2 = 1;
+			$v20 = 1;
+			$v21 = 1;
+			$v22 = 1;
+			$v23 = 1;
+			$v24 = 1;
+			$v25 = 1;
+			$v26 = 1;
+			$v27 = 1;
+			$v28 = 1;
+			$v29 = 1;
+			$v3 = 1;
+			$v30 = 1;
+			$v31 = 1;
+			$v4 = 1;
+			$v5 = 1;
+			$v6 = 1;
+			$v7 = 1;
+			$v8 = 1;
+			$v9 = 1;
+			$vrsave = 1;
+			$vscr = 1;
+			$xer = 1;
+		};
+	};
+	6CF835060BC7C1120058CCFA /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	6CF835070BC7C1120058CCFA /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	6CF835200BC7CEB40058CCFA /* DBDrawingView.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = DBDrawingView.m;
+		path = /Users/raphaelbost/Code/DrawBerry/DBDrawingView.m;
+		sourceTree = "<absolute>";
+	};
+	6CF85CF10E2CD5E6004B9079 /* DBDrawingView.m:496 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 6CF835200BC7CEB40058CCFA /* DBDrawingView.m */;
+		functionName = "-keyDown:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 496;
+		location = DrawBerry;
+		modificationTime = 239806748.700288;
+		state = 2;
+	};
+	6CF85CF30E2CD5F3004B9079 /* DBContextualDataSourceController.m:148 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 6C415A260D7222F60014A6BB /* DBContextualDataSourceController.m */;
+		functionName = "-delete:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 148;
+		location = DrawBerry;
+		modificationTime = 239806749.082156;
+		state = 0;
+	};
+	8D15AC270486D014006FF6A4 /* DrawBerry */ = {
+		activeExec = 0;
+		executables = (
+			6CF834F40BC7C1100058CCFA /* DrawBerry */,
+		);
+	};
+	8D15AC360486D014006FF6A4 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {816, 10668}}";
+			sepNavSelRange = "{18695, 0}";
+			sepNavVisRect = "{{0, 9046}, {816, 626}}";
+			sepNavWindowFrame = "{{528, 183}, {861, 755}}";
+		};
+	};
+}

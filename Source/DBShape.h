@@ -1,0 +1,112 @@
+//
+//  DBShape.h
+//  DrawBerry
+//
+//  Created by Raphael Bost on 10/04/07.
+//  Copyright 2007 __MyCompanyName__. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+
+#import "DBDrawingView.h"
+
+#import "DBLayer.h"
+#import "DBStroke.h"
+#import "DBFill.h"
+#import "DBShadow.h"
+
+enum {
+    NoKnob = 0,
+    UpperLeftKnob,
+    UpperMiddleKnob,
+    UpperRightKnob,
+    MiddleLeftKnob,
+    MiddleRightKnob,
+    LowerLeftKnob,
+    LowerMiddleKnob,
+    LowerRightKnob,
+};
+
+@interface DBShape : NSObject <NSCoding>{
+	DBLayer *_layer;
+	DBStroke *_stroke;
+	DBFill *_fill;
+	DBShadow *_shadow;
+	
+	NSRect _bounds;
+	NSPoint _boundsCenter;
+	NSSize _boundsSize;
+	float _rotation;
+	
+	BOOL	_isEditing;
+}
+
++ (NSImage *)blueKnob;
++ (NSImage *)grayKnob;
++ (NSImage *)smallGrayKnob;
++ (NSImage *)whiteKnob;
++ (NSImage *)orangeKnob;    
++ (NSImage *)greenKnob;
++ (NSImage *)selectedGrayKnob;
++ (NSRect)enclosingRectForShapes:(NSArray *)shapes;
+
+- (void)drawInView:(NSView *)view rect:(NSRect)rect;
+- (void)displayEditingKnobs;
+- (void)displaySelectionKnobs;
+- (void)drawBounds;
+
+- (DBLayer *)layer;
+- (void)setLayer:(DBLayer *)aLayer;
+
+- (BOOL)isEditing;
+- (void)setIsEditing:(BOOL)newIsEditing;
+
+- (float)rotation;
+- (void)setRotation:(float)newRotation;
+- (NSPoint)rotationCenter;
+- (void)rotate:(float)deltaRot;
+
+- (DBStroke *)stroke;
+- (void)setStroke:(DBStroke *)newStroke;
+- (DBFill *)fill;
+- (void)setFill:(DBFill *)newFill;
+- (NSBezierPath *)path;
+- (NSRect)bounds;
+- (float)zoom;
+
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+- (BOOL)editWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+- (BOOL)canEdit;
+
+- (BOOL)hitTest:(NSPoint)point;
+- (BOOL)isInRect:(NSRect)rect;
+- (int)knobUnderPoint:(NSPoint)point ;
+- (NSPoint)pointForKnob:(int)knob;
+
+- (void)moveByX:(float)deltaX byY:(float)deltaY;
+- (int)resizeByMovingKnob:(int)knob fromPoint:(NSPoint)fromPoint toPoint:(NSPoint)point inView:(DBDrawingView *)view modifierFlags:(unsigned int)flags;
+- (BOOL)changeFillImageDrawPointWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+
+- (void)updateShape;
+- (void)updateFill;
+- (void)updateBounds;
+- (void)strokeUpdated;
+
+- (void)flipVerticallyWithNewKnob:(int)knob;
+- (void)flipHorizontalyWithNewKnob:(int)knob;
+
+- (BOOL)replaceInView:(DBDrawingView *)view;
+- (void)delete:(id)sender;
+- (void)addPoint:(id)sender;
+
+- (void)moveCorner:(int)corner toPoint:(NSPoint)point;
+- (NSPoint)translationToCenterInRect:(NSRect)rect;
+@end 
+
+NSPoint DBMultiplyPointByFactor(NSPoint point, float factor);
+
+BOOL DBPointIsOnKnobAtPoint(NSPoint point, NSPoint knobCenter);
+BOOL DBPointIsOnKnobAtPointZoom(NSPoint point, NSPoint knobCenter, float zoom);
+static double distanceBetween(NSPoint a, NSPoint b);
+NSPoint resizePoint(NSPoint p, NSPoint oldOrigin, NSPoint newOrigin, float xFactor, float yFactor);
+NSPoint rotatePoint(NSPoint p, NSPoint rotationCenter, float angle);

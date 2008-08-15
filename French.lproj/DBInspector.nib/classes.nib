@@ -1,0 +1,76 @@
+{
+    IBClasses = (
+        {CLASS = DBGradientWell; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
+        {
+            ACTIONS = {chooseFile = id; }; 
+            CLASS = DBImageView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSImageView; 
+        }, 
+        {
+            ACTIONS = {
+                action = id; 
+                chooseFillImage = id; 
+                chooseStrokeImage = id; 
+                flipText = id; 
+                shadowAction = id; 
+            }; 
+            CLASS = DBInspectorController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_arrowView" = NSView; 
+                "_canevasView" = NSView; 
+                "_fillColorWell" = NSControl; 
+                "_fillController" = NSObjectController; 
+                "_fillGradientWell" = NSControl; 
+                "_fillImageView" = NSImageView; 
+                "_fillView" = NSView; 
+                "_geometryView" = NSView; 
+                "_gridView" = NSView; 
+                "_link" = id; 
+                "_objectInspector" = GInspectWindow; 
+                "_rulerView" = NSView; 
+                "_shadowControl" = NSControl; 
+                "_shadowController" = NSObjectController; 
+                "_shadowView" = NSView; 
+                "_strokeController" = NSObjectController; 
+                "_strokeImageView" = NSImageView; 
+                "_strokeThickness" = NSSlider; 
+                "_strokeView" = NSView; 
+                "_textView" = NSView; 
+                "_viewInspector" = GInspectWindow; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = DBShadowControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                copy = id; 
+                copyImage = id; 
+                cut = id; 
+                delete = id; 
+                paste = id; 
+                resetRadial = id; 
+            }; 
+            CLASS = GCGradientWell; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSControl; 
+        }, 
+        {CLASS = GHUDPanel; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }, 
+        {
+            ACTIONS = {togglePanel = id; }; 
+            CLASS = GInspectWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_bckgrd" = NSImageView; "_disclosureButton" = NSButton; }; 
+            SUPERCLASS = GHUDPanel; 
+        }, 
+        {CLASS = NFHUDButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {CLASS = NFHUDButtonCell; LANGUAGE = ObjC; SUPERCLASS = NSButtonCell; }, 
+        {CLASS = NFHUDPopUpButton; LANGUAGE = ObjC; SUPERCLASS = NSPopUpButton; }, 
+        {CLASS = NFHUDSlider; LANGUAGE = ObjC; SUPERCLASS = NSSlider; }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
+        {CLASS = OHTextField; LANGUAGE = ObjC; SUPERCLASS = NSTextField; }
+    ); 
+    IBVersion = 1; 
+}

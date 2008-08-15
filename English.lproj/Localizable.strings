@@ -1,0 +1,53 @@
+/* Inspectors*/
+"Grid" = "Grid";
+"Page" = "Page";
+"Rulers" = "Rulers";
+"Stroke" = "Stroke";
+"Arrows" = "Arrows";
+"Fill" = "Fill";
+"Geometry" = "Geometry";
+"Shadow" = "Shadow";
+"Text" = "Text";
+
+/* Layers */
+"CILayer" = "Core Image Filter";
+"New Layer" = "New Layer";
+"Background" = "Background";
+
+/* Errors*/
+"Uneditable Layer" = "Uneditable Layer";
+"Uneditable Layer msg" = "You cannot edit a locked layer";
+"Uneditable CILayer msg" = "You cannot edit a CoreImage filter";
+"Cannot remove all shapes" = "Cannot remove all shapes";
+"Too Many Layers" = "Too Many layers selected";
+"Too Many Layer Boolops msg" = "The shapes must be on the same layer for boolean operations";
+"Too Many Objects" = "Too many objects";
+"Too Many Objects diff msg" = "Select only two objects for the difference operation";
+"Too Many Objects inter msg" = "Select only two objects for the intersection operation";
+"Too Many Objects xor msg" = "Select only two objects for the exclusive or operation";
+
+/* Undo */
+"Insert Shape" = "Insert Shape";
+"Delete Shape" = "Delete Shape";
+"Insert Point" = "Insert Points";
+"Delete Point" = "Delete Points";
+"Move" = "Move";
+"Resize" = "Resize";
+"Rotate" = "Rotate";
+"Edit" = "Edit";
+"Base Image" = "Base Image";
+"Convert" = "Convert";
+"Raise" = "Raise";
+"Lower" = "Lower";
+
+"Union" = "Union";
+"Diff" = "Difference";
+"Intersection" = "Intersection";
+"XOR" = "exclusive OR";
+
+"Shape collection import desc" = "Add the shape collection named %@ containing %d shapes ?";
+"Collection already exists" = "Collection %@ already exists"
+"Exiting name alert" = "Name already given";
+"Exiting name alert desc" = "Another shape collection has already this name. Please choose another one";
+
+"Copy" = "Copy";

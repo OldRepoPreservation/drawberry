@@ -1,0 +1,53 @@
+/* Inspectors*/
+"Grid" = "Grille";
+"Page" = "Page";
+"Rulers" = "Règles";
+"Stroke" = "Trait";
+"Arrows" = "Flèches";
+"Fill" = "Remplissage";
+"Geometry" = "Geometrie";
+"Shadow" = "Ombre";
+"Text" = "Texte";
+
+/* Layers */
+"CILayer" = "Filtre Core Image";
+"New Layer" = "Nouveau Calque";
+"Background" = "Arrière-Plan";
+
+/* Errors*/
+"Uneditable Layer" = "Calque non éditable";
+"Uneditable Layer msg" = "Vous ne pouvez pas éditer un calque vérouillé";
+"Uneditable CILayer msg" = "Vous ne pouvez pas éditer un filtre CoreImage";
+"Cannot remove all shapes" = "Impossible de supprimer les objets";
+"Too Many Layers" = "Trop de calques sélectionné";
+"Too Many Layer Boolops msg" = "Les formes doivent être sur le même calque pour les opérations booléennes";
+"Too Many Objects" = "Too d'objets sélectionnés";
+"Too Many Objects diff msg" = "Sélectionnez seulement deux formes pour en faire la différence";
+"Too Many Objects inter msg" = "Sélectionnez seulement deux formes pour en faire l'intersection";
+"Too Many Objects xor msg" = "Sélectionnez seulement deux formes pour l'opération ou exclusif";
+
+/* Undo */
+"Insert Shape" = "Insérer la forme";
+"Delete Shape" = "Supprimer la forme";
+"Insert Point" = "Insérer les points";
+"Delete Point" = "Supprimer les points";
+"Move" = "Déplacer";
+"Resize" = "Changer la taille";
+"Rotate" = "Rotation";
+"Edit" = "Editer";
+"Base Image" = "Image de base";
+"Convert" = "Convertir";
+"Raise" = "Monter";
+"Lower" = "Descendre";
+
+"Union" = "Union";
+"Diff" = "Différence";
+"Intersection" = "Intersection";
+"XOR" = "OU exclusif";
+
+"Shape collection import desc" = "Ajouter la collection %@ contenamt %d formes ?";
+"Collection already exists" = "La collection %@ existe déjà";
+"Exiting name alert" = "Nom déjà donné";
+"Exiting name alert desc" = "Une autre collection possède déjà ce nom. Veulliez en choisir un autre";
+
+"Copy" = "Copie";

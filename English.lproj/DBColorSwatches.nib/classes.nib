@@ -1,0 +1,32 @@
+{
+    IBClasses = (
+        {CLASS = DBColorMatrix; LANGUAGE = ObjC; SUPERCLASS = DBMatrix; }, 
+        {
+            ACTIONS = {addColor = id; changeList = id; }; 
+            CLASS = DBColorSwatchController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_actionPopUp" = DBPopUpButton; "_matrix" = DBMatrix; "_menu" = NSMenu; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {add = id; remove = id; }; 
+            CLASS = DBMatrix; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_dataSource" = id; }; 
+            SUPERCLASS = NSMatrix; 
+        }, 
+        {CLASS = DBPopUpButton; LANGUAGE = ObjC; SUPERCLASS = NSPopUpButton; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = GHUDPanel; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }, 
+        {
+            ACTIONS = {togglePanel = id; }; 
+            CLASS = GInspectWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_bckgrd" = NSImageView; "_disclosureButton" = NSButton; }; 
+            SUPERCLASS = GHUDPanel; 
+        }, 
+        {CLASS = NFHUDButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {CLASS = NSMatrix; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}

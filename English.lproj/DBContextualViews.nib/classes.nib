@@ -1,0 +1,55 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                addControlPoint = id; 
+                align = id; 
+                bottom = id; 
+                center = id; 
+                convert = id; 
+                delete = id; 
+                diff = id; 
+                duplicate = id; 
+                intersection = id; 
+                left = id; 
+                lower = id; 
+                middle = id; 
+                raise = id; 
+                removeControlPoint = id; 
+                replace = id; 
+                right = id; 
+                stopEditing = id; 
+                top = id; 
+                union = id; 
+                vertAlign = id; 
+                xor = id; 
+            }; 
+            CLASS = DBContextualDataSourceController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_alignControl" = NSSegmentedControl; 
+                "_alignment" = NSPopUpButton; 
+                "_bezierView" = NSView; 
+                "_booleanOp" = NSPopUpButton; 
+                "_contextualBar" = DBContextualBar; 
+                "_convertBox" = NSBox; 
+                "_convertButton" = NSButton; 
+                "_mainView" = DBDrawingView; 
+                "_multipleSelectionBox" = NSBox; 
+                "_ovalView" = NSView; 
+                "_rectangleView" = NSView; 
+                "_replaceButton" = NSButton; 
+                "_selectView" = NSView; 
+                "_textEditBox" = NSBox; 
+                "_textView" = NSView; 
+                "_vertAlignControl" = NSSegmentedControl; 
+                "_voidView" = NSView; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = DBPopUpButton; LANGUAGE = ObjC; SUPERCLASS = NSPopUpButton; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}

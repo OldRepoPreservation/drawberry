@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {addCollection = id; cancel = id; }; 
+            CLASS = DBShapeCollectionDocument; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_descriptionField" = NSTextField; }; 
+            SUPERCLASS = NSDocument; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

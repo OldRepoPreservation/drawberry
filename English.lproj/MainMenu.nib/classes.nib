@@ -1,0 +1,45 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                showColorSwatches = id; 
+                showInspector = id; 
+                showPrefs = id; 
+                showShapeInspector = id; 
+                showShapeLibrary = id; 
+                showUndoPanel = id; 
+            }; 
+            CLASS = DBApplicationController; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                alignBottom = id; 
+                alignMiddle = id; 
+                alignTop = id; 
+                convertRectInPath = id; 
+                diffSelectedObjects = id; 
+                export = id; 
+                import = id; 
+                intersectionSelectedObjects = id; 
+                lowerSelectedShapes = id; 
+                raiseSelectedShapes = id; 
+                redoDocument = id; 
+                undoDocument = id; 
+                unionSelectedObjects = id; 
+                xorSelectedObjects = id; 
+            }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {checkForUpdates = id; }; 
+            CLASS = SUUpdater; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

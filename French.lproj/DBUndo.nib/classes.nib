@@ -1,0 +1,25 @@
+{
+    IBClasses = (
+        {CLASS = CustomWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = DBHUDButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {
+            ACTIONS = {clear = id; redo = id; undo = id; }; 
+            CLASS = DBUndoUIController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_undoTableView" = NSTableView; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {togglePanel = id; }; 
+            CLASS = GCollapseWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_disclosureButton" = NSButton; }; 
+            SUPERCLASS = OHWindow; 
+        }, 
+        {CLASS = OHScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
+        {CLASS = OHTableView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {CLASS = OHWindow; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }
+    ); 
+    IBVersion = 1; 
+}

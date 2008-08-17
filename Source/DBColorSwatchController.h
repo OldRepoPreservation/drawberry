@@ -14,8 +14,12 @@
 
 @interface DBColorSwatchController : NSWindowController {
 	NSColorList *_list;
+	NSMutableArray *_colorLists;
 	IBOutlet NSMenu *_menu;
 	IBOutlet DBMatrix *_matrix;
+	
+	IBOutlet NSPanel *_swatchesSheet;
+	IBOutlet NSTableView *_swatchesList;
 	
 	IBOutlet DBPopUpButton *_actionPopUp;
 }
@@ -23,4 +27,7 @@
 + (NSString *) colorListDirectory ;
 - (IBAction)addColor:(id)sender;
 - (IBAction)changeList:(id)sender;
+- (IBAction)addList:(id)sender;
+- (IBAction)closeSheet:(id)sender;
+- (IBAction)removeList:(id)sender;
 @end

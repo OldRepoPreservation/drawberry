@@ -211,12 +211,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 240481981;
-			PBXWorkspaceStateSaveDate = 240481981;
+			PBXPerProjectTemplateStateSaveDate = 240679819;
+			PBXWorkspaceStateSaveDate = 240679819;
 		};
 		perUserProjectItems = {
-			6CF7B87A0E5577A50050C680 /* PBXTextBookmark */ = 6CF7B87A0E5577A50050C680 /* PBXTextBookmark */;
-			6CF7B87C0E5577A80050C680 /* PBXTextBookmark */ = 6CF7B87C0E5577A80050C680 /* PBXTextBookmark */;
+			6CB6C6E40E587BB300800D7E /* PBXTextBookmark */ = 6CB6C6E40E587BB300800D7E /* PBXTextBookmark */;
+			6CB6C6E50E587BB300800D7E /* PBXTextBookmark */ = 6CB6C6E50E587BB300800D7E /* PBXTextBookmark */;
+			6CF7B87A0E5577A50050C680 = 6CF7B87A0E5577A50050C680 /* PBXTextBookmark */;
+			6CF7B87C0E5577A80050C680 = 6CF7B87C0E5577A80050C680 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 6CF835060BC7C1120058CCFA /* Source Control */;
 		userBuildSettings = {
@@ -274,6 +276,13 @@
 			sepNavSelRange = "{3556, 1}";
 			sepNavVisRange = "{0, 541}";
 			sepNavWindowFrame = "{{245, 105}, {750, 558}}";
+		};
+	};
+	6C129D740E54EC7400AD5C61 /* DBFill.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1214, 1274}}";
+			sepNavSelRange = "{162, 40}";
+			sepNavVisRange = "{0, 309}";
 		};
 	};
 	6C129D750E54EC7400AD5C61 /* DBFill.m */ = {
@@ -381,6 +390,24 @@
 		name = DBShapeCollectionDocument.m;
 		path = /Users/raphaelbost/Code/DrawBerry/DBShapeCollectionDocument.m;
 		sourceTree = "<absolute>";
+	};
+	6CB6C6E40E587BB300800D7E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: GradientPanel/GradientPanel.h: No such file or directory";
+		fRef = 6C129D740E54EC7400AD5C61 /* DBFill.h */;
+		rLen = 1;
+		rLoc = 10;
+		rType = 1;
+	};
+	6CB6C6E50E587BB300800D7E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D740E54EC7400AD5C61 /* DBFill.h */;
+		name = "DBFill.h: 11";
+		rLen = 40;
+		rLoc = 162;
+		rType = 0;
+		vrLen = 309;
+		vrLoc = 0;
 	};
 	6CBF843E0C5642DD00F9554F /* French */ = {
 		uiCtxt = {

@@ -44,7 +44,7 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
     self = [self initWithWindowNibName:@"DBColorSwatches"];
     if (self) {                                 
 		_list = [[[NSColorList availableColorLists] objectAtIndex:0] retain];
-	
+		_colorLists = [[NSMutableArray alloc] initWithArray:[NSColorList availableColorLists]];
         [self setWindowFrameAutosaveName:@"DBColorSwatches"];
     }
     return self;
@@ -53,6 +53,7 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
 - (void)dealloc
 {
 	[_list release];
+	[_colorLists release];
 	
 	[super dealloc];
 }
@@ -94,7 +95,9 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
 		oldName = [_list name];
 		oldList = _list;
 		_list = [[NSColorList alloc] initWithList:oldList name:[oldName stringByAppendingString:@" - copy"]];
-		[oldList release];                                                                                   
+		[oldList release];
+		
+		[_colorLists addObject:_list];
    	}
 	
 	if(![object isKindOfClass:[NSColor class]]){
@@ -121,7 +124,7 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
 		oldName = [_list name];
 		oldList = _list;
 		_list = [[NSColorList alloc] initWithList:oldList name:[oldName stringByAppendingString:@" - copy"]];
-		[oldList release];                                                                                   
+		[oldList release];                                                                         
    	}
 	
 	if(![object isKindOfClass:[NSColor class]]){
@@ -171,12 +174,17 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
 
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {
-	return [[NSColorList availableColorLists] count];
+	return [_colorLists count]+1;
 }
 
 - (BOOL)menu:(NSMenu *)menu updateItem:(NSMenuItem *)item atIndex:(int)index shouldCancel:(BOOL)shouldCancel
 {
-	[item setTitle:[[[NSColorList availableColorLists] objectAtIndex:index] name]];
+	if (index < [_colorLists count]) {
+		[item setTitle:[[_colorLists objectAtIndex:index] name]];
+	}else {
+		[item setTitle:NSLocalizedString(@"List editor",nil)];
+	}
+	
 	return YES;
 }
 
@@ -192,12 +200,86 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
 	
 	index = [_menu indexOfItem:[sender selectedItem]];
 	
-	newList  = [[[NSColorList availableColorLists] objectAtIndex:index] retain];
-   	[_list release];
-	_list = newList;
-	                   
-	[_matrix reloadDataInRange:NSMakeRange(0,MAX(count,[self numberOfObjects]) -1 )];
+	if (index < [_colorLists count]) {
+		newList  = [[_colorLists objectAtIndex:index] retain];
+		[_list release];
+		_list = newList;
+		
+		[_matrix reloadDataInRange:NSMakeRange(0,MAX(count,[self numberOfObjects]) -1 )];
+	}else {
+		[NSApp beginSheet:_swatchesSheet modalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
+	}
+
 }
 
+#pragma mark Sheet
 
+- (IBAction)addList:(id)sender
+{
+	NSColorList *list;
+	
+	list = [[NSColorList alloc] initWithName:NSLocalizedString(@"Untitled",nil)];
+	[_colorLists addObject:list];
+	[list release];
+	
+	[_swatchesList reloadData];
+}
+
+- (IBAction)removeList:(id)sender
+{
+	NSColorList *list;
+	list = [_colorLists objectAtIndex:[_swatchesList selectedRow]];
+
+	if(![list isEditable]){
+		NSBeep();
+		return;
+	}
+	
+	[list removeFile];
+	[_colorLists removeObjectAtIndex:[_swatchesList selectedRow]];
+	
+	[_swatchesList reloadData];
+}
+
+- (IBAction)closeSheet:(id)sender
+{
+	[NSApp endSheet:_swatchesSheet returnCode:NSOKButton];
+	[_swatchesSheet orderOut:sender];
+}
+
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+{
+	
+}
+
+- (int)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	return [_colorLists count];
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+{
+	return [[_colorLists objectAtIndex:rowIndex] name];
+}
+
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+{                                                      
+	NSColorList *list, *newList;
+	NSString *fileName;
+	fileName = [[_list name] stringByAppendingString:@".clr"];
+	
+	list = [_colorLists objectAtIndex:[_swatchesList selectedRow]];
+	
+	if ([list isEditable]) {
+		newList = [[NSColorList alloc] initWithList:list name:anObject];
+		fileName = [anObject stringByAppendingString:@".clr"];
+		[newList writeToFile:[[DBColorSwatchController colorListDirectory] stringByAppendingString:fileName]];
+		
+		[_colorLists insertObject:newList atIndex:rowIndex];
+		[list release];
+	}
+	else {
+		NSBeep();
+	}
+}
 @end

@@ -6,6 +6,14 @@
 	<array>
 		<dict>
 			<key>CLASS</key>
+			<string>DBHUDButton</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSButton</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
 			<string>NSMatrix</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
@@ -17,7 +25,13 @@
 			<dict>
 				<key>addColor</key>
 				<string>id</string>
+				<key>addList</key>
+				<string>id</string>
 				<key>changeList</key>
+				<string>id</string>
+				<key>closeSheet</key>
+				<string>id</string>
+				<key>removeList</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>
@@ -32,6 +46,10 @@
 				<string>DBMatrix</string>
 				<key>_menu</key>
 				<string>NSMenu</string>
+				<key>_swatchesList</key>
+				<string>NSTableView</string>
+				<key>_swatchesSheet</key>
+				<string>NSPanel</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSWindowController</string>

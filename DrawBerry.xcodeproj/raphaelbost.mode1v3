@@ -274,8 +274,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>23</integer>
-									<integer>17</integer>
+									<integer>14</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -382,9 +382,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>6CF7B8770E5576BE0050C680</string>
+				<string>6CB6C6E00E587B9800800D7E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>6CF7B8780E5576BE0050C680</string>
+				<string>6CB6C6E10E587B9800800D7E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -518,7 +518,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/raphaelbost/Code/DrawBerry/DrawBerry.xcodeproj</string>
+		<string>6CA9624A0E4B21800018CF07</string>
+		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>13 256 762 622 0 0 1440 878 </string>
@@ -598,7 +599,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>6CA9624A0E4B21800018CF07</string>
-				<string>6C129E480E54F1E000AD5C61</string>
+				<string>6CB6C6E60E587BB300800D7E</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

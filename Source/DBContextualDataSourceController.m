@@ -69,14 +69,20 @@
 - (void)updateSelection
 {
 	int oldSelectionType;
+	DBShape *shape;
+	
+	shape = nil;
 	
 	oldSelectionType = _selectionType;
+	
 	if([[_mainView selectedShapes] count]>0){
 		_selectionType = 1;
-	}else{
-		_selectionType = 0;
+		shape = [[_mainView selectedShapes] objectAtIndex:0];
+	}else if([_mainView editingShape]){
+		shape = [_mainView editingShape];
+		_selectionType = 2;
 	}
-         
+	         
 	[_convertBox setHidden:YES];
 	[_textEditBox setHidden:YES]; 
 //	[_booleanOp setHidden:YES];
@@ -84,31 +90,33 @@
 	[_multipleSelectionBox setHidden:YES];
 	[_replaceButton setHidden:YES]; 
 	
+	BOOL flag;
+	flag = YES;
 
  //   	NSLog(@"selectedShapes : %d", [[_mainView selectedShapes] count]);
 	if([[_mainView selectedShapes] count] > 1){
     	[_multipleSelectionBox setHidden:NO];
 
-	}else if([[_mainView selectedShape] isKindOfClass:[DBText class]]){
+	}else if([shape isKindOfClass:[DBText class]]){
 		[_textEditBox setHidden:NO];
 		                            
 //		[_alignControl setSelected:YES forSegment:[[_alignControl cell] segmentWithTag:[[_mainView selectedShape] textAlignment]]];
 		[_alignControl selectSegmentWithTag:[[_mainView selectedShape] textAlignment]];
 		[_vertAlignControl selectSegmentWithTag:[[_mainView selectedShape] textVerticalPositon]];
 		
-	}else if([[_mainView selectedShape] isKindOfClass:[DBRectangle class]]){
+	}else if([shape isKindOfClass:[DBRectangle class]]){
 		[_convertBox setHidden:NO];
 		[_convertButton setImage:[NSImage imageNamed:@"transformRect"]];
 		
-	}else if([[_mainView selectedShape] isKindOfClass:[DBOval class]]){
+	}else if([shape isKindOfClass:[DBOval class]]){
 		[_convertBox setHidden:NO];
 		[_convertButton setImage:[NSImage imageNamed:@"transformOval"]];
 		
-	}else if([[_mainView selectedShape] isKindOfClass:[DBPolyline class]]){
+	}else if([shape isKindOfClass:[DBPolyline class]]){
 		[_replaceButton setHidden:NO];
 		[_replaceButton setImage:[NSImage imageNamed:@"replacePoly"]];
 		
-	}else if([[_mainView selectedShape] isKindOfClass:[DBBezierCurve class]]){
+	}else if([shape isKindOfClass:[DBBezierCurve class]]){
 		[_replaceButton setHidden:NO];
 		[_replaceButton setImage:[NSImage imageNamed:@"replaceBezier"]]; 
 		
@@ -129,6 +137,7 @@
 - (void)beginEditing
 {
 	_selectionType = 2;
+	[self updateSelection];
 	[_contextualBar updateViewForDataSource];
 }
 

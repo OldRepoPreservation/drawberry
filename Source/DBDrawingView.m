@@ -1286,8 +1286,8 @@
 		_editingShape = shape;
 		[[self layerController] selectLayer:[_editingShape layer]];
 		[self didChangeValueForKey:@"selectedShape"];
-		[_dataSourceController beginEditing];
 		[_editingShape setIsEditing:YES];
+		[_dataSourceController beginEditing];
 	}
   	[self setNeedsDisplay:YES];
 }

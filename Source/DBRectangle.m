@@ -400,7 +400,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 // 	_path = [[NSBezierPath bezierPath] retain];  
 //	[_path appendBezierPathWithRect:rect];
   
-  	_path = [NSBezierPath bezierPathWithRoundedRect:rect cornerRadius:distanceBetween(_point2, _radiusKnob)];
+  	_path = [NSBezierPath bezierPathWithRoundedRect:rect cornerRadius:distanceBetween(_point2, _radiusKnob)*zoom];
 	[_path retain];
 	
 	transform = [[NSAffineTransform alloc] init];

@@ -148,6 +148,8 @@
 	}else{
 		_selectionType = 0;
 	}
+	[_contextualBar updateViewForDataSource];
+
 }
 
 - (IBAction)duplicate:(id)sender

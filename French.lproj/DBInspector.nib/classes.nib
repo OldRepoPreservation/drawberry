@@ -1,76 +1,134 @@
-{
-    IBClasses = (
-        {CLASS = DBGradientWell; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
-        {
-            ACTIONS = {chooseFile = id; }; 
-            CLASS = DBImageView; 
-            LANGUAGE = ObjC; 
-            SUPERCLASS = NSImageView; 
-        }, 
-        {
-            ACTIONS = {
-                action = id; 
-                chooseFillImage = id; 
-                chooseStrokeImage = id; 
-                flipText = id; 
-                shadowAction = id; 
-            }; 
-            CLASS = DBInspectorController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                "_arrowView" = NSView; 
-                "_canevasView" = NSView; 
-                "_fillColorWell" = NSControl; 
-                "_fillController" = NSObjectController; 
-                "_fillGradientWell" = NSControl; 
-                "_fillImageView" = NSImageView; 
-                "_fillView" = NSView; 
-                "_geometryView" = NSView; 
-                "_gridView" = NSView; 
-                "_link" = id; 
-                "_objectInspector" = GInspectWindow; 
-                "_rulerView" = NSView; 
-                "_shadowControl" = NSControl; 
-                "_shadowController" = NSObjectController; 
-                "_shadowView" = NSView; 
-                "_strokeController" = NSObjectController; 
-                "_strokeImageView" = NSImageView; 
-                "_strokeThickness" = NSSlider; 
-                "_strokeView" = NSView; 
-                "_textView" = NSView; 
-                "_viewInspector" = GInspectWindow; 
-            }; 
-            SUPERCLASS = NSWindowController; 
-        }, 
-        {CLASS = DBShadowControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {
-            ACTIONS = {
-                copy = id; 
-                copyImage = id; 
-                cut = id; 
-                delete = id; 
-                paste = id; 
-                resetRadial = id; 
-            }; 
-            CLASS = GCGradientWell; 
-            LANGUAGE = ObjC; 
-            SUPERCLASS = NSControl; 
-        }, 
-        {CLASS = GHUDPanel; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }, 
-        {
-            ACTIONS = {togglePanel = id; }; 
-            CLASS = GInspectWindow; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {"_bckgrd" = NSImageView; "_disclosureButton" = NSButton; }; 
-            SUPERCLASS = GHUDPanel; 
-        }, 
-        {CLASS = NFHUDButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
-        {CLASS = NFHUDButtonCell; LANGUAGE = ObjC; SUPERCLASS = NSButtonCell; }, 
-        {CLASS = NFHUDPopUpButton; LANGUAGE = ObjC; SUPERCLASS = NSPopUpButton; }, 
-        {CLASS = NFHUDSlider; LANGUAGE = ObjC; SUPERCLASS = NSSlider; }, 
-        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
-        {CLASS = OHTextField; LANGUAGE = ObjC; SUPERCLASS = NSTextField; }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>CLASS</key>
+			<string>DBGradientWell</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSControl</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>action</key>
+				<string>id</string>
+				<key>chooseFillImage</key>
+				<string>id</string>
+				<key>chooseStrokeImage</key>
+				<string>id</string>
+				<key>flipText</key>
+				<string>id</string>
+				<key>shadowAction</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>DBInspectorController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_arrowView</key>
+				<string>NSView</string>
+				<key>_canevasView</key>
+				<string>NSView</string>
+				<key>_fillColorWell</key>
+				<string>NSControl</string>
+				<key>_fillController</key>
+				<string>NSObjectController</string>
+				<key>_fillGradientWell</key>
+				<string>NSControl</string>
+				<key>_fillImageView</key>
+				<string>NSImageView</string>
+				<key>_fillView</key>
+				<string>NSView</string>
+				<key>_geometryView</key>
+				<string>NSView</string>
+				<key>_gridView</key>
+				<string>NSView</string>
+				<key>_link</key>
+				<string>id</string>
+				<key>_objectInspector</key>
+				<string>GInspectWindow</string>
+				<key>_rulerView</key>
+				<string>NSView</string>
+				<key>_shadowControl</key>
+				<string>NSControl</string>
+				<key>_shadowController</key>
+				<string>NSObjectController</string>
+				<key>_shadowView</key>
+				<string>NSView</string>
+				<key>_strokeController</key>
+				<string>NSObjectController</string>
+				<key>_strokeImageView</key>
+				<string>NSImageView</string>
+				<key>_strokeThickness</key>
+				<string>NSSlider</string>
+				<key>_strokeView</key>
+				<string>NSView</string>
+				<key>_textView</key>
+				<string>NSView</string>
+				<key>_viewInspector</key>
+				<string>GInspectWindow</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSWindowController</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>DBShadowControl</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSControl</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>togglePanel</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>GInspectWindow</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_bckgrd</key>
+				<string>NSImageView</string>
+				<key>_disclosureButton</key>
+				<string>NSButton</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSPanel</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>chooseFile</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>DBImageView</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSImageView</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>

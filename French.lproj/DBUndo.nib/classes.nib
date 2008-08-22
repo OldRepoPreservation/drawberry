@@ -1,25 +1,59 @@
-{
-    IBClasses = (
-        {CLASS = CustomWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
-        {CLASS = DBHUDButton; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
-        {
-            ACTIONS = {clear = id; redo = id; undo = id; }; 
-            CLASS = DBUndoUIController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {"_undoTableView" = NSTableView; }; 
-            SUPERCLASS = NSWindowController; 
-        }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {
-            ACTIONS = {togglePanel = id; }; 
-            CLASS = GCollapseWindow; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {"_disclosureButton" = NSButton; }; 
-            SUPERCLASS = OHWindow; 
-        }, 
-        {CLASS = OHScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
-        {CLASS = OHTableView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
-        {CLASS = OHWindow; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>clear</key>
+				<string>id</string>
+				<key>redo</key>
+				<string>id</string>
+				<key>undo</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>DBUndoUIController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_undoTableView</key>
+				<string>NSTableView</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSWindowController</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>togglePanel</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>GCollapsePanel</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_disclosureButton</key>
+				<string>NSButton</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSPanel</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>

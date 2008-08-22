@@ -84,14 +84,6 @@
 		</dict>
 		<dict>
 			<key>CLASS</key>
-			<string>NFHUDButton</string>
-			<key>LANGUAGE</key>
-			<string>ObjC</string>
-			<key>SUPERCLASS</key>
-			<string>NSButton</string>
-		</dict>
-		<dict>
-			<key>CLASS</key>
 			<string>FirstResponder</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
@@ -105,6 +97,24 @@
 			<string>ObjC</string>
 			<key>SUPERCLASS</key>
 			<string>NSPopUpButton</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>togglePanel</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>GCollapsePanel</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_disclosureButton</key>
+				<string>NSButton</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSPanel</string>
 		</dict>
 		<dict>
 			<key>CLASS</key>

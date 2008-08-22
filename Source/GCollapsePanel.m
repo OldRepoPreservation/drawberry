@@ -1,14 +1,14 @@
 //
-//  GCollapseWindow.m
+//  GCollapsePanel.m
 //  Geodes
 //
 //  Created by Raphael Bost on 17/03/06.
 //  Copyright 2006 Raphael Bost. All rights reserved.
 //
 
-#import "GCollapseWindow.h"
+#import "GCollapsePanel.h"
 
-@implementation GCollapseWindow
+@implementation GCollapsePanel
 
 - (id)initWithContentRect:(NSRect)contentRect 
 				styleMask:(unsigned int)styleMask 
@@ -18,7 +18,7 @@
 	if (self != nil) {
 
 		_previousFrameSize = [self frame].size;
-		_widthWhenClosed = _previousFrameSize.width;
+		_widthWhenClosed = 150;
 		
 		_views = [[NSMutableArray alloc] init];
 		_isCollapsed = NO;
@@ -66,17 +66,17 @@
 
 - (void)awakeFromNib
 {
-/*	
+	
 	[[[self contentView] superview] addSubview:_disclosureButton];
 	
 	NSRect cbFrame = [[[[[self contentView] superview] subviews] objectAtIndex:0] frame];
 	
 	NSPoint origin;
 	origin.x = [self frame].size.width - 20;
-	origin.y = (int)(cbFrame.origin.y - (cbFrame.size.height / 2) + ([_disclosureButton frame].size.height /2))+1;
+	origin.y = (int)(cbFrame.origin.y - (cbFrame.size.height / 2) + ([_disclosureButton frame].size.height /2))-4;
 	
 	[_disclosureButton setFrameOrigin:origin];
-*/}
+}
 
 - (IBAction)togglePanel:(id)sender
 {
@@ -128,20 +128,13 @@
 
 - (void)windowWillMove:(NSNotification *)notif
 {
-    NSPoint p;
     NSEvent *ev;
 	
-    p=[[self currentEvent] locationInWindow];
+	ev=[NSApp nextEventMatchingMask:NSLeftMouseDownMask untilDate:[NSDate dateWithTimeIntervalSinceNow:0.2] inMode:NSEventTrackingRunLoopMode dequeue:YES];	
+	ev=[NSApp nextEventMatchingMask:NSLeftMouseDownMask untilDate:[NSDate dateWithTimeIntervalSinceNow:0.2] inMode:NSEventTrackingRunLoopMode dequeue:YES];	
 	
-    ev=[self nextEventMatchingMask:NSLeftMouseUpMask];
-		
-		if (ev) {
-			if (NSEqualPoints(p, [ev locationInWindow])){ // no drag
-				ev=[NSApp nextEventMatchingMask:NSLeftMouseDownMask untilDate:[NSDate dateWithTimeIntervalSinceNow:0.15] inMode:NSEventTrackingRunLoopMode dequeue:YES];	
-				if (ev) {
+		if (ev && ([ev clickCount] == 2) ) {
 					[self setCollapsed:![self isCollapsed]];
-				}
-			}
 		}
 }
 

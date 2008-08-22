@@ -1,5 +1,5 @@
 //
-//  GCollapseWindow.h
+//  GCollapsePanel.h
 //  Geodes
 //
 //  Created by Raphael Bost on 17/03/06.
@@ -12,7 +12,7 @@
 #import "GHUDPanel.h"
 
 
-@interface GCollapseWindow : GHUDPanel {
+@interface GCollapsePanel : NSPanel {
 	IBOutlet NSButton *_disclosureButton;
 	
 	NSSize _previousFrameSize;

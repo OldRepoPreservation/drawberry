@@ -10,7 +10,7 @@
 #import "DBToolMatrix.h"
 
 
-#import "GCollapseWindow.h"
+#import "GCollapsePanel.h"
 #import "DBApplicationController.h"
 
 @class DBShape, DBRectangle, DBOval, DBLine, DBPolyline, DBBezierCurve, DBText;
@@ -51,7 +51,7 @@ enum {
 
 - (void)awakeFromNib
 {
-	[(GCollapseWindow *)[self window] setWidthWhenClosed:[[self window] frame].size.width];
+	[(GCollapsePanel *)[self window] setWidthWhenClosed:[[self window] frame].size.width];
 
    	[[_toolButtons cellWithTag:0] setHighlighted:YES];
 	[[_toolButtons cellWithTag:0] setLocked:YES];  	

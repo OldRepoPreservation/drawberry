@@ -11,7 +11,7 @@
 #import "DBApplicationController.h"
 #import "DBLayerController.h"    
 
-#import "GCollapseWindow.h"
+#import "GCollapsePanel.h"
 
 static DBLayerWindowController *_sharedLayerWindowController = nil;
 

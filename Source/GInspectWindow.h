@@ -16,7 +16,7 @@
 #define GInspectViewClosedNotification @"Inspect View Closed"
 
 const float _barHeight;
-@interface GInspectWindow : GHUDPanel {
+@interface GInspectWindow : NSPanel {
 	IBOutlet NSButton *_disclosureButton;
 	IBOutlet NSImageView *_bckgrd;
 	

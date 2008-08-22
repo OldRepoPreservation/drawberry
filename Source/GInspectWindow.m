@@ -10,6 +10,10 @@
 
 #import "GBarView.h"
 
+#define GCollapsedHeight 26
+#define GBaseHeight 0
+#define GHeightOffset 0
+
 //const float _barHeight = 30;
 const float _barHeight = 18;
 
@@ -49,15 +53,15 @@ const float _barHeight = 18;
 
 - (void)awakeFromNib
 {	
-//	[[[self contentView] superview] addSubview:_disclosureButton];
+	[[[self contentView] superview] addSubview:_disclosureButton];
 	
-	// NSRect cbFrame = [[[[[self contentView] superview] subviews] objectAtIndex:0] frame];
-	// 
-	// NSPoint origin;
-	// origin.x = [self frame].size.width - 20;
-	// origin.y = (int)(cbFrame.origin.y - (cbFrame.size.height / 2) + ([_disclosureButton frame].size.height /2))+1;
-	// 
-	// [_disclosureButton setFrameOrigin:origin];
+	NSRect cbFrame = [[[[[self contentView] superview] subviews] objectAtIndex:0] frame];
+
+	NSPoint origin;
+	origin.x = [self frame].size.width - 20;
+	origin.y = (int)(cbFrame.origin.y - (cbFrame.size.height / 2) + ([_disclosureButton frame].size.height /2))-4;
+
+	[_disclosureButton setFrameOrigin:origin];
 //	[_bckgrd setFrame:NSMakeRect(0,7,[self frame].size.width,MIN([self frame].size.height-30,0))];
 }
 
@@ -110,15 +114,37 @@ const float _barHeight = 18;
 	if (! _isCollapsed) {
 		newFrame.size = _previousFrameSize;
 		newFrame.origin = [self frame].origin;
-		newFrame.origin.y -= (_previousFrameSize.height - 24);
+		newFrame.origin.y -= (_previousFrameSize.height - GCollapsedHeight);
+
+		NSEnumerator *e;
+		e = [[[self contentView] subviews] objectEnumerator];
+		NSView *v;
+		NSRect frame;
+		while((v = [e nextObject])){
+			frame = [v frame];
+			frame.origin.y -= 5.0;
+			[v	setFrame:frame];
+//			[v setAutoresizingMask:NSViewMinYMargin];
+		}
 	}else {
 		_previousFrameSize = [self frame].size;
 		
 		newFrame.origin = [self frame].origin;
-		newFrame.origin.y += [self frame].size.height - 24;
+		newFrame.origin.y += [self frame].size.height - GCollapsedHeight;
 		
-		newFrame.size = NSMakeSize(_widthWhenClosed, 24);
+		newFrame.size = NSMakeSize(_widthWhenClosed, GCollapsedHeight);
 		
+		NSEnumerator *e;
+		
+		e = [[[self contentView] subviews] objectEnumerator];
+		NSView *v;
+		NSRect frame;
+		while((v = [e nextObject])){
+			frame = [v frame];
+			frame.origin.y += 5.0;
+			[v	setFrame:frame];
+			[v setAutoresizingMask:NSViewMaxYMargin];
+		}
 	}
 	[self setFrame:newFrame display:YES animate:YES];
 	
@@ -128,7 +154,7 @@ const float _barHeight = 18;
 {
 	float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 	titleBarHeight = 20;
-	float accumulatedHeight = 0;
+	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
 	float maxWidth = _widthWhenClosed;
@@ -184,7 +210,7 @@ const float _barHeight = 18;
 	
 	NSRect frame;
 	frame = [self frame];
-	frame.size.height = accumulatedHeight+titleBarHeight;
+	frame.size.height = accumulatedHeight+titleBarHeight+GHeightOffset;
 	frame.size.width = maxWidth;
 	frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 
@@ -195,7 +221,7 @@ const float _barHeight = 18;
 {
 	float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 	titleBarHeight = 20;
-	float accumulatedHeight = 0;
+	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
 	float maxWidth = _widthWhenClosed;
@@ -234,7 +260,7 @@ const float _barHeight = 18;
 	
 	NSRect frame;
 	frame = [self frame];
-	frame.size.height = accumulatedHeight+titleBarHeight;
+	frame.size.height = accumulatedHeight+titleBarHeight+GHeightOffset;
 	frame.size.width = maxWidth;
 	frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 	[self setFrame:frame display:YES animate:YES];
@@ -262,7 +288,7 @@ const float _barHeight = 18;
 	
 	float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 	titleBarHeight = 20;
-	float accumulatedHeight = 0;
+	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
 	float maxWidth = _widthWhenClosed;
@@ -305,7 +331,7 @@ const float _barHeight = 18;
 	
 	NSRect frame;
 	frame = [self frame];
-	frame.size.height = accumulatedHeight+titleBarHeight;
+	frame.size.height = accumulatedHeight+titleBarHeight+GHeightOffset;
 	frame.size.width = maxWidth;
 	frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 	
@@ -350,7 +376,7 @@ const float _barHeight = 18;
 	// calculate new frame
 	float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 	titleBarHeight = 20;
-	float accumulatedHeight = 0;
+	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
 	float maxWidth = _widthWhenClosed;
@@ -405,7 +431,7 @@ const float _barHeight = 18;
 	
 	NSRect frame;
 	frame = [self frame];
-	frame.size.height = accumulatedHeight+titleBarHeight;
+	frame.size.height = accumulatedHeight+titleBarHeight+GHeightOffset;
 	frame.size.width = maxWidth;
 	frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 	
@@ -424,7 +450,7 @@ const float _barHeight = 18;
 		
 		float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 		titleBarHeight = 20;
-		float accumulatedHeight = 0;
+		float accumulatedHeight = GBaseHeight;
 		
 		float oldHeight = [self frame].size.height;
 		float maxWidth = _widthWhenClosed;
@@ -479,7 +505,7 @@ const float _barHeight = 18;
 		
 		NSRect frame;
 		frame = [self frame];
-		frame.size.height = accumulatedHeight+titleBarHeight;
+		frame.size.height = accumulatedHeight+titleBarHeight+GHeightOffset;
 		frame.size.width = maxWidth;
 		frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 		
@@ -493,7 +519,7 @@ const float _barHeight = 18;
 		
 		float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 		titleBarHeight = 20;
-		float accumulatedHeight = 0;
+		float accumulatedHeight = GBaseHeight;
 		float viewNewOrigin = 0;
 		
 		float oldHeight = [self frame].size.height;
@@ -562,7 +588,7 @@ const float _barHeight = 18;
 		
 		NSRect frame;
 		frame = [self frame];
-		frame.size.height = accumulatedHeight+titleBarHeight;
+		frame.size.height = accumulatedHeight+titleBarHeight+GHeightOffset;
 		frame.size.width = maxWidth;
 		frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 		
@@ -590,20 +616,18 @@ const float _barHeight = 18;
 
 - (void)windowWillMove:(NSNotification *)notif
 {
-    NSPoint p;
     NSEvent *ev;
 	
-    p=[[self currentEvent] locationInWindow];
+	ev=[NSApp nextEventMatchingMask:NSLeftMouseDownMask untilDate:[NSDate dateWithTimeIntervalSinceNow:0.2] inMode:NSEventTrackingRunLoopMode dequeue:YES];	
 	
-    ev=[self nextEventMatchingMask:NSLeftMouseUpMask];
+	if (!NSPointInRect([ev locationInWindow], NSMakeRect(0, 0, [self frame].size.width, GCollapsedHeight))) {
+		return;
+	}
 	
-	if (ev) {                   
-		if (NSEqualPoints(p, [ev locationInWindow])){ // no drag  			
-			ev=[NSApp nextEventMatchingMask:NSLeftMouseDownMask untilDate:[NSDate dateWithTimeIntervalSinceNow:0.2] inMode:NSEventTrackingRunLoopMode dequeue:YES];	
-			if (ev) {               				
-				[self setCollapsed:![self isCollapsed]];
-			}
-		}
+	ev=[NSApp nextEventMatchingMask:NSLeftMouseDownMask untilDate:[NSDate dateWithTimeIntervalSinceNow:0.2] inMode:NSEventTrackingRunLoopMode dequeue:YES];	
+	
+	if (ev && ([ev clickCount] == 2) ) {
+		[self setCollapsed:![self isCollapsed]];
 	}
 }
 

@@ -133,9 +133,11 @@
 - (void)drawRect:(NSRect)rect{
 //	[[NSColor redColor] set];
 //	[NSBezierPath fillRect:rect];
-	GCGradient *gradient;
-	gradient = [GCGradient aquaNormalGradient];
-//	[gradient fillRect:rect]; 
+	NSGradient *gradient;
+	gradient = [[NSGradient alloc] initWithStartingColor:[NSColor clearColor] endingColor:[[NSColor whiteColor] colorWithAlphaComponent:0.1]];
+	[gradient drawInRect:rect angle:90.0];
+	[gradient release];
+	
 	NSAttributedString *s = [[NSAttributedString alloc] initWithString:_title attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSColor whiteColor],NSForegroundColorAttributeName,nil]];
 	[s drawAtPoint:NSMakePoint(GBarTitleX,[self frame].size.height/2-[s size].height/2)];
 	[s release];
@@ -155,6 +157,16 @@
 		[path lineToPoint:NSMakePoint([self frame].size.width,[self frame].size.height-0.5)];
 		[path stroke];
 //	}
+	
+	if(!_isCollapsed){
+		path = [NSBezierPath bezierPath];
+		
+		[path moveToPoint:NSMakePoint(0.0,0.0)];
+		[path lineToPoint:NSMakePoint([self frame].size.width,0.0)];
+		[[NSColor whiteColor] set];
+		[path stroke];
+
+	}
 	
 }
 - (void)mouseDown:(NSEvent *)e

@@ -33,7 +33,7 @@
 		6C129CFD0E54E7F700AD5C61 /* DBHUDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CF90E54E7F700AD5C61 /* DBHUDButton.m */; };
 		6C129CFE0E54E7F700AD5C61 /* DBHUDButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CFA0E54E7F700AD5C61 /* DBHUDButtonCell.m */; };
 		6C129D010E54E80800AD5C61 /* DBPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CFF0E54E80800AD5C61 /* DBPopUpButton.m */; };
-		6C129D050E54E84C00AD5C61 /* GCollapseWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129D030E54E84C00AD5C61 /* GCollapseWindow.m */; };
+		6C129D050E54E84C00AD5C61 /* GCollapsePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129D030E54E84C00AD5C61 /* GCollapsePanel.m */; };
 		6C129D080E54E85C00AD5C61 /* GBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129D060E54E85C00AD5C61 /* GBarView.m */; };
 		6C129D0B0E54E88200AD5C61 /* GInspectWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129D0A0E54E88200AD5C61 /* GInspectWindow.m */; };
 		6C129D0E0E54E8A800AD5C61 /* DBButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129D0C0E54E8A800AD5C61 /* DBButtonCell.m */; };
@@ -235,8 +235,15 @@
 		6C51136F0C310DE20084EF60 /* DBFilterPalette.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C51136D0C310DE20084EF60 /* DBFilterPalette.nib */; };
 		6C5DF1650C57AAC400429CF4 /* DBUndo.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5DF1630C57AAC400429CF4 /* DBUndo.nib */; };
 		6C8443D60C4C0A6400FFA2FF /* DBPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8443D40C4C0A6400FFA2FF /* DBPreferences.nib */; };
+		6C9947360E588CB10009CCA0 /* GradientPanel.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */; };
+		6C9947370E588CB10009CCA0 /* iLifeControls.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */; };
+		6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
+		6CA3B1BF0E5C3A9700BFCA59 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
+		6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
+		6CA3B1D00E5C3F6700BFCA59 /* action_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */; };
 		6CAC18A00E28C4B7007FD7D8 /* DBColorSwatches.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CAC189E0E28C4B7007FD7D8 /* DBColorSwatches.nib */; };
 		6CB068780E44A93200B92FE4 /* DBShapeCollectionDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */; };
+		6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 6CB4DFA90E5B1D2F008CBB3A /* Help */; };
 		6CB6C6EC0E587BD000800D7E /* GradientPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */; };
 		6CB6C6EE0E587BEA00800D7E /* iLifeControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */; };
 		6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
@@ -261,6 +268,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */,
+				6C9947360E588CB10009CCA0 /* GradientPanel.framework in CopyFiles */,
+				6C9947370E588CB10009CCA0 /* iLifeControls.framework in CopyFiles */,
+				6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,8 +345,8 @@
 		6C129CFC0E54E7F700AD5C61 /* DBHUDButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBHUDButton.h; path = Source/DBHUDButton.h; sourceTree = "<group>"; };
 		6C129CFF0E54E80800AD5C61 /* DBPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBPopUpButton.m; path = Source/DBPopUpButton.m; sourceTree = "<group>"; };
 		6C129D000E54E80800AD5C61 /* DBPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPopUpButton.h; path = Source/DBPopUpButton.h; sourceTree = "<group>"; };
-		6C129D030E54E84C00AD5C61 /* GCollapseWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCollapseWindow.m; path = Source/GCollapseWindow.m; sourceTree = "<group>"; };
-		6C129D040E54E84C00AD5C61 /* GCollapseWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCollapseWindow.h; path = Source/GCollapseWindow.h; sourceTree = "<group>"; };
+		6C129D030E54E84C00AD5C61 /* GCollapsePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCollapsePanel.m; path = Source/GCollapsePanel.m; sourceTree = "<group>"; };
+		6C129D040E54E84C00AD5C61 /* GCollapsePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCollapsePanel.h; path = Source/GCollapsePanel.h; sourceTree = "<group>"; };
 		6C129D060E54E85C00AD5C61 /* GBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBarView.m; path = Source/GBarView.m; sourceTree = "<group>"; };
 		6C129D070E54E85C00AD5C61 /* GBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBarView.h; path = Source/GBarView.h; sourceTree = "<group>"; };
 		6C129D090E54E88200AD5C61 /* GInspectWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GInspectWindow.h; path = Source/GInspectWindow.h; sourceTree = "<group>"; };
@@ -450,34 +461,34 @@
 		6C129DAC0E54ED4A00AD5C61 /* DBStroke+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBStroke+SVG.m"; path = "Source/DBStroke+SVG.m"; sourceTree = "<group>"; };
 		6C129DAD0E54ED4A00AD5C61 /* NSColor+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+SVG.h"; path = "Source/NSColor+SVG.h"; sourceTree = "<group>"; };
 		6C129DAE0E54ED4A00AD5C61 /* NSColor+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+SVG.m"; path = "Source/NSColor+SVG.m"; sourceTree = "<group>"; };
-		6C129DBA0E54ED6F00AD5C61 /* CTGradient2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient2.h; path = Source/CTGradient2.h; sourceTree = SOURCE_ROOT; };
-		6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTGradient2.m; path = Source/CTGradient2.m; sourceTree = SOURCE_ROOT; };
-		6C129DBD0E54ED8800AD5C61 /* OHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHConstants.h; path = Source/OHConstants.h; sourceTree = SOURCE_ROOT; };
-		6C129DBE0E54ED8800AD5C61 /* OHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHConstants.m; path = Source/OHConstants.m; sourceTree = SOURCE_ROOT; };
-		6C129DBF0E54ED8800AD5C61 /* OHCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHCornerView.h; path = Source/OHCornerView.h; sourceTree = SOURCE_ROOT; };
-		6C129DC00E54ED8800AD5C61 /* OHCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHCornerView.m; path = Source/OHCornerView.m; sourceTree = SOURCE_ROOT; };
-		6C129DC10E54ED8800AD5C61 /* OHScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHScroller.h; path = Source/OHScroller.h; sourceTree = SOURCE_ROOT; };
-		6C129DC20E54ED8800AD5C61 /* OHScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHScroller.m; path = Source/OHScroller.m; sourceTree = SOURCE_ROOT; };
-		6C129DC30E54ED8800AD5C61 /* OHScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHScrollView.h; path = Source/OHScrollView.h; sourceTree = SOURCE_ROOT; };
-		6C129DC40E54ED8800AD5C61 /* OHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHScrollView.m; path = Source/OHScrollView.m; sourceTree = SOURCE_ROOT; };
-		6C129DC50E54ED8800AD5C61 /* OHTableHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTableHeaderCell.h; path = Source/OHTableHeaderCell.h; sourceTree = SOURCE_ROOT; };
-		6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTableHeaderCell.m; path = Source/OHTableHeaderCell.m; sourceTree = SOURCE_ROOT; };
-		6C129DC70E54ED8800AD5C61 /* OHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTableView.h; path = Source/OHTableView.h; sourceTree = SOURCE_ROOT; };
-		6C129DC80E54ED8800AD5C61 /* OHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTableView.m; path = Source/OHTableView.m; sourceTree = SOURCE_ROOT; };
-		6C129DC90E54ED8800AD5C61 /* OHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTextField.h; path = Source/OHTextField.h; sourceTree = SOURCE_ROOT; };
-		6C129DCA0E54ED8800AD5C61 /* OHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTextField.m; path = Source/OHTextField.m; sourceTree = SOURCE_ROOT; };
-		6C129DCB0E54ED8800AD5C61 /* OHThemeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHThemeFrame.h; path = Source/OHThemeFrame.h; sourceTree = SOURCE_ROOT; };
-		6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHThemeFrame.m; path = Source/OHThemeFrame.m; sourceTree = SOURCE_ROOT; };
-		6C129DCD0E54ED8800AD5C61 /* OHTitleBarButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTitleBarButtonCell.h; path = Source/OHTitleBarButtonCell.h; sourceTree = SOURCE_ROOT; };
-		6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTitleBarButtonCell.m; path = Source/OHTitleBarButtonCell.m; sourceTree = SOURCE_ROOT; };
-		6C129DCF0E54ED8800AD5C61 /* OHWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHWindow.h; path = Source/OHWindow.h; sourceTree = SOURCE_ROOT; };
-		6C129DD00E54ED8800AD5C61 /* OHWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHWindow.m; path = Source/OHWindow.m; sourceTree = SOURCE_ROOT; };
-		6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenHUD.h; path = Source/OpenHUD.h; sourceTree = SOURCE_ROOT; };
-		6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTitledFrame.h; path = Source/NSTitledFrame.h; sourceTree = SOURCE_ROOT; };
-		6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+FrameworkImage.h"; path = "Source/NSImage+FrameworkImage.h"; sourceTree = SOURCE_ROOT; };
-		6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+FrameworkImage.m"; path = "Source/NSImage+FrameworkImage.m"; sourceTree = SOURCE_ROOT; };
-		6C129DE00E54EE1100AD5C61 /* NSFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSFrameView.h; path = Source/NSFrameView.h; sourceTree = SOURCE_ROOT; };
-		6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSThemeFrame.h; path = Source/NSThemeFrame.h; sourceTree = SOURCE_ROOT; };
+		6C129DBA0E54ED6F00AD5C61 /* CTGradient2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient2.h; path = Source/CTGradient2.h; sourceTree = "<group>"; };
+		6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTGradient2.m; path = Source/CTGradient2.m; sourceTree = "<group>"; };
+		6C129DBD0E54ED8800AD5C61 /* OHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHConstants.h; path = Source/OHConstants.h; sourceTree = "<group>"; };
+		6C129DBE0E54ED8800AD5C61 /* OHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHConstants.m; path = Source/OHConstants.m; sourceTree = "<group>"; };
+		6C129DBF0E54ED8800AD5C61 /* OHCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHCornerView.h; path = Source/OHCornerView.h; sourceTree = "<group>"; };
+		6C129DC00E54ED8800AD5C61 /* OHCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHCornerView.m; path = Source/OHCornerView.m; sourceTree = "<group>"; };
+		6C129DC10E54ED8800AD5C61 /* OHScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHScroller.h; path = Source/OHScroller.h; sourceTree = "<group>"; };
+		6C129DC20E54ED8800AD5C61 /* OHScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHScroller.m; path = Source/OHScroller.m; sourceTree = "<group>"; };
+		6C129DC30E54ED8800AD5C61 /* OHScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHScrollView.h; path = Source/OHScrollView.h; sourceTree = "<group>"; };
+		6C129DC40E54ED8800AD5C61 /* OHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHScrollView.m; path = Source/OHScrollView.m; sourceTree = "<group>"; };
+		6C129DC50E54ED8800AD5C61 /* OHTableHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTableHeaderCell.h; path = Source/OHTableHeaderCell.h; sourceTree = "<group>"; };
+		6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTableHeaderCell.m; path = Source/OHTableHeaderCell.m; sourceTree = "<group>"; };
+		6C129DC70E54ED8800AD5C61 /* OHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTableView.h; path = Source/OHTableView.h; sourceTree = "<group>"; };
+		6C129DC80E54ED8800AD5C61 /* OHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTableView.m; path = Source/OHTableView.m; sourceTree = "<group>"; };
+		6C129DC90E54ED8800AD5C61 /* OHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTextField.h; path = Source/OHTextField.h; sourceTree = "<group>"; };
+		6C129DCA0E54ED8800AD5C61 /* OHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTextField.m; path = Source/OHTextField.m; sourceTree = "<group>"; };
+		6C129DCB0E54ED8800AD5C61 /* OHThemeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHThemeFrame.h; path = Source/OHThemeFrame.h; sourceTree = "<group>"; };
+		6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHThemeFrame.m; path = Source/OHThemeFrame.m; sourceTree = "<group>"; };
+		6C129DCD0E54ED8800AD5C61 /* OHTitleBarButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTitleBarButtonCell.h; path = Source/OHTitleBarButtonCell.h; sourceTree = "<group>"; };
+		6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTitleBarButtonCell.m; path = Source/OHTitleBarButtonCell.m; sourceTree = "<group>"; };
+		6C129DCF0E54ED8800AD5C61 /* OHWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHWindow.h; path = Source/OHWindow.h; sourceTree = "<group>"; };
+		6C129DD00E54ED8800AD5C61 /* OHWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHWindow.m; path = Source/OHWindow.m; sourceTree = "<group>"; };
+		6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenHUD.h; path = Source/OpenHUD.h; sourceTree = "<group>"; };
+		6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTitledFrame.h; path = Source/NSTitledFrame.h; sourceTree = "<group>"; };
+		6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+FrameworkImage.h"; path = "Source/NSImage+FrameworkImage.h"; sourceTree = "<group>"; };
+		6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+FrameworkImage.m"; path = "Source/NSImage+FrameworkImage.m"; sourceTree = "<group>"; };
+		6C129DE00E54EE1100AD5C61 /* NSFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSFrameView.h; path = Source/NSFrameView.h; sourceTree = "<group>"; };
+		6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSThemeFrame.h; path = Source/NSThemeFrame.h; sourceTree = "<group>"; };
 		6C129DE20E54EE4000AD5C61 /* DBShapeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBShapeCell.h; path = Source/DBShapeCell.h; sourceTree = "<group>"; };
 		6C129DE30E54EE4000AD5C61 /* DBShapeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBShapeCell.m; path = Source/DBShapeCell.m; sourceTree = "<group>"; };
 		6C129DE40E54EE4000AD5C61 /* DBShapeCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBShapeCollection.h; path = Source/DBShapeCollection.h; sourceTree = "<group>"; };
@@ -619,7 +630,6 @@
 		6C129F0D0E54F64300AD5C61 /* tool-rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-rectangle.png"; sourceTree = "<group>"; };
 		6C129F0E0E54F64300AD5C61 /* tool-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-text.png"; sourceTree = "<group>"; };
 		6C129F0F0E54F64300AD5C61 /* tool-zoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-zoom.png"; sourceTree = "<group>"; };
-		6C39C5B60BCBCB620015D712 /* closeButton.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = closeButton.tiff; sourceTree = "<group>"; };
 		6C39C5B70BCBCB620015D712 /* mask_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask_left.png; sourceTree = "<group>"; };
 		6C39C5B80BCBCB620015D712 /* mask_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask_right.png; sourceTree = "<group>"; };
 		6C415A3B0D722AFA0014A6BB /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBContextualViews.nib; sourceTree = "<group>"; };
@@ -639,9 +649,12 @@
 		6C84451A0C4C243900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBTools.nib; sourceTree = "<group>"; };
 		6C84451F0C4C245900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBPreferences.nib; sourceTree = "<group>"; };
 		6C874F1D0E473D2500933F02 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
+		6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = ../../Code/BGAppKit/build/Release/BGHUDAppKit.framework; sourceTree = SOURCE_ROOT; };
+		6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_white.png; sourceTree = "<group>"; };
 		6CAC189F0E28C4B7007FD7D8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
 		6CAC18A30E28C4D4007FD7D8 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
 		6CB068770E44A93200B92FE4 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
+		6CB4DFA90E5B1D2F008CBB3A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Help; path = Ressource/Help; sourceTree = "<group>"; };
 		6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanel.framework; path = ../../Code/GradientPanel.framework; sourceTree = SOURCE_ROOT; };
 		6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iLifeControls.framework; path = ../../Code/iLifeControls.framework; sourceTree = SOURCE_ROOT; };
 		6CB6C6F10E587BF500800D7E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../Code/Sparkle.framework; sourceTree = SOURCE_ROOT; };
@@ -670,6 +683,7 @@
 				6CB6C6EC0E587BD000800D7E /* GradientPanel.framework in Frameworks */,
 				6CB6C6EE0E587BEA00800D7E /* iLifeControls.framework in Frameworks */,
 				6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */,
+				6CA3B1BF0E5C3A9700BFCA59 /* BGHUDAppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +693,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */,
 				6CB6C6F10E587BF500800D7E /* Sparkle.framework */,
 				6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */,
 				6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */,
@@ -733,7 +748,7 @@
 				6C4AB29A0BCCD1160035522E /* Models */,
 				6CBF84740C56479D00F9554F /* Undo Manager */,
 				6CF709580E1E0ED400BDB401 /* SVG Additions */,
-				6C46423E0C79CE9D0058F1D1 /* OpenHUD */,
+				6CB4DFF70E5B8720008CBB3A /* HUD */,
 				6CEFC95B0E2F9D710057CDED /* Color Swatches & Shape Lib. */,
 			);
 			name = Classes;
@@ -743,7 +758,6 @@
 			isa = PBXGroup;
 			children = (
 				6C129E050E54EEE000AD5C61 /* main.m */,
-				6C39C5B60BCBCB620015D712 /* closeButton.tiff */,
 				6C39C5B70BCBCB620015D712 /* mask_left.png */,
 				6C39C5B80BCBCB620015D712 /* mask_right.png */,
 				6C129E070E54EF1300AD5C61 /* DrawBerry_Prefix.pch */,
@@ -754,6 +768,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6CB4DFA90E5B1D2F008CBB3A /* Help */,
 				6C129EA80E54F64300AD5C61 /* Contextual Toolbar */,
 				6C129EBB0E54F64300AD5C61 /* HUD */,
 				6C129ECE0E54F64300AD5C61 /* Other */,
@@ -868,6 +883,7 @@
 		6C129ECE0E54F64300AD5C61 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */,
 				6C129ECF0E54F64300AD5C61 /* button.png */,
 				6C129ED00E54F64300AD5C61 /* button_glass.tiff */,
 				6C129ED10E54F64300AD5C61 /* button_glass_p.tiff */,
@@ -950,41 +966,6 @@
 			);
 			name = Tools;
 			path = Ressource/Tools;
-			sourceTree = "<group>";
-		};
-		6C46423E0C79CE9D0058F1D1 /* OpenHUD */ = {
-			isa = PBXGroup;
-			children = (
-				6C129DBA0E54ED6F00AD5C61 /* CTGradient2.h */,
-				6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */,
-				6C129DBD0E54ED8800AD5C61 /* OHConstants.h */,
-				6C129DBE0E54ED8800AD5C61 /* OHConstants.m */,
-				6C129DBF0E54ED8800AD5C61 /* OHCornerView.h */,
-				6C129DC00E54ED8800AD5C61 /* OHCornerView.m */,
-				6C129DC10E54ED8800AD5C61 /* OHScroller.h */,
-				6C129DC20E54ED8800AD5C61 /* OHScroller.m */,
-				6C129DC30E54ED8800AD5C61 /* OHScrollView.h */,
-				6C129DC40E54ED8800AD5C61 /* OHScrollView.m */,
-				6C129DC50E54ED8800AD5C61 /* OHTableHeaderCell.h */,
-				6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */,
-				6C129DC70E54ED8800AD5C61 /* OHTableView.h */,
-				6C129DC80E54ED8800AD5C61 /* OHTableView.m */,
-				6C129DC90E54ED8800AD5C61 /* OHTextField.h */,
-				6C129DCA0E54ED8800AD5C61 /* OHTextField.m */,
-				6C129DCB0E54ED8800AD5C61 /* OHThemeFrame.h */,
-				6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */,
-				6C129DCD0E54ED8800AD5C61 /* OHTitleBarButtonCell.h */,
-				6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */,
-				6C129DCF0E54ED8800AD5C61 /* OHWindow.h */,
-				6C129DD00E54ED8800AD5C61 /* OHWindow.m */,
-				6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */,
-				6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */,
-				6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */,
-				6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */,
-				6C129DE00E54EE1100AD5C61 /* NSFrameView.h */,
-				6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */,
-			);
-			path = OpenHUD;
 			sourceTree = "<group>";
 		};
 		6C4AB2910BCCD0DE0035522E /* UI Subclasses */ = {
@@ -1107,8 +1088,8 @@
 		6C5F3ED90C6B21D300AB3BCC /* Inspect & Collapse Window */ = {
 			isa = PBXGroup;
 			children = (
-				6C129D040E54E84C00AD5C61 /* GCollapseWindow.h */,
-				6C129D030E54E84C00AD5C61 /* GCollapseWindow.m */,
+				6C129D040E54E84C00AD5C61 /* GCollapsePanel.h */,
+				6C129D030E54E84C00AD5C61 /* GCollapsePanel.m */,
 				6C129D070E54E85C00AD5C61 /* GBarView.h */,
 				6C129D060E54E85C00AD5C61 /* GBarView.m */,
 				6C129D090E54E88200AD5C61 /* GInspectWindow.h */,
@@ -1204,6 +1185,41 @@
 				6C129D8D0E54ED1600AD5C61 /* DBText.m */,
 			);
 			name = Shapes;
+			sourceTree = "<group>";
+		};
+		6CB4DFF70E5B8720008CBB3A /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				6C129DBA0E54ED6F00AD5C61 /* CTGradient2.h */,
+				6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */,
+				6C129DBD0E54ED8800AD5C61 /* OHConstants.h */,
+				6C129DBE0E54ED8800AD5C61 /* OHConstants.m */,
+				6C129DBF0E54ED8800AD5C61 /* OHCornerView.h */,
+				6C129DC00E54ED8800AD5C61 /* OHCornerView.m */,
+				6C129DC10E54ED8800AD5C61 /* OHScroller.h */,
+				6C129DC20E54ED8800AD5C61 /* OHScroller.m */,
+				6C129DC30E54ED8800AD5C61 /* OHScrollView.h */,
+				6C129DC40E54ED8800AD5C61 /* OHScrollView.m */,
+				6C129DC50E54ED8800AD5C61 /* OHTableHeaderCell.h */,
+				6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */,
+				6C129DC70E54ED8800AD5C61 /* OHTableView.h */,
+				6C129DC80E54ED8800AD5C61 /* OHTableView.m */,
+				6C129DC90E54ED8800AD5C61 /* OHTextField.h */,
+				6C129DCA0E54ED8800AD5C61 /* OHTextField.m */,
+				6C129DCB0E54ED8800AD5C61 /* OHThemeFrame.h */,
+				6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */,
+				6C129DCD0E54ED8800AD5C61 /* OHTitleBarButtonCell.h */,
+				6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */,
+				6C129DCF0E54ED8800AD5C61 /* OHWindow.h */,
+				6C129DD00E54ED8800AD5C61 /* OHWindow.m */,
+				6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */,
+				6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */,
+				6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */,
+				6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */,
+				6C129DE00E54EE1100AD5C61 /* NSFrameView.h */,
+				6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */,
+			);
+			name = HUD;
 			sourceTree = "<group>";
 		};
 		6CBF84740C56479D00F9554F /* Undo Manager */ = {
@@ -1478,6 +1494,8 @@
 				6C129F700E54F64400AD5C61 /* tool-rectangle.png in Resources */,
 				6C129F710E54F64400AD5C61 /* tool-text.png in Resources */,
 				6C129F720E54F64400AD5C61 /* tool-zoom.png in Resources */,
+				6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */,
+				6CA3B1D00E5C3F6700BFCA59 /* action_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1514,7 +1532,7 @@
 				6C129CFD0E54E7F700AD5C61 /* DBHUDButton.m in Sources */,
 				6C129CFE0E54E7F700AD5C61 /* DBHUDButtonCell.m in Sources */,
 				6C129D010E54E80800AD5C61 /* DBPopUpButton.m in Sources */,
-				6C129D050E54E84C00AD5C61 /* GCollapseWindow.m in Sources */,
+				6C129D050E54E84C00AD5C61 /* GCollapsePanel.m in Sources */,
 				6C129D080E54E85C00AD5C61 /* GBarView.m in Sources */,
 				6C129D0B0E54E88200AD5C61 /* GInspectWindow.m in Sources */,
 				6C129D0E0E54E8A800AD5C61 /* DBButtonCell.m in Sources */,
@@ -1777,6 +1795,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_10)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../Library/Frameworks\"";
@@ -1789,6 +1808,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Code/BGAppKit/build/Release\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1822,6 +1842,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_10)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_10)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_10 = "\"$(SRCROOT)/../../Code\"";
@@ -1834,6 +1855,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_8 = "\"$(SRCROOT)/../OpenHUD/build/Release\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code/BGAppKit/build/Release\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;

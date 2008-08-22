@@ -9,7 +9,6 @@
 #import "DBFill.h"
 
 #import "DBShape.h"
-#import "DBBezierTextContainer.h"
 
 
 static NSLayoutManager*		sharedDrawingLayoutManager()
@@ -59,24 +58,6 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	_fillColor = [[NSColor whiteColor] retain];            
 	_fillImage = nil;
 
-	//_text = [[NSTextStorage alloc] init];
-
-/*	NSLayoutManager *layoutManager;
-	
-	layoutManager = [[NSLayoutManager alloc] init];
-	[_text addLayoutManager:layoutManager];
-	[layoutManager release];                       
-
-	_textContainer = [[DBBezierTextContainer alloc] initWithContainerSize:[_shape bounds].size] ;
-	[_textContainer setPathSource:self];
-    
-	NSTextContainer *container;
-	container = [[NSTextContainer alloc] initWithContainerSize:[_shape bounds].size];
-	
-	[layoutManager addTextContainer:container];
-	[_textContainer release];
-
-*/	
 	_gradient = [[GCGradient gradientWithStartingColor:[NSColor blackColor] endingColor:[NSColor whiteColor]] retain];
 	
 	[self resetImageDrawPoint];

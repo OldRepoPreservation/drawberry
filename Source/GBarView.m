@@ -87,48 +87,7 @@
 	[_associatedView release];
 	[super dealloc];
 }
-/*
-- (void)drawRect:(NSRect)rect {
-    // Drawing code here.
-	
-	[[NSColor colorWithCalibratedRed:0.592 green:0.592 blue:0.592 alpha:1] set];
-
-	[NSBezierPath strokeLineFromPoint:NSZeroPoint toPoint:NSMakePoint(rect.size.width,0)];
-	[NSBezierPath strokeLineFromPoint:NSMakePoint(0,rect.size.height) toPoint:NSMakePoint(rect.size.width,rect.size.height)];
-	
-	NSRect r = [self bounds];
-	r.origin.x += 1;
-	r.origin.y += 1;
-	r.size.height -= 2;
-	r.size.width -= 2;
-	
-	[[NSColor colorWithCalibratedRed:0.974 green:0.974 blue:0.974 alpha:1] set];
-	NSRectFill(r);
-	
-	[[NSColor colorWithCalibratedRed:0.949 green:0.949 blue:0.949 alpha:1] set];
-		
-	r.size.height /= 12;
-	r.size.height *= 5;
-	NSRectFill(r);
-	
-	[[NSColor colorWithCalibratedRed:0.939 green:0.939 blue:0.939 alpha:1] set];
-	r.size.height /= 2;
-	NSRectFill(r);
-	
-	[[NSColor colorWithCalibratedRed:0.919 green:0.919 blue:0.919 alpha:1] set];
-	r.size.height /= 2;
-	NSRectFill(r);
-	
-	[[NSColor colorWithCalibratedRed:0.984 green:0.984 blue:0.984 alpha:1] set];
-	r.origin.y = 3*[self bounds].size.height/4 -1;
-	r.size.height = r.origin.y/3;
-	NSRectFill(r);
-	
-	NSAttributedString *s = [[NSAttributedString alloc] initWithString:_title];
-	[s drawAtPoint:NSMakePoint(GBarTitleX,[self frame].size.height/2-[s size].height/2)];
-	[s release];
-}
-*/ 
+ 
 
 - (void)drawRect:(NSRect)rect{
 //	[[NSColor redColor] set];
@@ -191,8 +150,26 @@
 	_title = [s retain];
 	
 	[self setNeedsDisplay:YES];
+		
 }
 
+- (void)upateCollapse
+{
+	BOOL flag;
+	NSString *collapseKey;
+	
+	if([self autosaveString]){
+		collapseKey = [NSString stringWithFormat:@"%@ Collapsed",[self autosaveString]];
+		
+		flag = [[NSUserDefaults standardUserDefaults] boolForKey:collapseKey];
+		
+		[self setCollapsed:flag];
+		[_disclosureButton setState:!flag];		
+	}else{
+		NSLog(@"bad autosave name");
+	}
+	
+}
 - (NSView *)associatedView
 {
 	return _associatedView;
@@ -203,22 +180,33 @@
 	[_associatedView release];
 	_associatedView = [view retain];
 }
+
 - (BOOL)isCollapsed { return _isCollapsed;}
 - (void)setCollapsed:(BOOL)flag
 {
+	NSLog(@"set %d",flag);
+	if([self autosaveString]){
+		NSString *collapseKey;
+		collapseKey = [NSString stringWithFormat:@"%@ Collapsed",[self autosaveString]];
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:collapseKey];
+	}
+	
 	_isCollapsed = flag;
 	[_disclosureButton setState:(int)(! _isCollapsed)];
 	
 	NSNotification *note = [NSNotification notificationWithName:GBarStateDidChangeNotification object:self];
 	[[NSNotificationCenter defaultCenter] postNotification:note];
+		
 }
 
 - (IBAction)_collapseButtonAction:(id)sender
 {
-	_isCollapsed = !((BOOL)[_disclosureButton state]);
+//	_isCollapsed = !((BOOL)[_disclosureButton state]);
 
-	NSNotification *note = [NSNotification notificationWithName:GBarStateDidChangeNotification object:self];
-	[[NSNotificationCenter defaultCenter] postNotification:note];
+//	NSNotification *note = [NSNotification notificationWithName:GBarStateDidChangeNotification object:self];
+//	[[NSNotificationCenter defaultCenter] postNotification:note];
+	
+	[self setCollapsed:!((BOOL)[_disclosureButton state])];
 }
 
 - (IBAction)_closeButtonAction:(id)sender
@@ -238,5 +226,13 @@
 - (NSString *)description
 {
 	return  [NSString stringWithFormat:@"%@ : %@, %@", [super description], _title, [_associatedView description]];
+}
+
+- (NSString *)autosaveString
+{
+	if([[self window] frameAutosaveName])
+		return [NSString stringWithFormat:@"%@ %@",[[self window] frameAutosaveName], [self title]];
+	
+	return nil;
 }
 @end

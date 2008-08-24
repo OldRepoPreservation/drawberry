@@ -102,6 +102,12 @@ const float _barHeight = 18;
 - (BOOL)isCollapsed { return _isCollapsed;}
 - (void)setCollapsed:(BOOL)flag
 {
+	if([self frameAutosaveName]){
+		NSString *collapseKey;
+		collapseKey = [NSString stringWithFormat:@"%@ Collapsed",[self frameAutosaveName]];
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:collapseKey];
+	}
+	
 	if (flag == _isCollapsed) {
 		return;
 	}
@@ -286,6 +292,14 @@ const float _barHeight = 18;
 	
 	[_views addObject:addedBarView];
 	
+	[[self contentView] addSubview:addedBarView];
+
+	[addedBarView upateCollapse];
+	
+	if(![addedBarView isCollapsed]){
+		[[self contentView] addSubview:[addedBarView associatedView]];
+	}
+	
 	float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
 	titleBarHeight = 20;
 	float accumulatedHeight = GBaseHeight;
@@ -337,14 +351,14 @@ const float _barHeight = 18;
 	
 	[self setFrame:frame display:YES animate:YES];
 	
-	[[self contentView] addSubview:[addedBarView associatedView]];
-	[[self contentView] addSubview:addedBarView];
+//	[[self contentView] addSubview:[addedBarView associatedView]];
+//	[[self contentView] addSubview:addedBarView];
 	
 	
 	[addedBarView setFrameOrigin:NSMakePoint(0,[[addedBarView associatedView] frame].size.height)];
 	[[addedBarView associatedView] setFrameOrigin:NSZeroPoint];
 	
-	[addedBarView setCollapsed:flag];
+//	[addedBarView setCollapsed:flag];
 	 //[_bckgrd setFrameOrigin:NSMakePoint(0,20)];
 	
 }
@@ -646,11 +660,17 @@ const float _barHeight = 18;
 	[self updateWindowFrame];
 }
     
-
-- (void)setFrame:(NSRect)windowFrame display:(BOOL)displayViews animate:(BOOL)performAnimation
+- (BOOL)setFrameAutosaveName:(NSString *)frameName
 {
-	[super setFrame:windowFrame display:displayViews animate:performAnimation];
-//	NSLog(NSStringFromRect(windowFrame));
-	[_bckgrd setFrame:NSMakeRect(1,7,windowFrame.size.width-2, windowFrame.size.height - 20 - 7)];
+	BOOL flag;
+	NSString *collapseKey;
+	collapseKey = [NSString stringWithFormat:@"%@ Collapsed",frameName];
+	
+	flag = [[NSUserDefaults standardUserDefaults] boolForKey:collapseKey];
+	
+	[self setCollapsed:flag];
+	[_disclosureButton setState:flag];
+	
+	return [super setFrameAutosaveName:frameName];
 }
 @end

@@ -7,9 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-//#import <iLifeControls/NFHUDWindow.h>
-//#import <OpenHUD/OpenHUD.h> 
-#import "GHUDPanel.h"
 
 
 @interface GCollapsePanel : NSPanel {

@@ -59,6 +59,11 @@ static DBUndoUIController *_sharedUndoUIController = nil;
 	[super dealloc];
 }
 
+- (void)awakeFromNib
+{
+	[[self window] setFrameAutosaveName:@"undoWindow"];
+
+}
 - (void)currentDocumentDidChange:(NSNotification *)note
 {          
 	[_undoTableView reloadData];

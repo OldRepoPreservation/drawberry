@@ -37,6 +37,7 @@
 	//[self setAlphaValue:0];
 		   
 //	[self setupAppearance];
+				
    }
 	return self;
 }
@@ -100,6 +101,11 @@
 - (BOOL)isCollapsed { return _isCollapsed;}
 - (void)setCollapsed:(BOOL)flag
 {
+	if([self frameAutosaveName]){
+		NSString *collapseKey;
+		collapseKey = [NSString stringWithFormat:@"%@ Collapsed",[self frameAutosaveName]];
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:collapseKey];
+	}
 	if (flag == _isCollapsed) {
 		return;
 	}
@@ -138,4 +144,17 @@
 		}
 }
 
+- (BOOL)setFrameAutosaveName:(NSString *)frameName
+{
+	BOOL flag;
+	NSString *collapseKey;
+	collapseKey = [NSString stringWithFormat:@"%@ Collapsed",frameName];
+	
+	flag = [[NSUserDefaults standardUserDefaults] boolForKey:collapseKey];
+	
+	[self setCollapsed:flag];
+	[_disclosureButton setState:flag];
+	
+	return [super setFrameAutosaveName:frameName];
+}
 @end

@@ -35,4 +35,7 @@
 - (void)setAssociatedView:(NSView *)view;
 
 - (float)minWidth;
+
+- (NSString *)autosaveString;
+- (void)upateCollapse;
 @end

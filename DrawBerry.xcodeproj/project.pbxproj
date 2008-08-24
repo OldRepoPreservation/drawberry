@@ -91,18 +91,6 @@
 		6C129DB60E54ED4A00AD5C61 /* DBShape+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DAA0E54ED4A00AD5C61 /* DBShape+SVG.m */; };
 		6C129DB70E54ED4A00AD5C61 /* DBStroke+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DAC0E54ED4A00AD5C61 /* DBStroke+SVG.m */; };
 		6C129DB80E54ED4A00AD5C61 /* NSColor+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DAE0E54ED4A00AD5C61 /* NSColor+SVG.m */; };
-		6C129DBC0E54ED6F00AD5C61 /* CTGradient2.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */; };
-		6C129DD10E54ED8800AD5C61 /* OHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DBE0E54ED8800AD5C61 /* OHConstants.m */; };
-		6C129DD20E54ED8800AD5C61 /* OHCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DC00E54ED8800AD5C61 /* OHCornerView.m */; };
-		6C129DD30E54ED8800AD5C61 /* OHScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DC20E54ED8800AD5C61 /* OHScroller.m */; };
-		6C129DD40E54ED8800AD5C61 /* OHScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DC40E54ED8800AD5C61 /* OHScrollView.m */; };
-		6C129DD50E54ED8800AD5C61 /* OHTableHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */; };
-		6C129DD60E54ED8800AD5C61 /* OHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DC80E54ED8800AD5C61 /* OHTableView.m */; };
-		6C129DD70E54ED8800AD5C61 /* OHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DCA0E54ED8800AD5C61 /* OHTextField.m */; };
-		6C129DD80E54ED8800AD5C61 /* OHThemeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */; };
-		6C129DD90E54ED8800AD5C61 /* OHTitleBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */; };
-		6C129DDA0E54ED8800AD5C61 /* OHWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DD00E54ED8800AD5C61 /* OHWindow.m */; };
-		6C129DDF0E54EDF300AD5C61 /* NSImage+FrameworkImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */; };
 		6C129DE80E54EE4000AD5C61 /* DBShapeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DE30E54EE4000AD5C61 /* DBShapeCell.m */; };
 		6C129DE90E54EE4000AD5C61 /* DBShapeCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DE50E54EE4000AD5C61 /* DBShapeCollection.m */; };
 		6C129DEA0E54EE4000AD5C61 /* DBShapeCollectionDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129DE70E54EE4000AD5C61 /* DBShapeCollectionDocument.m */; };
@@ -236,7 +224,6 @@
 		6C5DF1650C57AAC400429CF4 /* DBUndo.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5DF1630C57AAC400429CF4 /* DBUndo.nib */; };
 		6C8443D60C4C0A6400FFA2FF /* DBPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8443D40C4C0A6400FFA2FF /* DBPreferences.nib */; };
 		6C9947360E588CB10009CCA0 /* GradientPanel.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */; };
-		6C9947370E588CB10009CCA0 /* iLifeControls.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */; };
 		6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
 		6CA3B1BF0E5C3A9700BFCA59 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
 		6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
@@ -245,7 +232,6 @@
 		6CB068780E44A93200B92FE4 /* DBShapeCollectionDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */; };
 		6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 6CB4DFA90E5B1D2F008CBB3A /* Help */; };
 		6CB6C6EC0E587BD000800D7E /* GradientPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */; };
-		6CB6C6EE0E587BEA00800D7E /* iLifeControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */; };
 		6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
 		6CBF843D0C5642D800F9554F /* UndoLoc.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CBF843C0C5642D800F9554F /* UndoLoc.strings */; };
 		6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCAE8290C1084A300F71D77 /* QuartzCore.framework */; };
@@ -270,7 +256,6 @@
 			files = (
 				6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */,
 				6C9947360E588CB10009CCA0 /* GradientPanel.framework in CopyFiles */,
-				6C9947370E588CB10009CCA0 /* iLifeControls.framework in CopyFiles */,
 				6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,28 +446,6 @@
 		6C129DAC0E54ED4A00AD5C61 /* DBStroke+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBStroke+SVG.m"; path = "Source/DBStroke+SVG.m"; sourceTree = "<group>"; };
 		6C129DAD0E54ED4A00AD5C61 /* NSColor+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+SVG.h"; path = "Source/NSColor+SVG.h"; sourceTree = "<group>"; };
 		6C129DAE0E54ED4A00AD5C61 /* NSColor+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+SVG.m"; path = "Source/NSColor+SVG.m"; sourceTree = "<group>"; };
-		6C129DBA0E54ED6F00AD5C61 /* CTGradient2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient2.h; path = Source/CTGradient2.h; sourceTree = "<group>"; };
-		6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTGradient2.m; path = Source/CTGradient2.m; sourceTree = "<group>"; };
-		6C129DBD0E54ED8800AD5C61 /* OHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHConstants.h; path = Source/OHConstants.h; sourceTree = "<group>"; };
-		6C129DBE0E54ED8800AD5C61 /* OHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHConstants.m; path = Source/OHConstants.m; sourceTree = "<group>"; };
-		6C129DBF0E54ED8800AD5C61 /* OHCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHCornerView.h; path = Source/OHCornerView.h; sourceTree = "<group>"; };
-		6C129DC00E54ED8800AD5C61 /* OHCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHCornerView.m; path = Source/OHCornerView.m; sourceTree = "<group>"; };
-		6C129DC10E54ED8800AD5C61 /* OHScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHScroller.h; path = Source/OHScroller.h; sourceTree = "<group>"; };
-		6C129DC20E54ED8800AD5C61 /* OHScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHScroller.m; path = Source/OHScroller.m; sourceTree = "<group>"; };
-		6C129DC30E54ED8800AD5C61 /* OHScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHScrollView.h; path = Source/OHScrollView.h; sourceTree = "<group>"; };
-		6C129DC40E54ED8800AD5C61 /* OHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHScrollView.m; path = Source/OHScrollView.m; sourceTree = "<group>"; };
-		6C129DC50E54ED8800AD5C61 /* OHTableHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTableHeaderCell.h; path = Source/OHTableHeaderCell.h; sourceTree = "<group>"; };
-		6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTableHeaderCell.m; path = Source/OHTableHeaderCell.m; sourceTree = "<group>"; };
-		6C129DC70E54ED8800AD5C61 /* OHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTableView.h; path = Source/OHTableView.h; sourceTree = "<group>"; };
-		6C129DC80E54ED8800AD5C61 /* OHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTableView.m; path = Source/OHTableView.m; sourceTree = "<group>"; };
-		6C129DC90E54ED8800AD5C61 /* OHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTextField.h; path = Source/OHTextField.h; sourceTree = "<group>"; };
-		6C129DCA0E54ED8800AD5C61 /* OHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTextField.m; path = Source/OHTextField.m; sourceTree = "<group>"; };
-		6C129DCB0E54ED8800AD5C61 /* OHThemeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHThemeFrame.h; path = Source/OHThemeFrame.h; sourceTree = "<group>"; };
-		6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHThemeFrame.m; path = Source/OHThemeFrame.m; sourceTree = "<group>"; };
-		6C129DCD0E54ED8800AD5C61 /* OHTitleBarButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHTitleBarButtonCell.h; path = Source/OHTitleBarButtonCell.h; sourceTree = "<group>"; };
-		6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHTitleBarButtonCell.m; path = Source/OHTitleBarButtonCell.m; sourceTree = "<group>"; };
-		6C129DCF0E54ED8800AD5C61 /* OHWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHWindow.h; path = Source/OHWindow.h; sourceTree = "<group>"; };
-		6C129DD00E54ED8800AD5C61 /* OHWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHWindow.m; path = Source/OHWindow.m; sourceTree = "<group>"; };
 		6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenHUD.h; path = Source/OpenHUD.h; sourceTree = "<group>"; };
 		6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTitledFrame.h; path = Source/NSTitledFrame.h; sourceTree = "<group>"; };
 		6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+FrameworkImage.h"; path = "Source/NSImage+FrameworkImage.h"; sourceTree = "<group>"; };
@@ -648,15 +611,14 @@
 		6C8445130C4C23B900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBLayers.nib; sourceTree = "<group>"; };
 		6C84451A0C4C243900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBTools.nib; sourceTree = "<group>"; };
 		6C84451F0C4C245900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBPreferences.nib; sourceTree = "<group>"; };
-		6C874F1D0E473D2500933F02 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
-		6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = ../../Code/BGAppKit/build/Release/BGHUDAppKit.framework; sourceTree = SOURCE_ROOT; };
+		6C874F1D0E473D2500933F02 /* French */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
+		6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = ../../Code/BGHUDAppKit.framework; sourceTree = SOURCE_ROOT; };
 		6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_white.png; sourceTree = "<group>"; };
 		6CAC189F0E28C4B7007FD7D8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
 		6CAC18A30E28C4D4007FD7D8 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
 		6CB068770E44A93200B92FE4 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
 		6CB4DFA90E5B1D2F008CBB3A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Help; path = Ressource/Help; sourceTree = "<group>"; };
 		6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanel.framework; path = ../../Code/GradientPanel.framework; sourceTree = SOURCE_ROOT; };
-		6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iLifeControls.framework; path = ../../Code/iLifeControls.framework; sourceTree = SOURCE_ROOT; };
 		6CB6C6F10E587BF500800D7E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../Code/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		6CBF84380C5642D400F9554F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UndoLoc.strings; sourceTree = "<group>"; };
 		6CBF843E0C5642DD00F9554F /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/UndoLoc.strings; sourceTree = "<group>"; };
@@ -681,7 +643,6 @@
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */,
 				6CB6C6EC0E587BD000800D7E /* GradientPanel.framework in Frameworks */,
-				6CB6C6EE0E587BEA00800D7E /* iLifeControls.framework in Frameworks */,
 				6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */,
 				6CA3B1BF0E5C3A9700BFCA59 /* BGHUDAppKit.framework in Frameworks */,
 			);
@@ -695,7 +656,6 @@
 			children = (
 				6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */,
 				6CB6C6F10E587BF500800D7E /* Sparkle.framework */,
-				6CB6C6ED0E587BEA00800D7E /* iLifeControls.framework */,
 				6CB6C6EB0E587BD000800D7E /* GradientPanel.framework */,
 				6CCAE8290C1084A300F71D77 /* QuartzCore.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
@@ -1190,28 +1150,6 @@
 		6CB4DFF70E5B8720008CBB3A /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				6C129DBA0E54ED6F00AD5C61 /* CTGradient2.h */,
-				6C129DBB0E54ED6F00AD5C61 /* CTGradient2.m */,
-				6C129DBD0E54ED8800AD5C61 /* OHConstants.h */,
-				6C129DBE0E54ED8800AD5C61 /* OHConstants.m */,
-				6C129DBF0E54ED8800AD5C61 /* OHCornerView.h */,
-				6C129DC00E54ED8800AD5C61 /* OHCornerView.m */,
-				6C129DC10E54ED8800AD5C61 /* OHScroller.h */,
-				6C129DC20E54ED8800AD5C61 /* OHScroller.m */,
-				6C129DC30E54ED8800AD5C61 /* OHScrollView.h */,
-				6C129DC40E54ED8800AD5C61 /* OHScrollView.m */,
-				6C129DC50E54ED8800AD5C61 /* OHTableHeaderCell.h */,
-				6C129DC60E54ED8800AD5C61 /* OHTableHeaderCell.m */,
-				6C129DC70E54ED8800AD5C61 /* OHTableView.h */,
-				6C129DC80E54ED8800AD5C61 /* OHTableView.m */,
-				6C129DC90E54ED8800AD5C61 /* OHTextField.h */,
-				6C129DCA0E54ED8800AD5C61 /* OHTextField.m */,
-				6C129DCB0E54ED8800AD5C61 /* OHThemeFrame.h */,
-				6C129DCC0E54ED8800AD5C61 /* OHThemeFrame.m */,
-				6C129DCD0E54ED8800AD5C61 /* OHTitleBarButtonCell.h */,
-				6C129DCE0E54ED8800AD5C61 /* OHTitleBarButtonCell.m */,
-				6C129DCF0E54ED8800AD5C61 /* OHWindow.h */,
-				6C129DD00E54ED8800AD5C61 /* OHWindow.m */,
 				6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */,
 				6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */,
 				6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */,
@@ -1590,18 +1528,6 @@
 				6C129DB60E54ED4A00AD5C61 /* DBShape+SVG.m in Sources */,
 				6C129DB70E54ED4A00AD5C61 /* DBStroke+SVG.m in Sources */,
 				6C129DB80E54ED4A00AD5C61 /* NSColor+SVG.m in Sources */,
-				6C129DBC0E54ED6F00AD5C61 /* CTGradient2.m in Sources */,
-				6C129DD10E54ED8800AD5C61 /* OHConstants.m in Sources */,
-				6C129DD20E54ED8800AD5C61 /* OHCornerView.m in Sources */,
-				6C129DD30E54ED8800AD5C61 /* OHScroller.m in Sources */,
-				6C129DD40E54ED8800AD5C61 /* OHScrollView.m in Sources */,
-				6C129DD50E54ED8800AD5C61 /* OHTableHeaderCell.m in Sources */,
-				6C129DD60E54ED8800AD5C61 /* OHTableView.m in Sources */,
-				6C129DD70E54ED8800AD5C61 /* OHTextField.m in Sources */,
-				6C129DD80E54ED8800AD5C61 /* OHThemeFrame.m in Sources */,
-				6C129DD90E54ED8800AD5C61 /* OHTitleBarButtonCell.m in Sources */,
-				6C129DDA0E54ED8800AD5C61 /* OHWindow.m in Sources */,
-				6C129DDF0E54EDF300AD5C61 /* NSImage+FrameworkImage.m in Sources */,
 				6C129DE80E54EE4000AD5C61 /* DBShapeCell.m in Sources */,
 				6C129DE90E54EE4000AD5C61 /* DBShapeCollection.m in Sources */,
 				6C129DEA0E54EE4000AD5C61 /* DBShapeCollectionDocument.m in Sources */,
@@ -1796,19 +1722,18 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/../OpenHUD/build/Debug\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_6 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/../OpenHUD/build/Release\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_8 = "\"$(SRCROOT)/../OpenHUD/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Code/BGAppKit/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Code\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1843,6 +1768,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_10)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_10 = "\"$(SRCROOT)/../../Code\"";
@@ -1856,6 +1782,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_9 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code/BGAppKit/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Code\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
@@ -1872,7 +1799,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Debug;
 		};
@@ -1882,7 +1809,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Release;
 		};

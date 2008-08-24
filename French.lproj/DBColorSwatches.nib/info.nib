@@ -4,12 +4,14 @@
 <dict>
 	<key>IBFramework Version</key>
 	<string>629</string>
+	<key>IBLastKnownRelativeProjectPath</key>
+	<string>../../DrawBerry.xcodeproj</string>
 	<key>IBOldestOS</key>
 	<integer>5</integer>
 	<key>IBOpenObjects</key>
 	<array>
 		<integer>66</integer>
-		<integer>137</integer>
+		<integer>138</integer>
 	</array>
 	<key>IBSystem Version</key>
 	<string>9E17</string>

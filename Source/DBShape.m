@@ -9,8 +9,6 @@
 #import "DBShape.h"
 #import "DBLayer.h"
 
-#import <GradientPanel/GCGradient.h>
-
 static NSImage *__blueKnob = nil;
 static NSImage *__grayKnob = nil;
 static NSImage *__selectedGrayKnob = nil;
@@ -142,14 +140,15 @@ static NSImage *__greenKnob = nil;
 	if(!__selectedGrayKnob)
 	{
 		__selectedGrayKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		GCGradient *gradient = [GCGradient gradientWithStartingColor:[NSColor selectedControlColor] endingColor:[NSColor lightGrayColor] type:kGCGradientTypeRadial angle:0.0];
+		NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor selectedControlColor] endingColor:[NSColor lightGrayColor]];
 		
 		[__selectedGrayKnob lockFocus];
 		NSBezierPath *circle = [NSBezierPath bezierPath];
 		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
 		   	
-		[gradient fillPath:circle];
-
+		[gradient drawInBezierPath:circle relativeCenterPosition:NSZeroPoint];
+		[gradient release];
+		
 		[[NSColor alternateSelectedControlColor] set];
 		[circle stroke];
 		

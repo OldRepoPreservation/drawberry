@@ -3,7 +3,7 @@
 //  DBColorSwatchApp
 //
 //  Created by Raphael Bost on 08/07/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Raphael Bost. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -18,7 +18,10 @@
 	IBOutlet id <DBMatrixDataSource> _dataSource;
 	
 	id _draggedObject;
+	id _clickedObject;
 	NSCell *_cellUnderMouse;
+	
+	BOOL _autoresizeWindow;
 }
 - (id)dataSource;
 - (void)setDataSource:(id <DBMatrixDataSource>)dataSource;
@@ -33,9 +36,10 @@
 - (IBAction)remove:(id)sender;
 
 - (NSCell *)cellUnderMouse;
-
-
 - (NSCell *)cellAtIndex:(int)index;
+
+- (BOOL)autoresizeWindow;
+- (void)setAutoresizeWindow:(BOOL)flag;
 @end                        
 
 

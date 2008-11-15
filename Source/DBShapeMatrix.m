@@ -18,6 +18,14 @@ NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 	return [DBShapeCell class];
 }
 
+- (id)initWithFrame:(NSRect)frame
+{
+	self = [super initWithFrame:frame];
+	
+	[self setAutoresizeWindow:YES];
+	return self;
+}
+
 - (void)awakeFromNib
 {
 	[super awakeFromNib];

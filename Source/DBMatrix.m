@@ -3,18 +3,17 @@
 //  DBColorSwatchApp
 //
 //  Created by Raphael Bost on 08/07/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Raphael Bost. All rights reserved.
 //
 
 #import "DBMatrix.h"
-#import "DBColorCell.h"
 
 @implementation NSMatrix (DBMatrixAdditions)	
 - (NSCell *)cellAtPoint:(NSPoint)p	
 {
-		int i, j;
-		[self getRow:&j column:&i forPoint:p];
-		return [self cellAtRow:j column:i];
+	int i, j;
+	[self getRow:&j column:&i forPoint:p];
+	return [self cellAtRow:j column:i];
 }
 @end                        
 
@@ -28,18 +27,10 @@
 	[self setCellSize:NSMakeSize(13,13)];
 	
 	[self updateNumbersOfRowsAndColumns];
+	
 	[self updateWindowSize];
 	
-//	[self setMode:NSRadioModeMatrix];
 	return self;
-}
-
-- (void)drawRect:(NSRect)rect
-{
-//	[[NSColor blackColor] set];
-//	[NSBezierPath fillRect:rect];
-	
-	[super drawRect:rect];
 }
 
 - (void)awakeFromNib
@@ -48,6 +39,7 @@
 	[[self window] setAcceptsMouseMovedEvents:YES];    
 
 	[self updateNumbersOfRowsAndColumns];
+	_autoresizeWindow = NO;
 	[self updateWindowSize];
 	
 	[self reloadData];
@@ -59,6 +51,16 @@
 	return nil;
 }          
 
+- (BOOL)autoresizeWindow
+{
+	return _autoresizeWindow;
+}
+- (void)setAutoresizeWindow:(BOOL)flag
+{
+	_autoresizeWindow = flag;
+	[self updateWindowSize];
+}
+
 - (void)updateNumbersOfRowsAndColumns
 {
 	int rows, columns;
@@ -68,16 +70,17 @@
 	if(columns != [self numberOfColumns] || rows != [self numberOfRows]){
 		[self renewRows:rows columns:columns];
 	}
-	
-//	[self reloadData];
 }
 
 - (void)updateWindowSize
-{                
+{              
+	if(!_autoresizeWindow){
+		return;
+	}
+	
 //	NSLog(@"updateWindowSize");
 	NSRect frame, bounds, newFrame;
 	frame = [[self window] frame];
-//	frame = [self frame];
 	bounds = [self bounds];
 	
 	int rows, cols;
@@ -91,26 +94,15 @@
 	
 	newFrame.size.height = MAX(newFrame.size.height,[[self window] minSize].height);
     [[self window] setFrame:newFrame display:YES animate:YES];
-//	[self setFrame:newFrame];
 
-//	NSLog(@"update");
 	[self renewRows:rows columns:cols];
-	
-//	NSLog(@"updateWindowSize rows : %d , cols : %d", rows,cols);
-	
 }   
 
 - (void)resizeWithOldSuperviewSize:(NSSize)oldBoundsSize
 {
 	[super resizeWithOldSuperviewSize:oldBoundsSize];
-//	[self updateNumbersOfRowsAndColumns];
 }
-/*
-- (Class)cellClass
-{
-	return [DBColorCell class];
-}
-*/
+
 - (id)dataSource
 {
 	return _dataSource;
@@ -144,12 +136,10 @@
 		if(i < [_dataSource numberOfObjects]){
 		   	[cell setObjectValue:[_dataSource objectAtIndex:(i + range.location)]];
 		}else{    
-//			NSLog(@"set nil");
 			[cell setObjectValue:nil];
 		}
 	}
 
-//	[self updateWindowSize];
 	_cellUnderMouse = nil;
 	[self setNeedsDisplay:YES];
 }
@@ -191,11 +181,9 @@
 	}else{
 		[_dataSource addObject:draggedData]; 
 	}
-//	[_dataSource addObjectWithDraggingOperation:sender];
 	
 	[self reloadDataInRange:NSMakeRange([_dataSource numberOfObjects]-1,1)];
 		     
-//	NSLog(@"perform");
 	return YES;
 }
 
@@ -204,52 +192,51 @@
 	return NSDragOperationLink;
 }
 
-- (void)mouseDown:(NSEvent *)event
-{
-//	[super mouseDown:event];
-	id object;
-	NSPoint point;
-	
-	point = [self convertPoint:[event locationInWindow] fromView:nil];
-	object = [[self cellAtPoint:point] objectValue];
-	
-	if(object){                                  
-		_draggedObject = object;
-//		[_draggedObject writeToPasteboard:[NSPasteboard pasteboardWithName:NSDragPboard]];
-		[_dataSource writeObject:_draggedObject toPasteboard:[NSPasteboard pasteboardWithName:NSDragPboard]];
-	}
-}
-
-/*
-- (void)rightMouseDown:(NSEvent *)theEvent
-{
-	NSPoint p = [theEvent locationInWindow];
-	p.y -= 5;
-	NSEvent *popupEvent = [NSEvent mouseEventWithType:[theEvent type] 
-									location:p 
-							   modifierFlags:[theEvent modifierFlags] 
-								   timestamp:[theEvent timestamp] 
-								windowNumber:[theEvent windowNumber] 
-									 context:[theEvent context] 
-								 eventNumber:[theEvent eventNumber] 
-								  clickCount:[theEvent clickCount] 
-									pressure:[theEvent pressure]];
-
-	[NSMenu popUpContextMenu:_contextualMenu withEvent:popupEvent forView:self]; 
-}
-*/
-
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent
 {                        
-	[self mouseDown:theEvent];
+//	if(!_draggedObject){
+		id object;
+		NSPoint point;
+		
+		point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+		object = [[self cellAtPoint:point] objectValue];
+		
+		if(object){                                  
+			_clickedObject = object;
+		}else{
+			_clickedObject = nil;
+		}		
+//	}
+
 	return [self menu];
+}
+
+- (void)mouseDown:(NSEvent *)event
+{
+	_draggedObject = nil;
 }
 
 - (void)mouseDragged:(NSEvent *)event
 {
-	if(_draggedObject){
-		[_dataSource dragObject:_draggedObject withEvent:event pasteBoard:[NSPasteboard pasteboardWithName:NSDragPboard]];
+	if(!_draggedObject){
+		id object;
+		NSPoint point;
+		
+		point = [self convertPoint:[event locationInWindow] fromView:nil];
+		object = [[self cellAtPoint:point] objectValue];
+		
+		if(object){                                  
+			_draggedObject = object;
+			
+			[_dataSource writeObject:_draggedObject toPasteboard:[NSPasteboard pasteboardWithName:NSDragPboard]];
+			[_dataSource dragObject:_draggedObject withEvent:event pasteBoard:[NSPasteboard pasteboardWithName:NSDragPboard]];
+		}else{
+			_draggedObject = nil;
+		}	
+	}else {
+
 	}
+
 }   
 
 - (void)mouseUp:(NSEvent *)event
@@ -264,8 +251,8 @@
 }
 - (IBAction)remove:(id)sender
 {
-	[_dataSource removeObject:_draggedObject];
-	_draggedObject = nil;
+	[_dataSource removeObject:_clickedObject];
+	_clickedObject = nil;
 	
 	[self reloadData];
 }

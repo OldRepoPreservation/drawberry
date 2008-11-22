@@ -290,7 +290,6 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	if(!NSIsEmptyRect(rect) && !NSIntersectsRect(rect, _bounds) && !NSIsEmptyRect(_bounds)){
 		return;
 	}
-   // NSLog(@"drawing rect");
    	
 	if([[NSGraphicsContext currentContext] isKindOfClass:[NSBitmapGraphicsContext class]]){
 		[_shadow reverseShadowOffsetHeight];

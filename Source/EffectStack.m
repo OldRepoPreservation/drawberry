@@ -63,19 +63,13 @@
  	
 	[layers release];
 	layers = [[decoder decodeObjectForKey:@"Filters"] retain];
-//	NSLog(@"decode layers :%@", layers); 
-//	NSLog(@"first key : %@", [[[[layers objectAtIndex:0] valueForKey:@"filter"] attributes] valueForKey:kCIAttributeFilterName]);
-//	NSLog(@"\n\n");
+
 	return self;
 }   
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
 	[encoder encodeObject:layers forKey:@"Filters"];  
-	
-//	NSLog(@"encode layers :%@", layers); 
-//	NSLog(@"first key : %@", [[[[layers objectAtIndex:0] valueForKey:@"filter"] attributes] valueForKey:kCIAttributeFilterName]);
-//	NSLog(@"\n\n");	
 }
 
 // insert a filter layer into the layers array

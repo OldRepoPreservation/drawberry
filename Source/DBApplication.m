@@ -19,6 +19,8 @@
     ramppath = [[[NSBundle mainBundle] pathForResource:@"colormap" ofType: @"tiff"] retain];
     // mask (grayscale image) used for CIDisintegrateWithMaskTransition
     maskpath = [[[NSBundle mainBundle] pathForResource:@"mask" ofType: @"tiff"] retain];
+	
+	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
 }
 
 - (void)dealloc

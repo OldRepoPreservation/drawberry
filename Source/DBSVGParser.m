@@ -137,14 +137,12 @@
 		
 		pathString = [newAttr objectForKey:@"d"];
 		if([pathString rangeOfString:@"c" options:NSCaseInsensitiveSearch].location == NSNotFound){ //polyline
-//			NSLog(@"polyline");
 			DBPolyline *polyline;
 			polyline = [[DBPolyline alloc] initWithSVGAttributes:newAttr];
 			
 			[_currentLayer addShape:polyline];
 			[polyline release];
 		}else{ // bezier curve
-//			NSLog(@"bezier");
 			DBBezierCurve *bezierCurve;
 			bezierCurve = [[DBBezierCurve alloc] initWithSVGAttributes:newAttr];
 		

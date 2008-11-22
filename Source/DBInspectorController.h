@@ -54,6 +54,8 @@
 - (IBAction)shadowAction:(id)sender;
 - (IBAction)flipText:(id)sender;
 
+- (IBAction)takeGradientFrom:(id)sender;
+
 - (NSWindow *)viewInspector;
 - (NSWindow *)objectInspector;
 @end

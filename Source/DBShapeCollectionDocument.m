@@ -53,7 +53,7 @@
 - (IBAction)addCollection:(id)sender
 {   
 	BOOL succes;                               
-	NSLog(@"collection %@", _collection);
+//	NSLog(@"collection %@", _collection);
 	succes = [_collection writeAtomically:NO];
 	
 	if(!succes){

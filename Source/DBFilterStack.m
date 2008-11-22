@@ -84,13 +84,10 @@ NSString *DBFilterStackDidChangeNotification = @"Filter Stack Did Change";
 - (void)setLayer:(DBLayer *)newLayer
 {
 	_layer = newLayer;
-//	[_layer updateRenderInView:nil];
-//	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
 }
  
 - (void)setChanges
 {
-//	NSLog(@"change");
 	[[NSNotificationCenter defaultCenter] postNotificationName:DBFilterStackDidChangeNotification object:self];
 	
 	[_layer updateRenderInView:nil];

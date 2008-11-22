@@ -11,160 +11,6 @@
 #import "GCGeometryUtilities.h"   
 @implementation NSBezierPath (DBExtensions)
 
-/*+ (NSArray *)bezierPathWithLineArrowHeadOfstartPoint:(NSPoint)startPoint endPoint:(NSPoint)endPoint startLineStyle:(DBArrowStyle)lineTailStyle endLineStyle:(DBArrowStyle)lineHeadStyle width:(float)lineWidth
-{
-	double start_H_Left_r,start_V_Top_r,end_H_Right_r,end_V_Bottom_r;
-    long line_Width_l;
-    start_H_Left_r = startPoint.x;
-    start_V_Top_r = startPoint.y;
-    end_H_Right_r = endPoint.x;
-    end_V_Bottom_r = endPoint.y;
-    line_Width_l = lineWidth; //This method works best for lines widths <= 3
-    NSString *startingSide = [NSString string];
-
-    if ( start_H_Left_r <= end_H_Right_r )
-        startingSide = [NSString stringWithFormat:@"left"];
-    else
-        if ( start_H_Left_r >= end_H_Right_r )
-            startingSide = [NSString stringWithFormat:@"right"];
-
-    double slope;
-    slope = ( end_V_Bottom_r - start_V_Top_r )/((start_H_Left_r - end_H_Right_r ) + 0.1);
-    //sets the slope to a “high" number when the line is horizontal or vertical
-    if ( slope > 350 )
-        slope = 350;
-    else
-        if ( slope < -350 )
-            slope = -350;
-
-    // This sets the length of the arrow from the tip to the base.
-    double adjR,oppR,startingPointR,xStartingPointR = 0.0f,yStartingPointR = 0.0f;
-
-    // the length of the arrow is 8 pixels + the line width
-    startingPointR = 20 + line_Width_l;
-
-    adjR = sqrt( (pow(startingPointR,2))/pow((abs(slope) + 1),2) ); // deltaX
-    oppR = slope * adjR; // deltaY
-
-    // This adjusts the starting point for the base of the arrow so it is correctly oriented on the line.
-    if ( [startingSide isEqualToString: @"left"] ) {
-        xStartingPointR = adjR;
-        yStartingPointR = oppR;
-    } else
-        if ( [startingSide isEqualToString: @"right"] ) {
-            xStartingPointR = -adjR;
-            yStartingPointR = -oppR;
-        } else
-            NSLog(@"shouldnt happen");
-
-    // This calculates the base of the arrow
-    double lengthOfPerpendicularR,tangentLineLengthR;
-    tangentLineLengthR = 10 + line_Width_l;
-    lengthOfPerpendicularR = sqrt( (pow(tangentLineLengthR,2))/(4*(pow(slope,2) + 1)));
-
-    //This calculates the base of the arrow for the polygon
-    double pStart_H_Left_r,pStart_V_Top_r,pEnd_H_Right_r,pEnd_V_Bottom_r;
-
-    pStart_H_Left_r = end_H_Right_r - xStartingPointR - ( lengthOfPerpendicularR * slope );
-    pStart_V_Top_r = end_V_Bottom_r + yStartingPointR - ( lengthOfPerpendicularR );
-    pEnd_H_Right_r = end_H_Right_r - xStartingPointR + ( lengthOfPerpendicularR * slope );
-    pEnd_V_Bottom_r = end_V_Bottom_r + yStartingPointR + ( lengthOfPerpendicularR );
-
-    NSBezierPath *arrowHead,*arrowTail;
-    arrowHead = [NSBezierPath bezierPath];
-	arrowTail = [NSBezierPath bezierPath];
-	
-    [arrowHead moveToPoint:endPoint];
-    if ( lineHeadStyle == DBArrowStyle ) {
-        [arrowHead lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowHead lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowHead lineToPoint:endPoint];
-    } else if ( lineHeadStyle == DBCircleStyle ) {
-        [arrowHead appendBezierPathWithOvalInRect:NSMakeRect(endPoint.x-2.5f,endPoint.y-2.5f,5.0f,5.0f)];
-    } else if ( lineHeadStyle == DBOpenArrowStyle ) {
-        [arrowHead lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowHead lineToPoint:endPoint];
-        [arrowHead lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowHead lineToPoint:endPoint];
-    } else if ( lineHeadStyle == DBDiamondStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = endPoint.x-((endPoint.x-xValue)*2);
-        float pointY = endPoint.y-((endPoint.y-yValue)*2);
-        [arrowHead lineToPoint:s1];
-        [arrowHead lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowHead lineToPoint:s2];
-        [arrowHead lineToPoint:endPoint];
-    } else if ( lineHeadStyle == DBPointYArrowStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = endPoint.x-((endPoint.x-xValue)/2);
-        float pointY = endPoint.y-((endPoint.y-yValue)/2);
-        [arrowHead lineToPoint:s1];
-        [arrowHead lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowHead lineToPoint:s2];
-        [arrowHead lineToPoint:endPoint];
-    }
-
-    [arrowTail moveToPoint:startPoint];
-
-    pStart_H_Left_r = start_H_Left_r + xStartingPointR + ( lengthOfPerpendicularR * slope );
-    pStart_V_Top_r = start_V_Top_r - yStartingPointR + ( lengthOfPerpendicularR );
-    pEnd_H_Right_r = start_H_Left_r + xStartingPointR - ( lengthOfPerpendicularR * slope );
-    pEnd_V_Bottom_r = start_V_Top_r - yStartingPointR - ( lengthOfPerpendicularR );
-
-    if ( lineTailStyle == DBArrowStyle ) {
-        [arrowTail lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowTail lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowTail lineToPoint:startPoint];
-    } else if ( lineTailStyle == DBCircleStyle ) {
-        [arrowTail appendBezierPathWithOvalInRect:NSMakeRect(startPoint.x-2.5f,startPoint.y-2.5f,5.0f,5.0f)];
-    } else if ( lineTailStyle == DBOpenArrowStyle ) {
-        [arrowTail lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowTail lineToPoint:startPoint];
-        [arrowTail lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowTail lineToPoint:startPoint];
-    } else if ( lineTailStyle == DBDiamondStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = startPoint.x-((startPoint.x-xValue)*2);
-        float pointY = startPoint.y-((startPoint.y-yValue)*2);
-        [arrowTail lineToPoint:s1];
-        [arrowTail lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowTail lineToPoint:s2];
-        [arrowTail lineToPoint:startPoint];
-    } else if ( lineTailStyle == DBPointYArrowStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = startPoint.x-((startPoint.x-xValue)/2);
-        float pointY = startPoint.y-((startPoint.y-yValue)/2);
-        [arrowTail lineToPoint:s1];
-        [arrowTail lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowTail lineToPoint:s2];
-        [arrowTail lineToPoint:startPoint];
-    }
-
-    return [NSArray arrayWithObjects:arrowHead,arrowTail,nil];
-}
-
-*/
-
 + (NSBezierPath *)bezierPathWithArrowOnSegment:(NSPoint)startPoint endPoint:(NSPoint)endPoint arrowType:(DBArrowStyle)arrowStyle width:(float)lineWidth options:(DBArrowOptions)options
 {
 	NSPoint arrowBase;
@@ -190,13 +36,10 @@
 	}	
 	// get the slope of a perpendicular ...
 	perpSlope = -(1.0/slope);
-	
-	// NSLog(@"slope : %g, %g", slope, perpSlope); 
-	
+		
     // get arrowAngle in degrees and then the arrowBaseLength
 	arrowAngle = arrowAngle*(M_PI/180);
 	arrowBaseLength = tan(arrowAngle/2)*arrowLength;
-//	NSLog(@"arrowBaseLength %g", sin(arrowAngle));
 	
  	arrowBase.x = arrowLength/(sqrt(slope*slope + 1.0));
 	arrowBase.y = slope*arrowBase.x; 

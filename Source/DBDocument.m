@@ -320,9 +320,7 @@
 	url = [[sheet URLs] objectAtIndex:0];
 	
 	image = [[NSImage alloc] initByReferencingURL:url];
-	
-	NSLog(@"image : %@", image);
-	
+		
 	if(image){
 		[_layerController addImageToCurrentLayer:image];
 	}else{

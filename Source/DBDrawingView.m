@@ -91,9 +91,7 @@
 		[self setShowRulers:YES];
 		
 		[self setZoom:1.0];
-		
-//		NSLog(@"orange : %@", [DBShape orangeKnob]);
-				
+						
   
   	_selectedShapes = [[NSMutableArray alloc] init];
     }
@@ -563,7 +561,6 @@
 	}else if([[theEvent characters] isEqualTo:@"c"]){
 		[self convertSelectedShapes];
 	}else{
-		//NSLog(@"%d", [theEvent keyCode]);
 		[super keyDown:theEvent];
 	}
 }
@@ -574,13 +571,7 @@
 	[self setNeedsDisplay:YES];
 } 
 
-/*- (void)keyDown:(NSEvent *)theEvent
-{
-	[super keyDown:theEvent];
-	[self setNeedsDisplay:YES];
-	NSLog(@"key");
-}
-*/
+
 - (BOOL)acceptsFirstResponder
 {
 	return YES;
@@ -618,7 +609,6 @@
 			
 	if([shape createWithEvent:theEvent inView:self])
     {
-	  	//NSLog(@"shape created");
 		// select the shape 
 		[currentLayer addShape:shape];
 		[self selectShape:shape];
@@ -670,7 +660,7 @@
 		}
 	}
 	
-	//	NSLog(@" %@", shapeUnderMouse);
+	//	NSLog(@"shapeUnderMouse %@", shapeUnderMouse);
  
    	if(shapeUnderMouse && knob == NoKnob){
 	   	

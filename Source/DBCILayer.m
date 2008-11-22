@@ -86,9 +86,7 @@
 	
 	if([_layerController editingLayer] != layer){
 		image = [[CIImage alloc] initWithCGLayer:renderLayer];		
-		//		NSLog(@"resulting image %@", image);
 	}else{
-		//		NSLog(@"layer is editing");
 	}
     
 	if(!renderLayer){
@@ -194,7 +192,6 @@
 	ciPoint = [_filterStack filterPointUnderPoint:mouseLocation];
 	
 	if(ciPoint.filter == nil){
-		//		NSLog(@"No knob");
 		return NO;
 	}
 	

@@ -150,20 +150,16 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 
 - (int)numberOfObjects
 {
-//	NSLog(@"%@", _matrix);
-//	NSLog(@"%d", [_shapes count]);
 	return [[[self selectedCollection] shapes] count];
 }   
 
 - (id)objectAtIndex:(int)index
 {
-//	NSLog(@"object %@", [_shapes objectAtIndex:index]);
 	return [[self selectedCollection] shapeAtIndex:index];
 }
 
 - (void)addObject:(id)object
 {
-//	NSLog(@"object %@", object);
 	if(![[self selectedCollection] editable]){
 		return;
 	}
@@ -183,7 +179,6 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 
 - (void)removeObject:(id)object
 {
-//   	NSLog(@"remove");
 	if([[self selectedCollection] editable]){
 		[[self selectedCollection] removeShape:object];
 		[self writeShapeLibrary];
@@ -239,7 +234,6 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 - (IBAction)reload:(id)sender
 {
 	[_matrix reloadData]; 
-//	NSLog(@"selectedcell %@", [_matrix selectedCell]);
 }
 
 - (DBShape *)editedShape
@@ -253,10 +247,6 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 	if(!shape){
 		return;
 	}                           
-		
-//	[shape moveCorner:0 toPoint:corner];
-// 	[shape updatePath];
-//	[shape updateBounds];
 
 	[[self selectedCollection] addShape:shape];                                                        
 	[_matrix setCurrentShapeCell:[_matrix cellAtIndex:[[self selectedCollection] indexOfShape:shape]]];

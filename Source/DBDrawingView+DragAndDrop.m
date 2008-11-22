@@ -88,8 +88,6 @@
 	
 		if(shape){
 			[[shape fill] setFillColor:[NSColor colorFromPasteboard:[sender draggingPasteboard]] ];
-	//		NSLog(@"%@", [[sender draggingPasteboard] dataForType:NSColorPboardType]);
-	//		NSLog(@"%@", [[sender draggingPasteboard] dataForType:NSColorPboardType]);
 			[[shape fill] setFillMode:DBColorFillMode];
 		
 			return YES;

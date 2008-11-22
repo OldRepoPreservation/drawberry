@@ -16,7 +16,6 @@
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {       
 	
-//	NSLog(@"draw %@", _color);
 	if(_color){
 		[_color set];
 		[NSBezierPath fillRect:cellFrame];

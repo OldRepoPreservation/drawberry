@@ -16,7 +16,6 @@
 
 - (id)initWithFrame:(NSRect)frameRect
 {
-	NSLog(@"init");
 	self = [super initWithFrame:frameRect];
 
 	[self setCellClass:[DBButtonCell class]];
@@ -72,21 +71,6 @@
 	}		
 	
 }   
-
-// - (void)mouseUp:(NSEvent *)theEvent
-// {
-// 	NSPoint p;
-// 	NSCell *cell;
-// 	p = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-// 	cell = [self cellAtPoint:p];                        
-// 	
-// 	[super mouseUp:theEvent];
-// 	
-// 	NSLog(@"double : %d", _double);
-// 	if(_double){
-// 		[cell setHighlighted:YES];
-// 	}
-// }
 
 - (void)toolDidEnd:(id)sender
 {

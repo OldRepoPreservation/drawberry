@@ -184,7 +184,6 @@
 - (BOOL)isCollapsed { return _isCollapsed;}
 - (void)setCollapsed:(BOOL)flag
 {
-	NSLog(@"set %d",flag);
 	if([self autosaveString]){
 		NSString *collapseKey;
 		collapseKey = [NSString stringWithFormat:@"%@ Collapsed",[self autosaveString]];

@@ -86,15 +86,6 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	return _text;
 }
 
-/*- (void)setText:(NSTextStorage *)newText
-{
-	NSLog(@"set text : %@", newText);
-	[newText retain];
-	[_text release];
-	_text = newText;
-}
-*/
-
 - (void)setText:(id) newText
 {
     // sets the object's text to the passed text. You can pass any sort of string - NSString, NSAttributedString, NSTextStorage or any mutable

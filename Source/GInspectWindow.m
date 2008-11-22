@@ -366,7 +366,6 @@ const float _barHeight = 18;
 - (void)removeView:(NSView *)removedView
 {
 	if([removedView tag] == 1000){ 
-		NSLog(@"hop");
 		return;
 	}
 	

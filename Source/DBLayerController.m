@@ -146,7 +146,6 @@
 			[[self drawingView] setNeedsDisplay:YES];
 		}
 	}
-//	NSLog(@"%d", _selectionIndex);
 }
 
 - (int)reverseSelectionIndex
@@ -181,7 +180,6 @@
 {
 	if(layer && /* ![layer isEqualTo:[self selectedLayer]] && */ [_layers containsObject:layer])
 	{   
-//		NSLog(@"index %d",[_layers indexOfObject:layer]);
 		[self setSelectionIndex:[_layers indexOfObject:layer]];
 	}
 }
@@ -233,9 +231,7 @@
 {
 	if(flag)
 	{   
-//		NSLog(@"lower reverse : %d", index);
 		index =  ([_layers count] -1 - index);
-// 		NSLog(@"lower : %d", index);
     }
  	
 	
@@ -347,19 +343,15 @@
 
 - (void)moveRowsAtIndex:(int)oldIndex toIndex:(int)newIndex reversed:(BOOL)flag
 {
-//	NSLog(@"rowIndexes : %d, %d", oldIndex, newIndex);
 
 	if(flag){
-//		indexes = [self reverseIndexSet:indexes];
 		oldIndex =  ([_layers count] -1 - oldIndex);
 		newIndex =  ([_layers count] -1 - newIndex);
 	}   
-//	NSLog(@"rowIndexes : %d, %d", oldIndex, newIndex);
 	
 	if(newIndex > oldIndex){
 		newIndex -= 1;
 	}
-//	NSLog(@"rowIndexes : %@", indexes);
 	
 	DBLayer *movedLayer = [[self layerAtIndex:oldIndex] retain];
 	NSArray *oldDependentLayers = nil;

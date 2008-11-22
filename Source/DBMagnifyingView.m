@@ -267,9 +267,6 @@
 
 - (void)windowDidMove:(NSNotification *)aNotification
 {
-//	NSLog(@"move");
-//	NSLog(@"move %@", NSStringFromRect([[self window] frame]));
-
 	// update the source point
 	
 	[self correctMagPoint];                

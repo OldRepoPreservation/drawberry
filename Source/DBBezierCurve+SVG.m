@@ -122,8 +122,6 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 			_points[_pointCount-2].controlPoint1 =  _points[_pointCount-1].controlPoint1;			
 		}
 
-//		NSLog(substring);
-
 		[pathBuffer deleteCharactersInRange:NSMakeRange(0,range.location+1)];
 		lRange = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
 		cRange = [pathBuffer rangeOfString:@"c" options: NSCaseInsensitiveSearch];
@@ -151,9 +149,7 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 	}else{
 		tmpPoint = DBCurvePointWithString(substring);
 	}	
-	
-//	NSLog(substring);
-	
+		
 	if(!NSEqualPoints(_points[0].point, tmpPoint.point)){
 		_pointCount ++;
 		_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));

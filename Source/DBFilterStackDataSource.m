@@ -42,7 +42,6 @@
 
 - (int)numberOfRowsInTableView:(NSTableView *)tv
 {    
-//	NSLog(@"number : %d", [[_effectStack boxes] count]);
 	if(!_effectStack){
 		return 0;
 	}              

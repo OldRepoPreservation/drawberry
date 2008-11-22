@@ -123,7 +123,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 - (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
-	////NSLog(@"polyline createWithEvent:");
 	NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSAutoreleasePool *pool;
 	BOOL mouseOutside = NO;
@@ -144,7 +143,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	_points[0] = point;
 	_points[1] = point; 
 	
-	//NSLog(@"create %@",NSStringFromPoint(_points[0]));
 	
 	_pointCount = 2;
      
@@ -233,7 +231,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			}
 		}else if([theEvent type] == NSMouseMoved){ 
 			_points[_pointCount-1] = point;
-			//NSLog(@"create bis %@",NSStringFromPoint(_points[0]));
 			
 			[self updatePath];
 			[view setNeedsDisplay:YES];			 
@@ -356,7 +353,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			didEdit = YES;
 			
 			_points[i] = point;
-            			//NSLog(@"edit %@",NSStringFromPoint(_points[i]));
 
 			[self updatePath];
 			[self updateBounds];
@@ -443,12 +439,10 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	
 	while(YES){
-//		//NSLog(@"loop");
 
 		pool = [[NSAutoreleasePool alloc] init];
 
 		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSMouseMovedMask)];
-//		theEvent = [NSApp nextEventMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSMouseMovedMask) untilDate:nil inMode:NSModalPanelRunLoopMode dequeue:YES];
 		[view moveMouseRulerMarkerWithEvent:theEvent];
 
         point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
@@ -476,7 +470,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 				_points = removePointAtIndex( indexes[1]-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
-//				//NSLog(@"quit 1");                    
 				break;   							
 			}
 
@@ -484,7 +477,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 				_points = removePointAtIndex( indexes[1]-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
-//				//NSLog(@"quit 2");                    
 				break;
 			}
 
@@ -503,11 +495,9 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 				_points = removePointAtIndex( indexes[1]-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
-//				//NSLog(@"quit 3");                    
 				break;
 			}
 		}else if([theEvent type] == NSMouseMoved){
-//			//NSLog(@"move"); 
 			_points[indexes[1]-1] = point;
 			[self updatePath];
 			[view setNeedsDisplay:YES];			 
@@ -698,20 +688,8 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			[[DBShape grayKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		}
 		
-//		//NSLog(@"draw point %d %@",i, NSStringFromPoint(p));
 	 	
 	}
-	
-	// if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) || [_fill fillMode] == DBGradientFillMode){
-	/*	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
-	 p = [_fill imageDrawPoint];
-	 p.x *= [self zoom];
-	 p.x += _bounds.origin.x;
-	 p.y *= [self zoom];
-	 p.y += _bounds.origin.y;
-	 
-	 [[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-	 }*/
 	
 	[super displayEditingKnobs];
 }
@@ -752,7 +730,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		}
 	}
      
-//	//NSLog(@"test : %@, %@", NSStringFromPoint(point), NSStringFromRect(_bounds));
   
   	return test;
 } 
@@ -877,8 +854,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		p.y += deltaY;
 		
  		_points[i]=p;
-		//NSLog(@"move %@",NSStringFromPoint(_points[i]));
-
   	}
    	
 	[self updatePath];
@@ -914,9 +889,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		p.x = -p.x;
 		p.x += _bounds.origin.x;
 
-		_points[i]=p;
-		//NSLog(@"flip %@",NSStringFromPoint(_points[i]));
-		
+		_points[i]=p;		
 	}
 
 	[self updatePath];
@@ -937,7 +910,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		p.y += _bounds.origin.y;
 
 		_points[i]=p;
-		//NSLog(@"flip %@",NSStringFromPoint(_points[i]));
 	}
 
 	[self updatePath];
@@ -977,8 +949,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
     	p.y += newRect.origin.y;
 		
   		_points[i]=p;
-		//NSLog(@"put %@",NSStringFromPoint(_points[i]));
-
    	}
 
  	[self updatePath];
@@ -1012,7 +982,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	for( i = 0; i < count; i++ )
 	{
 		_points[i] = points[i];
-		//NSLog(NSStringFromPoint(_points[i]));
 	}                          
 }
 

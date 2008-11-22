@@ -207,10 +207,4 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 {
 	return [[DBShapeLibraryController sharedShapeLibraryController] window];
 }
-  
-//- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
-//{
-//	NSLog(@"open");
-//	return YES;
-//}
 @end

@@ -51,7 +51,6 @@
 }
 
 - (void)setTransitionStyle:(DDDAnimatedTabViewTransitionStyle)newTransitionStyle {
-    NSLog(@"set");
 	_transitionStyle = newTransitionStyle;
 }
 
@@ -66,7 +65,6 @@
 
 - (void)selectTabViewItem:(NSTabViewItem *)tabViewItem {
 	if(_transitionStyle == 0){ // no transition style
-//		NSLog(@"select");
 		[super selectTabViewItem:tabViewItem];
 
 	} else if(_transitionStyle < 10){ 	// Otherwise is the transition for CoreGraphics

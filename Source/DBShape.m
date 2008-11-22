@@ -490,8 +490,6 @@ static NSImage *__greenKnob = nil;
 	unionRect.size.width += 11.0;
 	
 	[[[[self layer] layerController] drawingView] setNeedsDisplayInRect:unionRect]; 
-	
-//	NSLog(@"move");
 }   
 
 - (void)moveCorner:(int)corner toPoint:(NSPoint)point
@@ -924,9 +922,7 @@ static NSImage *__greenKnob = nil;
     {
 		return LowerMiddleKnob;
     }
-	
-//	NSLog(@"noKnob");
-	
+		
 	return NoKnob;
 }
 

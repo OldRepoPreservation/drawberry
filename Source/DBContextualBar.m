@@ -61,9 +61,7 @@
 //	[_activeAnimation setDuration:0.8];
 
     if([_activeAnimation isAnimating]){
-//		NSLog(@"stop order");
 		[_activeAnimation stopAnimation];
-//		NSLog(@"stop effect");
 	}
 
     // Create the attributes dictionary for the first view.
@@ -104,9 +102,7 @@
 //		[_activeAnimation setDuration:0.8];
 		
         if([_activeAnimation isAnimating]){ 
-			//NSLog(@"stop order");
 			[_activeAnimation stopAnimation];
-			//NSLog(@"stop effect");
 		}	
         	
         // Create the attributes dictionary for the first view.

@@ -28,10 +28,6 @@
 	NSPoint point;
 	NSSize imageSize;
 	
-
-//	NSLog(@"state %@: %d, %d",[self title], [self state], [self isHighlighted]);
-//	backgroundImage = [NSImage imageNamed:@"button_highlighted"];
-	
 	if([self isLocked]){
 		backgroundImage =  [NSImage imageNamed:@"button_selected"];		
 	}else if([self state] == NSOnState){

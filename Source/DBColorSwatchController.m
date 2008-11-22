@@ -190,7 +190,6 @@ static DBColorSwatchController *_sharedColorSwatchController = nil;
 
 - (IBAction)changeList:(id)sender
 {
-//	NSLog(@"item : %@", [sender selectedItem]);
 	int index;
 	int count;
 	

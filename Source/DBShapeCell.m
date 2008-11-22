@@ -25,10 +25,10 @@
 
 		DBShape *shape;
 		shape = [self objectValue];
+		
 		scaleFact = (cellFrame.size.width - 2.0) / [shape bounds].size.width;
-//		NSLog(@"w scale : %f", scale);
-//		NSLog(@"h scale : %f", cellFrame.size.height / [shape bounds].size.height);
 		scaleFact = MIN(scaleFact,(cellFrame.size.height - 2.0) / [shape bounds].size.height);
+		
 		vec = [[self objectValue] translationToCenterInRect:cellFrame];
 	
 		af = [NSAffineTransform transform];

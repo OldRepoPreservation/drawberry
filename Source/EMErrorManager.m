@@ -107,13 +107,6 @@
 	
 	[_errorView setFrame:frame];
 		
-/*	 
-	NSLog(@"post");
-	if(error){ 
-		[[NSRunLoop currentRunLoop] addTimer:_timer forMode:@"NSDefaultRunLoopMode"];
-		NSLog(@"%@", [_timer fireDate]);
-	}
-*/
 }
 
 - (void)postErrorName:(NSString *)name description:(NSString *)description

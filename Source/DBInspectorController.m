@@ -10,6 +10,9 @@
 
 #import "GInspectWindow.h"
 #import <GradientPanel/GradientPanel.h>
+#import <GradientPanelFramework/GPGradientPanelFramework.h>
+
+#import "DBFill.h"
                           
 static DBInspectorController *_sharedInspectorController = nil;
 
@@ -67,6 +70,8 @@ static DBInspectorController *_sharedInspectorController = nil;
 
     
 	[_fillGradientWell bind:@"gradient" toObject:_fillController withKeyPath:@"selection.gradient" options:nil];
+	[_fillGradientWell bind:@"gradientAngle" toObject:_fillController withKeyPath:@"selection.gradientAngle" options:nil];
+	[_fillGradientWell bind:@"gradientType" toObject:_fillController withKeyPath:@"selection.gradientType" options:nil];
 	
 	[_shadowControl bind:@"shadowOffsetWidth" toObject:_shadowController withKeyPath:@"selection.shadowOffsetWidth" options:nil];
 	[_shadowControl bind:@"shadowOffsetHeight" toObject:_shadowController withKeyPath:@"selection.shadowOffsetHeight" options:nil];
@@ -74,13 +79,27 @@ static DBInspectorController *_sharedInspectorController = nil;
 	[_shadowControl bind:@"shadowColor" toObject:_shadowController withKeyPath:@"selection.shadowColor" options:nil];
 
 	[_fillGradientWell addObserver:self 
-				forKeyPath:@"gradient" 
-				   options:NSKeyValueObservingOptionNew 
-				   context:nil];
+						forKeyPath:@"gradient" 
+						   options:NSKeyValueObservingOptionNew 
+						   context:nil];
+
+	[_fillGradientWell addObserver:self 
+						forKeyPath:@"gradientAngle" 
+						   options:NSKeyValueObservingOptionNew 
+						   context:nil];
+
+	[_fillGradientWell addObserver:self 
+						forKeyPath:@"gradientType" 
+						   options:NSKeyValueObservingOptionNew 
+						   context:nil];
 }  
 
 - (void)dealloc
 {	
+	[_fillGradientWell removeObserver:self forKeyPath:@"gradient"];
+	[_fillGradientWell removeObserver:self forKeyPath:@"gradientAngle"];
+	[_fillGradientWell removeObserver:self forKeyPath:@"gradientType"];
+	
 	[super dealloc];
 }
 
@@ -139,7 +158,12 @@ static DBInspectorController *_sharedInspectorController = nil;
 					   context:(void *)context
 {
 	if([keyPath isEqualTo:@"gradient"]){
-		[[_fillController content] setGradient:[_fillGradientWell objectValue]];
+		[[_fillController content] setGradient:[_fillGradientWell gradient]];
+//		[[_fillController content] setGradientAngle:[_fillGradientWell gradientAngle]];
+	}else if([keyPath isEqualTo:@"gradientAngle"]){
+//		[[_fillController content] setGradientAngle:[_fillGradientWell gradientAngle]];
+	}else if([keyPath isEqualTo:@"gradientType"]){
+//		[[_fillController content] setGradientType:[_fillGradientWell gradientType]];
 	}
 }
 - (NSWindow *)viewInspector
@@ -165,5 +189,12 @@ static DBInspectorController *_sharedInspectorController = nil;
 - (IBAction)flipText:(id)sender
 {                                  
 	[[_strokeController content] setValue:[NSNumber numberWithBool:NO] forKey:@"toggleFlipText"];
+}
+
+- (IBAction)takeGradientFrom:(id)sender
+{
+	[[_fillController content] setGradient:[_fillGradientWell gradient]];
+	[[_fillController content] setGradientAngle:-[(GPGradientWell *) _fillGradientWell gradientAngle]];
+	[[_fillController content] setGradientType:[(GPGradientWell *) _fillGradientWell gradientType]];
 }
 @end

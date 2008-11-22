@@ -21,12 +21,7 @@ void DBDrawGridWithPropertiesInRect(float majorSpacing,int tickCount, NSColor *g
 
     // Columns
     curMajLine = floor((NSMinX(rect) - gridOrigin.x) / majorSpacing);
-//	NSLog(@"curMajLine %d", curMajLine);
-//	curMajLine = 0;
-//	curMajLine = ceil((NSMinX(rect) - gridOrigin.x) / majorSpacing);
-//	endMajLine = floor((NSMaxX(rect) - gridOrigin.x) / majorSpacing);
     endMajLine = floor((NSMaxX(rect) - gridOrigin.x) / majorSpacing);
-// 	NSLog(@"endMajLine %d", endMajLine);
 
     for (; curMajLine-1 <=endMajLine; curMajLine++) {
         

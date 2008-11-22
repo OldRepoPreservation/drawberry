@@ -101,11 +101,6 @@
 	_alpha = [decoder decodeFloatForKey:@"Alpha"];
 	[self setBackgroundImage:[decoder decodeObjectForKey:@"Background Image"]];
 	_bckgrdImagePos = [decoder decodePointForKey:@"Background Image Position"];
-	
-//	[self updateRenderInView:nil];
-//	[[[self layerController] drawingView] setNeedsDisplay:YES];
-	
-//	NSLog(@"init layer %@ with coder", [self name]);
 		
 	return self;
 }   

@@ -54,8 +54,6 @@
 		_points = realloc(_points,_pointCount*sizeof(NSPoint));
 		_points[_pointCount-1] = DBPointWithString(substring);
 
-//		NSLog(substring);
-
 		[pathBuffer deleteCharactersInRange:NSMakeRange(0,range.location+1)];
 		range = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];	
 	}
@@ -68,7 +66,6 @@
 		substring = pathBuffer;
 	}
 
-//	NSLog(substring);
 	_pointCount ++;
 	_points = realloc(_points,_pointCount*sizeof(NSPoint));
 	_points[_pointCount-1] = DBPointWithString(substring);

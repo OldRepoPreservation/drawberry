@@ -282,15 +282,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	}
 	
 	if(NSEqualPoints(_points[0].point, _points[_pointCount-1].point)){
-/*		NSLog(NSStringFromPoint(_points[0].point));
-		NSLog(NSStringFromPoint(_points[0].controlPoint1));
-		NSLog(NSStringFromPoint(_points[0].controlPoint2));
-		NSLog(@"\n");
-		NSLog(NSStringFromPoint(_points[_pointCount-1].point));
-		NSLog(NSStringFromPoint(_points[_pointCount-1].controlPoint1));
-		NSLog(NSStringFromPoint(_points[_pointCount-1].controlPoint2));
-		NSLog(@"\n");
-*/		
+		
 		_lineIsClosed = YES;
 		_points[0].controlPoint2 = _points[_pointCount-1].controlPoint2;
 		
@@ -367,7 +359,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 
 - (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
-	//NSLog(@"polyline createWithEvent:");
 	NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSPoint controlPoint;
 	BOOL controlPointSet;
@@ -857,7 +848,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 				_points = removeCurvePointAtIndex( index2-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
-//				NSLog(@"quit 3");                    
 				break;
 			}
 		}else if([theEvent type] == NSLeftMouseDragged || [theEvent type] == NSLeftMouseUp){ 
@@ -873,7 +863,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 			}
 	        
 			
-//			NSLog(@"set controls");
 			if([theEvent type] != NSLeftMouseUp){
 				controlPointSet = YES;
 				_points[_pointCount-2].hasControlPoints = YES;
@@ -885,7 +874,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
   
   				_pointCount++;
 				index2 ++;
-//				NSLog(@"exit");
 			}
   
   			[self updatePath];
@@ -893,7 +881,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 			[view setNeedsDisplay:YES];
 			//_points[_pointCount-1] = _points[_pointCount-2];
 	    }else if([theEvent type] == NSMouseMoved){
-//			NSLog(@"move"); 
 
 			NSPoint oldPoint = _points[index2-1].point;
 			float dX, dY;

@@ -36,7 +36,6 @@
      
 - (void)mouseDown:(NSEvent *)theEvent
 {
-//	NSLog(@"down");
 }
 
 - (void)mouseUp:(NSEvent *)theEvent

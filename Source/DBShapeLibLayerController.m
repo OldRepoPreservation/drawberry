@@ -15,7 +15,6 @@
 @implementation DBShapeLibLayerController
 - (void)drawLayersInRect:(NSRect)rect
 {
-//	NSLog(@"draw");
 	[self drawDirectlyLayersInRect:rect];
 	
 //	[_editedShape drawInView:_shapeEditor rect:[_editedShape bounds]];	
@@ -60,7 +59,6 @@
 
 - (void)addShape:(DBShape *)shape
 {                        
-	NSLog(@"add %@", shape);
 	_editedShape = shape;
 	[_shapeEditor setNeedsDisplay:YES];
 //   [_libController newShape:_editedShape];
@@ -80,30 +78,9 @@
 	
 	if((!_editedShape || count > 1) && count > 0){
 		_editedShape = [[self layerAtIndex:0] shapeAtIndex:(count - 1)];
-//		NSLog(@"create");
 		[_libController newShape:_editedShape];
 //		[[self layerAtIndex:0] setShapes:[NSArray arrayWithObject:_editedShape]];
 	}
-	
-// 	NSPoint corner,center;
-// 	NSSize size;
-// 	
-// 	corner = [_editedShape bounds].origin;
-// 	size = [_editedShape bounds].size;
-// 	
-// 	center = NSMakePoint(50,50);
-// //	center.x += size.width/2;
-// //	center.y += size.height/2;
-// 	
-// 	size = [_editedShape bounds].size;
-// 	corner = center;
-// 	corner.x -= size.width/2;
-// 	corner.y -= size.height/2;
-// 	
-// 	[_editedShape moveCorner:0 toPoint:corner];
-//    	[_editedShape updatePath];
-// 	[_editedShape updateBounds];
-
 	
 	[_libController reload:self];
 }

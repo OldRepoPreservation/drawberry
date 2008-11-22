@@ -3,7 +3,7 @@
 // 12/08/04
 // Copyright (c) 2004 Apple Computer, Inc. All Rights Reserved.
 #import <QuartzCore/QuartzCore.h>
-#import <GradientPanel/GCGradient.h>
+#import <GradientPanelFramework/CTGradient.h>
 #import "ParameterView.h"
 #import "FilterView.h"
 //#import "CoreImageView.h"
@@ -45,9 +45,9 @@
 //	[NSBezierPath strokeRect:[self bounds]];
 //	[[NSBezierPath bezierPathWithRoundedRect:headerRect cornerRadius:9.0] fill];
 	
-	GCGradient *gradient;
-	gradient = [GCGradient aquaNormalGradient];
-	[gradient fillPath:[NSBezierPath bezierPathWithRoundedRect:headerRect cornerRadius:9.0]];
+	CTGradient *gradient;
+	gradient = [CTGradient aquaNormalGradient];
+	[gradient fillBezierPath:[NSBezierPath bezierPathWithRoundedRect:headerRect cornerRadius:9.0] angle:0.0];
 } 
 
 - (BOOL)collapsed
@@ -72,11 +72,9 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-//	NSLog(@"mousedown");
 	NSPoint location; 
 	location = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	if([theEvent clickCount] == 2){  
-//		NSLog(@"double %@", self);
 		NSRect headerRect = [self bounds];
 		headerRect.size.height = 19;
 		headerRect.origin.y = [self bounds].size.height - headerRect.size.height;

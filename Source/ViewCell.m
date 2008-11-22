@@ -16,13 +16,7 @@
 	self = [super initImageCell: nil];
 
 	return self;
-}
-
-/*- (NSSize)cellSize
-{              
-//	NSLog(@"cellSize object : %@", [[self objectValue] objectForKey:@"View"]);
-	return [[[self objectValue] objectForKey:@"View"] frame].size;
-}*/                                                               
+}                                                            
 
 // Draw the cell.
 - (void) drawInteriorWithFrame : (NSRect) cellFrame 
@@ -46,24 +40,9 @@
 	                 
 	[view setFrame: cellFrame];
 
-                                                          
-//	NSLog(@"control view %@", controlView);
-//	NSLog(@"frames : %@, %@, %@", NSStringFromRect(cellFrame), NSStringFromRect([view frame]), NSStringFromRect([controlView bounds]));
-	
+                                                          	
 }
 
-/*- (void)setObjectValue:(id)value
-{
-	NSView * view = [[self objectValue] objectForKey:@"View"];
-	
-	if(!value){
-		[view removeFromSuperview];
-		NSLog(@"set nil");
-	}
-	
-	[super setObjectValue:value];
-} */
- 
 - (BOOL)collapsed
 {
 	return [[[self objectValue] objectForKey:@"View"] collapsed];

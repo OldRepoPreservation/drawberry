@@ -703,16 +703,17 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	}
 	
 	// if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) || [_fill fillMode] == DBGradientFillMode){
-	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
-		p = [_fill imageDrawPoint];
-		p.x *= [self zoom];
-		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
-		p.y += _bounds.origin.y;
-		
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-	}
-
+	/*	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
+	 p = [_fill imageDrawPoint];
+	 p.x *= [self zoom];
+	 p.x += _bounds.origin.x;
+	 p.y *= [self zoom];
+	 p.y += _bounds.origin.y;
+	 
+	 [[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
+	 }*/
+	
+	[super displayEditingKnobs];
 }
 
 - (BOOL)hitTest:(NSPoint)point

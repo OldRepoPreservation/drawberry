@@ -86,6 +86,7 @@ enum {
 - (void)moveByX:(float)deltaX byY:(float)deltaY;
 - (int)resizeByMovingKnob:(int)knob fromPoint:(NSPoint)fromPoint toPoint:(NSPoint)point inView:(DBDrawingView *)view modifierFlags:(unsigned int)flags;
 - (BOOL)changeFillImageDrawPointWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+- (BOOL)changeGradientWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
 
 - (void)updateShape;
 - (void)updateFill;

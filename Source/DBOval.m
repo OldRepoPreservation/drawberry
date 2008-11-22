@@ -186,15 +186,17 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)displayEditingKnobs
 {
-	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
-		NSPoint p = [_fill imageDrawPoint];
-		p.x *= [self zoom];
-		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
-		p.y += _bounds.origin.y;
-		
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-	}
+	/*	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
+	 p = [_fill imageDrawPoint];
+	 p.x *= [self zoom];
+	 p.x += _bounds.origin.x;
+	 p.y *= [self zoom];
+	 p.y += _bounds.origin.y;
+	 
+	 [[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
+	 }*/
+	
+	[super displayEditingKnobs];
 }
 
 - (void)putPathInRect:(NSRect)newRect

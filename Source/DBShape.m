@@ -17,6 +17,24 @@ static NSImage *__whiteKnob = nil;
 static NSImage *__orangeKnob = nil;
 static NSImage *__greenKnob = nil;
 
+
+@implementation NSColor (InvertColor)
+
+- (NSColor *)colorByInvertingColor
+{
+	NSColor *rgbColor;
+	rgbColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+	
+	CGFloat r,g,b,a;
+	
+	[rgbColor getRed:&r green:&g blue:&b alpha:&a];
+	
+	return [NSColor colorWithDeviceRed:(1.0-r) green:(1.0-g) blue:(1.0-b) alpha:1.0];
+}
+
+@end
+
+
 @implementation DBShape
 
 + (NSImage *)blueKnob
@@ -257,7 +275,58 @@ static NSImage *__greenKnob = nil;
 
 - (void)displayEditingKnobs
 {
+	NSPoint p;
+	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
+		p = [_fill imageDrawPoint];
+		p.x *= [self zoom];
+		p.x += _bounds.origin.x;
+		p.y *= [self zoom];
+		p.y += _bounds.origin.y;
+		
+		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
+	}	
 	
+	if([_fill fillMode] == DBGradientFillMode && [_fill gradientType] == GPRadialType){
+		NSBezierPath *path;
+		NSColor *color;
+		
+		p = [_fill gradientStartingPoint];
+		p.x *= [self zoom];
+		p.x += _bounds.origin.x;
+		p.y *= [self zoom];
+		p.y += _bounds.origin.y;
+		
+		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
+		
+		path = [NSBezierPath bezierPath];
+		[path appendBezierPathWithArcWithCenter:p radius:[_fill gradientStartingRadius] startAngle:0 endAngle:360];
+		
+		[path setLineWidth:2.0];
+		[[NSColor yellowColor] set];
+		[path stroke];
+		[path setLineWidth:0.75];
+		[[NSColor orangeColor] set];
+		[path stroke];
+		
+		p = [_fill gradientEndingPoint];
+		p.x *= [self zoom];
+		p.x += _bounds.origin.x;
+		p.y *= [self zoom];
+		p.y += _bounds.origin.y;
+		
+		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
+
+		path = [NSBezierPath bezierPath];
+		[path appendBezierPathWithArcWithCenter:p radius:[_fill gradientEndingRadius] startAngle:0 endAngle:360];
+		
+		[path setLineWidth:2.0];
+		[[NSColor yellowColor] set];
+		[path stroke];
+		[path setLineWidth:0.75];
+		[[NSColor orangeColor] set];
+		[path stroke];
+
+	}
 }
 
 - (void)displaySelectionKnobs
@@ -604,9 +673,13 @@ static NSImage *__greenKnob = nil;
     return knob;
 }
 
+
+
 - (BOOL)changeFillImageDrawPointWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
-	if(!(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) || [_fill fillMode] == DBGradientFillMode))
+	if([_fill fillMode] == DBGradientFillMode)
+		return [self changeGradientWithEvent:(NSEvent *)theEvent inView:view];
+	if(!([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode))
 		return NO;
 	
 	
@@ -669,6 +742,130 @@ static NSImage *__greenKnob = nil;
 	[_layer updateRenderInView:nil];
 	
 	return YES;
+}
+
+- (BOOL)changeGradientWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+{
+	if(![_fill gradientType] == GPRadialType)
+	{
+		return NO;
+	}
+	NSPoint point, p;
+	BOOL canConvert;
+	NSAutoreleasePool *pool;
+	int pointFlag;
+	BOOL editRadius;
+	
+	float d1, d2;
+	
+	canConvert = [view isKindOfClass:[DBDrawingView class]];
+	
+	point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+	
+	/*	if(canConvert){
+	 point = [view pointSnapedToGrid:point];
+	 point = [view canevasCoordinatesFromViewCoordinates:point];
+	 }
+	 */	  
+	
+	pointFlag = 0;
+	editRadius = NO;
+	
+	p = [_fill gradientStartingPoint];
+	p.x *= [self zoom];
+	p.x += _bounds.origin.x;
+	p.y *= [self zoom];
+	p.y += _bounds.origin.y;
+	
+	d1 = distanceBetween(p, point);
+	
+	if(DBPointIsOnKnobAtPoint(point,p)){
+		pointFlag = 1;
+		
+		if([theEvent modifierFlags] & NSShiftKeyMask){
+			editRadius = YES;
+		}
+	}else{
+		p = [_fill gradientEndingPoint];
+		p.x *= [self zoom];
+		p.x += _bounds.origin.x;
+		p.y *= [self zoom];
+		p.y += _bounds.origin.y;
+		
+		d2 = distanceBetween(p, point);
+
+		if(DBPointIsOnKnobAtPoint(point,p)){
+			pointFlag = 2;
+			
+			if([theEvent modifierFlags] & NSShiftKeyMask){
+				editRadius = YES;
+			}
+			
+		}else{			
+			if(d1 <= [_fill gradientStartingRadius] + 1.5 && d1 >= [_fill gradientStartingRadius] - 1.5){
+				pointFlag = 1;
+				editRadius = YES;
+			}else if(d2 <= [_fill gradientEndingRadius] + 1.5 && d2 >= [_fill gradientEndingRadius] - 1.5){
+				pointFlag = 2;
+				editRadius = YES;
+			}else{
+				pointFlag = 0;
+				return NO;
+			}
+			
+		}
+	}
+	
+	
+	
+	[self setIsEditing:YES];
+	
+	while(YES){
+		pool = [[NSAutoreleasePool alloc] init];
+		
+		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseUpMask | NSLeftMouseDraggedMask)];
+        point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+        
+		[view moveMouseRulerMarkerWithEvent:theEvent];
+		
+		if(canConvert){
+			point = [view pointSnapedToGrid:point];
+			//			point = [view canevasCoordinatesFromViewCoordinates:point];
+		}
+	    
+		p = point;
+		p.x -= _bounds.origin.x;
+		p.x /= [self zoom];
+		p.y -= _bounds.origin.y;
+		p.y /= [self zoom];
+		
+		if(pointFlag == 1){
+			if(editRadius){
+				[_fill setGradientStartingRadius:distanceBetween(p, [_fill gradientStartingPoint])];
+			}else{
+				[_fill setGradientStartingPoint:p];
+			}
+		}else{
+			if(editRadius){
+				[_fill setGradientEndingRadius:distanceBetween(p, [_fill gradientEndingPoint])];
+			}else{
+				[_fill setGradientEndingPoint:p];
+			}
+		}
+			
+		
+		[pool release];
+	   	if([theEvent type] == NSLeftMouseUp)
+		{
+			break;
+		}
+	}
+	[self setIsEditing:NO];
+	
+	[_layer updateRenderInView:nil];
+	
+	return YES;
+	
 }
 
 - (BOOL)canEdit

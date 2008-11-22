@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <GradientPanel/GradientPanel.h>
+//#import <GradientPanel/GradientPanel.h>
+#import <GradientPanelFramework/GPGradientPanelFramework.h>
 
 
 typedef enum {
@@ -37,14 +38,16 @@ typedef enum {
 	NSImage *_fillImage;
 	NSImage *_fillCache;  
 	NSImage *_maskImage;
-	GCGradient *_gradient;
 	
-//	NSTextStorage *_text;
-//	DBTextContainer *_textContainer;
-//	NSMutableAttributedString *_text;
-//    int _vertPos;
-//	NSTextAlignment _textAlignment;
+	NSGradient *_gradient;
+	CGFloat _grdAngle;
+	GPGradientType _grdType;
 	
+	NSPoint _grdStartingPoint;
+	CGFloat _grdStartingRadius;
+	NSPoint _grdEndingPoint;
+	CGFloat _grdEndingRadius;
+
 	DBShape *_shape;
 }
 - (id)initWithShape:(DBShape *)shape;
@@ -66,16 +69,27 @@ typedef enum {
 - (NSImage *)fillImage;
 - (void)setFillImage:(NSImage *)aValue;
 
-- (GCGradient *)gradient;
-- (void)setGradient:(GCGradient *)aValue;
-
-//- (NSAttributedString *)text;
-//- (void)setText:(NSAttributedString *)newText;
+- (NSGradient *)gradient;
+- (void)setGradient:(NSGradient *)aValue;
+- (CGFloat)gradientAngle;
+- (void)setGradientAngle:(CGFloat)angle;
+- (GPGradientType)gradientType;
+- (void)setGradientType:(GPGradientType)type;
 
 - (NSPoint)imageDrawPoint;
 - (void)setImageDrawPoint:(NSPoint)newImageDrawPoint;
 - (NSPoint)imageCenterPoint;
 - (void)setImageCenterPoint:(NSPoint)newImageCenterPoint;
+
+- (NSPoint)gradientStartingPoint;
+- (void)setGradientStartingPoint:(NSPoint)newPoint;
+- (NSPoint)gradientEndingPoint;
+- (void)setGradientEndingPoint:(NSPoint)newPoint;
+- (CGFloat)gradientStartingRadius;
+- (void)setGradientStartingRadius:(CGFloat)radius;
+- (CGFloat)gradientEndingRadius;
+- (void)setGradientEndingRadius:(CGFloat)radius;
+- (void)resetGradientPoints;
 
 - (DBShape *)shape;
 - (void)setShape:(DBShape *)aValue;

@@ -58,9 +58,10 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	_fillColor = [[NSColor whiteColor] retain];            
 	_fillImage = nil;
 
-	_gradient = [[GCGradient gradientWithStartingColor:[NSColor blackColor] endingColor:[NSColor whiteColor]] retain];
-	
+	//_gradient = [[GCGradient gradientWithStartingColor:[NSColor blackColor] endingColor:[NSColor whiteColor]] retain];
+	_gradient = [[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor whiteColor]];
 	[self resetImageDrawPoint];
+	[self resetGradientPoints];
 	
 	return self;
 }
@@ -101,11 +102,17 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	_fillMode = [decoder decodeIntForKey:@"Fill Mode"];            
 	_imageFillMode = [decoder decodeIntForKey:@"Image Fill Mode"];            
 	_fillColor = [[decoder decodeObjectForKey:@"Fill Color"] retain]; 
-//	_fillImage = [[decoder decodeObjectForKey:@"Fill Image"] retain]; 
+	_fillImage = [[decoder decodeObjectForKey:@"Fill Image"] retain]; 
 	_gradient = [[decoder decodeObjectForKey:@"Gradient"] retain]; 
-	//_text = [[decoder decodeObjectForKey:@"Text"] retain];         
-
-
+	
+	_imageDrawPoint = [decoder decodePointForKey:@"Draw Point"];
+	
+	_grdType = [decoder decodeIntForKey:@"Gradient Type"];
+	_grdStartingPoint = [decoder decodePointForKey:@"Starting Point"];
+	_grdEndingPoint = [decoder decodePointForKey:@"Ending Point"];
+	_grdStartingRadius = [decoder decodeFloatForKey:@"Starting Radius"];
+	_grdEndingRadius = [decoder decodeFloatForKey:@"Ending Radius"];
+	
 	return self;
 }   
 
@@ -116,79 +123,17 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	[encoder encodeObject:_fillColor forKey:@"Fill Color"];
 	[encoder encodeObject:_fillImage forKey:@"Fill Image"];
 	[encoder encodeObject:_gradient forKey:@"Gradient"];
+	[encoder encodePoint:_imageDrawPoint forKey:@"Draw Point"];
+	
+	[encoder encodeInt:_grdType forKey:@"Gradient Type"];
+	[encoder encodePoint:_grdStartingPoint forKey:@"Starting Point"];
+	[encoder encodePoint:_grdEndingPoint forKey:@"Ending Point"];
+	[encoder encodeFloat:_grdStartingRadius forKey:@"Starting Radius"];
+	[encoder encodeFloat:_grdEndingRadius forKey:@"Ending Radius"];
 	//[encoder encodeObject:_text forKey:@"Text"];
 }
 
 #pragma mark Updating and filling
-/*- (void) drawText                         
-{
-	NSSize osize = [_shape bounds].size;
-	
-	if ([_text length] > 0)
-	{
-		NSTextStorage *contents = [[NSTextStorage alloc] initWithAttributedString:_text];
-		
-		NSLayoutManager *lm = sharedDrawingLayoutManager();
-		NSTextContainer *tc = [[lm textContainers] objectAtIndex:0];
-
-		NSRange		glyphRange;
-		NSRange		grange;
-//		NSRect		frag;
-
-		
-		NSAffineTransform *af = [NSAffineTransform transform];
-		NSAffineTransform *translate = [NSAffineTransform transform];
-		NSAffineTransform *rotate = [NSAffineTransform transform];
-//		NSPoint originPoint = [_shape bounds].origin;
- 		NSPoint textOrigin;
-
- 		[rotate rotateByDegrees:[_shape rotation]];
-		[translate translateXBy:[_shape rotationCenter].x yBy:[_shape rotationCenter].y];
-
-		[af appendTransform:rotate];
-		[af appendTransform:translate];
-		
-		[NSGraphicsContext saveGraphicsState];
-		[af concat];
-
-		[tc setContainerSize:osize];
-		[contents addLayoutManager:lm];
-
-		// Force layout of the text and find out how much of it fits in the container.
-
-		glyphRange = [lm glyphRangeForTextContainer:tc];
-
-		// because of the object transform applied, draw the text at the origin
-
-		if (glyphRange.length > 0)
-		{
-			grange = glyphRange;
-
-			//NSPoint textOrigin = [self textOriginForSize:textSize objectSize:osize];
-
-			textOrigin = NSZeroPoint;
-			textOrigin.x = - ([_shape bounds].size.width)/2;
-			switch(_vertPos)
-			{
-				case 0:
- 					textOrigin.y = -([_shape bounds].size.height)/2;
-   					break;
-
-				case 1:
-					break;
-
-				case 2:
-					textOrigin.y = [_shape bounds].size.height/2;
-					break;
-			}
-
-			[lm drawGlyphsForGlyphRange:grange atPoint:textOrigin];
-		}
-		[NSGraphicsContext restoreGraphicsState];
-		[contents release];
-	}
-}
-*/
 - (void)fillPath:(NSBezierPath *)path
 {
 	if(_fillMode == DBColorFillMode){
@@ -197,7 +142,25 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	}else if(_fillMode == DBImageFillMode){
 		[_fillCache drawAtPoint:[_shape bounds].origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 	}else if(_fillMode == DBGradientFillMode){
-		[_gradient fillPath:path];
+
+		if(_grdType == GPLinearType){
+			[_gradient drawInBezierPath:path angle:_grdAngle];
+		}else{
+			//[_gradient drawInBezierPath:path relativeCenterPosition:NSZeroPoint];
+			NSAffineTransform *translation= [NSAffineTransform transform];
+			NSAffineTransform *scale = [NSAffineTransform transform];
+			[scale scaleBy:[_shape zoom]];
+			[translation translateXBy:[_shape bounds].origin.x yBy:[_shape bounds].origin.y];
+
+			[NSGraphicsContext saveGraphicsState];
+			[path addClip];
+			[translation concat];
+			[scale concat];
+			
+//			[_gradient drawFromCenter:_grdStartingPoint radius:_grdBeginRadius toCenter:_grdEndingPoint radius:40.0 options:0];
+			[_gradient drawFromCenter:_grdStartingPoint radius:_grdStartingRadius toCenter:_grdEndingPoint radius:_grdEndingRadius options:(NSGradientDrawsBeforeStartingLocation | NSGradientDrawsAfterEndingLocation)];
+			[NSGraphicsContext restoreGraphicsState];
+		}
 //		[_gradient fillPath:path centreOffset:NSMakePoint(100,100)];
 //		[_gradient fillPath:path startingAtPoint:NSMakePoint(300,300) startRadius:10.0 endingAtPoint:_imageDrawPoint endRadius:120];
 	}
@@ -349,6 +312,8 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	
 	if(_fillMode == DBImageFillMode)
 		[self resetImageDrawPoint];
+	else if(_fillMode == DBGradientFillMode)
+		[self resetGradientPoints];
 	
 	[_shape strokeUpdated];
 }
@@ -410,20 +375,41 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	[_shape strokeUpdated];
 }
 
-- (GCGradient *)gradient
+- (NSGradient *)gradient
 {
 	return _gradient;
 }
 
-- (void)setGradient:(GCGradient *)newGradient
+- (void)setGradient:(NSGradient *)newGradient
 {
 	[newGradient retain];
 	[_gradient release];
 	_gradient = newGradient;
-	
+
    	[_shape strokeUpdated];
 }
- 
+
+- (CGFloat)gradientAngle
+{
+	return -_grdAngle;
+}
+
+- (void)setGradientAngle:(CGFloat)angle
+{
+	_grdAngle = angle;
+	[_shape strokeUpdated];
+}
+
+- (GPGradientType)gradientType
+{
+	return _grdType;
+}
+
+- (void)setGradientType:(GPGradientType)type
+{
+	_grdType = type;
+	[_shape strokeUpdated];
+}
 
 - (NSPoint)imageDrawPoint
 {
@@ -448,6 +434,59 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	[self setImageDrawPoint:NSMakePoint(newImageCenterPoint.x + [_fillImage size].width/2, newImageCenterPoint.y + [_fillImage size].height/2)];
 }
 
+- (NSPoint)gradientStartingPoint
+{
+	return _grdStartingPoint;
+}
+- (void)setGradientStartingPoint:(NSPoint)newPoint
+{
+	_grdStartingPoint = newPoint;
+	
+   	[_shape strokeUpdated];
+}
+
+- (NSPoint)gradientEndingPoint
+{
+	return _grdEndingPoint;
+}
+- (void)setGradientEndingPoint:(NSPoint)newPoint
+{
+	_grdEndingPoint = newPoint;
+	
+   	[_shape strokeUpdated];
+}
+
+- (CGFloat)gradientStartingRadius
+{
+	return _grdStartingRadius;
+}
+- (void)setGradientStartingRadius:(CGFloat)radius
+{
+	_grdStartingRadius = radius;
+	[_shape strokeUpdated];
+}
+- (CGFloat)gradientEndingRadius
+{
+	return _grdEndingRadius;
+}
+- (void)setGradientEndingRadius:(CGFloat)radius
+{
+	_grdEndingRadius = radius;
+	[_shape strokeUpdated];
+}
+
+- (void)resetGradientPoints
+{
+	_grdStartingPoint.x = 1*([_shape bounds].size.width/[_shape zoom])/2;
+	_grdStartingPoint.y = 1*([_shape bounds].size.height/[_shape zoom])/2;
+	
+	_grdEndingPoint.x = 1*([_shape bounds].size.width/[_shape zoom])/2;
+	_grdEndingPoint.y = 1*([_shape bounds].size.height/[_shape zoom])/2;
+	
+	_grdStartingRadius = 0.0;
+	_grdEndingRadius = MIN([_shape bounds].size.width, [_shape bounds].size.height)/2;
+}
+
 - (DBShape *)shape
 {
 	return _shape;
@@ -460,55 +499,6 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
    	[_shape strokeUpdated];
 } 
 
-/* - (NSAttributedString *)text
-{
-	return _text;
-}
-
-- (void)setText:(NSAttributedString *)newText
-{
-	[newText retain];
-	[_text release];
-	_text = newText;
-	[_shape strokeUpdated];
-}
-
-- (int)textVerticalPositon
-{
-	return _vertPos;
-}
-
-- (void)setTextVerticalPositon:(int)newTextVerticalPositon
-{
-	_vertPos = newTextVerticalPositon;
-	[_shape strokeUpdated];
-}
-
-- (NSTextAlignment)textAlignment
-{
-	return _textAlignment;
-}
-
-- (void)setTextAlignment:(NSTextAlignment)newTextAlignment
-{
-	_textAlignment = newTextAlignment;
-	NSMutableParagraphStyle *newParagraphStyle;
-	NSMutableDictionary *attributes;
-	
-	attributes = [[_text attributesAtIndex:0 effectiveRange:NULL] mutableCopy]; 
-	
-	newParagraphStyle = [[attributes objectForKey:NSParagraphStyleAttributeName] mutableCopy]; 
-	[newParagraphStyle setAlignment:newTextAlignment];
-	[attributes setObject:newParagraphStyle forKey:NSParagraphStyleAttributeName];
-	
-	[_text setAttributes:attributes range:NSMakeRange( 0, [_text length])];
-	
-	[attributes release];
-	
-	[_shape strokeUpdated];
-}
-
-*/
 - (NSBezierPath *)closedBezierPathForTextContainer:(id)aContainer;
 {
 	return [_shape path];

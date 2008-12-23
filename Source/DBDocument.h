@@ -28,6 +28,12 @@
 	
 	DBUndoManager *_undoMngr;
 }
++ (id)sharedUnitArray;
+
++ (NSString *)formatForTag:(int)tag;
++ (NSString *)unitForIndex:(int)index;
++ (NSString *)defaultUnit;
+
 - (DBDrawingView *)drawingView;
 - (DBLayerController *)layerController;
 

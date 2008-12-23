@@ -8,3 +8,8 @@
  */
 
 #define DBToolSelectorMode  @"Tool Selector Mode"
+#define DBUnitName  @"Unit Name"
+
+
+/* Notifs name sent by the preference controller */
+#define DBDidChangeUnitNotificationName  @"Unit Did Change"

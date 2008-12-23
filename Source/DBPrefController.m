@@ -33,9 +33,18 @@ static DBPrefController *_sharedPrefController = nil;
 - (void)awakeFromNib
 {   
 	[_toolModeSelector selectItemWithTag:[[NSUserDefaults standardUserDefaults] integerForKey:DBToolSelectorMode]];
+	[_unitSelector selectItemWithTag:[[NSUserDefaults standardUserDefaults] integerForKey:DBUnitName]];
 }
 - (IBAction)changeToolSelectionMode:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[[_toolModeSelector selectedItem] tag]] forKey:DBToolSelectorMode];
+}
+
+
+- (IBAction)changeUnit:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[[_unitSelector selectedItem] tag]] forKey:DBUnitName];
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:DBDidChangeUnitNotificationName	object:self];
 }
 @end

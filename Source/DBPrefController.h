@@ -11,7 +11,9 @@
 
 @interface DBPrefController : NSWindowController {
 	IBOutlet NSPopUpButton *_toolModeSelector;
+	IBOutlet NSPopUpButton *_unitSelector;
 }
 + (id)sharedPrefController;
 - (IBAction)changeToolSelectionMode:(id)sender;
+- (IBAction)changeUnit:(id)sender;
 @end

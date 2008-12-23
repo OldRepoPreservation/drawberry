@@ -16,8 +16,19 @@
 
 #import "DBSVGParser.h"
 
+#import "DBPrefKeys.h"
+
+static NSArray *_sharedUnitArray = nil;
 
 @implementation DBDocument
+
++ (id)sharedUnitArray
+{
+    if (!_sharedUnitArray) {
+        _sharedUnitArray = [[NSArray allocWithZone:[self zone]] initWithObjects:@"Inches",@"Centimeters",@"Points",@"Picas",nil];
+    }
+    return _sharedUnitArray;
+}
 
 + (NSString *)formatForTag:(int)tag
 {
@@ -36,6 +47,16 @@
 	}
 	return format;
 }   
+
++ (NSString *)unitForIndex:(int)index
+{
+	return [[DBDocument sharedUnitArray] objectAtIndex:index];
+}
+
++ (NSString *)defaultUnit
+{
+	return [self unitForIndex:[[NSUserDefaults standardUserDefaults] integerForKey:DBUnitName]];
+}
 
 - (id)init
 {

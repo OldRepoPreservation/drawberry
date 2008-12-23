@@ -39,6 +39,7 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 
 	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
    	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:DBToolSelectorMode];
+   	[defaultValues setObject:[NSNumber numberWithInt:2] forKey:DBUnitName];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 
 	[defaultValues release];

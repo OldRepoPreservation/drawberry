@@ -146,7 +146,8 @@
 - (void)setUpMarkerLocation:(float)loc;
 - (void)setDownMarkerLocation:(float)loc;
 - (NSPoint)rulerLocationWithPoint:(NSPoint)point;
-                                 
+- (void)updateRulerUnits;                    
+
 #pragma mark Errors
 - (EMErrorManager *)errorManager;
 @end

@@ -35,6 +35,8 @@
 
 #import "EMErrorManager.h"
 
+#import "DBPrefKeys.h"
+
 @class DBCILayer;
 @class DBRectangle;
 
@@ -104,6 +106,8 @@
 	[_horizontalRuler release];
 	[_verticalRuler release];
 		
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	[super dealloc];
 } 
 
@@ -150,7 +154,11 @@
 	_downVertRulerMarker = [[NSRulerMarker alloc] initWithRulerView:[enclosingScrollView verticalRulerView] markerLocation:-256e6 image:[NSImage imageNamed:@"VertDownRulerKnob"]  imageOrigin:NSMakePoint(5.0,7.0)];
    	[[enclosingScrollView verticalRulerView] addMarker:_downVertRulerMarker];  
 
+	[self updateRulerUnits];
+	
 	[self registerForDraggedTypes:[NSArray arrayWithObjects:NSColorPboardType, DBShapePboardType, nil]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unitDidChange:) name:DBDidChangeUnitNotificationName object:nil];
 	
 }   
 
@@ -1248,6 +1256,17 @@
 	[_downVertRulerMarker setMarkerLocation:loc];
 	[[[self enclosingScrollView] verticalRulerView] setNeedsDisplay:YES];
 }   
+
+- (void)updateRulerUnits
+{
+	[[[self enclosingScrollView] verticalRulerView] setMeasurementUnits:[DBDocument defaultUnit]];
+	[[[self enclosingScrollView] horizontalRulerView] setMeasurementUnits:[DBDocument defaultUnit]];
+}
+
+- (void)unitDidChange:(NSNotification *)note
+{
+	[self updateRulerUnits];
+}
 
 #pragma mark Contextual Cursor managment
 

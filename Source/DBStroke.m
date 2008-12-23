@@ -11,6 +11,11 @@
 #import "DBShape.h"
 
 #import "NSBezierPath+Extensions.h"
+
+#import "NSBezierPath+Geometry.h"
+#import "DKGeometryUtilities.h"
+#import "DKDrawKitMacros.h"
+
    
 @class DBPolyline;
 
@@ -21,160 +26,6 @@
 	[self setKeys:[NSArray arrayWithObject:@"strokeMode"] triggerChangeNotificationsForDependentKey:@"needsPatternImage"];
 }
 
-/*+ (NSArray *)bezierPathWithLineArrowHeadOfstartPoint:(NSPoint)startPoint endPoint:(NSPoint)endPoint startLineStyle:(DBArrowStyle)lineTailStyle endLineStyle:(DBArrowStyle)lineHeadStyle width:(float)lineWidth
-{
-    double start_H_Left_r,start_V_Top_r,end_H_Right_r,end_V_Bottom_r;
-    long line_Width_l;
-    start_H_Left_r = startPoint.x;
-    start_V_Top_r = startPoint.y;
-    end_H_Right_r = endPoint.x;
-    end_V_Bottom_r = endPoint.y;
-    line_Width_l = lineWidth; //This method works best for lines widths <= 3
-    NSString *startingSide = [NSString string];
-   
-    if ( start_H_Left_r <= end_H_Right_r )
-        startingSide = [NSString stringWithFormat:@"left"];
-    else
-        if ( start_H_Left_r >= end_H_Right_r )
-            startingSide = [NSString stringWithFormat:@"right"];
-   
-    double slope;
-    slope = ( end_V_Bottom_r - start_V_Top_r )/((start_H_Left_r - end_H_Right_r ) + 0.1);
-    //sets the slope to a “high" number when the line is horizontal or vertical
-    if ( slope > 350 )
-        slope = -350;
-    else
-        if ( slope < -350 )
-            slope = 350;
-   
-    // This sets the length of the arrow from the tip to the base.
-    double adjR,oppR,startingPointR,xStartingPointR = 0.0f,yStartingPointR = 0.0f;
-   
-    // the length of the arrow is 8 pixels + the line width
-    startingPointR = 20 + line_Width_l;
-   
-    adjR = sqrt( (pow(startingPointR,2))/pow((abs(slope) + 1),2) ); // deltaX
-    oppR = slope * adjR; // deltaY
-   
-    // This adjusts the starting point for the base of the arrow so it is correctly oriented on the line.
-    if ( [startingSide isEqualToString: @"left"] ) {
-        xStartingPointR = adjR;
-        yStartingPointR = oppR;
-    } else
-        if ( [startingSide isEqualToString: @"right"] ) {
-            xStartingPointR = -adjR;
-            yStartingPointR = -oppR;
-        } else
-            NSLog(@"shouldn t happen");
-   
-    // This calculates the base of the arrow
-    double lengthOfPerpendicularR,tangentLineLengthR;
-    tangentLineLengthR = 10 + line_Width_l;
-    lengthOfPerpendicularR = sqrt( (pow(tangentLineLengthR,2))/(4*(pow(slope,2) + 1)));
-   
-    //This calculates the base of the arrow for the polygon
-    double pStart_H_Left_r,pStart_V_Top_r,pEnd_H_Right_r,pEnd_V_Bottom_r;
-   
-    pStart_H_Left_r = end_H_Right_r - xStartingPointR - ( lengthOfPerpendicularR * slope );
-    pStart_V_Top_r = end_V_Bottom_r + yStartingPointR - ( lengthOfPerpendicularR );
-    pEnd_H_Right_r = end_H_Right_r - xStartingPointR + ( lengthOfPerpendicularR * slope );
-    pEnd_V_Bottom_r = end_V_Bottom_r + yStartingPointR + ( lengthOfPerpendicularR );
-   
-    NSBezierPath *arrowHead,*arrowTail;
-	arrowHead = [NSBezierPath bezierPath];
-	arrowTail = [NSBezierPath bezierPath];
-  	
-
-    [arrowHead moveToPoint:startPoint];
-
-
-    if ( lineTailStyle == DBFullArrowStyle ) {
-        [arrowHead lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowHead lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowHead lineToPoint:startPoint];
-    } else if ( lineTailStyle == DBCircleStyle ) {
-        [arrowHead appendBezierPathWithOvalInRect:NSMakeRect(startPoint.x-2.5f,startPoint.y-2.5f,5.0f,5.0f)];
-    } else if ( lineTailStyle == DBOpenArrowStyle ) {
-        [arrowHead lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowHead lineToPoint:startPoint];
-        [arrowHead lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowHead lineToPoint:startPoint];
-    } else if ( lineTailStyle == DBDiamondStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = startPoint.x-((startPoint.x-xValue)*2);
-        float pointY = startPoint.y-((startPoint.y-yValue)*2);
-        [arrowHead lineToPoint:s1];
-        [arrowHead lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowHead lineToPoint:s2];
-        [arrowHead lineToPoint:startPoint];
-    } else if ( lineTailStyle == DBPointYArrowStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = startPoint.x-((startPoint.x-xValue)/2);
-        float pointY = startPoint.y-((startPoint.y-yValue)/2);
-        [arrowHead lineToPoint:s1];
-        [arrowHead lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowHead lineToPoint:s2];
-        [arrowHead lineToPoint:startPoint];
-    }
-    
-    [arrowTail moveToPoint:endPoint];
-
-    pStart_H_Left_r = start_H_Left_r + xStartingPointR + ( lengthOfPerpendicularR * slope );
-    pStart_V_Top_r = start_V_Top_r - yStartingPointR + ( lengthOfPerpendicularR );
-    pEnd_H_Right_r = start_H_Left_r + xStartingPointR - ( lengthOfPerpendicularR * slope );
-    pEnd_V_Bottom_r = start_V_Top_r - yStartingPointR - ( lengthOfPerpendicularR );
-
-    if ( lineHeadStyle == DBArrowStyle ) {
-        [arrowTail lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowTail lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowTail lineToPoint:endPoint];
-    } else if ( lineHeadStyle == DBCircleStyle ) {
-        [arrowTail appendBezierPathWithOvalInRect:NSMakeRect(endPoint.x-2.5f,endPoint.y-2.5f,5.0f,5.0f)];
-    } else if ( lineHeadStyle == DBOpenArrowStyle ) {
-        [arrowTail lineToPoint:NSMakePoint(pStart_H_Left_r,pStart_V_Top_r)];
-        [arrowTail lineToPoint:endPoint];
-        [arrowTail lineToPoint:NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r)];
-        [arrowTail lineToPoint:endPoint];
-    } else if ( lineHeadStyle == DBDiamondStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = endPoint.x-((endPoint.x-xValue)*2);
-        float pointY = endPoint.y-((endPoint.y-yValue)*2);
-        [arrowTail lineToPoint:s1];
-        [arrowTail lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowTail lineToPoint:s2];
-        [arrowTail lineToPoint:endPoint];
-    } else if ( lineHeadStyle == DBPointYArrowStyle ) {
-        NSPoint s1 = NSMakePoint(pStart_H_Left_r,pStart_V_Top_r);
-        NSPoint s2 = NSMakePoint(pEnd_H_Right_r,pEnd_V_Bottom_r);
-        float xV = s2.x-s1.x;
-        float xValue = s1.x+(xV/2.0f);
-        float yV = s2.y-s1.y;
-        float yValue = s1.y+(yV/2.0f);
-        float pointX = endPoint.x-((endPoint.x-xValue)/2);
-        float pointY = endPoint.y-((endPoint.y-yValue)/2);
-        [arrowTail lineToPoint:s1];
-        [arrowTail lineToPoint:NSMakePoint(pointX,pointY)];
-        [arrowTail lineToPoint:s2];
-        [arrowTail lineToPoint:endPoint];
-    }
-    return [NSArray arrayWithObjects:arrowHead,arrowTail,nil];
-}
-*/
 - (id)initWithShape:(DBShape *)shape
 {
 	self = [super init];
@@ -195,6 +46,17 @@
 	
 	_strokeColor = [[NSColor blackColor] retain];            
 	_patternImage = nil;
+	
+	m_scale = 1.0;
+	m_interval = 40.0;
+	NSAssert(m_leader == 0.0, @"Expected init to zero");
+	NSAssert(m_leadInLength == 0.0, @"Expected init to zero");
+	NSAssert(m_leadOutLength == 0.0, @"Expected init to zero");
+	m_liloProportion = 0.2;
+	m_normalToPath = YES;
+	_useRamp = YES;
+	_rampPeriod = 0.5;
+	_rampPhase = 0.0;
 	
 	_showStartArrow = NO;
 	_showEndArrow = NO;
@@ -706,39 +568,57 @@
 		[path setLineJoinStyle:_lineJoinStyle];
 		[path setLineCapStyle:_lineCapStyle];
 	
-		if(_strokeMode == DBColorStrokeMode)
-			mainPathColor = _strokeColor;                  
-		else if(_strokeMode == DBImagePatternStrokeMode)
-			mainPathColor = [NSColor colorWithPatternImage:_patternImage];
-    
-		[mainPathColor set];
-	 
-		[path stroke];
-
-		if(_showStartArrow){
-			startArrow = [path startArrowWithType:_startArrowStyle options:DBDefaultArrowOptions()];
-			if(!(_startArrowStyle == DBOpenArrowStyle || _startArrowStyle == DBPointYArrowStyle) && _fillStartArrow){
-				[startArrow setLineWidth:_lineWidth];
-				[_startArrowFillColor setFill];
-				[startArrow fill];
-			}
-			if(_strokeStartArrow)
-				[startArrow stroke];
-		}
-	
-		if(_showEndArrow){ 
-			endArrow = [path endArrowWithType:_endArrowStyle options:DBDefaultArrowOptions()];
+		if(_strokeMode == DBColorStrokeMode){
+				
+				mainPathColor = _strokeColor;                  
 		
-			if(!(_endArrowStyle == DBOpenArrowStyle || _endArrowStyle == DBPointYArrowStyle) && _fillEndArrow){
-				[endArrow setLineWidth:_lineWidth];
-				[_endArrowFillColor setFill];
-				[endArrow fill];
-			}
-			if(_strokeEndArrow){			
-				[endArrow stroke];
-			}                       
-		}
+			[mainPathColor set];
+		 
+			[path stroke];
 
+			if(_showStartArrow){
+				startArrow = [path startArrowWithType:_startArrowStyle options:DBDefaultArrowOptions()];
+				if(!(_startArrowStyle == DBOpenArrowStyle || _startArrowStyle == DBPointYArrowStyle) && _fillStartArrow){
+					[startArrow setLineWidth:_lineWidth];
+					[_startArrowFillColor setFill];
+					[startArrow fill];
+				}
+				if(_strokeStartArrow)
+					[startArrow stroke];
+			}
+		
+			if(_showEndArrow){ 
+				endArrow = [path endArrowWithType:_endArrowStyle options:DBDefaultArrowOptions()];
+			
+				if(!(_endArrowStyle == DBOpenArrowStyle || _endArrowStyle == DBPointYArrowStyle) && _fillEndArrow){
+					[endArrow setLineWidth:_lineWidth];
+					[_endArrowFillColor setFill];
+					[endArrow fill];
+				}
+				if(_strokeEndArrow){			
+					[endArrow stroke];
+				}                       
+			}
+		}else if(_strokeMode == DBImagePatternStrokeMode){
+/*			if ([self leadInAndOutLengthProportion] != 0)
+			{
+				// set up lead in and out lengths as a proportion of path length - this will scale the image
+				// proportional to length over that distance so that the effect tapers off at both ends of the path
+				
+				float	pathLength = [path length];
+				float	lilo = pathLength * [self leadInAndOutLengthProportion];
+				
+				[self setLeadInLength:lilo];
+				[self setLeadOutLength:lilo];
+			}*/
+			
+			if ([self leaderDistance] > 0 )
+				path = [[[path autorelease] bezierPathByTrimmingFromLength:[self leaderDistance]] retain];
+
+
+			[path placeObjectsOnPathAtInterval:[self interval] factoryObject:self userInfo:NULL];
+		}
+		
 		[path release];    
 	}
 	
@@ -765,5 +645,229 @@
 	
 	[at release];
 }
+
+#pragma mark As part of BezierPlacement Protocol
+
+// comes from the DrawKit Framework
+
+- (float)rampFunction:(float) val
+{
+//	return val;
+	// return a value in 0..1 given a value in 0..1 which is used to set the curvature of the leadin and lead out ramps
+	// (for a linear ramp, return val)
+	
+	return 0.5 * ( 1 - cosf( (fmodf( val, 1.0 ) + _rampPhase)* pi/_rampPeriod ));
+}
+
+- (float)patternScale
+{
+	return m_scale;
+}
+
+- (void)setPatternScale:(float) scale
+{
+	NSAssert( scale > 0.0, @"scale cannot be zero or negative");
+	
+	m_scale = scale;
+	[_shape strokeUpdated];
+}
+
+- (float)interval
+{
+	return m_interval;
+}
+
+- (void)setInterval:(float) interval
+{
+	NSAssert( interval > 0.0, @"interval cannot be zero or negative");
+	
+	m_interval = interval;
+	[_shape strokeUpdated];
+}
+
+- (float)leaderDistance
+{
+	return m_leader;
+}
+
+- (void)setLeaderDistance:(float) leader
+{
+	m_leader = leader;
+	[_shape strokeUpdated];
+}
+
+- (BOOL)normalToPath
+{
+	return m_normalToPath;
+}
+
+- (void)setNormalToPath:(BOOL) norml
+{
+	m_normalToPath = norml;
+	[_shape strokeUpdated];
+}
+
+- (void)				setLeadInAndOutLengthProportion:(float) proportion
+{
+	m_liloProportion = proportion;
+	
+	if ( proportion <= 0.0 )
+		m_leadInLength = m_leadOutLength = 0.0;
+
+	[_shape strokeUpdated];
+}
+
+
+- (float)				leadInAndOutLengthProportion
+{
+	return m_liloProportion;
+}
+
+- (void)				setLeadInLength:(float) linLength
+{
+	NSLog(@"inLength %f",linLength);
+	m_leadInLength = linLength;
+	//do not update stroke here
+}
+
+
+- (void)				setLeadOutLength:(float) loutLength
+{
+	NSLog(@"outLength %f",loutLength);
+	m_leadOutLength = loutLength;
+	//do not update stroke here
+}
+
+
+- (float)				leadInLength
+{
+	return m_leadInLength;
+}
+
+
+- (float)				leadOutLength
+{
+	return m_leadOutLength;
+}
+
+- (BOOL)useRamp
+{
+	return _useRamp;
+}
+
+- (void)setUseRamp:(BOOL)flag
+{
+	_useRamp = flag;
+	
+	[_shape strokeUpdated];
+}
+
+
+- (float)rampPeriod
+{
+	return _rampPeriod;
+}
+
+- (void)setRampPeriod:(float)period
+{
+	_rampPeriod = LIMIT(period,0.0,1.0);
+	[_shape strokeUpdated];
+}
+
+- (float)rampPhase
+{
+	return _rampPhase;
+}
+
+- (void)setRampPhase:(float)phase
+{
+	_rampPhase = LIMIT(phase,0.0,1.0);
+	[_shape strokeUpdated];
+}
+
+- (id)placeObjectAtPoint:(NSPoint)p onPath:(NSBezierPath*)path position:(float)pos slope:(float)slope userInfo:(void*)userInfo
+{
+#pragma unused(userInfo)
+//	NSLog(@"appel position %f",pos);
+	NSImage* img = _patternImage;
+	
+	if ( img != nil )
+	{
+		NSAssert([NSGraphicsContext currentContext] != nil, @"no context for drawing path decorator motif");
+		
+		NSSize	iSize = [img size];
+		
+		float	leadScale = 1.0;
+		
+		if ( path != nil && [self useRamp] && [self rampPeriod] > 0)
+		{
+//			float	loLen = [path length] - m_leadOutLength;
+//			
+//			if ( m_leadInLength != 0 && pos < m_leadInLength )
+//				leadScale = [self rampFunction:pos / m_leadInLength];
+//			else if ( m_leadOutLength != 0 && pos > loLen )
+//				leadScale = [self rampFunction:1.0 - ((pos - loLen) / m_leadOutLength)];
+//			
+//			
+			
+			leadScale = [self rampFunction:pos/[path length]];
+			
+			// if size has reduced to zero, nothing to do
+			
+			if ( leadScale <= 0.0 )
+				return nil;
+		}
+			
+		
+		NSAffineTransform* tfm = [NSAffineTransform transform];
+		
+		[tfm translateXBy:p.x yBy:p.y];
+		[tfm scaleXBy:[self patternScale] * leadScale yBy:[self patternScale] * -1.0 * leadScale ];
+		
+//		NSLog(@"lead scale %f",leadScale);
+		
+		if( [self normalToPath])
+			[tfm rotateByRadians:-slope];
+		
+		[tfm translateXBy:-(iSize.width / 2) yBy:-(iSize.height / 2)];
+		
+		// does it really need to be drawn at all?
+		
+		NSRect drawnRect;
+//		DBDrawingView*	cv = [[[[self shape] layer] layerController] drawingView];	// n.b. can be nil if drawing into image, etc
+		
+		drawnRect.origin = [tfm transformPoint:NSZeroPoint];
+		NSPoint qp = [tfm transformPoint:NSMakePoint( iSize.width, iSize.height )];
+		
+		drawnRect = NSRectFromTwoPoints( drawnRect.origin, qp );
+		
+		float maxw = MAX( drawnRect.size.width, drawnRect.size.height );
+		drawnRect.size.width = drawnRect.size.height = maxw * 1.4;
+		drawnRect = CentreRectOnPoint( drawnRect, p );
+		
+//		[[NSColor blackColor] set];
+		//NSFrameRectWithWidth( drawnRect, 1.0 );
+		
+//		if( cv == nil || [cv needsToDrawRect:drawnRect])
+//		{
+			[NSGraphicsContext saveGraphicsState];
+			[tfm concat];
+			
+/*			if (( m_cache != nil ) && m_lowQuality )
+			{
+				CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+				CGContextDrawLayerAtPoint( context, CGPointZero, m_cache );
+			}
+			else if ( m_pdf != nil  )
+				[m_pdf draw];
+			else */
+				[img drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		//[NSBezierPath fillRect:NSMakeRect(-2., -2.0, 4., 4.)];
+			[NSGraphicsContext restoreGraphicsState];
+//		}
+	}
+	return nil;
+}
+
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import "NSBezierPath+Extensions.h"
-#import "AJHBezierUtils.h"
-#import "GCGeometryUtilities.h"   
+//#import "AJHBezierUtils.h"
+#import "DKGeometryUtilities.h"
+#import "NSBezierPath+Geometry.h"
+
 @implementation NSBezierPath (DBExtensions)
 
 + (NSBezierPath *)bezierPathWithArrowOnSegment:(NSPoint)startPoint endPoint:(NSPoint)endPoint arrowType:(DBArrowStyle)arrowStyle width:(float)lineWidth options:(DBArrowOptions)options

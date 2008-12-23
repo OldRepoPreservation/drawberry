@@ -40,7 +40,18 @@ typedef enum {
 	int _dashStyle;
 	
 	NSColor *_strokeColor;
-	NSImage	*_patternImage;  
+	NSImage	*_patternImage; 
+	
+	float				m_scale;
+	float				m_interval;
+	float				m_leader;
+	float				m_leadInLength;
+	float				m_leadOutLength;
+	float				m_liloProportion;
+	BOOL				m_normalToPath;
+	BOOL				_useRamp;
+	float _rampPeriod;
+	float _rampPhase;
 	
 	DBShape *_shape;
 	
@@ -86,9 +97,29 @@ typedef enum {
 - (void)setDashStyle:(int)newDashStyle;
 - (NSColor *)strokeColor;
 - (void)setStrokeColor:(NSColor *)aValue;
+
+// patterns 
 - (NSImage *)patternImage;
 - (void)setPatternImage:(NSImage *)aValue;
+- (float)patternScale;
+- (void)setPatternScale:(float) scale;
+- (float)interval;
+- (void)setInterval:(float) interval;
+- (float)leaderDistance;
+- (void)setLeaderDistance:(float) leader;
 
+- (BOOL)normalToPath;
+- (void)setNormalToPath:(BOOL) normal;
+- (float)leadInAndOutLengthProportion;
+- (void)setLeadInAndOutLengthProportion:(float) proportion;
+- (float)rampFunction:(float) val;
+
+- (BOOL)useRamp;
+- (void)setUseRamp:(BOOL)flag;
+- (float)rampPeriod;
+- (void)setRampPeriod:(float)period;
+- (float)rampPhase;
+- (void)setRampPhase:(float)phase;
 // arrows
 - (BOOL)showStartArrow;
 - (void)setShowStartArrow:(BOOL)newShowStartArrow;

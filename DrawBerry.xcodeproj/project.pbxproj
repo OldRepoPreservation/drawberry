@@ -23,9 +23,7 @@
 		6C129CDB0E54E70A00AD5C61 /* EMErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CD50E54E70A00AD5C61 /* EMErrorManager.m */; };
 		6C129CDC0E54E70A00AD5C61 /* EMErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CD60E54E70A00AD5C61 /* EMErrorView.m */; };
 		6C129CDD0E54E70A00AD5C61 /* EMError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CDA0E54E70A00AD5C61 /* EMError.m */; };
-		6C129CE00E54E73700AD5C61 /* AJHBezierUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CDE0E54E73700AD5C61 /* AJHBezierUtils.m */; };
 		6C129CE30E54E74900AD5C61 /* NSBezierPath+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CE10E54E74900AD5C61 /* NSBezierPath+Extensions.m */; };
-		6C129CE60E54E75D00AD5C61 /* GCGeometryUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CE50E54E75D00AD5C61 /* GCGeometryUtilities.m */; };
 		6C129CE90E54E77000AD5C61 /* GHUDPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CE70E54E77000AD5C61 /* GHUDPanel.m */; };
 		6C129CEC0E54E78100AD5C61 /* DBContextualBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CEA0E54E78100AD5C61 /* DBContextualBar.m */; };
 		6C129CEF0E54E7A100AD5C61 /* DBWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CED0E54E7A100AD5C61 /* DBWindow.m */; };
@@ -219,6 +217,10 @@
 		6C4AB2420BCCD0670035522E /* DBLayers.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4AB2400BCCD0670035522E /* DBLayers.nib */; };
 		6C51136F0C310DE20084EF60 /* DBFilterPalette.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C51136D0C310DE20084EF60 /* DBFilterPalette.nib */; };
 		6C5DF1650C57AAC400429CF4 /* DBUndo.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5DF1630C57AAC400429CF4 /* DBUndo.nib */; };
+		6C825D810EFD5EE8006057AB /* NSBezierPath+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D7F0EFD5EE8006057AB /* NSBezierPath+Geometry.m */; };
+		6C825D8D0EFD5F71006057AB /* DKRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D8C0EFD5F71006057AB /* DKRandom.m */; };
+		6C825D930EFD60C6006057AB /* DKGeometryUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D910EFD60C6006057AB /* DKGeometryUtilities.m */; };
+		6C825DE10EFD62C5006057AB /* NSBezierPath+Editing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */; };
 		6C8443D60C4C0A6400FFA2FF /* DBPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8443D40C4C0A6400FFA2FF /* DBPreferences.nib */; };
 		6C9679C70ECF244F007AB553 /* GradientPanelFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */; };
 		6C9679DE0ECF2532007AB553 /* GradientPanelFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */; };
@@ -596,6 +598,15 @@
 		6C51136E0C310DE20084EF60 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBFilterPalette.nib; sourceTree = "<group>"; };
 		6C5DF1640C57AAC400429CF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBUndo.nib; sourceTree = "<group>"; };
 		6C5DF1680C57AAD200429CF4 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBUndo.nib; sourceTree = "<group>"; };
+		6C825D7F0EFD5EE8006057AB /* NSBezierPath+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+Geometry.m"; path = "Source/NSBezierPath+Geometry.m"; sourceTree = "<group>"; };
+		6C825D800EFD5EE8006057AB /* NSBezierPath+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+Geometry.h"; path = "Source/NSBezierPath+Geometry.h"; sourceTree = "<group>"; };
+		6C825D8B0EFD5F71006057AB /* DKRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKRandom.h; path = Source/DKRandom.h; sourceTree = "<group>"; };
+		6C825D8C0EFD5F71006057AB /* DKRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKRandom.m; path = Source/DKRandom.m; sourceTree = "<group>"; };
+		6C825D910EFD60C6006057AB /* DKGeometryUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKGeometryUtilities.m; path = Source/DKGeometryUtilities.m; sourceTree = "<group>"; };
+		6C825D920EFD60C6006057AB /* DKGeometryUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKGeometryUtilities.h; path = Source/DKGeometryUtilities.h; sourceTree = "<group>"; };
+		6C825DC50EFD61AB006057AB /* DKDrawKitMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKDrawKitMacros.h; path = Source/DKDrawKitMacros.h; sourceTree = "<group>"; };
+		6C825DDF0EFD62C5006057AB /* NSBezierPath+Editing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+Editing.h"; path = "Source/NSBezierPath+Editing.h"; sourceTree = "<group>"; };
+		6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+Editing.m"; path = "Source/NSBezierPath+Editing.m"; sourceTree = "<group>"; };
 		6C8443D50C4C0A6400FFA2FF /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBPreferences.nib; sourceTree = "<group>"; };
 		6C8444EE0C4C1D3C00FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = French; path = French.lproj/Credits.rtf; sourceTree = "<group>"; };
 		6C8444F90C4C1DC800FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -692,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				6C129CA40E54E5D400AD5C61 /* DBPrefKeys.h */,
+				6C825DF20EFD6323006057AB /* DrawKit Files */,
 				6C6171030E040E6800E7840C /* Boolean Ops */,
 				6CCF97C20DDF7E6600743CE9 /* Cocoa Extensions */,
 				6C7FB9E20D73615B00789CB3 /* Vectorization */,
@@ -1083,8 +1095,6 @@
 				6C129CA90E54E5FE00AD5C61 /* gpc.h */,
 				6C129CA50E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.m */,
 				6C129CA60E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.h */,
-				6C129CAB0E54E60D00AD5C61 /* NSBezierPath+GPC.m */,
-				6C129CAC0E54E60D00AD5C61 /* NSBezierPath+GPC.h */,
 			);
 			name = "Boolean Ops";
 			sourceTree = "<group>";
@@ -1100,6 +1110,24 @@
 				6C129CB80E54E64F00AD5C61 /* nE.cpp */,
 			);
 			name = Vectorization;
+			sourceTree = "<group>";
+		};
+		6C825DF20EFD6323006057AB /* DrawKit Files */ = {
+			isa = PBXGroup;
+			children = (
+				6C825D8B0EFD5F71006057AB /* DKRandom.h */,
+				6C825D8C0EFD5F71006057AB /* DKRandom.m */,
+				6C825D800EFD5EE8006057AB /* NSBezierPath+Geometry.h */,
+				6C825D7F0EFD5EE8006057AB /* NSBezierPath+Geometry.m */,
+				6C825D920EFD60C6006057AB /* DKGeometryUtilities.h */,
+				6C825D910EFD60C6006057AB /* DKGeometryUtilities.m */,
+				6C825DDF0EFD62C5006057AB /* NSBezierPath+Editing.h */,
+				6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */,
+				6C129CAC0E54E60D00AD5C61 /* NSBezierPath+GPC.h */,
+				6C129CAB0E54E60D00AD5C61 /* NSBezierPath+GPC.m */,
+				6C825DC50EFD61AB006057AB /* DKDrawKitMacros.h */,
+			);
+			name = "DrawKit Files";
 			sourceTree = "<group>";
 		};
 		6CA8B5C20C69F17000A7B0C6 /* Windows & Buttons */ = {
@@ -1453,9 +1481,7 @@
 				6C129CDB0E54E70A00AD5C61 /* EMErrorManager.m in Sources */,
 				6C129CDC0E54E70A00AD5C61 /* EMErrorView.m in Sources */,
 				6C129CDD0E54E70A00AD5C61 /* EMError.m in Sources */,
-				6C129CE00E54E73700AD5C61 /* AJHBezierUtils.m in Sources */,
 				6C129CE30E54E74900AD5C61 /* NSBezierPath+Extensions.m in Sources */,
-				6C129CE60E54E75D00AD5C61 /* GCGeometryUtilities.m in Sources */,
 				6C129CE90E54E77000AD5C61 /* GHUDPanel.m in Sources */,
 				6C129CEC0E54E78100AD5C61 /* DBContextualBar.m in Sources */,
 				6C129CEF0E54E7A100AD5C61 /* DBWindow.m in Sources */,
@@ -1531,6 +1557,10 @@
 				6C129E030E54EEC100AD5C61 /* DBShapeMatrix.m in Sources */,
 				6C129E060E54EEE000AD5C61 /* main.m in Sources */,
 				6C129E340E54F19700AD5C61 /* DBSVGParser.m in Sources */,
+				6C825D810EFD5EE8006057AB /* NSBezierPath+Geometry.m in Sources */,
+				6C825D8D0EFD5F71006057AB /* DKRandom.m in Sources */,
+				6C825D930EFD60C6006057AB /* DKGeometryUtilities.m in Sources */,
+				6C825DE10EFD62C5006057AB /* NSBezierPath+Editing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

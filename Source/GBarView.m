@@ -153,6 +153,16 @@
 		
 }
 
+- (NSString *)identifier
+{
+	return _identifier;
+}
+- (void)setIdentifier:(NSString *)s
+{
+	[_identifier release];
+	_identifier = [s retain];	
+}
+
 - (void)upateCollapse
 {
 	BOOL flag;
@@ -230,7 +240,7 @@
 - (NSString *)autosaveString
 {
 	if([[self window] frameAutosaveName])
-		return [NSString stringWithFormat:@"%@ %@",[[self window] frameAutosaveName], [self title]];
+		return [NSString stringWithFormat:@"%@ %@",[[self window] frameAutosaveName], [self identifier]];
 	
 	return nil;
 }

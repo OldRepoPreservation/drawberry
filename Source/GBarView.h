@@ -15,6 +15,7 @@
 
 @interface GBarView : NSView {
 	NSString *_title;
+	NSString *_identifier;
 	NSView *_associatedView;
 	BOOL _isCollapsed;
 	
@@ -27,6 +28,9 @@
 
 - (NSString *)title;
 - (void)setTitle:(NSString *)s;
+
+- (NSString *)identifier;
+- (void)setIdentifier:(NSString *)s;
 
 - (BOOL)isCollapsed;
 - (void)setCollapsed:(BOOL)flag;

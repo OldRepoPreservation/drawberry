@@ -37,7 +37,12 @@ const float _barHeight = 18;
 												 selector:@selector(windowWillMove:) 
 													 name:NSWindowWillMoveNotification 
 												   object:self];
-//		[[[[[[self contentView] superview] subviews] objectAtIndex:2] retain] removeFromSuperviewWithoutNeedingDisplay];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(windowDidMove:) 
+													 name:NSWindowDidMoveNotification 
+												   object:self];
+		//		[[[[[[self contentView] superview] subviews] objectAtIndex:2] retain] removeFromSuperviewWithoutNeedingDisplay];
 //		[[[[[[self contentView] superview] subviews] objectAtIndex:1] retain] removeFromSuperviewWithoutNeedingDisplay];
 	}
 	return self;
@@ -279,7 +284,8 @@ const float _barHeight = 18;
 	
 	GBarView *addedBarView = [[GBarView alloc] initWithFrame:NSMakeRect(0,0,[self frame].size.width,_barHeight)];
 	[addedBarView setAssociatedView:addedView];
-	[addedBarView setTitle:title];
+	[addedBarView setTitle:NSLocalizedString(title,nil)];
+	[addedBarView setIdentifier:title];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(collapseDidChange:) 
@@ -672,4 +678,49 @@ const float _barHeight = 18;
 	
 	return [super setFrameAutosaveName:frameName];
 }
+
+- (void)updateWindowPosition
+{
+	NSString *pointString;
+	
+	pointString = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@ UL corner",[self frameAutosaveName]]];
+	
+	if(pointString){
+		NSPoint point = NSPointFromString(pointString);
+		[self setUpperLeftCorner:point];		
+	}else{
+
+	}
+}
+- (void)saveULCorner
+{
+	[[NSUserDefaults standardUserDefaults] setObject:NSStringFromPoint([self upperLeftCorner]) forKey:[NSString stringWithFormat:@"%@ UL corner",[self frameAutosaveName]]];
+}
+
+- (void)close
+{
+	[self saveULCorner];
+	[super close];
+}
+
+- (void)windowDidMove:(NSNotification *)note
+{
+	[self saveULCorner];
+}
+@end
+
+@implementation NSWindow (Extensions)
+- (NSPoint)upperLeftCorner
+{
+	NSRect frame;
+	
+	frame = [self frame];
+	return NSMakePoint(frame.origin.x, frame.origin.y+frame.size.height);
+}
+
+- (void)setUpperLeftCorner:(NSPoint)point
+{
+	[self setFrameOrigin:NSMakePoint(point.x, point.y - [self frame].size.height)];
+}
+
 @end

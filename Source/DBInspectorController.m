@@ -17,6 +17,24 @@
 static DBInspectorController *_sharedInspectorController = nil;
 
 @implementation DBInspectorController
++ (void)initialize
+{
+	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
+
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"gridWindow Grid Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"gridWindow Page Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"gridWindow Rulers Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Stroke Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Arrows Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Fill Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Shadow Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Text Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Geometry Collapsed"];
+
+	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+	
+	[defaultValues release];	
+}
 + (id)sharedInspectorController 
 {
     if (!_sharedInspectorController) {
@@ -45,28 +63,26 @@ static DBInspectorController *_sharedInspectorController = nil;
 	[_viewInspector setFrameAutosaveName:@"gridWindow"];
 	[_viewInspector setMinFrameAnimate:NO];
 	frame = [_viewInspector stringWithSavedFrame];
-
- 	[_viewInspector addView:_gridView title:NSLocalizedString(@"Grid",nil) collapsed:YES];
-	[_viewInspector addView:_canevasView title:NSLocalizedString(@"Page",nil) collapsed:YES];   
-	[_viewInspector addView:_rulerView title:NSLocalizedString(@"Rulers",nil) collapsed:YES];
-	[_viewInspector updateViewList];
-	[_viewInspector setFrameFromString:frame];
 	
+ 	[_viewInspector addView:_gridView title:@"Grid" collapsed:YES];
+	[_viewInspector addView:_canevasView title:@"Page" collapsed:YES];   
+	[_viewInspector addView:_rulerView title:@"Rulers" collapsed:YES];
+	[_viewInspector updateViewList];
+	[_viewInspector updateWindowPosition];
 	
 	
 	[_objectInspector setFrameAutosaveName:@"shapeWindow"];
 	[_objectInspector setMinFrameAnimate:NO];
-	frame = [_objectInspector stringWithSavedFrame];
 	
-	[_objectInspector addView:_strokeView title:NSLocalizedString(@"Stroke",nil) collapsed:YES];
-	[_objectInspector addView:_arrowView title:NSLocalizedString(@"Arrows",nil) collapsed:YES];
-	[_objectInspector addView:_fillView title:NSLocalizedString(@"Fill",nil) collapsed:YES];
-	[_objectInspector addView:_shadowView title:NSLocalizedString(@"Shadow",nil) collapsed:YES];
-	[_objectInspector addView:_textView title:NSLocalizedString(@"Text",nil) collapsed:YES];
-	[_objectInspector addView:_geometryView title:NSLocalizedString(@"Geometry",nil) collapsed:YES];
+	[_objectInspector addView:_strokeView title:@"Stroke" collapsed:YES];
+	[_objectInspector addView:_arrowView title:@"Arrows" collapsed:YES];
+	[_objectInspector addView:_fillView title:@"Fill" collapsed:YES];
+	[_objectInspector addView:_shadowView title:@"Shadow" collapsed:YES];
+	[_objectInspector addView:_textView title:@"Text" collapsed:YES];
+	[_objectInspector addView:_geometryView title:@"Geometry" collapsed:YES];
 	[_objectInspector updateViewList];
 	
-	[_objectInspector setFrameFromString:frame];
+	[_objectInspector updateWindowPosition];
 
     
 	[_fillGradientWell bind:@"gradient" toObject:_fillController withKeyPath:@"selection.gradient" options:nil];

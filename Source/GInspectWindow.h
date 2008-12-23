@@ -38,4 +38,12 @@ const float _barHeight;
 - (BOOL)isCollapsed;
 - (void)setCollapsed:(BOOL)flag; 
 - (void)collapseAllViews;
+
+- (void)updateWindowPosition;
+- (void)saveULCorner;
+@end
+
+@interface NSWindow (Extensions)
+- (NSPoint)upperLeftCorner;
+- (void)setUpperLeftCorner:(NSPoint)point;
 @end

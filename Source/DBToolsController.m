@@ -31,6 +31,24 @@ enum {
 };   
 
 @implementation DBToolsController
+
++ (void)initialize
+{
+	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
+
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"viewInspector Opened"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"objectInspector Opened"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"layerWindow Opened"];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:@"magGlassPanel Opened"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"undoWindow Opened"];
+	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:@"colorSwatch Opened"];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:@"shapeLibrary Opened"];
+
+	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+	
+	[defaultValues release];	
+}
+
 + (id)sharedToolsController
 {
 	if(!_sharedToolsController)
@@ -103,10 +121,10 @@ enum {
 											   object:nil];
 	
 
-	[[_inspectorSelector cellWithTag:0] setState:NSOnState];
-	[[_inspectorSelector cellWithTag:1] setState:NSOnState];
-	[[_inspectorSelector cellWithTag:2] setState:NSOnState];
-	[[_inspectorSelector cellWithTag:3] setState:NSOffState];
+	[[_inspectorSelector cellWithTag:0] setState:[[[NSApp delegate] viewInspector] isVisible]];
+	[[_inspectorSelector cellWithTag:1] setState:[[[NSApp delegate] objectInspector] isVisible]];
+	[[_inspectorSelector cellWithTag:2] setState:[[[NSApp delegate] layerWindow] isVisible]];
+	[[_inspectorSelector cellWithTag:3] setState:[[[NSApp delegate] magnifyWindow] isVisible]];
 
 }
 
@@ -139,40 +157,59 @@ enum {
 - (void)inspectorWindowWillClose:(NSNotification *)note
 {
 	NSWindow *window;
+	NSString *key;
+	key = nil;
 	window = [note object];
 	int tag;
 	
 	if(window == [[NSApp delegate] viewInspector]){
 		tag = 0;
+		key = @"viewInspector Opened";
 	}else if(window == [[NSApp delegate] objectInspector]){
 		tag = 1;
+		key = @"objectInspector Opened";
 	}else if(window == [[NSApp delegate] layerWindow]){
 		tag = 2;
+		key = @"layerWindow Opened";
 	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
+		key = @"magGlassPanel Opened";
 	}           
-	
-	[[_inspectorSelector cellWithTag:tag] setState:NSOffState];
+
+	if(key){
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:key];
+		
+		[[_inspectorSelector cellWithTag:tag] setState:NSOffState];		
+	}
 }
 
 - (void)inspectorWindowWillOpen:(NSNotification *)note
 {
 	NSWindow *window;
+	NSString *key;
+	key = nil;
 	window = [note object];
 	int tag;
 	
 	if(window == [[NSApp delegate] viewInspector]){
 		tag = 0;
+		key = @"viewInspector Opened";
 	}else if(window == [[NSApp delegate] objectInspector]){
 		tag = 1;
+		key = @"objectInspector Opened";
 	}else if(window == [[NSApp delegate] layerWindow]){
-	  	tag = 2;
-    }else if(window == [[NSApp delegate] magnifyWindow]){ 
+		tag = 2;
+		key = @"layerWindow Opened";
+	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
+		key = @"magGlassPanel Opened";
 	}           
-	           
 	
-	[[_inspectorSelector cellWithTag:tag] setState:NSOnState];
+	if(key){
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
+		
+		[[_inspectorSelector cellWithTag:tag] setState:NSOnState];		
+	}
 }
 
 - (void)toolDidCreateShape:(NSNotification *)note
@@ -185,35 +222,49 @@ enum {
 
 - (IBAction)inspectorSelectorAction:(id)sender
 {
+	BOOL flag;
    	if([[_inspectorSelector cellWithTag:0] state] != [[[NSApp delegate] viewInspector] isVisible]){
 		if([[_inspectorSelector cellWithTag:0] state]){
 			[[[NSApp delegate] viewInspector] makeKeyAndOrderFront:self];
+			flag = YES;
 		}else{
 			[[[NSApp delegate] viewInspector] orderOut:self];
+			flag = NO;
 		}
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"viewInspector Opened"];
 	}
 
 	if([[_inspectorSelector cellWithTag:1] state] != [[[NSApp delegate] objectInspector] isVisible]){
 		if([[_inspectorSelector cellWithTag:1] state]){
 			[[[NSApp delegate] objectInspector] makeKeyAndOrderFront:self];
+			flag = YES;
 		}else{
 			[[[NSApp delegate] objectInspector] orderOut:self];
+			flag = NO;
 		}
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"objectInspector Opened"];
 	}
 
 	if([[_inspectorSelector cellWithTag:2] state] != [[[NSApp delegate] layerWindow] isVisible]){
 		if([[_inspectorSelector cellWithTag:2] state]){
 			[[[NSApp delegate] layerWindow] makeKeyAndOrderFront:self];
+			flag = YES;
 		}else{
 			[[[NSApp delegate] layerWindow] orderOut:self];
+			flag = NO;
 		}
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"layerWindow Opened"];
 	}
+
 	if([[_inspectorSelector cellWithTag:3] state] != [[[NSApp delegate] magnifyWindow] isVisible]){
 		if([[_inspectorSelector cellWithTag:3] state]){
 			[[[NSApp delegate] magnifyWindow] makeKeyAndOrderFront:self];
+			flag = YES;
 		}else{
 			[[[NSApp delegate] magnifyWindow] orderOut:self];
+			flag = NO;
 		}
+		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"magGlassPanel Opened"];
 	}
 }
 @end

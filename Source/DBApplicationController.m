@@ -54,14 +54,44 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 }   
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification { 
-	[[DBLayerWindowController sharedLayerWindowController] showWindow:self];
-	[[DBInspectorController sharedInspectorController] showWindow:self];
-	[[DBToolsController sharedToolsController] showWindow:self];
-	[[DBUndoUIController sharedUndoUIController] showWindow:self];
 	
-//	[[DBColorSwatchController sharedColorSwatchController] showWindow:self];
-//	[[DBShapeLibraryController sharedShapeLibraryController] showWindow:self];
-//	[[DBMagnifyingController sharedMagnifyingController] showWindow:self];
+	[[DBToolsController sharedToolsController] showWindow:self];
+
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"layerWindow Opened"]){
+		[[DBLayerWindowController sharedLayerWindowController] showWindow:self];
+	}
+	
+	[[DBInspectorController sharedInspectorController] loadWindow];
+
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"viewInspector Opened"]){
+		[[[DBInspectorController sharedInspectorController] viewInspector] makeKeyAndOrderFront:self];
+	}else{
+		[[[DBInspectorController sharedInspectorController] viewInspector] orderOut:self];
+	}
+
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"objectInspector Opened"]){
+		[[[DBInspectorController sharedInspectorController] objectInspector] makeKeyAndOrderFront:self];
+	}else {
+		[[[DBInspectorController sharedInspectorController] objectInspector] orderOut:self];
+
+	}
+
+	
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"magGlassPanel Opened"]){
+		[[DBMagnifyingController sharedMagnifyingController] showWindow:self];
+	}
+
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"undoWindow Opened"]){
+		[[DBUndoUIController sharedUndoUIController] showWindow:self];
+	}
+
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"colorSwatch Opened"]){
+		[[DBColorSwatchController sharedColorSwatchController] showWindow:self];
+	}
+	
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"shapeLibrary Opened"]){
+		[[DBShapeLibraryController sharedShapeLibraryController] showWindow:self];
+	}
 }  
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification

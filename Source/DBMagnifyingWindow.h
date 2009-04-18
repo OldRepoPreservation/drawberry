@@ -13,5 +13,5 @@ extern NSString *DBMagnifyingWindowDidMove;
 @interface DBMagnifyingWindow : NSPanel {
 	NSPoint _movingVec;
 }
-
+- (NSPoint)movingVect;
 @end

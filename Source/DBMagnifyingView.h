@@ -19,8 +19,6 @@ typedef enum _DBMagnifyingType{
 	float _zoom;
 	BOOL _isDrawing;
 	BOOL _isResizing;
-	
-	DBMagnifyingType _magType;
 }
 
 - (NSView *)source;
@@ -29,8 +27,6 @@ typedef enum _DBMagnifyingType{
 - (void)setMagnifyingPoint:(NSPoint)newMagnifyingPoint;
 - (float)zoom;
 - (void)setZoom:(float)newZoom;
-- (DBMagnifyingType)magnifyingType;
-- (void)setMagnifyingType:(DBMagnifyingType)newMagnifyingType;
                                          
 - (BOOL)isDrawingSource;
 - (NSRect)sourceZoomedRect;

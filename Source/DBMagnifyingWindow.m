@@ -23,8 +23,8 @@ NSString *DBMagnifyingWindowDidMove = @"DBMagnifyingWindow Did Move";
 	[self setLevel:NSFloatingWindowLevel];
     [self setBackgroundColor: [NSColor clearColor]];
     [self setHasShadow: YES];    
-//	[self setShowsResizeIndicator:YES];
-	
+	[self setShowsResizeIndicator:YES];
+	[self setContentAspectRatio:NSMakeSize(1.0, 1.0)];
 	return self;
 }
 
@@ -55,12 +55,12 @@ NSString *DBMagnifyingWindowDidMove = @"DBMagnifyingWindow Did Move";
 	[super mouseUp:theEvent];
 }
 
-- (NSRect)frame
+/*- (NSRect)frame
 {   
 	NSRect frame;
 	frame = [super frame];
 	return NSMakeRect(frame.origin.x+_movingVec.x,frame.origin.y-_movingVec.y,frame.size.width,frame.size.height);
-}
+}*/
 /*
 - (void)windowBeganToMove:(NSNotification *)note
 {
@@ -72,5 +72,8 @@ NSString *DBMagnifyingWindowDidMove = @"DBMagnifyingWindow Did Move";
 	_movingVec = NSZeroPoint;
 	[[NSNotificationCenter defaultCenter] postNotificationName:DBMagnifyingWindowDidMove object:self];
 }
-
+- (NSPoint)movingVect
+{
+	return _movingVec;
+}
 @end

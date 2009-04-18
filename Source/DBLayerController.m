@@ -45,11 +45,11 @@
 		[layer release];
 	} 
 	
-	[[_document drawingView] addObserver:self 
+/*	[[_document drawingView] addObserver:self 
 							  forKeyPath:@"zoom" 
 							     options:NSKeyValueObservingOptionNew 
 							     context:nil];
-	
+*/	
 }   
 
 - (void)dealloc
@@ -473,6 +473,12 @@
 
 - (DBShape *)hitTest:(NSPoint)point
 {
+	if( abs(point.x) <= 1e-5){
+		point.x = 0;
+	}
+	if( abs(point.y) <= 1e-5){
+		point.y = 0;
+	}
 	NSEnumerator *e = [_layers reverseObjectEnumerator];
 	DBLayer  *layer;
 	DBShape *shape = nil;

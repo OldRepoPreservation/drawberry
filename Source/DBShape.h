@@ -82,6 +82,7 @@ enum {
 - (BOOL)isInRect:(NSRect)rect;
 - (int)knobUnderPoint:(NSPoint)point ;
 - (NSPoint)pointForKnob:(int)knob;
+- (BOOL)isNaN;
 
 - (void)moveByX:(float)deltaX byY:(float)deltaY;
 - (int)resizeByMovingKnob:(int)knob fromPoint:(NSPoint)fromPoint toPoint:(NSPoint)point inView:(DBDrawingView *)view modifierFlags:(unsigned int)flags;

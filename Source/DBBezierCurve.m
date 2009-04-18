@@ -476,10 +476,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[_layer updateRenderInView:view];
 	
 	_bounds = [_path bounds];
-	_boundsSize = _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 	
 	return (_pointCount > 1);
 }   
@@ -724,10 +720,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	}
 	
 	_bounds = [_path bounds];
-	_boundsSize = _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 	
 	[_fill updateFillForPath:_path];
 	[_stroke updateStrokeForPath:_path]; 
@@ -1108,6 +1100,10 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 {
 	BOOL test;
 	
+	if([self isNaN]){
+		return NO;		
+	}
+	
 	test = [_path containsPoint:point];
 	DBDrawingView *view = [[_layer layerController] drawingView];
 	
@@ -1116,7 +1112,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 		NSPoint p;
 		
 		if(view){
-			point = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:point];
+//			point = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:point];
 		}
 		
 		for( i = 0; i < _pointCount; i++ )
@@ -1186,7 +1182,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 
 	point = _points[0].point;
 	controlPoint1 = _points[0].controlPoint1;
-	controlPoint2 = _points[0].controlPoint1;
+	controlPoint2 = _points[0].controlPoint2;
 	
 	if(canConvert)
 	{
@@ -1250,10 +1246,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 - (void)updateBounds
 {
 	_bounds = [_path bounds];
-	_boundsSize= _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;	
 }   
 
 - (void)strokeUpdated
@@ -1271,7 +1263,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	NSPoint rotatedPoint;
 	NSPoint rotationCenter;
 	
-	rotationCenter = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:_boundsCenter];
+	rotationCenter = [self rotationCenter];
 	
 	// convert in radian
 	deltaRot = (M_PI/180)*deltaRot;
@@ -1351,8 +1343,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
    	
 	[self updatePath];
 	_bounds = [_path bounds];
-	_boundsCenter.x += deltaX;
-	_boundsCenter.y += deltaY;
 	
 //	[_fill updateFillForPath:_path];
 	[_stroke updateStrokeForPath:_path]; 
@@ -1438,7 +1428,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	NSRect oldRect;
 	
 	oldRect = [_path bounds];
-	oldRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:oldRect.origin];
 	
 	int i;
 	NSPoint p;
@@ -1447,7 +1436,6 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	xFactor = newRect.size.width / oldRect.size.width; 
 	yFactor = newRect.size.height / oldRect.size.height;
 
-	newRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:newRect.origin];
 
     for( i = 0; i < _pointCount; i++ )
  	{    

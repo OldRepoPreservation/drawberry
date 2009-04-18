@@ -143,7 +143,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (BOOL)editWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
-	NSPoint point, center;
+	NSPoint point;
 	BOOL canConvert;     
 	NSAutoreleasePool *pool;
 	float tX, tY;
@@ -155,7 +155,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	
 	tX = MIN(MIN(_point1.x, _point2.x), MIN(_point3.x, _point4.x)); // + distanceBetween(_point2, _point1)/2.0;
 	tY = MIN(MIN(_point1.y, _point2.y), MIN(_point3.y, _point4.y)); // + distanceBetween(_point2, _point3)/2.0;
-	center = _boundsCenter;
+//	center = _boundsCenter;
 
 	canConvert = [view isKindOfClass:[DBDrawingView class]];
    
@@ -269,7 +269,8 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)rotate:(float)deltaRot
 {
-	NSPoint rotationCenter = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:_boundsCenter];
+	//NSPoint rotationCenter = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:[self rotationCenter]];
+	NSPoint rotationCenter = [self rotationCenter];
 	deltaRot = (M_PI/180)*deltaRot;
 	               
 	_point1=rotatePoint(_point1,rotationCenter,deltaRot);
@@ -297,11 +298,12 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[NSGraphicsContext saveGraphicsState]; 
      
 	[_shadow set];
-	[[self fill] fillPath:_path];
 	
 	[[self stroke] strokePath:_path];
-
+	[[self fill] fillPath:_path];
+	
 	[NSGraphicsContext restoreGraphicsState];
+
 
    	if([[NSGraphicsContext currentContext] isKindOfClass:[NSBitmapGraphicsContext class]]){
 		[_shadow reverseShadowOffsetHeight];
@@ -342,14 +344,14 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	NSRect oldRect;
 	
 	oldRect = [_path bounds];
-	oldRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:oldRect.origin];
+//	oldRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:oldRect.origin];
 	
 	float xFactor, yFactor;
 	
 	xFactor = newRect.size.width / oldRect.size.width; 
 	yFactor = newRect.size.height / oldRect.size.height;
     
-	newRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:newRect.origin];
+//	newRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:newRect.origin];
 
 	_point1 = resizePoint(_point1, oldRect.origin, newRect.origin, xFactor, yFactor);
 	_point2 = resizePoint(_point2, oldRect.origin, newRect.origin, xFactor, yFactor);
@@ -393,6 +395,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	}else{
 		zoom = 1.0f;
 	}
+	zoom = 1.0;
 	rect.size = NSMakeSize(zoom*distanceBetween(_point2, _point1), zoom*distanceBetween(_point2, _point3));
  // make the rectangle center be on (0,0)
 
@@ -431,10 +434,6 @@ static double distanceBetween(NSPoint a, NSPoint b)
 - (void)updateBounds
 {
 	_bounds = [_path bounds]; 
-	_boundsSize= _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 }   
 
 - (void)strokeUpdated
@@ -447,10 +446,14 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (BOOL)hitTest:(NSPoint)point
 {
-	BOOL test;
-	
+	BOOL test = NO;
+
+	if([self isNaN]){
+		return NO;		
+	}
+
 	test = [_path containsPoint:point];
-	 
+
 	if(!test){
 		DBDrawingView *view = [[_layer layerController] drawingView];
 		

@@ -278,9 +278,9 @@ static NSImage *__greenKnob = nil;
 	NSPoint p;
 	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
 		p = [_fill imageDrawPoint];
-		p.x *= [self zoom];
+//		p.x *= [self zoom];
 		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
+//		p.y *= [self zoom];
 		p.y += _bounds.origin.y;
 		
 		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
@@ -291,9 +291,9 @@ static NSImage *__greenKnob = nil;
 		NSColor *color;
 		
 		p = [_fill gradientStartingPoint];
-		p.x *= [self zoom];
+//		p.x *= [self zoom];
 		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
+//		p.y *= [self zoom];
 		p.y += _bounds.origin.y;
 		
 		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
@@ -309,9 +309,9 @@ static NSImage *__greenKnob = nil;
 		[path stroke];
 		
 		p = [_fill gradientEndingPoint];
-		p.x *= [self zoom];
+//		p.x *= [self zoom];
 		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
+//		p.y *= [self zoom];
 		p.y += _bounds.origin.y;
 		
 		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
@@ -468,7 +468,7 @@ static NSImage *__greenKnob = nil;
 
 - (NSPoint)rotationCenter
 {
-	return _boundsCenter;
+	return NSMakePoint(_bounds.origin.x + _bounds.size.width/2, _bounds.origin.y + _bounds.size.height/2);
 }
 
 - (void)rotate:(float)deltaRot
@@ -588,10 +588,14 @@ static NSImage *__greenKnob = nil;
 		dY = point.y - fromPoint.y;
 		ratio = _bounds.size.width/ _bounds.size.height;
 
+		float dX2, dY2;
+		dY2 = (_bounds.size.width+dX)/ratio - _bounds.size.height;
+		dX2 = ratio*(_bounds.size.height+dY) - _bounds.size.width;
+		
 		if((fabs(dX) < fabs(dY) || (knob == MiddleLeftKnob) || (knob == MiddleRightKnob) ) && (knob != LowerMiddleKnob) && (knob != UpperMiddleKnob) ){
-			dY = (_bounds.size.width+dX)/ratio - _bounds.size.height;
+			dY = dY2;
 		}else{
-			dX = ratio*(_bounds.size.height+dY) - _bounds.size.width;
+			dX = dX2;
    		}
 		point.x = fromPoint.x + dX;
 		point.y = fromPoint.y + dY;
@@ -664,10 +668,20 @@ static NSImage *__greenKnob = nil;
 	     	[self flipHorizontalyWithNewKnob:knob];
 	    } 
     }
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
-    
+	
+	if(isnan(_bounds.origin.x)){
+		_bounds.origin.x = 0;
+	}
+	if(isnan(_bounds.origin.y)){
+		_bounds.origin.y = 0;
+	}
+	if(isnan(_bounds.size.width)){
+		_bounds.size.width = 0;
+	}
+	if(isnan(_bounds.size.height)){
+		_bounds.size.height = 0;
+	}
+	    
     return knob;
 }
 
@@ -689,15 +703,13 @@ static NSImage *__greenKnob = nil;
    
 	point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
   
-/*	if(canConvert){
+	if(canConvert){
 		point = [view pointSnapedToGrid:point];
 		point = [view canevasCoordinatesFromViewCoordinates:point];
 	}
-*/	                     
+	                     
 	p = [_fill imageDrawPoint];
-	p.x *= [self zoom];
 	p.x += _bounds.origin.x;
-	p.y *= [self zoom];
 	p.y += _bounds.origin.y;
 
 	if(!DBPointIsOnKnobAtPoint(point,p)){
@@ -716,14 +728,12 @@ static NSImage *__greenKnob = nil;
 
 		if(canConvert){
 			point = [view pointSnapedToGrid:point];
-//			point = [view canevasCoordinatesFromViewCoordinates:point];
+			point = [view canevasCoordinatesFromViewCoordinates:point];
 		}
 	    
 		p = point;
 		p.x -= _bounds.origin.x;
-		p.x /= [self zoom];
 		p.y -= _bounds.origin.y;
-		p.y /= [self zoom];
 		
 		[_fill setImageDrawPoint:p];
 //		[_layer updateRenderInView:nil];
@@ -760,19 +770,17 @@ static NSImage *__greenKnob = nil;
 	
 	point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 	
-	/*	if(canConvert){
-	 point = [view pointSnapedToGrid:point];
-	 point = [view canevasCoordinatesFromViewCoordinates:point];
-	 }
-	 */	  
+	if(canConvert){
+		point = [view pointSnapedToGrid:point];
+		point = [view canevasCoordinatesFromViewCoordinates:point];
+	}
+		  
 	
 	pointFlag = 0;
 	editRadius = NO;
 	
 	p = [_fill gradientStartingPoint];
-	p.x *= [self zoom];
 	p.x += _bounds.origin.x;
-	p.y *= [self zoom];
 	p.y += _bounds.origin.y;
 	
 	d1 = distanceBetween(p, point);
@@ -785,9 +793,7 @@ static NSImage *__greenKnob = nil;
 		}
 	}else{
 		p = [_fill gradientEndingPoint];
-		p.x *= [self zoom];
 		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
 		p.y += _bounds.origin.y;
 		
 		d2 = distanceBetween(p, point);
@@ -823,19 +829,17 @@ static NSImage *__greenKnob = nil;
 		
 		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseUpMask | NSLeftMouseDraggedMask)];
         point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
-        
+		
 		[view moveMouseRulerMarkerWithEvent:theEvent];
 		
 		if(canConvert){
 			point = [view pointSnapedToGrid:point];
-			//			point = [view canevasCoordinatesFromViewCoordinates:point];
+			point = [view canevasCoordinatesFromViewCoordinates:point];
 		}
 	    
 		p = point;
 		p.x -= _bounds.origin.x;
-		p.x /= [self zoom];
 		p.y -= _bounds.origin.y;
-		p.y /= [self zoom];
 		
 		if(pointFlag == 1){
 			if(editRadius){
@@ -966,6 +970,11 @@ static NSImage *__greenKnob = nil;
 	return NSMakePoint(NSNotFound,NSNotFound);	
 }   
 
+- (BOOL)isNaN
+{
+	return isnan(_bounds.origin.x) || isnan(_bounds.origin.y) || isnan(_bounds.size.width) || isnan(_bounds.size.height);
+}
+
 #pragma mark Updating Shape
 - (void)updateShape
 {
@@ -981,9 +990,6 @@ static NSImage *__greenKnob = nil;
 
 - (void)updateBounds
 {
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 }
 
 - (void)strokeUpdated
@@ -1032,7 +1038,8 @@ BOOL DBPointIsOnKnobAtPointZoom(NSPoint point, NSPoint knobCenter, float zoom)
 	if(zoom == 0.0){
 		zoom = 1.0;
 	}
-	return (sqrt(pow(point.x-knobCenter.x,2)+pow(point.y-knobCenter.y,2)) <= 4/zoom);
+	float d = pow(point.x-knobCenter.x,2)+pow(point.y-knobCenter.y,2);
+	return (d <= (4*zoom)*(4*zoom));
 }
 
 static double distanceBetween(NSPoint a, NSPoint b)

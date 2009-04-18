@@ -244,9 +244,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	_bounds = [_path bounds];
 	_boundsSize = _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 
 	[_fill updateFillForPath:_path];
 	[_stroke updateStrokeForPath:_path]; 
@@ -275,7 +272,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		point = [view pointSnapedToGrid:point];
 		point = [view canevasCoordinatesFromViewCoordinates:point];
 	}
-	
+
 	for( i = 0; i < _pointCount; i++ )
 	{    
 		p = _points[i];
@@ -697,6 +694,10 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 - (BOOL)hitTest:(NSPoint)point
 {
 	BOOL test;
+
+	if([self isNaN]){
+		return NO;		
+	}
 	
 	test = [_path containsPoint:point];
 	DBDrawingView *view = [[_layer layerController] drawingView];
@@ -705,9 +706,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		int i;
 		NSPoint p;
 		
-		if(view){
-			point = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:point];
-		}
 		
 		for( i = 0; i < _pointCount; i++ )
 		{    
@@ -789,10 +787,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 - (void)updateBounds
 {
 	_bounds = [_path bounds]; 
-	_boundsSize= _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 }   
 
 - (void)strokeUpdated
@@ -810,7 +804,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	NSPoint rotatedPoint;
 	NSPoint rotationCenter;
 	
-	rotationCenter = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:_boundsCenter];
+	rotationCenter = [self rotationCenter];
 	
 	// convert in radian
 	deltaRot = (M_PI/180)*deltaRot;
@@ -858,8 +852,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
    	
 	[self updatePath];
 	_bounds = [_path bounds];
-	_boundsCenter.x += deltaX;
-	_boundsCenter.y += deltaY;
 }
 
 - (int)resizeByMovingKnob:(int)knob fromPoint:(NSPoint)fromPoint toPoint:(NSPoint)point inView:(DBDrawingView *)view modifierFlags:(unsigned int)flags
@@ -924,7 +916,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	NSRect oldRect;
 	
 	oldRect = [_path bounds];
-	oldRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:oldRect.origin];
 	
 	int i;
 	NSPoint p;
@@ -933,8 +924,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	xFactor = newRect.size.width / oldRect.size.width; 
 	yFactor = newRect.size.height / oldRect.size.height;
     
-	newRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:newRect.origin];
-
     for( i = 0; i < _pointCount; i++ )
  	{    
  		p = _points[i];

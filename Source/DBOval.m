@@ -130,8 +130,6 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	
 	[self updatePath];
 	_bounds = [_path bounds];
-	_boundsCenter.x += deltaX;
-	_boundsCenter.y += deltaY;
 }
 
 - (int)resizeByMovingKnob:(int)knob fromPoint:(NSPoint)fromPoint toPoint:(NSPoint)point inView:(DBDrawingView *)view modifierFlags:(unsigned int)flags
@@ -149,7 +147,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)rotate:(float)deltaRot
 {
-	NSPoint rotationCenter = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:_boundsCenter];
+	NSPoint rotationCenter = [self rotationCenter];
 	deltaRot = (M_PI/180)*deltaRot;
 	               
 	_point1=rotatePoint(_point1,rotationCenter,deltaRot);
@@ -208,15 +206,12 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	NSRect oldRect;
 	
 	oldRect = [_path bounds];
-	oldRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:oldRect.origin];
 	
 	float xFactor, yFactor;
 	
 	xFactor = newRect.size.width / oldRect.size.width; 
 	yFactor = newRect.size.height / oldRect.size.height;
     
-	newRect.origin = [[[[self layer] layerController] drawingView] canevasCoordinatesFromViewCoordinates:newRect.origin];
-
 	_point1 = resizePoint(_point1,oldRect.origin, newRect.origin, xFactor, yFactor);
 	_point2 = resizePoint(_point2,oldRect.origin, newRect.origin, xFactor, yFactor);
 	_point3 = resizePoint(_point3,oldRect.origin, newRect.origin, xFactor, yFactor);
@@ -257,6 +252,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	}else{
 		zoom = 1.0f;
 	}
+	zoom = 1.0;
 	
 //	rect.size = NSMakeSize(distanceBetween(_point2, _point1), distanceBetween(_point2, _point3));
 	rect.size = NSMakeSize(zoom*distanceBetween(_point2, _point1), zoom*distanceBetween(_point2, _point3));
@@ -295,10 +291,6 @@ static double distanceBetween(NSPoint a, NSPoint b)
 - (void)updateBounds
 {
 	_bounds = [_path bounds]; 
-	_boundsSize= _bounds.size;
-	_boundsCenter = _bounds.origin;
-	_boundsCenter.x += _boundsSize.width/2;
-	_boundsCenter.y += _boundsSize.height/2;
 }   
 
 - (void)strokeUpdated
@@ -312,6 +304,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	BOOL test;
 	NSPoint p;
+
+	if([self isNaN]){
+		return NO;		
+	}
+	
 	DBDrawingView *view = [[_layer layerController] drawingView];
 	test = [_path containsPoint:point];
 	

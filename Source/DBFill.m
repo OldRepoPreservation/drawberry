@@ -148,14 +148,11 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 		}else{
 			//[_gradient drawInBezierPath:path relativeCenterPosition:NSZeroPoint];
 			NSAffineTransform *translation= [NSAffineTransform transform];
-			NSAffineTransform *scale = [NSAffineTransform transform];
-			[scale scaleBy:[_shape zoom]];
 			[translation translateXBy:[_shape bounds].origin.x yBy:[_shape bounds].origin.y];
 
 			[NSGraphicsContext saveGraphicsState];
 			[path addClip];
 			[translation concat];
-			[scale concat];
 			
 //			[_gradient drawFromCenter:_grdStartingPoint radius:_grdBeginRadius toCenter:_grdEndingPoint radius:40.0 options:0];
 			[_gradient drawFromCenter:_grdStartingPoint radius:_grdStartingRadius toCenter:_grdEndingPoint radius:_grdEndingRadius options:(NSGradientDrawsBeforeStartingLocation | NSGradientDrawsAfterEndingLocation)];
@@ -219,13 +216,16 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 		newSize.height = originalSize.height*multiplicationFactor;
    	}else if(_imageFillMode == DBDrawMode){
 		newSize = originalSize;
-		newSize.width *= [_shape zoom];
-		newSize.height *= [_shape zoom];
+//		newSize.width *= [_shape zoom];
+//		newSize.height *= [_shape zoom];
    	}
 		
-	drawPoint.x = floor(_imageDrawPoint.x*[_shape zoom] - newSize.width/2);
-	drawPoint.y = floor(_imageDrawPoint.y*[_shape zoom] - newSize.height/2);
-
+	drawPoint.x = floor(_imageDrawPoint.x - newSize.width/2);
+	drawPoint.y = floor(_imageDrawPoint.y - newSize.height/2);
+	
+//	drawPoint.x = floor(_imageDrawPoint.x*[_shape zoom] - newSize.width/2);
+//	drawPoint.y = floor(_imageDrawPoint.y*[_shape zoom] - newSize.height/2);
+	
 	[at translateXBy:-[_shape bounds].origin.x yBy:-[_shape bounds].origin.y];
 	
 	_maskImage = [[NSImage alloc] initWithSize:[_shape bounds].size];
@@ -275,16 +275,8 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 
 - (void)resetImageDrawPoint
 {
-/*	if(_imageFillMode == DBStretchMode){
-		_imageDrawPoint.x = ([_shape bounds].size.width)/2;
-		_imageDrawPoint.y = ([_shape bounds].size.height)/2;
-	}else if(_imageFillMode == DBFillPathMode ){	
-		_imageDrawPoint.x = ([_shape bounds].size.width)/2;
-		_imageDrawPoint.y = ([_shape bounds].size.height)/2;
-	}
-*/	
-	_imageDrawPoint.x = ([_shape bounds].size.width/[_shape zoom])/2;
-	_imageDrawPoint.y = ([_shape bounds].size.height/[_shape zoom])/2;	
+	_imageDrawPoint.x = ([_shape bounds].size.width)/2;
+	_imageDrawPoint.y = ([_shape bounds].size.height)/2;	
 }   
 
 - (void)resizeFillFromSize:(NSSize)oldSize toSize:(NSSize)newSize

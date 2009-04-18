@@ -205,10 +205,31 @@
 		DBDrawGridWithPropertiesInRect([self gridSpacing]*_zoom,[self gridTickCount],[self gridColor], intersectionRect, NSMakePoint(_canevasRect.origin.x+0.5,_canevasRect.origin.y+0.5));
 	}
 	
+	[NSGraphicsContext saveGraphicsState];
+	NSAffineTransform *zoomTrsfm, *translateTrsfm;
+	zoomTrsfm = [NSAffineTransform transform];
+	translateTrsfm = [NSAffineTransform transform];
+
+	[translateTrsfm translateXBy:_canevasRect.origin.x yBy:_canevasRect.origin.y];
+	[zoomTrsfm scaleBy:_zoom];
+	
+	[translateTrsfm concat];
+	[zoomTrsfm concat];
+	
+	NSRect drawingRect;
+	
+	drawingRect = rect;
+	drawingRect.origin.x -= _canevasRect.origin.x;
+	drawingRect.origin.y -= _canevasRect.origin.y;
+	drawingRect.origin.x /= [self zoom];
+	drawingRect.origin.y /= [self zoom];
+	drawingRect.size.width /= [self zoom];
+	drawingRect.size.height /= [self zoom];
+	
 	if([[DBMagnifyingController sharedMagnifyingView] isDrawingSource]){
-		[[self layerController] drawDirectlyLayersInRect:intersectionRect];
+		[[self layerController] drawDirectlyLayersInRect:drawingRect];
 	}else{
-		[[self layerController] drawLayersInRect:intersectionRect];
+		[[self layerController] drawLayersInRect:drawingRect];
 	}      
 	
 	if(!_isExporting){
@@ -229,6 +250,9 @@
 		[_selectionRectShapes makeObjectsPerformSelector:@selector(drawBounds)];
 		[_selectionRectShapes makeObjectsPerformSelector:@selector(displaySelectionKnobs)];		
 	}
+	[NSGraphicsContext restoreGraphicsState];
+
+
 }
 
 - (void)_drawCanevasBackgroundInRect:(NSRect)rect
@@ -417,8 +441,8 @@
 		_zoom = newZoom;
 		[self updateFrameOrigin]; 
 		[self updateCanevasOrigin]; 
-		[[self layerController] updateLayersAndShapes];
-		[[self layerController] updateShapesBounds];
+//		[[self layerController] updateLayersAndShapes];
+//		[[self layerController] updateShapesBounds];
 		[self setNeedsDisplay:YES];
 	}
 }
@@ -545,13 +569,13 @@
 		DBShape * shape;
 
 		while((shape = [e nextObject])){
-			[shape moveByX:dX/_zoom byY:dY/_zoom];
+			[shape moveByX:dX byY:dY];
 		}                             
 		
 		
 		[[self selectedShapesLayers] makeObjectsPerformSelector:@selector(updateRenderInView:) withObject:self];
 		[[self layerController] updateDependentLayers:[[self selectedShapesLayers] objectAtIndex:0]];
-	    
+	    [self setNeedsDisplay:YES];
 		NSPoint translactionVector;
 		translactionVector.x = -dX;
 		translactionVector.y = -dY;
@@ -647,7 +671,7 @@
 - (void)selectAndTrackMouseWithEvent:(NSEvent *)theEvent
 {
 	NSPoint p = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	
+	p = [self canevasCoordinatesFromViewCoordinates:p];
    	DBShape *shapeUnderMouse;
 	shapeUnderMouse = [[self layerController] hitTest:p];
 
@@ -783,6 +807,7 @@
 	_selectionRectShapes = nil;
 	
 	originLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+	originLoc = [self canevasCoordinatesFromViewCoordinates:originLoc];
 	currentLoc = originLoc;
 
 	[self moveHorizMouseRulerMarkerToLocation:-256e6];
@@ -791,7 +816,7 @@
 	while(YES){
 		theEvent = [[self window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
         currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        
+        currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
 		NSRect newSelectionRect;
 		
 		newSelectionRect = DBRectWithPoints(originLoc, currentLoc);
@@ -800,12 +825,12 @@
 		_selectionRectShapes = [[self shapesInRect:_selectionRect] retain];
 		
 		p = NSMakePoint(NSMinX(_selectionRect),NSMinY(_selectionRect));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setLeftMarkerLocation:p.x];
 		[self setUpMarkerLocation:p.y];
 
 		p = NSMakePoint(NSMaxX(_selectionRect),NSMaxY(_selectionRect));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setRightMarkerLocation:p.x];
 		[self setDownMarkerLocation:p.y];
 		
@@ -868,12 +893,12 @@
 	
 	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	upleftCorner = [[_selectedShapes objectAtIndex:0] pointForKnob:UpperLeftKnob];
+	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
 
 	originOffset = NSMakePoint(previousLoc.x - upleftCorner.x, previousLoc.y - upleftCorner.y);
 
-	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
 	originLoc = previousLoc;
-	upleftCorner = [self canevasCoordinatesFromViewCoordinates:upleftCorner];
+//	upleftCorner = [self canevasCoordinatesFromViewCoordinates:upleftCorner];
 	
 	didMove = NO;
 	isEditable = YES;
@@ -894,13 +919,14 @@
 
 	   	currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         
+		currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
+
 		currentLoc.x -= originOffset.x;
 		currentLoc.y -= originOffset.y;
 		currentLoc = [self pointSnapedToGrid:currentLoc];
 		currentLoc.x += originOffset.x;
 		currentLoc.y += originOffset.y;
 		
-		currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
 		
 		deltaX = currentLoc.x - previousLoc.x;
 		deltaY = currentLoc.y - previousLoc.y;
@@ -918,8 +944,8 @@
 				[shape moveByX:deltaX byY:deltaY];
 			}
 			didMove = YES;
-			enclosingRect.origin.x += deltaX*_zoom;
-			enclosingRect.origin.y += deltaY*_zoom;
+			enclosingRect.origin.x += deltaX/**_zoom*/;
+			enclosingRect.origin.y += deltaY/**_zoom*/;
 //			[[self selectedShapesLayers] makeObjectsPerformSelector:@selector(updateRenderInView:) withObject:self];
 			[self setNeedsDisplay:YES];	
 		}
@@ -927,17 +953,17 @@
 		[[self layerController] updateDependentLayers:[[self selectedShapesLayers] objectAtIndex:0]];
 		
 		p = NSMakePoint(NSMinX(enclosingRect),NSMinY(enclosingRect));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setLeftMarkerLocation:p.x];
 		[self setUpMarkerLocation:p.y];
 
 		p = NSMakePoint(NSMaxX(enclosingRect),NSMaxY(enclosingRect));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setRightMarkerLocation:p.x];
 		[self setDownMarkerLocation:p.y];
 		
 		p = NSMakePoint(NSMinX(enclosingRect)+NSWidth(enclosingRect)/2.0,NSMinY(enclosingRect)+NSHeight(enclosingRect)/2.0);
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self moveHorizMouseRulerMarkerToLocation:p.x];
 		[self moveVertMouseRulerMarkerToLocation:p.y];
 		
@@ -990,8 +1016,11 @@
 	NSAutoreleasePool *pool;
 	int originKnob;
 	   
-	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];	
+	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	previousLoc = [self pointSnapedToGrid:previousLoc];
+
+	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
+
 	currentLoc = previousLoc;
 	originLoc = currentLoc;
 	
@@ -1007,7 +1036,8 @@
 		currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 				
 		currentLoc = [self pointSnapedToGrid:currentLoc];
-        
+		currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
+
 		knob = [selectedShape resizeByMovingKnob:knob fromPoint:previousLoc toPoint:currentLoc inView:self modifierFlags:[theEvent modifierFlags]];
 		[self setNeedsDisplay:YES];
 		previousLoc = currentLoc;
@@ -1016,17 +1046,17 @@
 		
 		shapeBounds = [selectedShape bounds];
 		p = NSMakePoint(NSMinX(shapeBounds),NSMinY(shapeBounds));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setLeftMarkerLocation:p.x];
 		[self setUpMarkerLocation:p.y];
 
 		p = NSMakePoint(NSMaxX(shapeBounds),NSMaxY(shapeBounds));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setRightMarkerLocation:p.x];
 		[self setDownMarkerLocation:p.y];
 		
 		p = NSMakePoint(NSMinX(shapeBounds)+NSWidth(shapeBounds)/2.0,NSMinY(shapeBounds)+NSHeight(shapeBounds)/2.0);
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self moveHorizMouseRulerMarkerToLocation:p.x+24.0];
 		[self moveVertMouseRulerMarkerToLocation:p.y];
 		
@@ -1065,6 +1095,7 @@
 	NSAutoreleasePool *pool; 
 
 	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
 	currentLoc = previousLoc;
 	
 	if([_selectedShapes count] > 0)
@@ -1082,7 +1113,8 @@
 		
 		theEvent = [[self window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
 		currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-		               
+		currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
+               
 		angle = DBAngleBetweenPoints([selectedShape rotationCenter],previousLoc,currentLoc);
 		[selectedShape setRotation:[selectedShape rotation]+angle*(180/M_PI)];
 		
@@ -1091,17 +1123,17 @@
 
 		shapeBounds = [selectedShape bounds];
 		p = NSMakePoint(NSMinX(shapeBounds),NSMinY(shapeBounds));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setLeftMarkerLocation:p.x];
 		[self setUpMarkerLocation:p.y];
 
 		p = NSMakePoint(NSMaxX(shapeBounds),NSMaxY(shapeBounds));
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self setRightMarkerLocation:p.x];
 		[self setDownMarkerLocation:p.y];
 		
 		p = NSMakePoint(NSMinX(shapeBounds)+NSWidth(shapeBounds)/2.0,NSMinY(shapeBounds)+NSHeight(shapeBounds)/2.0);
-		p = [self rulerLocationWithPoint:p];
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
 		[self moveHorizMouseRulerMarkerToLocation:p.x+24.0];
 		[self moveVertMouseRulerMarkerToLocation:p.y];
 		
@@ -1460,11 +1492,11 @@
 
 - (NSPoint)viewCoordinatesFromCanevasCoordinates:(NSPoint)point
 {
-	point.x *= _zoom;
-	point.y *= _zoom;
+//	point.x *= _zoom;
+//	point.y *= _zoom;
 	
-   	point.x += _canevasRect.origin.x;
-	point.y += _canevasRect.origin.y;
+//  point.x += _canevasRect.origin.x;
+//	point.y += _canevasRect.origin.y;
 	
 	return point;
 }   
@@ -1473,8 +1505,8 @@
 {
 	if((_snapToGrid && !([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) ) 
 	|| (!_snapToGrid && ([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) )){
-		point.x = _zoom*(floor(((point.x/_zoom - _canevasRect.origin.x) / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) + (_canevasRect.origin.x));
-    	point.y = _zoom*(floor(((point.y/_zoom - _canevasRect.origin.y) / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) + (_canevasRect.origin.y));
+		point.x = /*_zoom**/(floor(((point.x/*/_zoom*/ - _canevasRect.origin.x) / (_zoom*_gridSpacing/_gridTickCount)) + 0.5) * (_zoom*_gridSpacing/_gridTickCount) + (_canevasRect.origin.x));
+    	point.y = /*_zoom**/(floor(((point.y/*/_zoom*/ - _canevasRect.origin.y) / (_zoom*_gridSpacing/_gridTickCount)) + 0.5) * (_zoom*_gridSpacing/_gridTickCount) + (_canevasRect.origin.y));
 	}
 
 	return point;

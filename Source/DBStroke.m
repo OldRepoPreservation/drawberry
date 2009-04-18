@@ -646,6 +646,20 @@
 	[at release];
 }
 
+-(void)strokePathShadow:(NSBezierPath *)drawPath
+{
+	NSColor *setColor;
+	
+	setColor = [[self strokeColor] retain];
+	
+	_strokeColor = [[NSColor colorWithDeviceWhite:0.0 alpha:0.0001] retain];
+	
+	[self strokePath:drawPath];
+	
+	[_strokeColor release];
+	_strokeColor = setColor;
+
+}
 #pragma mark As part of BezierPlacement Protocol
 
 // comes from the DrawKit Framework

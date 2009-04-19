@@ -85,9 +85,10 @@ static DBInspectorController *_sharedInspectorController = nil;
 	[_objectInspector updateWindowPosition];
 
     
-	[_fillGradientWell bind:@"gradient" toObject:_fillController withKeyPath:@"selection.gradient" options:nil];
-	[_fillGradientWell bind:@"gradientAngle" toObject:_fillController withKeyPath:@"selection.gradientAngle" options:nil];
-	[_fillGradientWell bind:@"gradientType" toObject:_fillController withKeyPath:@"selection.gradientType" options:nil];
+	[_fillGradientWell bind:@"gradient" toObject:_fillsController withKeyPath:@"selection.gradient" options:nil];
+	[_fillGradientWell bind:@"gradientAngle" toObject:_fillsController withKeyPath:@"selection.gradientAngle" options:nil];
+	[_fillGradientWell bind:@"gradientType" toObject:_fillsController withKeyPath:@"selection.gradientType" options:nil];
+	
 	
 	[_shadowControl bind:@"shadowOffsetWidth" toObject:_shadowController withKeyPath:@"selection.shadowOffsetWidth" options:nil];
 	[_shadowControl bind:@"shadowOffsetHeight" toObject:_shadowController withKeyPath:@"selection.shadowOffsetHeight" options:nil];
@@ -162,7 +163,7 @@ static DBInspectorController *_sharedInspectorController = nil;
 	if(result == NSOKButton){
 		NSImage *image = [[NSImage alloc] initByReferencingFile:[[op filenames] objectAtIndex:0] ];
 		[_fillImageView setImage:image];
-		[[_fillController content] setValue:image forKey:@"fillImage"];
+		[[[_fillsController selectedObjects] objectAtIndex:0] setValue:image forKey:@"fillImage"];
 		[image release];
 	}
 	
@@ -174,7 +175,8 @@ static DBInspectorController *_sharedInspectorController = nil;
 					   context:(void *)context
 {
 	if([keyPath isEqualTo:@"gradient"]){
-		[[_fillController content] setGradient:[_fillGradientWell gradient]];
+		if([[_fillsController selectedObjects] count] >0 )
+			[[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[_fillGradientWell gradient]];
 //		[[_fillController content] setGradientAngle:[_fillGradientWell gradientAngle]];
 	}else if([keyPath isEqualTo:@"gradientAngle"]){
 //		[[_fillController content] setGradientAngle:[_fillGradientWell gradientAngle]];
@@ -209,8 +211,8 @@ static DBInspectorController *_sharedInspectorController = nil;
 
 - (IBAction)takeGradientFrom:(id)sender
 {
-	[[_fillController content] setGradient:[_fillGradientWell gradient]];
-	[[_fillController content] setGradientAngle:-[(GPGradientWell *) _fillGradientWell gradientAngle]];
-	[[_fillController content] setGradientType:[(GPGradientWell *) _fillGradientWell gradientType]];
+	[[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[_fillGradientWell gradient]];
+	[[[_fillsController selectedObjects] objectAtIndex:0] setGradientAngle:-[(GPGradientWell *) _fillGradientWell gradientAngle]];
+	[[[_fillsController selectedObjects] objectAtIndex:0] setGradientType:[(GPGradientWell *) _fillGradientWell gradientType]];
 }
 @end

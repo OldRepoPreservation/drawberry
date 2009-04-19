@@ -7,6 +7,7 @@
 //
 
 #import "DBFill.h"
+#import "DBDrawingView.h"
 
 #import "DBShape.h"
 
@@ -38,6 +39,14 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
     return sharedLM;
 }
 
+static double distanceBetween(NSPoint a, NSPoint b)
+{
+	float dx = a.x - b.x;
+	float dy = a.y - b.y;
+	
+	return sqrt (dx * dx + dy * dy);
+}
+
 @implementation DBFill
 
 #pragma mark Initializations & Co
@@ -48,26 +57,36 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	[self setKeys:[NSArray arrayWithObject:@"fillMode"] triggerChangeNotificationsForDependentKey:@"needsGradient"];
 }
 
-- (id)initWithShape:(DBShape *)shape
+- (id)init
 {
 	self = [super init];
-	                                           
-	_shape = shape;
-	_fillMode = 0;
+	
+	_fillName = [[NSString alloc] initWithString:NSLocalizedString(@"Fill",nil)];
+	_fillMode = 1;
 	_imageFillMode = 100;
 	_fillColor = [[NSColor whiteColor] retain];            
 	_fillImage = nil;
-
+	
 	//_gradient = [[GCGradient gradientWithStartingColor:[NSColor blackColor] endingColor:[NSColor whiteColor]] retain];
 	_gradient = [[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[NSColor whiteColor]];
 	[self resetImageDrawPoint];
 	[self resetGradientPoints];
 	
+	return self;	
+}
+
+- (id)initWithShape:(DBShape *)shape
+{
+	self = [self init];
+	                                           
+	_shape = shape;
+
 	return self;
 }
 
 - (void)dealloc
 {
+	[_fillName release];
 	[_fillColor release];
 	[_fillImage release];
 	[_fillCache release];
@@ -99,6 +118,8 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 {
 	self = [super init];                     
 	
+	_fillName = [[decoder decodeObjectForKey:@"Fill Name"] retain];
+	
 	_fillMode = [decoder decodeIntForKey:@"Fill Mode"];            
 	_imageFillMode = [decoder decodeIntForKey:@"Image Fill Mode"];            
 	_fillColor = [[decoder decodeObjectForKey:@"Fill Color"] retain]; 
@@ -118,6 +139,8 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
+	[encoder encodeObject:_fillName forKey:@"Fill Name"];
+	
 	[encoder encodeInt:_fillMode forKey:@"Fill Mode"];
 	[encoder encodeInt:_imageFillMode forKey:@"Image Fill Mode"]; 
 	[encoder encodeObject:_fillColor forKey:@"Fill Color"];
@@ -292,6 +315,17 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 }
  
 #pragma mark Accessors
+
+- (NSString *)fillName
+{
+	return _fillName;
+}
+- (void)setFillName:(NSString *)aName
+{
+	[aName retain];
+	[_fillName release];
+	_fillName = aName;
+}
 
 - (int)fillMode
 {
@@ -486,7 +520,6 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 
 - (void)setShape:(DBShape *)newShape
 {
-	[_shape setStroke:nil];
 	_shape = newShape;
    	[_shape strokeUpdated];
 } 
@@ -496,4 +529,250 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	return [_shape path];
 }
 
+
+#pragma mark Display Knobs & Tracking Mouse
+
+- (void)displayKnobs
+{
+	NSPoint p;
+	NSRect bounds;
+	
+	bounds = [[self shape] bounds];
+	
+	if(([self fillMode] == DBImageFillMode && [self imageFillMode] == DBDrawMode) ){
+		p = [self imageDrawPoint];
+		//		p.x *= [self zoom];
+		p.x += bounds.origin.x;
+		//		p.y *= [self zoom];
+		p.y += bounds.origin.y;
+		
+		[DBShape drawGreenKnobAtPoint:p];
+	}	
+	
+	if([self fillMode] == DBGradientFillMode && [self gradientType] == GPRadialType){
+		NSBezierPath *path;
+		
+		p = [self gradientStartingPoint];
+		//		p.x *= [self zoom];
+		p.x += bounds.origin.x;
+		//		p.y *= [self zoom];
+		p.y += bounds.origin.y;
+		
+		[DBShape drawOrangeKnobAtPoint:p];
+		
+		path = [NSBezierPath bezierPath];
+		[path appendBezierPathWithArcWithCenter:p radius:[self gradientStartingRadius] startAngle:0 endAngle:360];
+		
+		[path setLineWidth:2.0];
+		[[NSColor yellowColor] set];
+		[path stroke];
+		[path setLineWidth:0.75];
+		[[NSColor orangeColor] set];
+		[path stroke];
+		
+		p = [self gradientEndingPoint];
+		//		p.x *= [self zoom];
+		p.x += bounds.origin.x;
+		//		p.y *= [self zoom];
+		p.y += bounds.origin.y;
+		
+		[DBShape drawOrangeKnobAtPoint:p];
+		
+		path = [NSBezierPath bezierPath];
+		[path appendBezierPathWithArcWithCenter:p radius:[self gradientEndingRadius] startAngle:0 endAngle:360];
+		
+		[path setLineWidth:2.0];
+		[[NSColor yellowColor] set];
+		[path stroke];
+		[path setLineWidth:0.75];
+		[[NSColor orangeColor] set];
+		[path stroke];
+		
+	}	
+}
+- (BOOL)trackMouseWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+{
+	if([self fillMode] == DBGradientFillMode)
+		return [self changeGradientWithEvent:(NSEvent *)theEvent inView:view];
+	if(!([self fillMode] == DBImageFillMode && [self imageFillMode] == DBDrawMode))
+		return NO;
+
+	NSPoint point, p;
+	BOOL canConvert;
+	NSRect bounds;
+	NSAutoreleasePool *pool;     
+	
+	canConvert = [view isKindOfClass:[DBDrawingView class]];
+	
+	point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+	
+	
+	if(canConvert){
+		point = [view pointSnapedToGrid:point];
+		point = [view canevasCoordinatesFromViewCoordinates:point];
+	}
+	
+	bounds = [[self shape] bounds];
+	p = [self imageDrawPoint];
+	p.x += bounds.origin.x;
+	p.y += bounds.origin.y;
+	
+	if(!DBPointIsOnKnobAtPoint(point,p)){
+		return NO;
+	}
+	
+	[[self shape] setIsEditing:YES];
+	
+	while(YES){
+		pool = [[NSAutoreleasePool alloc] init];
+		
+		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseUpMask | NSLeftMouseDraggedMask)];
+        point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+        
+		[view moveMouseRulerMarkerWithEvent:theEvent];
+		
+		if(canConvert){
+			point = [view pointSnapedToGrid:point];
+			point = [view canevasCoordinatesFromViewCoordinates:point];
+		}
+	    
+		p = point;
+		p.x -= bounds.origin.x;
+		p.y -= bounds.origin.y;
+		
+		[self setImageDrawPoint:p];
+		//		[_layer updateRenderInView:nil];
+		
+		
+		[pool release];
+	   	if([theEvent type] == NSLeftMouseUp)
+		{
+			break;
+		}
+	}
+	[[self shape] setIsEditing:NO];
+	
+	[[[self shape] layer] updateRenderInView:nil];
+	
+	return YES;
+}
+
+- (BOOL)changeGradientWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+{
+	if(![self gradientType] == GPRadialType)
+	{
+		return NO;
+	}
+	NSPoint point, p;
+	NSRect bounds;
+	BOOL canConvert;
+	NSAutoreleasePool *pool;
+	int pointFlag;
+	BOOL editRadius;
+	
+	float d1, d2;
+	
+	canConvert = [view isKindOfClass:[DBDrawingView class]];
+	
+	point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+	
+	if(canConvert){
+		point = [view pointSnapedToGrid:point];
+		point = [view canevasCoordinatesFromViewCoordinates:point];
+	}
+	
+	
+	pointFlag = 0;
+	editRadius = NO;
+
+	bounds = [[self shape] bounds];
+	p = [self gradientStartingPoint];
+	p.x += bounds.origin.x;
+	p.y += bounds.origin.y;
+	
+	d1 = distanceBetween(p, point);
+	
+	if(DBPointIsOnKnobAtPoint(point,p)){
+		pointFlag = 1;
+		
+		if([theEvent modifierFlags] & NSShiftKeyMask){
+			editRadius = YES;
+		}
+	}else{
+		p = [self gradientEndingPoint];
+		p.x += bounds.origin.x;
+		p.y += bounds.origin.y;
+		
+		d2 = distanceBetween(p, point);
+		
+		if(DBPointIsOnKnobAtPoint(point,p)){
+			pointFlag = 2;
+			
+			if([theEvent modifierFlags] & NSShiftKeyMask){
+				editRadius = YES;
+			}
+			
+		}else{			
+			if(d1 <= [self gradientStartingRadius] + 1.5 && d1 >= [self gradientStartingRadius] - 1.5){
+				pointFlag = 1;
+				editRadius = YES;
+			}else if(d2 <= [self gradientEndingRadius] + 1.5 && d2 >= [self gradientEndingRadius] - 1.5){
+				pointFlag = 2;
+				editRadius = YES;
+			}else{
+				pointFlag = 0;
+				return NO;
+			}
+			
+		}
+	}
+	
+	
+	
+	[[self shape] setIsEditing:YES];
+	
+	while(YES){
+		pool = [[NSAutoreleasePool alloc] init];
+		
+		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseUpMask | NSLeftMouseDraggedMask)];
+        point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+		
+		[view moveMouseRulerMarkerWithEvent:theEvent];
+		
+		if(canConvert){
+			point = [view pointSnapedToGrid:point];
+			point = [view canevasCoordinatesFromViewCoordinates:point];
+		}
+	    
+		p = point;
+		p.x -= bounds.origin.x;
+		p.y -= bounds.origin.y;
+		
+		if(pointFlag == 1){
+			if(editRadius){
+				[self setGradientStartingRadius:distanceBetween(p, [self gradientStartingPoint])];
+			}else{
+				[self setGradientStartingPoint:p];
+			}
+		}else{
+			if(editRadius){
+				[self setGradientEndingRadius:distanceBetween(p, [self gradientEndingPoint])];
+			}else{
+				[self setGradientEndingPoint:p];
+			}
+		}
+		
+		
+		[pool release];
+	   	if([theEvent type] == NSLeftMouseUp)
+		{
+			break;
+		}
+	}
+	[[self shape] setIsEditing:NO];
+	
+	[[[self shape] layer] updateRenderInView:nil];
+	
+	return YES;	
+}
 @end

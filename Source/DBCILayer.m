@@ -175,7 +175,7 @@
 	for( i = 0; i < count; i++ )
    	{
 		p = DBPointForCIFilterPoint(points[i]);
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		[DBShape drawBlueKnobAtPoint:p];
 	}
 }
 
@@ -188,6 +188,7 @@
 	
 	canConvert = [view isKindOfClass:[DBDrawingView class]];
 	mouseLocation = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+	mouseLocation = [view canevasCoordinatesFromViewCoordinates:mouseLocation];
 	
 	ciPoint = [_filterStack filterPointUnderPoint:mouseLocation];
 	
@@ -203,6 +204,7 @@
 		
 		if(canConvert){
 			mouseLocation = [view pointSnapedToGrid:mouseLocation];
+			mouseLocation = [view canevasCoordinatesFromViewCoordinates:mouseLocation];
 		}
 		
 		DBSetCIFilterPoint(ciPoint, mouseLocation);

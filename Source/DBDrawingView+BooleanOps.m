@@ -66,7 +66,7 @@
 	
 	result = [[DBBezierCurve alloc] initWithPath:rp];
 	[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
-	[result setFill:[[[(DBShape *)[sel lastObject] fill] copy] autorelease] ];
+	[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 	
 	[self replaceShapes:sel byShape:result actionName:@"Union"];
     
@@ -141,7 +141,7 @@
 	        
 			result = [[DBBezierCurve alloc] initWithPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
-			[result setFill:[[[(DBShape *)[sel lastObject] fill] copy] autorelease] ];
+			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 
 			[self replaceShapes:sel byShape:result actionName:@"Diff"];
 
@@ -204,7 +204,7 @@
 		{	        
 			result = [[DBBezierCurve alloc] initWithPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
-			[result setFill:[[[(DBShape *)[sel lastObject] fill] copy] autorelease] ];
+			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 
 			[self replaceShapes:sel byShape:result actionName:@"Intersection"];
 
@@ -251,7 +251,7 @@
 		{	        
 			result = [[DBBezierCurve alloc] initWithPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
-			[result setFill:[[[(DBShape *)[sel lastObject] fill] copy] autorelease] ];
+			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 
 			[self replaceShapes:sel byShape:result actionName:@"XOR"];
 

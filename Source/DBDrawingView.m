@@ -692,7 +692,7 @@
 		}
 	}
 	
-	//	NSLog(@"shapeUnderMouse %@", shapeUnderMouse);
+	//NSLog(@"shapeUnderMouse %@", shapeUnderMouse);
  
    	if(shapeUnderMouse && knob == NoKnob){
 	   	

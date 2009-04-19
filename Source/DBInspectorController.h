@@ -38,6 +38,7 @@
 	IBOutlet NSObjectController *_fillController;
 	IBOutlet NSObjectController *_strokeController;
 	IBOutlet NSObjectController *_shadowController;
+	IBOutlet NSArrayController *_fillsController;
 	IBOutlet NSControl *_fillGradientWell;
 	IBOutlet NSControl *_fillColorWell;
 	IBOutlet NSControl *_shadowControl;

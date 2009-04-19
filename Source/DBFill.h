@@ -25,7 +25,7 @@ typedef enum {
 	DBDrawMode = 102
 }DBFillImageMode;
 
-@class DBShape, DBTextContainer;
+@class DBShape, DBTextContainer,DBDrawingView;
 
 
 @interface DBFill : NSObject <NSCoding>{
@@ -49,10 +49,15 @@ typedef enum {
 	CGFloat _grdEndingRadius;
 
 	DBShape *_shape;
+	
+	NSString *_fillName;
 }
 - (id)initWithShape:(DBShape *)shape;
 - (DBShape *)shape;
 - (void)setShape:(DBShape *)aValue;
+
+- (NSString *)fillName;
+- (void)setFillName:(NSString *)aName;
 
 - (void)fillPath:(NSBezierPath *)path;
 - (void)updateFillForPath:(NSBezierPath *)path;
@@ -94,4 +99,7 @@ typedef enum {
 - (DBShape *)shape;
 - (void)setShape:(DBShape *)aValue;
 
+
+- (BOOL)trackMouseWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+- (BOOL)changeGradientWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
 @end

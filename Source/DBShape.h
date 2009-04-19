@@ -33,6 +33,8 @@ enum {
 	DBFill *_fill;
 	DBShadow *_shadow;
 	
+	NSMutableArray *_fills;
+	
 	NSRect _bounds;
 	NSPoint _boundsCenter;
 	NSSize _boundsSize;
@@ -41,13 +43,13 @@ enum {
 	BOOL	_isEditing;
 }
 
-+ (NSImage *)blueKnob;
-+ (NSImage *)grayKnob;
-+ (NSImage *)smallGrayKnob;
-+ (NSImage *)whiteKnob;
-+ (NSImage *)orangeKnob;    
-+ (NSImage *)greenKnob;
-+ (NSImage *)selectedGrayKnob;
++ (void)drawBlueKnobAtPoint:(NSPoint)pt;
++ (void)drawOrangeKnobAtPoint:(NSPoint)pt;
++ (void)drawGreenKnobAtPoint:(NSPoint)pt;
++ (void)drawWhiteKnobAtPoint:(NSPoint)pt;
++ (void)drawGrayKnobAtPoint:(NSPoint)pt;
++ (void)drawSelectedGrayKnobAtPoint:(NSPoint)pt;
+
 + (NSRect)enclosingRectForShapes:(NSArray *)shapes;
 
 - (void)drawInView:(NSView *)view rect:(NSRect)rect;
@@ -68,8 +70,15 @@ enum {
 
 - (DBStroke *)stroke;
 - (void)setStroke:(DBStroke *)newStroke;
-- (DBFill *)fill;
-- (void)setFill:(DBFill *)newFill;
+
+- (void)addFill:(DBFill *)aFill;
+- (void)insertFill:(DBFill *)aFill atIndex:(unsigned int)i;
+- (DBFill *)fillAtIndex:(unsigned int)i;
+- (unsigned int)indexOfFill:(DBFill *)aFill;
+- (void)removeFillAtIndex:(unsigned int)i;
+- (NSArray *)fills;
+- (void)setFills:(NSArray *)newFills;
+
 - (NSBezierPath *)path;
 - (NSRect)bounds;
 - (float)zoom;
@@ -91,6 +100,7 @@ enum {
 
 - (void)updateShape;
 - (void)updateFill;
+- (void)applyFillsToPath:(NSBezierPath *)path;
 - (void)updateBounds;
 - (void)strokeUpdated;
 

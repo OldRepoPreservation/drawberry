@@ -214,7 +214,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		}                          
 		
 		[self updatePath];
-		[_fill updateFillForPath:_path];
+		[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
         [_stroke updateStrokeForPath:_path];  
 
 		[view setNeedsDisplay:YES];
@@ -227,7 +227,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		}
 	}
 	
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 	[_layer updateRenderInView:nil];
 	[[[self layer] layerController] updateDependentLayers:[self layer]];
@@ -262,7 +262,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[self putPathInRect:_bounds];              
 	
 	[_stroke updateStrokeForPath:_path]; 
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 		
 	return newKnob;
 }
@@ -299,8 +299,8 @@ static double distanceBetween(NSPoint a, NSPoint b)
      
 	[_shadow set];
 	
+	[self applyFillsToPath:_path];
 	[[self stroke] strokePath:_path];
-	[[self fill] fillPath:_path];
 	
 	[NSGraphicsContext restoreGraphicsState];
 
@@ -319,19 +319,8 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		p = [(DBDrawingView *)view viewCoordinatesFromCanevasCoordinates:_radiusKnob];
 	}
 	
-	[[DBShape grayKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-	
-	
-/*	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
-		p = [_fill imageDrawPoint];
-		p.x *= [self zoom];
-		p.x += _bounds.origin.x;
-		p.y *= [self zoom];
-		p.y += _bounds.origin.y;
+	[DBShape drawGrayKnobAtPoint:p];
 		
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-	}*/
-	
 	[super displayEditingKnobs];
 }
 
@@ -438,7 +427,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)strokeUpdated
 {
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 	
 	[super strokeUpdated];

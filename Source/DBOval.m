@@ -139,7 +139,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	
 	[self putPathInRect:_bounds];
 	
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 		
 	return newKnob;
@@ -172,7 +172,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[NSGraphicsContext saveGraphicsState]; 
      
 	[_shadow set];
-	[[self fill] fillPath:_path];
+	[self applyFillsToPath:_path];
 	
 	[[self stroke] strokePath:_path];
 	[NSGraphicsContext restoreGraphicsState];
@@ -295,7 +295,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)strokeUpdated
 {
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 	[super strokeUpdated];
 }

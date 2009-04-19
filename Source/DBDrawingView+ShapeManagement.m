@@ -113,7 +113,7 @@ NSString *DBShapePboardType = @"ShapePboardType";
 		newShape = [newShapes objectAtIndex:i];
 		
 		[newShape setStroke:[shape stroke]];
-		[newShape setFill:[shape fill]];
+		[newShape setFills:[shape fills]];
 		
 		[[shape layer] replaceShape:shape byShape:newShape];		
    	}

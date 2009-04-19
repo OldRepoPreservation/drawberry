@@ -310,13 +310,18 @@
 	[rectShape updatePath];
 	[rectShape updateBounds];
 	
-	[[rectShape fill] setFillMode:DBImageFillMode];
-	[[rectShape fill] setImageFillMode:DBDrawMode];
-	[[rectShape fill] setFillImage:image];
+	DBFill *fill;
+	
+	fill = [[DBFill alloc] initWithShape:rectShape];
+	[rectShape addFill:fill];
+	
+	[[rectShape fillAtIndex:0] setFillMode:DBImageFillMode];
+	[[rectShape fillAtIndex:0] setImageFillMode:DBDrawMode];
+	[[rectShape fillAtIndex:0] setFillImage:image];
 	[[rectShape stroke] setStrokeMode:DBNoStrokeMode];
 	
+	[fill release];
 	[rectShape release];
-	
 
 	
 	[self updateRenderInView:[_layerController drawingView]];

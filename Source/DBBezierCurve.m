@@ -572,7 +572,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 				[self replacePoints:newPoints count:(_pointCount +1) insertion:YES];
 				
 				[self updatePath];
-				[_fill updateFillForPath:_path];
+				[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 				[_stroke updateStrokeForPath:_path]; 
 
 				[_layer updateRenderInView:view];
@@ -695,7 +695,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 			newSize = _bounds.size;
 		
 			[_fill resizeFillFromSize:previousSize toSize:newSize];
-			[_fill updateFillForPath:_path];
+			[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 
@@ -721,7 +721,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	
 	_bounds = [_path bounds];
 	
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:view];
@@ -895,7 +895,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[_oldPathFrag release];
 	_oldPathFrag = nil;
 
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -1019,7 +1019,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[NSGraphicsContext saveGraphicsState]; 
      
 	[_shadow set];
-	[[self fill] fillPath:_path];
+	[self applyFillsToPath:_path];
 	
 
 	[[self stroke] strokePath:_path];
@@ -1056,16 +1056,16 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 				p = [view viewCoordinatesFromCanevasCoordinates:p];
 			}
 		
-			[[DBShape whiteKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-		
+			[DBShape drawWhiteKnobAtPoint:p];
+			
 			p = _points[i].controlPoint2;
 			if(canConvert)
 			{
 				p = [view viewCoordinatesFromCanevasCoordinates:p];
 			}
 		
-			[[DBShape whiteKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-        }
+			[DBShape drawWhiteKnobAtPoint:p];
+		}
 		p = _points[i].point;
 		if(canConvert)
 		{
@@ -1073,9 +1073,9 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 		}
 		
 		if([self pointAtIndexIsSelected:i]){
-			[[DBShape selectedGrayKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+			[DBShape drawSelectedGrayKnobAtPoint:p];
 		}else{
-			[[DBShape grayKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+			[DBShape drawGrayKnobAtPoint:p];
 		}
    	
 	}
@@ -1250,7 +1250,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 
 - (void)strokeUpdated
 {
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[super strokeUpdated];
@@ -1313,7 +1313,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[self updatePath];
 	_bounds = [_path bounds];
 
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 }
@@ -1344,7 +1344,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[self updatePath];
 	_bounds = [_path bounds];
 	
-//	[_fill updateFillForPath:_path];
+//	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 }
@@ -1355,7 +1355,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	newKnob = [super resizeByMovingKnob:knob fromPoint:fromPoint toPoint:point inView:view modifierFlags:flags];  
 	
 	[self putPathInRect:_bounds];	
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 
@@ -1486,7 +1486,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	_points[i] = p;                 
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	
@@ -1691,7 +1691,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[self replacePoints:newPoints count:newPointCount insertion:YES];
 	
 	[self updatePath];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -1726,7 +1726,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 /*	[self deselectAllPoints];
 
 	[self updatePath];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -1938,7 +1938,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	
@@ -1963,7 +1963,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	
@@ -1987,7 +1987,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	 
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	

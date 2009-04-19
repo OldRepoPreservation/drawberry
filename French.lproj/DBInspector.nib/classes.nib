@@ -40,6 +40,8 @@
 				<string>NSImageView</string>
 				<key>_fillView</key>
 				<string>NSView</string>
+				<key>_fillsController</key>
+				<string>NSArrayController</string>
 				<key>_geometryView</key>
 				<string>NSView</string>
 				<key>_gridView</key>

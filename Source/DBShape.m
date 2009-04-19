@@ -9,13 +9,8 @@
 #import "DBShape.h"
 #import "DBLayer.h"
 
-static NSImage *__blueKnob = nil;
-static NSImage *__grayKnob = nil;
-static NSImage *__selectedGrayKnob = nil;
-static NSImage *__smallGrayKnob = nil;
-static NSImage *__whiteKnob = nil;
-static NSImage *__orangeKnob = nil;
-static NSImage *__greenKnob = nil;
+
+static NSBezierPath *__knob = nil;
 
 
 @implementation NSColor (InvertColor)
@@ -37,142 +32,114 @@ static NSImage *__greenKnob = nil;
 
 @implementation DBShape
 
-+ (NSImage *)blueKnob
++ (NSBezierPath *)knob
 {
-	if(!__blueKnob)
-	{
-		__blueKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		
-		[__blueKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
-
-		[[NSColor selectedControlColor] set];
-		[circle fill];
-		[[NSColor alternateSelectedControlColor] set];
-		[circle stroke];
-
-		[__blueKnob unlockFocus];
+	if(!__knob){
+		__knob = [[NSBezierPath alloc] init];
+		[__knob appendBezierPathWithArcWithCenter:NSMakePoint(0,0) radius:4 startAngle:0 endAngle:360];
 	}
-	return __blueKnob;
+	return __knob;
 }
 
-+ (NSImage *)grayKnob
++ (void)drawBlueKnobAtPoint:(NSPoint)pt 
 {
-	if(!__grayKnob)
-	{
-		__grayKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		
-		[__grayKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
-		
- 		[[NSColor lightGrayColor] set];
-   		[circle fill];
-		[[NSColor grayColor] set];
-		[circle stroke];
-		
-		[__grayKnob unlockFocus];
-	}
-	return __grayKnob;
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	[[NSColor selectedControlColor] set];
+	[[self knob] fill];
+	[[NSColor alternateSelectedControlColor] set];
+	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
 }
 
-+ (NSImage *)smallGrayKnob
++ (void)drawGrayKnobAtPoint:(NSPoint)pt 
 {
-//	if(!__smallGrayKnob)
-//    {
-		__smallGrayKnob = [[NSImage alloc] initWithSize:NSMakeSize(8,8)];
-		
-		[__smallGrayKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(4,4) radius:3 startAngle:0 endAngle:360];
-		
- 		[[NSColor lightGrayColor] set];
-   		[circle fill];
-		[[NSColor grayColor] set];
-		[circle stroke];
-		
-		[__smallGrayKnob unlockFocus];
-//	}
-	return [__smallGrayKnob autorelease];
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	[[NSColor lightGrayColor] set];
+	[[self knob] fill];
+	[[NSColor grayColor] set];
+	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
 }
 
-+ (NSImage *)whiteKnob
++ (void)drawSelectedGrayKnobAtPoint:(NSPoint)pt 
 {
-	if(!__whiteKnob)
-	{
-		__whiteKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		
-		[__whiteKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
-		[[NSColor whiteColor] set];
-		[circle fill];
-   		[[NSColor lightGrayColor] set];
-		[circle stroke];
-		[__whiteKnob unlockFocus];
-	}
-	return __whiteKnob;
-}   
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	
+	NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor selectedControlColor] endingColor:[NSColor lightGrayColor]];
 
-+ (NSImage *)orangeKnob
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	
+	[gradient drawInBezierPath:[self knob] relativeCenterPosition:NSZeroPoint];
+	[gradient release];
+	
+	[[NSColor alternateSelectedControlColor] set];
+	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
+}
+
++ (void)drawWhiteKnobAtPoint:(NSPoint)pt 
 {
-	if(!__orangeKnob)
-	{
-		__orangeKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		
-		[__orangeKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	[[NSColor whiteColor] set];
+	[[self knob] fill];
+	[[NSColor lightGrayColor] set];
+	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
+}
 
-		[[NSColor yellowColor] set];
-		[circle fill];
-		[[NSColor orangeColor] set];
-		[circle stroke];
-		[__orangeKnob unlockFocus];
-	}
-	return __orangeKnob;
-}   
-
-+ (NSImage *)greenKnob
++ (void)drawOrangeKnobAtPoint:(NSPoint)pt 
 {
-	if(!__greenKnob)
-	{
-		__greenKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		
-		[__greenKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	[[NSColor yellowColor] set];
+	[[self knob] fill];
+	[[NSColor orangeColor] set];
+	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
+}
 
-		[[NSColor greenColor] set];
-		[circle fill];
-		[[NSColor colorWithCalibratedRed:0.0 green:0.6 blue:0.0 alpha:1.0] set];
-		[circle stroke];
-		[__greenKnob unlockFocus];
-	}
-	return __greenKnob;
-}   
-
-+ (NSImage *)selectedGrayKnob
++ (void)drawGreenKnobAtPoint:(NSPoint)pt 
 {
-	if(!__selectedGrayKnob)
-	{
-		__selectedGrayKnob = [[NSImage alloc] initWithSize:NSMakeSize(10,10)];
-		NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor selectedControlColor] endingColor:[NSColor lightGrayColor]];
-		
-		[__selectedGrayKnob lockFocus];
-		NSBezierPath *circle = [NSBezierPath bezierPath];
-		[circle appendBezierPathWithArcWithCenter:NSMakePoint(5,5) radius:4 startAngle:0 endAngle:360];
-		   	
-		[gradient drawInBezierPath:circle relativeCenterPosition:NSZeroPoint];
-		[gradient release];
-		
-		[[NSColor alternateSelectedControlColor] set];
-		[circle stroke];
-		
-		[__selectedGrayKnob unlockFocus];
-	}
-	return __selectedGrayKnob;
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	[[NSColor greenColor] set];
+	[[self knob] fill];
+	[[NSColor colorWithCalibratedRed:0.0 green:0.6 blue:0.0 alpha:1.0] set];
+	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
 }
 
 + (int)flipKnob:(int)knob horizontal:(BOOL)horizFlag {
@@ -226,8 +193,9 @@ static NSImage *__greenKnob = nil;
 	self = [super init];
 	
 	_stroke = [[DBStroke alloc] initWithShape:self];            
-	_fill = [[DBFill alloc] initWithShape:self];            
 	_shadow = [[DBShadow alloc] initWithShape:self];
+	
+	_fills = [[NSMutableArray alloc] init];
 	
 	return self;
 }
@@ -235,8 +203,9 @@ static NSImage *__greenKnob = nil;
 - (void)dealloc
 {
 	[_stroke dealloc];
-	[_fill release];
 	[_shadow release]; 
+	
+	[_fills release];
 	
 	[super dealloc];
 }
@@ -247,11 +216,13 @@ static NSImage *__greenKnob = nil;
 	self = [self init];
 	            
 	[self setRotation:[decoder decodeFloatForKey:@"Rotation"]];
+		
+	_fills = [[decoder decodeObjectForKey:@"Fills"] retain];
+	[_fills makeObjectsPerformSelector:@selector(setShape:) withObject:self];
 	
-	_fill = [[decoder decodeObjectForKey:@"Fill"] retain];
-	[_fill setShape:self];
 	_stroke = [[decoder decodeObjectForKey:@"Stroke"] retain];
 	[_stroke setShape:self];
+	
 	_shadow = [[decoder decodeObjectForKey:@"Shadow"] retain];
 	[_shadow setShape:self];
 	
@@ -261,7 +232,7 @@ static NSImage *__greenKnob = nil;
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
 	[encoder encodeFloat:_rotation forKey:@"Rotation"];
-	[encoder encodeObject:_fill forKey:@"Fill"];
+	[encoder encodeObject:_fills forKey:@"Fills"];
 	[encoder encodeObject:_stroke forKey:@"Stroke"];
 	[encoder encodeObject:_shadow forKey:@"Shadow"];
 }
@@ -275,58 +246,7 @@ static NSImage *__greenKnob = nil;
 
 - (void)displayEditingKnobs
 {
-	NSPoint p;
-	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
-		p = [_fill imageDrawPoint];
-//		p.x *= [self zoom];
-		p.x += _bounds.origin.x;
-//		p.y *= [self zoom];
-		p.y += _bounds.origin.y;
-		
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-	}	
-	
-	if([_fill fillMode] == DBGradientFillMode && [_fill gradientType] == GPRadialType){
-		NSBezierPath *path;
-		NSColor *color;
-		
-		p = [_fill gradientStartingPoint];
-//		p.x *= [self zoom];
-		p.x += _bounds.origin.x;
-//		p.y *= [self zoom];
-		p.y += _bounds.origin.y;
-		
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-		
-		path = [NSBezierPath bezierPath];
-		[path appendBezierPathWithArcWithCenter:p radius:[_fill gradientStartingRadius] startAngle:0 endAngle:360];
-		
-		[path setLineWidth:2.0];
-		[[NSColor yellowColor] set];
-		[path stroke];
-		[path setLineWidth:0.75];
-		[[NSColor orangeColor] set];
-		[path stroke];
-		
-		p = [_fill gradientEndingPoint];
-//		p.x *= [self zoom];
-		p.x += _bounds.origin.x;
-//		p.y *= [self zoom];
-		p.y += _bounds.origin.y;
-		
-		[[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-
-		path = [NSBezierPath bezierPath];
-		[path appendBezierPathWithArcWithCenter:p radius:[_fill gradientEndingRadius] startAngle:0 endAngle:360];
-		
-		[path setLineWidth:2.0];
-		[[NSColor yellowColor] set];
-		[path stroke];
-		[path setLineWidth:0.75];
-		[[NSColor orangeColor] set];
-		[path stroke];
-
-	}
+	[_fills makeObjectsPerformSelector:@selector(displayKnobs)];
 }
 
 - (void)displaySelectionKnobs
@@ -358,25 +278,25 @@ static NSImage *__greenKnob = nil;
 	point4 = [view viewCoordinatesFromCanevasCoordinates:point4];
 */	
 	if([[NSApp currentEvent] modifierFlags] & NSControlKeyMask){
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(upLeft.x-5.0,upLeft.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(bottomLeft.x-5.0,bottomLeft.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(bottomRight.x-5.0,bottomRight.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(upRight.x-5.0,upRight.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
+		[DBShape drawOrangeKnobAtPoint:upLeft];
+		[DBShape drawOrangeKnobAtPoint:bottomLeft];
+		[DBShape drawOrangeKnobAtPoint:upRight];
+		[DBShape drawOrangeKnobAtPoint:bottomRight];
 		
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(midLeft.x-5.0,midLeft.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(midRight.x-5.0,midRight.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(midUp.x-5.0,midUp.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape orangeKnob] drawAtPoint:NSMakePoint(midBottom.x-5.0,midBottom.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
+		[DBShape drawOrangeKnobAtPoint:midLeft];
+		[DBShape drawOrangeKnobAtPoint:midRight];
+		[DBShape drawOrangeKnobAtPoint:midUp];
+		[DBShape drawOrangeKnobAtPoint:midBottom];
 	}else{
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(upLeft.x-5.0,upLeft.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(bottomLeft.x-5.0,bottomLeft.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(bottomRight.x-5.0,bottomRight.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(upRight.x-5.0,upRight.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(midLeft.x-5.0,midLeft.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(midRight.x-5.0,midRight.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(midUp.x-5.0,midUp.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
-		[[DBShape blueKnob] drawAtPoint:NSMakePoint(midBottom.x-5.0,midBottom.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];	
+		[DBShape drawBlueKnobAtPoint:upLeft];
+		[DBShape drawBlueKnobAtPoint:bottomLeft];
+		[DBShape drawBlueKnobAtPoint:upRight];
+		[DBShape drawBlueKnobAtPoint:bottomRight];
+		
+		[DBShape drawBlueKnobAtPoint:midLeft];
+		[DBShape drawBlueKnobAtPoint:midRight];
+		[DBShape drawBlueKnobAtPoint:midUp];
+		[DBShape drawBlueKnobAtPoint:midBottom];
 	}
 }
 
@@ -535,25 +455,63 @@ static NSImage *__greenKnob = nil;
 
 - (void)setStroke:(DBStroke *)newStroke
 {
+	NSLog(@"setStroke");
 	[newStroke retain];
 	[_stroke release];
 	_stroke = newStroke;
 	[_stroke setShape:self];
 }    
 
-- (DBFill *)fill
+- (void)addFill:(DBFill *)aFill
 {
-	return _fill;
+	[_fills addObject:aFill];
+	[aFill setShape:self];
 }
 
-- (void)setFill:(DBFill *)newFill
+- (void)insertFill:(DBFill *)aFill atIndex:(unsigned int)i 
 {
-	[newFill retain];
-	[_fill release];
-	_fill = newFill;
-	[_fill setShape:self];
-}    
+	[_fills insertObject:aFill atIndex:i];
+	[aFill setShape:self];
+}
 
+- (DBFill *)fillAtIndex:(unsigned int)i
+{
+	return [_fills objectAtIndex:i];
+}
+
+- (unsigned int)indexOfFill:(DBFill *)aFill
+{
+	return [_fills indexOfObject:aFill];
+}
+
+- (void)removeFillAtIndex:(unsigned int)i
+{
+	[_fills removeObjectAtIndex:i];
+}
+
+- (void)removeFill:(DBFill *)aFill
+{
+	[_fills removeObject:aFill];
+}
+
+- (unsigned int)countOfFills
+{
+	return [_fills count];
+}
+
+- (NSArray *)fills
+{
+	return _fills;
+}
+
+- (void)setFills:(NSArray *)newFills
+{
+	NSLog(@"add");
+
+	[_fills setArray:newFills];
+	[_fills makeObjectsPerformSelector:@selector(setShape:) withObject:self];
+	[self strokeUpdated];
+}
 - (NSBezierPath *)path
 {
 	return nil;
@@ -689,70 +647,20 @@ static NSImage *__greenKnob = nil;
 
 - (BOOL)changeFillImageDrawPointWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
-	if([_fill fillMode] == DBGradientFillMode)
-		return [self changeGradientWithEvent:(NSEvent *)theEvent inView:view];
-	if(!([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode))
-		return NO;
+	NSEnumerator *e;
+	DBFill *fill;
 	
-	
-	NSPoint point, p;
-	BOOL canConvert;
-	NSAutoreleasePool *pool;     
-	
-	canConvert = [view isKindOfClass:[DBDrawingView class]];
-   
-	point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
-  
-	if(canConvert){
-		point = [view pointSnapedToGrid:point];
-		point = [view canevasCoordinatesFromViewCoordinates:point];
-	}
-	                     
-	p = [_fill imageDrawPoint];
-	p.x += _bounds.origin.x;
-	p.y += _bounds.origin.y;
-
-	if(!DBPointIsOnKnobAtPoint(point,p)){
-		return NO;
+	e = [_fills objectEnumerator];
+		
+	while ((fill = [e nextObject])) {
+		if([fill trackMouseWithEvent:theEvent inView:view])
+			return YES;
 	}
 	
-	[self setIsEditing:YES];
-	
-	while(YES){
-		pool = [[NSAutoreleasePool alloc] init];
-		
-		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseUpMask | NSLeftMouseDraggedMask)];
-        point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
-        
-		[view moveMouseRulerMarkerWithEvent:theEvent];
-
-		if(canConvert){
-			point = [view pointSnapedToGrid:point];
-			point = [view canevasCoordinatesFromViewCoordinates:point];
-		}
-	    
-		p = point;
-		p.x -= _bounds.origin.x;
-		p.y -= _bounds.origin.y;
-		
-		[_fill setImageDrawPoint:p];
-//		[_layer updateRenderInView:nil];
-		
-		
-		[pool release];
-	   	if([theEvent type] == NSLeftMouseUp)
-		{
-			break;
-		}
-	}
-	[self setIsEditing:NO];
-	
-	[_layer updateRenderInView:nil];
-	
-	return YES;
+	return NO;
 }
 
-- (BOOL)changeGradientWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+/*- (BOOL)changeGradientWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
 	if(![_fill gradientType] == GPRadialType)
 	{
@@ -869,7 +777,7 @@ static NSImage *__greenKnob = nil;
 	return YES;
 	
 }
-
+*/
 - (BOOL)canEdit
 {
 	return NO;
@@ -984,7 +892,7 @@ static NSImage *__greenKnob = nil;
 - (void)updateFill
 {
 	[[[self layer] layerController] updateDependentLayers:[self layer]];
-	[_fill updateFillForPath:[self path]];   
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:[self path]];
 	[_stroke updateStrokeForPath:[self path]];   
 }
 
@@ -1021,6 +929,12 @@ static NSImage *__greenKnob = nil;
 	
 }
 
+#pragma mark Fill and Stroke
+
+- (void)applyFillsToPath:(NSBezierPath *)path
+{
+	[_fills makeObjectsPerformSelector:@selector(fillPath:) withObject:path];
+}
 @end
 
 NSPoint DBMultiplyPointByFactor(NSPoint point, float factor)

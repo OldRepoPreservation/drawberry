@@ -245,7 +245,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	_bounds = [_path bounds];
 	_boundsSize = _bounds.size;
 
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:view];
@@ -297,7 +297,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 				[self insertPoints:nearestPoint atIndexes:[NSIndexSet indexSetWithIndex:seg+1]];
 				
 				[self updatePath];
-				[_fill updateFillForPath:_path];
+				[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 				[_stroke updateStrokeForPath:_path]; 
 
 				[_layer updateRenderInView:view];
@@ -357,7 +357,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			newSize = _bounds.size;
 
 			[_fill resizeFillFromSize:previousSize toSize:newSize];
-			[_fill updateFillForPath:_path];
+			[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 
@@ -380,7 +380,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];		
 	}
 	
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -505,7 +505,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[_oldPathFrag release];
 	_oldPathFrag = nil;
 
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -647,7 +647,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[NSGraphicsContext saveGraphicsState]; 
     
 	[_shadow set];
-	[[self fill] fillPath:_path];
+	[self applyFillsToPath:_path];
 	
 	[[self stroke] strokePath:_path];
 	[NSGraphicsContext restoreGraphicsState];
@@ -680,9 +680,9 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		}
 		
 		if([self pointAtIndexIsSelected:i]){
-			[[DBShape selectedGrayKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+			[DBShape drawSelectedGrayKnobAtPoint:p];
 		}else{
-			[[DBShape grayKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+			[DBShape drawGrayKnobAtPoint:p];
 		}
 		
 	 	
@@ -791,7 +791,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 - (void)strokeUpdated
 {
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[super strokeUpdated];
@@ -828,7 +828,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[self updatePath];
 	_bounds = [_path bounds];
 
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 }
@@ -861,7 +861,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	[self putPathInRect:_bounds];
 	
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 		
@@ -992,7 +992,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	                 
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	
@@ -1075,7 +1075,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[self deselectAllPoints];
 	
 	[self updatePath];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -1107,7 +1107,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[self deselectAllPoints];
 
 	[self updatePath];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	[_layer updateRenderInView:nil];
@@ -1252,7 +1252,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	
@@ -1298,7 +1298,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	[self updatePath];
 	[self updateBounds];
-	[_fill updateFillForPath:_path];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
 
 	

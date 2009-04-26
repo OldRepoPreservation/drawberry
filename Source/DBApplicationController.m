@@ -27,6 +27,7 @@
 #import "DBColorSwatchController.h"
 #import "DBShapeLibraryController.h"
 
+#import "DBDonateWindowController.h"
 
 NSString *DBCurrentDocumentDidChange = @"Current document did change";
 
@@ -92,6 +93,8 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	if([[NSUserDefaults standardUserDefaults] boolForKey:@"shapeLibrary Opened"]){
 		[[DBShapeLibraryController sharedShapeLibraryController] showWindow:self];
 	}
+	
+	[_donationController showDonateWindowIfNecessary];
 }  
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification

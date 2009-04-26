@@ -222,6 +222,9 @@
 		6C825D930EFD60C6006057AB /* DKGeometryUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D910EFD60C6006057AB /* DKGeometryUtilities.m */; };
 		6C825DE10EFD62C5006057AB /* NSBezierPath+Editing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */; };
 		6C8443D60C4C0A6400FFA2FF /* DBPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8443D40C4C0A6400FFA2FF /* DBPreferences.nib */; };
+		6C9334050FA4587E007197B6 /* DBDonateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9334040FA4587E007197B6 /* DBDonateWindowController.m */; };
+		6C9334280FA45BF7007197B6 /* DBDonatePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */; };
+		6C9334870FA47F3D007197B6 /* Donate.webloc in Resources */ = {isa = PBXBuildFile; fileRef = 6C9334860FA47F3D007197B6 /* Donate.webloc */; };
 		6C9679C70ECF244F007AB553 /* GradientPanelFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */; };
 		6C9679DE0ECF2532007AB553 /* GradientPanelFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */; };
 		6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
@@ -618,6 +621,11 @@
 		6C84451A0C4C243900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBTools.nib; sourceTree = "<group>"; };
 		6C84451F0C4C245900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBPreferences.nib; sourceTree = "<group>"; };
 		6C874F1D0E473D2500933F02 /* French */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
+		6C9334030FA4587E007197B6 /* DBDonateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBDonateWindowController.h; path = Source/DBDonateWindowController.h; sourceTree = "<group>"; };
+		6C9334040FA4587E007197B6 /* DBDonateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBDonateWindowController.m; path = Source/DBDonateWindowController.m; sourceTree = "<group>"; };
+		6C9334270FA45BF7007197B6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBDonatePanel.nib; sourceTree = "<group>"; };
+		6C93342A0FA45C14007197B6 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBDonatePanel.nib; sourceTree = "<group>"; };
+		6C9334860FA47F3D007197B6 /* Donate.webloc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Donate.webloc; sourceTree = "<group>"; };
 		6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanelFramework.framework; path = ../../Code/GradientPanel/build/Release/GradientPanelFramework.framework; sourceTree = SOURCE_ROOT; };
 		6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = ../../Code/BGHUDAppKit.framework; sourceTree = SOURCE_ROOT; };
 		6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_white.png; sourceTree = "<group>"; };
@@ -735,6 +743,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6C9334860FA47F3D007197B6 /* Donate.webloc */,
 				6CB4DFA90E5B1D2F008CBB3A /* Help */,
 				6C129EA80E54F64300AD5C61 /* Contextual Toolbar */,
 				6C129EBB0E54F64300AD5C61 /* HUD */,
@@ -760,6 +769,7 @@
 				6CAC189E0E28C4B7007FD7D8 /* DBColorSwatches.nib */,
 				6CEFC9070E2F9B550057CDED /* DBShapeLibrary.nib */,
 				6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */,
+				6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -983,14 +993,14 @@
 			children = (
 				6C129D350E54E9E200AD5C61 /* DBInspectorController.h */,
 				6C129D360E54E9E200AD5C61 /* DBInspectorController.m */,
-				6C129D260E54E98100AD5C61 /* DBApplicationController.m */,
 				6C129D270E54E98100AD5C61 /* DBApplicationController.h */,
-				6C129D280E54E98100AD5C61 /* DBApplication.m */,
+				6C129D260E54E98100AD5C61 /* DBApplicationController.m */,
 				6C129D290E54E98100AD5C61 /* DBApplication.h */,
-				6C129D2C0E54E99600AD5C61 /* DBColorSwatchController.m */,
+				6C129D280E54E98100AD5C61 /* DBApplication.m */,
 				6C129D2D0E54E99600AD5C61 /* DBColorSwatchController.h */,
-				6C129D2F0E54E9AA00AD5C61 /* DBContextualDataSourceController.m */,
+				6C129D2C0E54E99600AD5C61 /* DBColorSwatchController.m */,
 				6C129D300E54E9AA00AD5C61 /* DBContextualDataSourceController.h */,
+				6C129D2F0E54E9AA00AD5C61 /* DBContextualDataSourceController.m */,
 				6C129D320E54E9C700AD5C61 /* DBDocument.h */,
 				6C129D330E54E9C700AD5C61 /* DBDocument.m */,
 				6C129D380E54E9F100AD5C61 /* DBLayerController.h */,
@@ -1005,6 +1015,8 @@
 				6C129D450E54EA4000AD5C61 /* DBToolsController.m */,
 				6C129D470E54EA4F00AD5C61 /* DBPrefController.h */,
 				6C129D480E54EA4F00AD5C61 /* DBPrefController.m */,
+				6C9334030FA4587E007197B6 /* DBDonateWindowController.h */,
+				6C9334040FA4587E007197B6 /* DBDonateWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1455,6 +1467,8 @@
 				6C129F720E54F64400AD5C61 /* tool-zoom.png in Resources */,
 				6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */,
 				6CA3B1D00E5C3F6700BFCA59 /* action_white.png in Resources */,
+				6C9334280FA45BF7007197B6 /* DBDonatePanel.nib in Resources */,
+				6C9334870FA47F3D007197B6 /* Donate.webloc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1561,6 +1575,7 @@
 				6C825D8D0EFD5F71006057AB /* DKRandom.m in Sources */,
 				6C825D930EFD60C6006057AB /* DKGeometryUtilities.m in Sources */,
 				6C825DE10EFD62C5006057AB /* NSBezierPath+Editing.m in Sources */,
+				6C9334050FA4587E007197B6 /* DBDonateWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1646,6 +1661,15 @@
 				6C84451F0C4C245900FFA2FF /* French */,
 			);
 			name = DBPreferences.nib;
+			sourceTree = "<group>";
+		};
+		6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C9334270FA45BF7007197B6 /* English */,
+				6C93342A0FA45C14007197B6 /* French */,
+			);
+			name = DBDonatePanel.nib;
 			sourceTree = "<group>";
 		};
 		6CAC189E0E28C4B7007FD7D8 /* DBColorSwatches.nib */ = {

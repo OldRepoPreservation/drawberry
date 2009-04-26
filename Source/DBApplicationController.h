@@ -9,11 +9,12 @@
 #import <Cocoa/Cocoa.h>
 
 @class DBDrawingView, DBLayerController;
+@class DBDonateWindowController;
 
 extern NSString *DBCurrentDocumentDidChange;
 
 @interface DBApplicationController : NSObject {
-
+	IBOutlet DBDonateWindowController *_donationController;
 }
 - (DBDrawingView *)currentDrawingView; 
 - (DBLayerController *)currentLayerController;

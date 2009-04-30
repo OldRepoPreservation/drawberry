@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>A3</string>
+		<key>Size</key>
+		<string>{841, 1190}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>A4</string>
+		<key>Size</key>
+		<string>{595, 841}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>A5</string>
+		<key>Size</key>
+		<string>{419, 595}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>A6</string>
+		<key>Size</key>
+		<string>{297, 419}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>B4</string>
+		<key>Size</key>
+		<string>{708, 1000}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>B5</string>
+		<key>Size</key>
+		<string>{498, 708}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>B5-Japan</string>
+		<key>Size</key>
+		<string>{516, 728}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>US-Letter</string>
+		<key>Size</key>
+		<string>{792, 612}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>US-Legal</string>
+		<key>Size</key>
+		<string>{1008, 612}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>CD Cover</string>
+		<key>Size</key>
+		<string>{343, 340}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>640x480</string>
+		<key>Size</key>
+		<string>{640, 480}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>800x600</string>
+		<key>Size</key>
+		<string>{800, 600}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>1024x768</string>
+		<key>Size</key>
+		<string>{1024, 768}</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>1600x1200</string>
+		<key>Size</key>
+		<string>{1600, 1200}</string>
+	</dict>
+</array>
+</plist>

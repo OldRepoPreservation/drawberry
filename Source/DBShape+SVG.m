@@ -22,7 +22,12 @@ NSPoint DBPointWithString(NSString *pString)
 	self = [self init];
 
 	_stroke = [[DBStroke alloc] initWithShape:self SVGAttributes:attr];            
-	_fill = [[DBFill alloc] initWithShape:self SVGAttributes:attr];            
+	
+	DBFill *fill = [[DBFill alloc] initWithShape:self SVGAttributes:attr];
+	if(fill){
+		[self addFill:fill];		
+	}
+	
 	_shadow = [[DBShadow alloc] initWithShape:self];
 
 	return self;
@@ -30,7 +35,10 @@ NSPoint DBPointWithString(NSString *pString)
 
 - (NSString *)SVGStyleString
 {
-	return [NSString stringWithFormat:@"%@%@",[_fill SVGFillStyleString],[_stroke SVGStrokeStyleString]];
+	if([_fills count] > 0)
+		return [NSString stringWithFormat:@"%@%@",[[_fills lastObject] SVGFillStyleString],[_stroke SVGStrokeStyleString]];
+	else
+		return [_stroke SVGStrokeStyleString];
 }              
 
 - (NSString *)SVGString

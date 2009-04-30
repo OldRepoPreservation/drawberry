@@ -54,6 +54,11 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:nil];
 }   
 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
+{
+	return NO;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification { 
 	
 	[[DBToolsController sharedToolsController] showWindow:self];

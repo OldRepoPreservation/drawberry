@@ -34,9 +34,13 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
+				<key>addTemplate</key>
+				<string>id</string>
 				<key>changeToolSelectionMode</key>
 				<string>id</string>
 				<key>changeUnit</key>
+				<string>id</string>
+				<key>removeTemplate</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>
@@ -45,6 +49,8 @@
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
+				<key>_templatesView</key>
+				<string>NSTableView</string>
 				<key>_toolModeSelector</key>
 				<string>NSPopUpButton</string>
 				<key>_unitSelector</key>
@@ -58,6 +64,26 @@
 			<string>FirstResponder</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>changePanes</key>
+				<string>id</string>
+				<key>orderFrontPrefsPanel</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>UKPrefsPanel</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>tabView</key>
+				<string>NSTabView</string>
+			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSObject</string>
 		</dict>

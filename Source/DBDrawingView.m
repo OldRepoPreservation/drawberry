@@ -20,6 +20,7 @@
 
 
 #import "DBDocument.h"
+#import "DBDocumentController.h"
 #import "DBLayerController.h"
 
 #import "DBToolsController.h"
@@ -76,7 +77,9 @@
 		_canevasRect = NSMakeSize(400,500);   */
 		
 //		if([self isMemberOfClass:[DBDrawingView class]]){
-			[self setCanevasSize:NSMakeSize(595,841)];
+	//		[self setCanevasSize:NSMakeSize(595,841)];
+		[self setCanevasSize:NSMakeSize([(DBDocumentController *)[NSDocumentController sharedDocumentController] documentWidth], 
+										[(DBDocumentController *)[NSDocumentController sharedDocumentController] documentHeight])];
 //		}
 		
 		[self updateFrameOrigin];

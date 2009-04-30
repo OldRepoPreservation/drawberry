@@ -9,6 +9,8 @@
 #import "DBPrefController.h"
 #import "DBPrefKeys.h"
 
+#import "DBTemplateManager.h"
+
 static DBPrefController *_sharedPrefController = nil;
 
 @implementation DBPrefController
@@ -19,6 +21,14 @@ static DBPrefController *_sharedPrefController = nil;
         _sharedPrefController = [[DBPrefController allocWithZone:[self zone]] init];
     }
     return _sharedPrefController;	
+}
+
++ (NSString *)applicationSupportFolder 
+{
+	
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : NSTemporaryDirectory();
+    return [basePath stringByAppendingPathComponent:@"DrawBerry"];
 }
 
 - (id)init
@@ -47,4 +57,61 @@ static DBPrefController *_sharedPrefController = nil;
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:DBDidChangeUnitNotificationName	object:self];
 }
+
+
+#pragma mark Templates
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	return [[[DBTemplateManager sharedTemplateManager] customTemplates] count];
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	NSDictionary *template;
+	
+	template = [[DBTemplateManager sharedTemplateManager] customTemplateForTag:rowIndex];
+	
+	if(!template){
+		return nil;
+	}
+	
+	if([[aTableColumn identifier] isEqualTo:@"Name"]){
+		return [template objectForKey:@"Name"];
+	}else if([[aTableColumn identifier] isEqualTo:@"Width"]){
+		return [NSNumber numberWithFloat:NSSizeFromString([template objectForKey:@"Size"]).width];
+	}else if([[aTableColumn identifier] isEqualTo:@"Height"]){
+		return [NSNumber numberWithFloat:NSSizeFromString([template objectForKey:@"Size"]).height];
+	}
+	return nil;
+}
+
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	NSDictionary *template;
+	
+	template = [[DBTemplateManager sharedTemplateManager] customTemplateForTag:rowIndex];
+		
+	if([[aTableColumn identifier] isEqualTo:@"Name"]){
+		[[DBTemplateManager sharedTemplateManager] setName:anObject forCustomTemplateAtTag:rowIndex];
+	}else if([[aTableColumn identifier] isEqualTo:@"Width"]){
+		[[DBTemplateManager sharedTemplateManager] setWidth:[anObject floatValue] forCustomTemplateAtTag:rowIndex];
+	}else if([[aTableColumn identifier] isEqualTo:@"Height"]){
+		[[DBTemplateManager sharedTemplateManager] setHeight:[anObject floatValue] forCustomTemplateAtTag:rowIndex];
+	}
+}
+
+- (IBAction)addTemplate:(id)sender{
+	[[DBTemplateManager sharedTemplateManager] addUntitledTemplate];
+	
+	[_templatesView reloadData];
+}
+
+- (IBAction)removeTemplate:(id)sender
+{
+	[[DBTemplateManager sharedTemplateManager] removeCustomTemplateWithTag:[_templatesView selectedRow]];
+
+	[_templatesView reloadData];
+}
+
 @end

@@ -37,6 +37,7 @@
 		_fillMode = DBColorFillMode;
 	}else{
 		_fillMode = DBNoneFillMode;
+		return nil;
 	}            
 	return self;
 }

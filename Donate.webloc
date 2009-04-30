@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>URL</key>
+	<string>https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=97EHJQYUR48VC&amp;lc=FR&amp;item_name=Raphael%20Bost%20%2d%20DrawBerry&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted</string>
+</dict>
+</plist>

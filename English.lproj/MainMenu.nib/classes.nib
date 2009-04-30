@@ -354,6 +354,34 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
+				<key>changeSize</key>
+				<string>id</string>
+				<key>changeTemplate</key>
+				<string>id</string>
+				<key>create</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>DBDocumentController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>_heightField</key>
+				<string>NSTextField</string>
+				<key>_newPanel</key>
+				<string>NSPanel</string>
+				<key>_templateChooser</key>
+				<string>NSPopUpButton</string>
+				<key>_widthField</key>
+				<string>NSTextField</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSDocumentController</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
 				<key>alreadyDonated</key>
 				<string>id</string>
 				<key>donate</key>

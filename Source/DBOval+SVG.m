@@ -17,6 +17,6 @@
 	
 	pathString = [[self convert] SVGPathString];
 	
-	return [NSString stringWithFormat:@"<path  style=\"%@\" \n path=\"%@\"  />\n",[self SVGStyleString],pathString];
+	return [NSString stringWithFormat:@"<path  style=\"%@\" \n d=\"%@\"  />\n",[self SVGStyleString],pathString];
 }
 @end

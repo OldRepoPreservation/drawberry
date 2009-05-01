@@ -13,7 +13,9 @@
 #import <GradientPanelFramework/GPGradientPanelFramework.h>
 
 #import "DBFill.h"
-                          
+  
+#import "DBPrefKeys.h"
+
 static DBInspectorController *_sharedInspectorController = nil;
 
 @implementation DBInspectorController
@@ -21,15 +23,15 @@ static DBInspectorController *_sharedInspectorController = nil;
 {
 	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
 
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"gridWindow Grid Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"gridWindow Page Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"gridWindow Rulers Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Stroke Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Arrows Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Fill Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Shadow Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Text Collapsed"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"shapeWindow Geometry Collapsed"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBPagePanelGridCollapsed];
+	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBPagePanelPageCollapsed];
+	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBPagePanelRulersCollapsed];
+	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBShapePanelRulersCollapsed];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBShapePanelArrowsCollapsed];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBShapePanelFillCollapsed];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBShapePanelShadowCollapsed];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBShapePanelTextCollapsed];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBShapePanelGeometryCollapsed];
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 	

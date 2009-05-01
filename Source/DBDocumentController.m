@@ -52,6 +52,10 @@
 		
 		[_widthField setFloatValue:size.width];
 		[_heightField setFloatValue:size.height];
+		
+		_docWidth = size.width;
+		_docHeight = size.height;
+		
 	}else if(tag == 999){
 		// open prefs ...
 		[[DBPrefController sharedPrefController] showWindow:self];

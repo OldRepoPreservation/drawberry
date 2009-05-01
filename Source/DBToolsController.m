@@ -13,6 +13,8 @@
 #import "GCollapsePanel.h"
 #import "DBApplicationController.h"
 
+#import "DBPrefKeys.h"
+
 @class DBShape, DBRectangle, DBOval, DBLine, DBPolyline, DBBezierCurve, DBText;
 
 NSString *DBSelectedToolDidChangeNotification = @"DBSelectedToolDidChangeNotification";
@@ -36,13 +38,13 @@ enum {
 {
 	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
 
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"viewInspector Opened"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"objectInspector Opened"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"layerWindow Opened"];
-   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:@"magGlassPanel Opened"];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:@"undoWindow Opened"];
-	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:@"colorSwatch Opened"];
-   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:@"shapeLibrary Opened"];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBViewInspectorOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBObjectInspectorOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBLayerWindowOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBMagGlassPanelOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBUndoWindowOpened];
+	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBColorSwatchOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBShapeLibraryOpened];
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 	
@@ -164,16 +166,16 @@ enum {
 	
 	if(window == [[NSApp delegate] viewInspector]){
 		tag = 0;
-		key = @"viewInspector Opened";
+		key = DBViewInspectorOpened;
 	}else if(window == [[NSApp delegate] objectInspector]){
 		tag = 1;
-		key = @"objectInspector Opened";
+		key = DBObjectInspectorOpened;
 	}else if(window == [[NSApp delegate] layerWindow]){
 		tag = 2;
-		key = @"layerWindow Opened";
+		key = DBLayerWindowOpened;
 	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
-		key = @"magGlassPanel Opened";
+		key = DBMagGlassPanelOpened;
 	}           
 
 	if(key){

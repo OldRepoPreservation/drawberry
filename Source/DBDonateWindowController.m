@@ -7,6 +7,7 @@
 //
 
 #import "DBDonateWindowController.h"
+#import "DBPrefKeys.h"
 
 
 @implementation DBDonateWindowController
@@ -14,7 +15,7 @@
 {	
 	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
 	
-   	[defaultValues setObject:[NSNumber numberWithFloat:0.0f] forKey:@"Donate Reminder Version"];
+   	[defaultValues setObject:[NSNumber numberWithFloat:0.0f] forKey:DBDonateReminder];
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 	

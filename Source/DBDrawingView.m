@@ -80,6 +80,7 @@
 	//		[self setCanevasSize:NSMakeSize(595,841)];
 		[self setCanevasSize:NSMakeSize([(DBDocumentController *)[NSDocumentController sharedDocumentController] documentWidth], 
 										[(DBDocumentController *)[NSDocumentController sharedDocumentController] documentHeight])];
+		NSLog(@"width %f",[(DBDocumentController *)[NSDocumentController sharedDocumentController] documentWidth]);
 //		}
 		
 		[self updateFrameOrigin];

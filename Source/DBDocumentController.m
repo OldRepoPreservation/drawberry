@@ -11,7 +11,10 @@
 #import "DBTemplateManager.h"
 #import "DBPrefController.h"
 
-@implementation DBDocumentController
+#import "DBPrefKeys.h"
+
+@implementation DBDocumentController    
+
 - (void)awakeFromNib
 {
 	[DBTemplateManager sharedTemplateManager]; // be sure to initialize the template manager
@@ -21,7 +24,27 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sizeFieldDidChange:) name:NSControlTextDidChangeNotification object:_heightField];
 	
 	[self updateTemplateMenuChooser];
+	
+	[_templateChooser selectItemWithTag:[[NSUserDefaults standardUserDefaults] integerForKey:DBDefaultTemplateTag]];
+	NSSize size;
+	
+	size = [[DBTemplateManager sharedTemplateManager] sizeForTemplateTag:[[NSUserDefaults standardUserDefaults] integerForKey:DBDefaultTemplateTag]];
+	_docWidth = size.width;
+	_docHeight = size.height;
+	[_widthField setFloatValue:size.width];
+	[_heightField setFloatValue:size.height];
+	
+	if(![[NSUserDefaults standardUserDefaults] boolForKey:DBNewDocumentAtStartup]){
+		[self newDocument:self];
+	}
+	
 }
+
+- (id)openUntitledDocumentAndDisplay:(BOOL)displayDocument error:(NSError **)outError
+{
+	return [super openUntitledDocumentAndDisplay:displayDocument error:outError];
+}
+
 - (IBAction)newDocument:(id)sender
 {
 	[_newPanel makeKeyAndOrderFront:sender];
@@ -35,7 +58,6 @@
 
 - (IBAction)changeSize:(id)sender
 {
-	NSLog(@"change");
 	_docWidth = [_widthField floatValue];
 	_docHeight = [_heightField floatValue];
 }
@@ -56,6 +78,8 @@
 		_docWidth = size.width;
 		_docHeight = size.height;
 		
+		[[NSUserDefaults standardUserDefaults] setInteger:tag forKey:DBDefaultTemplateTag];
+
 	}else if(tag == 999){
 		// open prefs ...
 		[[DBPrefController sharedPrefController] showWindow:self];

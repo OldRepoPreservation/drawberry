@@ -30,5 +30,8 @@
 #define DBShapePanelTextCollapsed @"shapeWindow Text Collapsed"
 #define DBShapePanelGeometryCollapsed @"shapeWindow Geometry Collapsed"
 
+#define DBNewDocumentAtStartup @"New Doc at startup"
+#define DBDefaultTemplateTag @"Default Template"
+
 /* Notifs name sent by the preference controller */
 #define DBDidChangeUnitNotificationName  @"Unit Did Change"

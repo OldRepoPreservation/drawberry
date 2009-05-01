@@ -44,6 +44,8 @@ static DBPrefController *_sharedPrefController = nil;
 {   
 	[_toolModeSelector selectItemWithTag:[[NSUserDefaults standardUserDefaults] integerForKey:DBToolSelectorMode]];
 	[_unitSelector selectItemWithTag:[[NSUserDefaults standardUserDefaults] integerForKey:DBUnitName]];
+	
+	[_openEmptyDocAtStartupCheckBox setState:[[NSUserDefaults standardUserDefaults] boolForKey:DBNewDocumentAtStartup]];
 }
 - (IBAction)changeToolSelectionMode:(id)sender
 {
@@ -112,6 +114,11 @@ static DBPrefController *_sharedPrefController = nil;
 	[[DBTemplateManager sharedTemplateManager] removeCustomTemplateWithTag:[_templatesView selectedRow]];
 
 	[_templatesView reloadData];
+}
+
+- (IBAction)changeDBNewDocumentAtStartup:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] setBool:[_openEmptyDocAtStartupCheckBox state] forKey:DBNewDocumentAtStartup];
 }
 
 @end

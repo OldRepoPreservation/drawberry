@@ -14,6 +14,7 @@
 	IBOutlet NSPopUpButton *_unitSelector;
 	
 	IBOutlet NSTableView *_templatesView;
+	IBOutlet NSButton *_openEmptyDocAtStartupCheckBox;
 }
 + (id)sharedPrefController;
 - (IBAction)changeToolSelectionMode:(id)sender;
@@ -21,4 +22,5 @@
 
 - (IBAction)addTemplate:(id)sender;
 - (IBAction)removeTemplate:(id)sender;
+- (IBAction)changeDBNewDocumentAtStartup:(id)sender;
 @end

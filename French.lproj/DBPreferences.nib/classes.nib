@@ -36,6 +36,8 @@
 			<dict>
 				<key>addTemplate</key>
 				<string>id</string>
+				<key>changeDBNewDocumentAtStartup</key>
+				<string>id</string>
 				<key>changeToolSelectionMode</key>
 				<string>id</string>
 				<key>changeUnit</key>
@@ -49,6 +51,8 @@
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
+				<key>_openEmptyDocAtStartupCheckBox</key>
+				<string>NSButton</string>
 				<key>_templatesView</key>
 				<string>NSTableView</string>
 				<key>_toolModeSelector</key>

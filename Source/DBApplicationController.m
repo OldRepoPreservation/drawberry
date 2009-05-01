@@ -41,6 +41,9 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
    	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:DBToolSelectorMode];
    	[defaultValues setObject:[NSNumber numberWithInt:2] forKey:DBUnitName];
+	
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBNewDocumentAtStartup];
+	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:DBDefaultTemplateTag]; // A4 template
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 
 	[defaultValues release];
@@ -56,7 +59,7 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
 {
-	return NO;
+	return [[NSUserDefaults standardUserDefaults] boolForKey:DBNewDocumentAtStartup];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification { 

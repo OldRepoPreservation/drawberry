@@ -14,6 +14,52 @@
 - (void)setZoomWithoutDisplay:(float)newZoom;
 @end                                         
 
+
+#define DBSliderWidth 4.f
+
+#define DBSliderKnobRadius 6.f
+
+@interface DBMagnifyingView (Private)
+-(NSColor *)strokeColor;
+-(NSColor *)disabledStrokeColor;
+-(NSGradient *)knobColor;
+-(NSGradient *)highlightKnobColor;
+-(NSGradient *)disabledKnobColor;
+-(NSGradient *)disabledKnobColor;
+-(NSShadow *)dropShadow;
+-(NSShadow *)focusRing;
+@end
+
+float DAngleBetweenPoints(NSPoint center, NSPoint point1, NSPoint point2){
+ 	double u1,u2,v1,v2;
+	
+	u1 = point1.x - center.x;
+	u2 = point1.y - center.y;
+	v1 = point2.x - center.x;
+	v2 = point2.y - center.y;
+	
+	double cosTheta, normeU, normeV;
+	float theta;
+	normeU = sqrt(u1*u1 + u2*u2);
+	normeV = sqrt(v1*v1 + v2*v2);
+	
+	
+	cosTheta = u1/normeU;
+	theta = acos(cosTheta);
+	cosTheta = v1/normeV;
+	
+	if((u2 < 0 && v2 >= 0) || (v2 < 0 && u2 >= 0))
+		theta += acos(cosTheta);
+	else
+		theta -= acos(cosTheta);
+	
+	if(u2 >= 0){
+		theta = 2*M_PI-theta;
+	}
+	
+	return theta;
+}    
+
 @implementation DBMagnifyingView
 
 - (id)initWithFrame:(NSRect)frame
@@ -22,9 +68,21 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:DBMagnifyingWindowDidMove object:[self window]];
 	
-	_zoom = 1.0;
+	_zoom = 0.0;
+	
+	_startAngle = 225; //min value
+	_startAngle = 270;
+	
+	_endAngle = 90; //max value
+	_endAngle = 0;
+	_isHighlighted = NO;
 	
 	return self;
+}
+
+- (void)awakeFromNib
+{
+	[self setZoom:2.0];
 }
 
 - (void)drawRect:(NSRect)rect
@@ -32,7 +90,6 @@
 	NSRect sourceRect;
 	NSPoint center;
 	NSAffineTransform *transform;
-	float oldZoom = [_source zoom];
 	float radius;
    	
 	center = NSMakePoint([self frame].size.width/2-1.0, ([self frame].size.height)/2-1.0); 
@@ -56,50 +113,6 @@
 	[back appendBezierPath:circle];
 	[back setWindingRule:NSEvenOddWindingRule];
 
-	
-	[NSGraphicsContext saveGraphicsState];   
-	
-	//	[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeClear];
-	//	[[NSColor blueColor] set];
-	//	[back fill];
-	
-//	[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeSourceOver];
-//	[[NSColor lightGrayColor] set];
-//	[circle stroke];
-	
-//	[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeDestinationAtop];
-//	[circle release];
-	NSBezierPath *background = [[NSBezierPath alloc] init];
-
-	[background appendBezierPathWithArcWithCenter:center radius:radius startAngle:90 endAngle:0 clockwise:NO];
-	[background lineToPoint:NSMakePoint(center.x+radius,center.y + radius-7.0)];
-	[background appendBezierPathWithArcWithCenter:NSMakePoint(center.x+radius-7.0,center.y + radius - 7.0) radius:7.0 startAngle:0 endAngle:90 clockwise:NO];
-	[background lineToPoint:NSMakePoint(center.x,center.y + radius)];
-	[background closePath];
-	
-	[[NSColor colorWithCalibratedRed:0.12549 green:0.12549 blue:0.12549 alpha:0.95] set];
-	[background fill];
-	[[NSColor colorWithCalibratedRed:.479182 green:.479182 blue:.479182 alpha:0.5] set];
-	[background stroke];
-	
-	/*
-	NSPoint resizeOrigin = NSMakePoint(NSMaxX([self frame]) - 5,NSMaxY([self frame]) - 5);
-	NSBezierPath *resizeGrip = [NSBezierPath bezierPath];
-	[resizeGrip moveToPoint:NSMakePoint(resizeOrigin.x, resizeOrigin.y - 2)];
-	[resizeGrip lineToPoint:NSMakePoint(resizeOrigin.x - 3, resizeOrigin.y)];
-	[resizeGrip moveToPoint:NSMakePoint(resizeOrigin.x, resizeOrigin.y - 6)];
-	[resizeGrip lineToPoint:NSMakePoint(resizeOrigin.x - 7, resizeOrigin.y)];
-	[resizeGrip moveToPoint:NSMakePoint(resizeOrigin.x, resizeOrigin.y - 10)];
-	[resizeGrip lineToPoint:NSMakePoint(resizeOrigin.x - 11, resizeOrigin.y)];		
-	[resizeGrip setLineWidth:1.0];
-	*/
-//	[[NSColor lightGrayColor] set];
-//	[[NSColor redColor] set];
-//	NSRectFill(NSMakeRect(NSMaxX([self bounds]) - 5, NSMaxY([self bounds]) - 5, 5.0, 5.0));
-//	[resizeGrip stroke];		
-	
-	[NSGraphicsContext restoreGraphicsState];
-	
 	[NSGraphicsContext saveGraphicsState];   
 	
 	[circle addClip];
@@ -116,12 +129,11 @@
 	_isDrawing = NO;
 	
 	[NSGraphicsContext restoreGraphicsState]; 
-	
-
-	
+		
 	[circle release];
 	[back release];
 	
+	[self drawSlider];
 }
 
 - (BOOL)isOpaque
@@ -167,14 +179,18 @@
 {
     if(_zoom != newZoom && newZoom != 0){
 	 	_zoom = newZoom;
+		[self setFloatValue:_zoom];
 		[self setNeedsDisplay:YES];
+				
+		[_zoomField setStringValue:[NSString stringWithFormat:@"%d %%",((int)(_zoom*10)*10)]];
     }
 }
 
 - (BOOL)isFlipped
 {
+	if(_source)
+		return [_source isFlipped];
 	return YES;
- 	return [_source isFlipped];
 }
 
 - (NSRect)sourceZoomedRect
@@ -212,6 +228,10 @@
 
 - (void)correctWindowPlace
 {
+	if(!_source){
+		return;
+	}
+	NSLog(@"correct window place");
 	NSPoint centerPoint;
 	// centerPoint.x = [self frame].size.width/2.0;
 	// centerPoint.y = [self frame].size.height/2.0;
@@ -228,6 +248,8 @@
 
 - (void)correctMagPoint
 {
+//	NSLog(@"correct mag point %@",NSStringFromRect([[self window] frame]));
+
  	NSPoint centerPoint;
 	
 	centerPoint = [self bounds].origin;
@@ -245,78 +267,257 @@
 {
 	// update the source point
 	
-	[self correctMagPoint];                
+	[self correctMagPoint];    
+//	[self correctWindowPlace];
+
 	[self setNeedsDisplay:YES];
 }
 
-/*- (void)mouseDown:(NSEvent *)theEvent
-{
-	NSRect resizeRect;                
-	NSPoint point;
-  	
-	resizeRect.origin = NSMakePoint(NSMaxX([self bounds]) - 17,NSMaxY([self bounds]) - 17);
-	resizeRect.size = NSMakeSize(15,16);
-	
-	point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	
-	if(NSPointInRect(point, resizeRect)){
-		_isResizing = YES;
-//		[super mouseDown:theEvent];
+#pragma mark Slider
 
+- (void)drawSlider
+{
+	float radius;
+	NSPoint center;
+	
+	radius = [self sliderRadius];
+	center = [self bounds].origin;
+	center.x += ceilf (([self bounds].size.width)/2.0) -1.0;
+	center.y += ceilf (([self bounds].size.height)/2.0) -1.0;
+	
+	NSBezierPath *arc;
+	
+	arc = [NSBezierPath bezierPath];
+	[arc appendBezierPathWithArcWithCenter:center radius:(radius-DBSliderWidth/2.f) startAngle:-_startAngle endAngle:-_endAngle clockwise:NO];	
+	[arc appendBezierPathWithArcWithCenter:NSMakePoint(radius*cos(-_endAngle*(M_PI/180.f))+center.x, radius*sin(-_endAngle*(M_PI/180.f))+center.y)
+									radius:DBSliderWidth/2.f startAngle:-_endAngle+180 endAngle:-_endAngle clockwise:YES];
+	
+	[arc appendBezierPathWithArcWithCenter:center radius:(radius+DBSliderWidth/2.f) startAngle:-_endAngle endAngle:-_startAngle clockwise:YES];
+	
+	[arc appendBezierPathWithArcWithCenter:NSMakePoint(radius*cos(-_startAngle*(M_PI/180.f))+center.x, radius*sin(-_startAngle*(M_PI/180.f))+center.y)
+									radius:DBSliderWidth/2.f startAngle:-_startAngle  endAngle:-_startAngle+180 clockwise:YES];
+	
+	
+	[[NSColor colorWithDeviceRed: 0.318 green: 0.318 blue: 0.318 alpha:0.7] set];
+	[arc fill];
+	[[NSColor colorWithDeviceRed: 0.749 green: 0.761 blue: 0.788 alpha:0.7] set];
+	[arc stroke];
+	
+	float angle;
+	
+	angle = _startAngle + (_endAngle - _startAngle)*([self floatValue] - [self minValue])/([self maxValue] - [self minValue]);
+	
+	[self drawKnobAtPoint:NSMakePoint(radius*cos(-angle*(M_PI/180.f))+center.x, radius*sin(-angle*(M_PI/180.f))+center.y)];	
+}
+
+- (void)drawKnobAtPoint:(NSPoint)p
+{
+	NSBezierPath *knob;
+	float angle;
+	
+	angle = _startAngle + (_endAngle - _startAngle)*([self floatValue] - [self minValue])/([self maxValue] - [self minValue]);
+	
+	knob = [NSBezierPath bezierPath];
+	[knob appendBezierPathWithArcWithCenter:p radius:DBSliderKnobRadius startAngle:0 endAngle:360 clockwise:NO];
+	
+	if([self isEnabled]) {
+		
+		[NSGraphicsContext saveGraphicsState];
+		
+		if([self isHighlighted] && ([self focusRingType] == NSFocusRingTypeDefault ||
+									[self focusRingType] == NSFocusRingTypeExterior)) {
+			[[self focusRing] set];
+		}else{
+			[[self dropShadow] set];
+		}
+	}
+	
+	if ([self isEnabled]) {
+		if([self isHighlighted]){
+			[[self highlightKnobColor] drawInBezierPath:knob angle:90];
+		}else{
+			[[self knobColor] drawInBezierPath:knob angle:90];
+		}
+		[[self strokeColor] set];
 	}else{
+		[[self disabledKnobColor] drawInBezierPath:knob angle:90];
+		[[self disabledStrokeColor] set];
+		
+	}
+	[knob stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+}
+
+
+- (BOOL)isHighlighted
+{
+	return _isHighlighted;
+}
+
+- (float)sliderRadius
+{
+	return (MIN([self frame].size.width,[self frame].size.height) - DBSliderWidth - DBSliderKnobRadius - 2.0)/2.0f;
+}
+
+- (NSPoint)centerPoint
+{
+	NSPoint center;
+	center = [self bounds].origin;
+	center.x += ceilf (([self bounds].size.width)/2.0);
+	center.y += ceilf (([self bounds].size.height)/2.0);
+	
+	return center;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+	
+	if([self isEnabled]){
+		float angle, d;
+		NSPoint p, knobPoint;
+		
+		angle = _startAngle + (_endAngle - _startAngle)*([self floatValue] - [self minValue])/([self maxValue] - [self minValue]);
+		p = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+		knobPoint = [self centerPoint];
+		knobPoint.x += [self sliderRadius]*cos(-angle*(M_PI/180.f));
+		knobPoint.y += [self sliderRadius]*sin(-angle*(M_PI/180.f));
+		
+		d = ((p.x - knobPoint.x)*(p.x - knobPoint.x) + (p.y - knobPoint.y)*(p.y - knobPoint.y));
+		
+		if( d <= DBSliderKnobRadius*DBSliderKnobRadius){
+			_isHighlighted = YES;
+			_isDragging = YES;
+			[self setNeedsDisplay:YES];			
+		}else{
+			[super mouseDown:theEvent];
+		}
+	}else {
 		[super mouseDown:theEvent];
+	}
+	
+}
+
+- (void)mouseDragged:(NSEvent *)theEvent
+{
+	if([self isEnabled] && _isDragging){
+		_isHighlighted = YES;
+		
+		NSPoint p,center, refPoint;
+		float angle, value;
+		
+		p = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+		
+		center = [self bounds].origin;
+		center.x += ceilf (([self bounds].size.width)/2.0);
+		center.y += ceilf (([self bounds].size.height)/2.0);
+		
+		refPoint = NSMakePoint([self sliderRadius]*cos(-_startAngle*(M_PI/180.f)), [self sliderRadius]*sin(-_startAngle*(M_PI/180.f)));
+		
+		angle = DAngleBetweenPoints(center,p,NSMakePoint(1.0+center.x, 0.0+center.y));
+		value = ([self maxValue] - [self minValue])*(angle*(180.f/M_PI)-_startAngle)/(_endAngle - _startAngle) + [self minValue];		
+		
+		[self setFloatValue:value];
+		
+		[self setNeedsDisplay:YES];
+		
+	}else {
+		[super mouseDragged:theEvent];		
 	}
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-	_isResizing = NO;
-	[super mouseUp:theEvent];
-}*/
-
-/*- (void)mouseDragged:(NSEvent *)theEvent
-{
-	if( _isResizing){
-		NSRect newFrame, oldFrame;
-		float delta;
-		delta = MIN([theEvent deltaX], [theEvent deltaY]);
-		oldFrame = [[self window] frame];      
-		newFrame = oldFrame;
-		                                       
-//		newFrame.size.width += [theEvent deltaX];
-//		newFrame.origin.y -= [theEvent deltaY];
-//		newFrame.size.height += [theEvent deltaY];
-//		newFrame.size.width = MIN(newFrame.size.width,oldFrame.size.height+[theEvent deltaY]);
-//
-//		newFrame.size.height += newFrame.size.width - oldFrame.size.height;
-//		newFrame.origin.y -= newFrame.size.width - oldFrame.size.height;
+	if([self isEnabled] && _isDragging){
+		_isHighlighted = NO;
+		_isDragging = NO;
 		
-		float dX = [theEvent deltaX], dY = [theEvent deltaY];
-		float ratio = 1.0;
-		
-//		if( fabs(dX) < fabs(dY)  ){
-//			dY = (oldFrame.size.width+dX)/ratio - oldFrame.size.height;
-//		}else{
-//			dX = ratio*(oldFrame.size.height+dY) - oldFrame.size.width;
-//		}
-		
-		if(oldFrame.size.width + dX >= 230){
-//			dX = 230 - oldFrame.size.width;
-//			newFrame.size.width += dX;
-		}
-		if(oldFrame.size.height + dY >= 230){
-//			dY = 230 - oldFrame.size.height;
-//			newFrame.origin.y -= dY;
-//			newFrame.size.height += dY;
-		}
-		
-		newFrame.size.width += dX;
-		newFrame.origin.y -= dY;
-		newFrame.size.height += dY;
-		                                       
-		[[self window] setFrame:newFrame display:YES animate:NO];
-	}else{
-		[super mouseDragged:theEvent];
+		[self setNeedsDisplay:YES];
+	}else {
+		[super mouseUp:theEvent];
 	}
-}*/
+	
+}
+
+- (float)floatValue
+{
+	return _floatValue;
+}
+- (void)setFloatValue:(float)f
+{
+	_floatValue = MAX( MIN(f,[self maxValue]), [self minValue]);
+	
+	[self setZoom:_floatValue];
+	[self setNeedsDisplay:YES];
+}
+
+- (float)minValue
+{
+	return 1.0;
+}
+
+- (float)maxValue
+{
+	return 16.0;
+}
+
+- (BOOL)isEnabled
+{
+	return YES;
+}
+#pragma mark  Colors and Gradients
+-(NSColor *)strokeColor {
+	
+	return [NSColor colorWithDeviceRed: 0.749 green: 0.761 blue: 0.788 alpha: 0.7];
+}
+
+-(NSColor *)disabledStrokeColor {
+	
+	return [NSColor colorWithDeviceRed: 0.749 green: 0.761 blue: 0.788 alpha: 0.2];
+}
+
+-(NSGradient *)knobColor {
+	
+	return [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceRed: 0.324 green: 0.331 blue: 0.347 alpha: 1.0],
+			 (CGFloat)0, [NSColor colorWithDeviceRed: 0.245 green: 0.253 blue: 0.269 alpha: 1.0], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.206 green: 0.214 blue: 0.233 alpha: 1.0], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.139 green: 0.147 blue: 0.167 alpha: 1.0], (CGFloat)1.0, nil] autorelease];
+}
+
+-(NSGradient *)highlightKnobColor {
+	
+	return [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceRed: 0.524 green: 0.531 blue: 0.547 alpha: 1.0],
+			 (CGFloat)0, [NSColor colorWithDeviceRed: 0.445 green: 0.453 blue: 0.469 alpha: 1.0], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.406 green: 0.414 blue: 0.433 alpha: 1.0], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.339 green: 0.347 blue: 0.367 alpha: 1.0], (CGFloat)1.0, nil] autorelease];
+}
+
+-(NSGradient *)disabledKnobColor {
+	
+	return [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceRed: 0.324 green: 0.331 blue: 0.347 alpha: 1.0],
+			 (CGFloat)0, [NSColor colorWithDeviceRed: 0.245 green: 0.253 blue: 0.269 alpha: 1.0], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.206 green: 0.214 blue: 0.233 alpha: 1.0], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.139 green: 0.147 blue: 0.167 alpha: 1.0], (CGFloat)1.0, nil] autorelease];
+}
+
+-(NSShadow *)dropShadow {
+	
+	NSShadow *shadow = [[NSShadow alloc] init];
+	[shadow setShadowColor: [NSColor blackColor]];
+	[shadow setShadowBlurRadius: 2];
+	[shadow setShadowOffset: NSMakeSize( 0, -1)];
+	
+	return [shadow autorelease];
+}
+
+-(NSShadow *)focusRing {
+	
+	NSShadow *shadow = [[NSShadow alloc] init];
+	[shadow setShadowColor: [NSColor whiteColor]];
+	[shadow setShadowBlurRadius: 3];
+	[shadow setShadowOffset: NSMakeSize( 0, 0)];
+	
+	return [shadow autorelease];
+}
+
 @end

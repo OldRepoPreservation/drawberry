@@ -19,7 +19,7 @@ NSString *DBMagnifyingWindowDidMove = @"DBMagnifyingWindow Did Move";
 //	_movingFlag = NO;
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowBeganToMove:) name:NSWindowWillMoveNotification object:self];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowEndToMove:) name:NSWindowDidMoveNotification object:self];
-	[self setMovableByWindowBackground:YES];
+	[self setMovableByWindowBackground:NO];
 	[self setLevel:NSFloatingWindowLevel];
     [self setBackgroundColor: [NSColor clearColor]];
     [self setHasShadow: YES];    
@@ -39,21 +39,21 @@ NSString *DBMagnifyingWindowDidMove = @"DBMagnifyingWindow Did Move";
 {
 	return NO;
 }
-- (void)mouseDragged:(NSEvent *)theEvent
+
+/*- (void)mouseDragged:(NSEvent *)theEvent
 {
-	                              
 	_movingVec.x += [theEvent deltaX];
 	_movingVec.y += [theEvent deltaY];
 	[[NSNotificationCenter defaultCenter] postNotificationName:DBMagnifyingWindowDidMove object:self];
 	
-	[super mouseDragged:theEvent];
+//	[super mouseDragged:theEvent];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
 	_movingVec = NSZeroPoint;
 	[super mouseUp:theEvent];
-}
+}*/
 
 /*- (NSRect)frame
 {   
@@ -67,6 +67,7 @@ NSString *DBMagnifyingWindowDidMove = @"DBMagnifyingWindow Did Move";
 	_movingFlag = YES;
 }                     
 */
+
 - (void)windowEndToMove:(NSNotification *)note
 {    
 	_movingVec = NSZeroPoint;

@@ -20,7 +20,17 @@
 			<dict>
 				<key>_source</key>
 				<string>NSView</string>
+				<key>_zoomField</key>
+				<string>NSTextField</string>
 			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSView</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>DBMagnifyingGlassBackground</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
 			<key>SUPERCLASS</key>
 			<string>NSView</string>
 		</dict>

@@ -237,6 +237,7 @@
 		6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
 		6CA3B1D00E5C3F6700BFCA59 /* action_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */; };
 		6CAC18A00E28C4B7007FD7D8 /* DBColorSwatches.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CAC189E0E28C4B7007FD7D8 /* DBColorSwatches.nib */; };
+		6CAEAB980FABA8AB00F700AD /* DBMagnifyingGlassBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAEAB970FABA8AB00F700AD /* DBMagnifyingGlassBackground.m */; };
 		6CB068780E44A93200B92FE4 /* DBShapeCollectionDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */; };
 		6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 6CB4DFA90E5B1D2F008CBB3A /* Help */; };
 		6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
@@ -644,6 +645,8 @@
 		6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_white.png; sourceTree = "<group>"; };
 		6CAC189F0E28C4B7007FD7D8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
 		6CAC18A30E28C4D4007FD7D8 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
+		6CAEAB960FABA8AB00F700AD /* DBMagnifyingGlassBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMagnifyingGlassBackground.h; path = Source/DBMagnifyingGlassBackground.h; sourceTree = "<group>"; };
+		6CAEAB970FABA8AB00F700AD /* DBMagnifyingGlassBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBMagnifyingGlassBackground.m; path = Source/DBMagnifyingGlassBackground.m; sourceTree = "<group>"; };
 		6CB068770E44A93200B92FE4 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
 		6CB4DFA90E5B1D2F008CBB3A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Help; path = Ressource/Help; sourceTree = "<group>"; };
 		6CB6C6F10E587BF500800D7E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../Code/Sparkle.framework; sourceTree = SOURCE_ROOT; };
@@ -736,6 +739,7 @@
 				6CCAE8FE0C10B4D400F71D77 /* EM Classes */,
 				6C4AB2910BCCD0DE0035522E /* UI Subclasses */,
 				6C4AB2970BCCD10B0035522E /* Controllers */,
+				6CAEAB950FABA84600F700AD /* Magnifying glass */,
 				6C4AB2940BCCD1000035522E /* Views */,
 				6C4AB29A0BCCD1160035522E /* Models */,
 				6CBF84740C56479D00F9554F /* Undo Manager */,
@@ -994,10 +998,6 @@
 		6C4AB2940BCCD1000035522E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6C129D4A0E54EBF800AD5C61 /* DBMagnifyingView.h */,
-				6C129D4B0E54EBF800AD5C61 /* DBMagnifyingView.m */,
-				6C129D4C0E54EBF800AD5C61 /* DBMagnifyingWindow.h */,
-				6C129D4D0E54EBF800AD5C61 /* DBMagnifyingWindow.m */,
 				6C129D500E54EC1600AD5C61 /* DBDrawingExtensions.h */,
 				6C129D510E54EC1600AD5C61 /* DBDrawingExtensions.m */,
 				6C129D520E54EC1600AD5C61 /* DBDrawingView.h */,
@@ -1037,8 +1037,6 @@
 				6C129D390E54E9F100AD5C61 /* DBLayerController.m */,
 				6C129D3A0E54E9F100AD5C61 /* DBLayerWindowController.h */,
 				6C129D3B0E54E9F100AD5C61 /* DBLayerWindowController.m */,
-				6C129D3E0E54EA1D00AD5C61 /* DBMagnifyingController.h */,
-				6C129D3F0E54EA1D00AD5C61 /* DBMagnifyingController.m */,
 				6C129D410E54EA3200AD5C61 /* DBReverseArrayController.h */,
 				6C129D420E54EA3200AD5C61 /* DBReverseArrayController.m */,
 				6C129D440E54EA4000AD5C61 /* DBToolsController.h */,
@@ -1212,6 +1210,21 @@
 				6C129D8D0E54ED1600AD5C61 /* DBText.m */,
 			);
 			name = Shapes;
+			sourceTree = "<group>";
+		};
+		6CAEAB950FABA84600F700AD /* Magnifying glass */ = {
+			isa = PBXGroup;
+			children = (
+				6C129D3E0E54EA1D00AD5C61 /* DBMagnifyingController.h */,
+				6C129D3F0E54EA1D00AD5C61 /* DBMagnifyingController.m */,
+				6CAEAB960FABA8AB00F700AD /* DBMagnifyingGlassBackground.h */,
+				6CAEAB970FABA8AB00F700AD /* DBMagnifyingGlassBackground.m */,
+				6C129D4A0E54EBF800AD5C61 /* DBMagnifyingView.h */,
+				6C129D4B0E54EBF800AD5C61 /* DBMagnifyingView.m */,
+				6C129D4C0E54EBF800AD5C61 /* DBMagnifyingWindow.h */,
+				6C129D4D0E54EBF800AD5C61 /* DBMagnifyingWindow.m */,
+			);
+			name = "Magnifying glass";
 			sourceTree = "<group>";
 		};
 		6CB4DFF70E5B8720008CBB3A /* HUD */ = {
@@ -1614,6 +1627,7 @@
 				6CF78B0B0FA5016F00CC00FB /* DBDocumentController.m in Sources */,
 				6C6909BB0FA7818600F10440 /* DBTemplateManager.m in Sources */,
 				6C34EAE70FAA1F3700F9C3C6 /* UKPrefsPanel.m in Sources */,
+				6CAEAB980FABA8AB00F700AD /* DBMagnifyingGlassBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

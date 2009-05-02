@@ -15,10 +15,22 @@ typedef enum _DBMagnifyingType{
 
 @interface DBMagnifyingView : NSView {
 	IBOutlet NSView *_source;
+	
+	IBOutlet NSTextField *_zoomField;
+	
 	NSPoint _magnifyingPoint;
 	float _zoom;
 	BOOL _isDrawing;
 	BOOL _isResizing;
+	
+	
+	float _startAngle, _endAngle;
+	
+	BOOL _isHighlighted;
+	
+	float _floatValue;
+@private
+	BOOL _isDragging;
 }
 
 - (NSView *)source;
@@ -36,4 +48,20 @@ typedef enum _DBMagnifyingType{
 
 - (IBAction)takeZoomValueFrom:(id)sender;
 - (IBAction)update:(id)sender;
+
+
+
+
+- (void)drawSlider;
+- (void)drawKnobAtPoint:(NSPoint)p;
+- (BOOL)isHighlighted;
+- (float)sliderRadius;
+- (NSPoint)centerPoint;
+
+- (float)floatValue;
+- (void)setFloatValue:(float)f;
+- (float)minValue;
+- (float)maxValue;
+- (BOOL)isEnabled;
+
 @end

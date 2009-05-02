@@ -222,6 +222,7 @@
 		6C5DF1650C57AAC400429CF4 /* DBUndo.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5DF1630C57AAC400429CF4 /* DBUndo.nib */; };
 		6C6909BB0FA7818600F10440 /* DBTemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6909BA0FA7818600F10440 /* DBTemplateManager.m */; };
 		6C690A380FA8F9CC00F10440 /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C690A370FA8F9CC00F10440 /* Templates.plist */; };
+		6C7EF3660FACFD380034860F /* DBGrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EF3650FACFD380034860F /* DBGrip.m */; };
 		6C825D810EFD5EE8006057AB /* NSBezierPath+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D7F0EFD5EE8006057AB /* NSBezierPath+Geometry.m */; };
 		6C825D8D0EFD5F71006057AB /* DKRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D8C0EFD5F71006057AB /* DKRandom.m */; };
 		6C825D930EFD60C6006057AB /* DKGeometryUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D910EFD60C6006057AB /* DKGeometryUtilities.m */; };
@@ -615,6 +616,8 @@
 		6C6909B90FA7818600F10440 /* DBTemplateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBTemplateManager.h; path = Source/DBTemplateManager.h; sourceTree = "<group>"; };
 		6C6909BA0FA7818600F10440 /* DBTemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBTemplateManager.m; path = Source/DBTemplateManager.m; sourceTree = "<group>"; };
 		6C690A370FA8F9CC00F10440 /* Templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Templates.plist; path = Ressource/Templates/Templates.plist; sourceTree = "<group>"; };
+		6C7EF3640FACFD380034860F /* DBGrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGrip.h; path = Source/DBGrip.h; sourceTree = "<group>"; };
+		6C7EF3650FACFD380034860F /* DBGrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGrip.m; path = Source/DBGrip.m; sourceTree = "<group>"; };
 		6C825D7F0EFD5EE8006057AB /* NSBezierPath+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+Geometry.m"; path = "Source/NSBezierPath+Geometry.m"; sourceTree = "<group>"; };
 		6C825D800EFD5EE8006057AB /* NSBezierPath+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+Geometry.h"; path = "Source/NSBezierPath+Geometry.h"; sourceTree = "<group>"; };
 		6C825D8B0EFD5F71006057AB /* DKRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKRandom.h; path = Source/DKRandom.h; sourceTree = "<group>"; };
@@ -1223,6 +1226,8 @@
 				6C129D4B0E54EBF800AD5C61 /* DBMagnifyingView.m */,
 				6C129D4C0E54EBF800AD5C61 /* DBMagnifyingWindow.h */,
 				6C129D4D0E54EBF800AD5C61 /* DBMagnifyingWindow.m */,
+				6C7EF3640FACFD380034860F /* DBGrip.h */,
+				6C7EF3650FACFD380034860F /* DBGrip.m */,
 			);
 			name = "Magnifying glass";
 			sourceTree = "<group>";
@@ -1628,6 +1633,7 @@
 				6C6909BB0FA7818600F10440 /* DBTemplateManager.m in Sources */,
 				6C34EAE70FAA1F3700F9C3C6 /* UKPrefsPanel.m in Sources */,
 				6CAEAB980FABA8AB00F700AD /* DBMagnifyingGlassBackground.m in Sources */,
+				6C7EF3660FACFD380034860F /* DBGrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

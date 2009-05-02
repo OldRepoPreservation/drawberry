@@ -63,6 +63,14 @@
 		</dict>
 		<dict>
 			<key>CLASS</key>
+			<string>DBGrip</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSView</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
 			<string>NSWindow</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>

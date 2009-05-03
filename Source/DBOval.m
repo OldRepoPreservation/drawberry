@@ -172,9 +172,15 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[NSGraphicsContext saveGraphicsState]; 
      
 	[_shadow set];
+	
+	CGContextBeginTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort],NULL);
+
 	[self applyFillsToPath:_path];
 	
 	[[self stroke] strokePath:_path];
+
+	CGContextEndTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort]);
+
 	[NSGraphicsContext restoreGraphicsState];
 
    	if([[NSGraphicsContext currentContext] isKindOfClass:[NSBitmapGraphicsContext class]]){

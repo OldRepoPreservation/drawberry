@@ -284,10 +284,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 }
 
 - (void)drawInView:(DBDrawingView *)view rect:(NSRect)rect
-{         
-	[[NSColor redColor] set];
-	//[NSBezierPath fillRect:rect];
-	
+{         	
 	if(!NSIsEmptyRect(rect) && !NSIntersectsRect(rect, _bounds) && !NSIsEmptyRect(_bounds)){
 		return;
 	}
@@ -299,8 +296,12 @@ static double distanceBetween(NSPoint a, NSPoint b)
      
 	[_shadow set];
 	
+	CGContextBeginTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort],NULL);
+
 	[self applyFillsToPath:_path];
 	[[self stroke] strokePath:_path];
+	
+	CGContextEndTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort]);
 	
 	[NSGraphicsContext restoreGraphicsState];
 

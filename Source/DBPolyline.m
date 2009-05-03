@@ -647,9 +647,15 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[NSGraphicsContext saveGraphicsState]; 
     
 	[_shadow set];
+
+	CGContextBeginTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort],NULL);
+
 	[self applyFillsToPath:_path];
 	
 	[[self stroke] strokePath:_path];
+
+	CGContextEndTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort]);
+
 	[NSGraphicsContext restoreGraphicsState];
 
 	if([[NSGraphicsContext currentContext] isKindOfClass:[NSBitmapGraphicsContext class]]){

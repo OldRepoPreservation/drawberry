@@ -1019,11 +1019,15 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[NSGraphicsContext saveGraphicsState]; 
      
 	[_shadow set];
-	[self applyFillsToPath:_path];
+
+	CGContextBeginTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort],NULL);
 	
+	[self applyFillsToPath:_path];
 
 	[[self stroke] strokePath:_path];
 	[[self stroke] strokePath:_tempPath];
+
+	CGContextEndTransparencyLayer([[NSGraphicsContext currentContext] graphicsPort]);
 
 	[NSGraphicsContext restoreGraphicsState];
 

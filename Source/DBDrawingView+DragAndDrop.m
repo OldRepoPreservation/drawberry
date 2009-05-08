@@ -87,8 +87,17 @@
 	shape = [[self layerController] hitTest:point];
 	
 		if(shape){
-			[[shape fill] setFillColor:[NSColor colorFromPasteboard:[sender draggingPasteboard]] ];
-			[[shape fill] setFillMode:DBColorFillMode];
+			DBFill *fill;
+			
+			if([shape countOfFills] > 0){
+				fill = [[shape fills] lastObject];
+			}else {
+				fill = [[DBFill alloc] initWithShape:shape];
+				[shape addFill:fill];
+			}
+
+			[fill setFillColor:[NSColor colorFromPasteboard:[sender draggingPasteboard]] ];
+			[fill setFillMode:DBColorFillMode];
 		
 			return YES;
 		}

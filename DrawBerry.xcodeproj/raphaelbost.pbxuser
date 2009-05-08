@@ -405,6 +405,9 @@
 			6CCD47600FB4DFE400256EBC /* PBXTextBookmark */ = 6CCD47600FB4DFE400256EBC /* PBXTextBookmark */;
 			6CCD47610FB4DFE400256EBC /* PBXTextBookmark */ = 6CCD47610FB4DFE400256EBC /* PBXTextBookmark */;
 			6CCD47650FB4DFF300256EBC /* PBXTextBookmark */ = 6CCD47650FB4DFF300256EBC /* PBXTextBookmark */;
+			6CCD47680FB4E0CB00256EBC /* PBXTextBookmark */ = 6CCD47680FB4E0CB00256EBC /* PBXTextBookmark */;
+			6CCD47690FB4E0CB00256EBC /* PBXTextBookmark */ = 6CCD47690FB4E0CB00256EBC /* PBXTextBookmark */;
+			6CCD476B0FB4E0D500256EBC /* PBXTextBookmark */ = 6CCD476B0FB4E0D500256EBC /* PBXTextBookmark */;
 		};
 		sourceControlManager = 6CF835060BC7C1120058CCFA /* Source Control */;
 		userBuildSettings = {
@@ -796,7 +799,7 @@
 	};
 	6C129D330E54E9C700AD5C61 /* DBDocument.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {786, 6342}}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 6314}}";
 			sepNavSelRange = "{10783, 6}";
 			sepNavVisRange = "{10589, 549}";
 			sepNavWindowFrame = "{{153, 189}, {750, 558}}";
@@ -3467,6 +3470,36 @@
 		vrLen = 715;
 		vrLoc = 894;
 	};
+	6CCD47680FB4E0CB00256EBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D810E54ECBF00AD5C61 /* DBShape.m */;
+		name = "DBShape.m: 936";
+		rLen = 5;
+		rLoc = 22166;
+		rType = 0;
+		vrLen = 249;
+		vrLoc = 22040;
+	};
+	6CCD47690FB4E0CB00256EBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D330E54E9C700AD5C61 /* DBDocument.m */;
+		name = "DBDocument.m: 319";
+		rLen = 6;
+		rLoc = 10783;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 10589;
+	};
+	6CCD476B0FB4E0D500256EBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6CCD473E0FB4DC8400256EBC /* DBShapeCollectionDocument.m */;
+		name = "DBShapeCollectionDocument.m: 50";
+		rLen = 0;
+		rLoc = 1397;
+		rType = 0;
+		vrLen = 715;
+		vrLoc = 894;
+	};
 	6CCDD8620F9A7774000FF25F /* [NSException raise] */ = {
 		isa = PBXSymbolicBreakpoint;
 		actions = (
@@ -3478,7 +3511,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = CoreFoundation;
-		modificationTime = 263512025.064556;
+		modificationTime = 263512060.613719;
 		state = 1;
 		symbolName = "[NSException raise]";
 	};
@@ -3509,9 +3542,9 @@
 	};
 	6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {972, 1764}}";
-			sepNavSelRange = "{1551, 0}";
-			sepNavVisRange = "{1234, 581}";
+			sepNavIntBoundsRect = "{{0, 0}, {972, 1778}}";
+			sepNavSelRange = "{1670, 0}";
+			sepNavVisRange = "{1302, 511}";
 		};
 	};
 	6CF834F40BC7C1100058CCFA /* DrawBerry */ = {

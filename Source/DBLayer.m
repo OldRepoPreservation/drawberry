@@ -280,8 +280,8 @@
 	imageSize = [image size];
 	rect.origin = NSMakePoint(canevasSize.width/2,canevasSize.height/2);
 	
-	canevasSize.width *= 0.8;       // take 80% of the canevas size
-	canevasSize.height *= 0.8;
+//	canevasSize.width *= 0.8;       // take 80% of the canevas size
+//	canevasSize.height *= 0.8;
 	
 	imageSizeScale = imageSize.height /  imageSize.width;
 	

@@ -20,6 +20,8 @@
 			<dict>
 				<key>_source</key>
 				<string>NSView</string>
+				<key>_zoomField</key>
+				<string>NSTextField</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSView</string>
@@ -31,6 +33,12 @@
 			<string>ObjC</string>
 			<key>SUPERCLASS</key>
 			<string>NSControl</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>NSObject</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
 		</dict>
 		<dict>
 			<key>ACTIONS</key>
@@ -77,6 +85,14 @@
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSDocument</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>NSWindow</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSResponder</string>
 		</dict>
 		<dict>
 			<key>ACTIONS</key>

@@ -21,4 +21,7 @@ extern NSString *DBToolDidCreateShapeNotification;
 
 - (int)selectedTool;
 - (Class)shapeClassForSelectedTool;
+
+- (void)registerForOpenNotifications;
+- (void)registerForCloseNotifications;
 @end

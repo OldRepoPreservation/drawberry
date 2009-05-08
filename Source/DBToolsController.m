@@ -12,6 +12,7 @@
 
 #import "GCollapsePanel.h"
 #import "DBApplicationController.h"
+#import "DBMagnifyingController.h"
 
 #import "DBPrefKeys.h"
 
@@ -78,57 +79,99 @@ enum {
 
 	
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillClose:) 
-												 name:NSWindowWillCloseNotification 
-											   object:[[NSApp delegate] viewInspector]];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillClose:) 
-												 name:NSWindowWillCloseNotification 
-											   object:[[NSApp delegate] objectInspector]];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillClose:) 
-												 name:NSWindowWillCloseNotification 
-											   object:[[NSApp delegate] layerWindow]];
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillClose:) 
-												 name:NSWindowWillCloseNotification 
-											   object:[[NSApp delegate] magnifyWindow]];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillOpen:) 
-												 name:NSWindowDidBecomeKeyNotification 
-											   object:[[NSApp delegate] viewInspector]];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillOpen:) 
-												 name:NSWindowDidBecomeKeyNotification 
-											   object:[[NSApp delegate] objectInspector]];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillOpen:) 
-												 name:NSWindowDidBecomeKeyNotification 
-											   object:[[NSApp delegate] layerWindow]];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(inspectorWindowWillOpen:) 
-												 name:NSWindowDidBecomeKeyNotification 
-											   object:[[NSApp delegate] magnifyWindow]];
+	[self registerForCloseNotifications];
+	
+	[self registerForOpenNotifications];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(toolDidCreateShape:) 
 												 name:DBToolDidCreateShapeNotification 
-											   object:nil];
+											   object:nil];	
 	
-
-	[[_inspectorSelector cellWithTag:0] setState:[[[NSApp delegate] viewInspector] isVisible]];
-	[[_inspectorSelector cellWithTag:1] setState:[[[NSApp delegate] objectInspector] isVisible]];
-	[[_inspectorSelector cellWithTag:2] setState:[[[NSApp delegate] layerWindow] isVisible]];
-	[[_inspectorSelector cellWithTag:3] setState:[[[NSApp delegate] magnifyWindow] isVisible]];
+	[[_inspectorSelector cellWithTag:0] setState:[[NSUserDefaults standardUserDefaults] boolForKey:DBViewInspectorOpened]];
+	[[_inspectorSelector cellWithTag:1] setState:[[NSUserDefaults standardUserDefaults] boolForKey:DBObjectInspectorOpened]];
+	[[_inspectorSelector cellWithTag:2] setState:[[NSUserDefaults standardUserDefaults] boolForKey:DBLayerWindowOpened]];
+	[[_inspectorSelector cellWithTag:3] setState:[[NSUserDefaults standardUserDefaults] boolForKey:DBMagGlassPanelOpened]];
 
 }
+
+- (void)registerForOpenNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] viewInspector]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] objectInspector]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] layerWindow]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] magnifyWindow]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] undoWindow]];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] colorSwatchesWindow]];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] shapeLibraryWindow]];
+	
+}
+
+- (void)registerForCloseNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] viewInspector]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] objectInspector]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] layerWindow]];
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] magnifyWindow]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] undoWindow]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] colorSwatchesWindow]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] shapeLibraryWindow]];
+	
+}
+
 
 - (IBAction)selectToolAction:(id)sender
 {
@@ -158,6 +201,7 @@ enum {
 
 - (void)inspectorWindowWillClose:(NSNotification *)note
 {
+
 	NSWindow *window;
 	NSString *key;
 	key = nil;
@@ -176,17 +220,32 @@ enum {
 	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
 		key = DBMagGlassPanelOpened;
+	}else if(window == [[NSApp delegate] undoWindow]){
+		tag = 4;
+		key = DBUndoWindowOpened;
+	}else if(window == [[NSApp delegate] colorSwatchesWindow]){
+		tag = 5;
+		key = DBColorSwatchOpened;
+	}else if(window == [[NSApp delegate] shapeLibraryWindow]){
+		tag = 6;
+		key = DBShapeLibraryOpened;
 	}           
-
+	
+	
 	if(key){
+//		NSLog(@"window will close %@",key);
+
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:key];
 		
-		[[_inspectorSelector cellWithTag:tag] setState:NSOffState];		
+		if(tag <= 3)
+			[[_inspectorSelector cellWithTag:tag] setState:NSOffState];		
 	}
 }
 
 - (void)inspectorWindowWillOpen:(NSNotification *)note
 {
+//	NSLog(@"window will open");
+	
 	NSWindow *window;
 	NSString *key;
 	key = nil;
@@ -205,12 +264,23 @@ enum {
 	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
 		key = @"magGlassPanel Opened";
+	}else if(window == [[NSApp delegate] undoWindow]){
+		tag = 4;
+		key = DBUndoWindowOpened;
+	}else if(window == [[NSApp delegate] colorSwatchesWindow]){
+		tag = 5;
+		key = DBColorSwatchOpened;
+	}else if(window == [[NSApp delegate] shapeLibraryWindow]){
+		tag = 6;
+		key = DBShapeLibraryOpened;
 	}           
+	
 	
 	if(key){
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:key];
 		
-		[[_inspectorSelector cellWithTag:tag] setState:NSOnState];		
+		if(tag <= 3)
+			[[_inspectorSelector cellWithTag:tag] setState:NSOnState];		
 	}
 }
 

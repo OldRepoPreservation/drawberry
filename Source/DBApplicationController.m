@@ -64,7 +64,6 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification { 
 	
-	[[DBToolsController sharedToolsController] showWindow:self];
 
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBLayerWindowOpened]){
 		[[DBLayerWindowController sharedLayerWindowController] showWindow:self];
@@ -88,12 +87,10 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBMagGlassPanelOpened]){
 		[[DBMagnifyingController sharedMagnifyingController] showWindow:self];
-	}
-
+	}	
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBUndoWindowOpened]){
 		[[DBUndoUIController sharedUndoUIController] showWindow:self];
 	}
-
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBColorSwatchOpened]){
 		[[DBColorSwatchController sharedColorSwatchController] showWindow:self];
 	}
@@ -101,6 +98,9 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBShapeLibraryOpened]){
 		[[DBShapeLibraryController sharedShapeLibraryController] showWindow:self];
 	}
+	
+	[[DBToolsController sharedToolsController] showWindow:self];
+
 	
 	[_donationController showDonateWindowIfNecessary];
 }  
@@ -238,6 +238,11 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 - (NSWindow *)magnifyWindow
 {
 	return [[DBMagnifyingController sharedMagnifyingController] window];
+}
+
+- (NSWindow *)undoWindow
+{
+	return [[DBUndoUIController sharedUndoUIController] window];
 }
 
 - (NSWindow *)colorSwatchesWindow

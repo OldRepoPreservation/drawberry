@@ -216,6 +216,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	}
 	
 	[_fillImage setFlipped:YES];
+	[_fillImage setScalesWhenResized:YES];
 	
 	NSBezierPath *pathMask = path;
 	NSSize originalSize = [_fillImage size];

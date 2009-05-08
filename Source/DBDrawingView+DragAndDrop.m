@@ -26,11 +26,14 @@
 	DBShape *shape;
 	NSString *type;
 	
-	type = [[sender draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:DBShapePboardType,NSColorPboardType,nil]];
+	type = [[sender draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:NSColorPboardType, DBShapePboardType,NSTIFFPboardType,NSPDFPboardType,
+																NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, nil]];
 	
 	if([type isEqualToString:DBShapePboardType]){
 		return NSDragOperationCopy;
-	}else if([type isEqualToString:NSColorPboardType]){
+	}else if([type isEqualToString:NSColorPboardType] || [type isEqualToString:NSPDFPboardType] || [type isEqualToString:NSPICTPboardType] ||
+			 [type isEqualToString:NSPostScriptPboardType] || [type isEqualToString:NSTIFFPboardType] || 
+			 [type isEqualToString:NSFilenamesPboardType]){
 		shape = [[self layerController] hitTest:point];
 	
 		if(shape){
@@ -43,11 +46,13 @@
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
+	NSLog(@"perform");
 	NSPoint point = [self convertPoint:[[self window] convertScreenToBase:[NSEvent mouseLocation]] fromView:nil];
 	DBShape *shape;
 	NSString *type;
 	
-	type = [[sender draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:DBShapePboardType,NSColorPboardType,nil]];
+	type = [[sender draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:NSColorPboardType, DBShapePboardType,NSTIFFPboardType,NSPDFPboardType,
+																NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, nil]];
 
 	if([type isEqualToString:DBShapePboardType]){
 		NSData *pbData;
@@ -102,6 +107,37 @@
 			return YES;
 		}
 		return NO;
+	}else if([type isEqualToString:NSPDFPboardType] || [type isEqualToString:NSPICTPboardType] ||
+			 [type isEqualToString:NSPostScriptPboardType] || [type isEqualToString:NSTIFFPboardType] || 
+			 [type isEqualToString:NSFilenamesPboardType]){
+		
+		
+		shape = [[self layerController] hitTest:point];
+		
+		if(shape){
+			DBFill *fill;
+			NSImage *image;
+
+			image = [[NSImage alloc] initWithPasteboard:[sender draggingPasteboard]];
+
+			if(image){
+				fill = [[DBFill alloc] initWithShape:shape];
+				[shape addFill:fill];
+				
+				[fill setImageFillMode:DBDrawMode];
+				[fill setFillImage:image];
+				[fill setFillMode:DBImageFillMode];
+				
+				[image release];
+				return YES;
+
+			}else {
+				return NO;
+			}
+
+			
+		}
+		return NO;		
 	}
 	
 	return NO;

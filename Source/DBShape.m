@@ -506,8 +506,6 @@ static NSBezierPath *__knob = nil;
 
 - (void)setFills:(NSArray *)newFills
 {
-	NSLog(@"add");
-
 	[_fills setArray:newFills];
 	[_fills makeObjectsPerformSelector:@selector(setShape:) withObject:self];
 	[self strokeUpdated];

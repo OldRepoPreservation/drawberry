@@ -232,11 +232,6 @@ enum {
 	
 	
 	if(key){
-<<<<<<< TREE
-//		NSLog(@"window will close %@",key);
-
-=======
->>>>>>> MERGE-SOURCE
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:key];
 		
 		if(tag <= 3)

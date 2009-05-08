@@ -47,7 +47,7 @@
 
 - (BOOL)writeToURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
 {
-
+	return NO;
 }
 
 - (IBAction)addCollection:(id)sender

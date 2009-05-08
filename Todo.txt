@@ -13,7 +13,7 @@ What we have to do in the future (in function of milestone)
 
 	FIXED : Change the interface for the core image filters in the layer inspector
 
-	DONE : Add a check box to hide the stroke (add "None" is the stroke mode menu)
+	DONE : Add a check box to hide the stroke (add "None" in the stroke mode menu)
 
 	DONE : Add the ability to save the CI layers
 	
@@ -55,7 +55,7 @@ What we have to do in the future (in function of milestone)
 
 - Version 0.5 : Just put your suggestions into it
 
-    DONE : Add a contextual toolbar
+    	DONE : Add a contextual toolbar
 
 	DONE : Add some editing tools for the bezier curves and polylines (Gael Ferre's suggestion)  
 	
@@ -107,14 +107,48 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : Write a great help
 	
+- Version 0.7 :
+	
+	DONE : Switch to the BGHUDAppkit for HUD components (DrawBerry is now Leopard-only)
+		
+	DONE : Switched to a personal version of a gradient panel instead of the GradientPanel framework which was used before
+	
+	DONE : Save the tab position (opened or closed) and open them at startup
+	
+	FIXED : The position of each palette is now correctly saved into the user's defaults
+	
+	DONE : A real pattern stroke ability
+	
+
+- Version 0.8
+
+	DONE : Be able to combine different fillings     
+	
+	DONE : Templates (A4, 256x256, ...)
+
+	FIXED : SVG importer/exporter bug with rectangles and ovals
+
+	DONE : A Donate panel at startup
+	
+	DONE : A curved zoom slider for the mag. glass
+
+	FIXED : Stroke shadow overlays the fill shadow
+	
+	DONE : Images drag & drop on shapes
+
+	DONE : A more efficient way to fill shapes with images using path clipping
 - After that
-	       
-	TODO : Save the tab position (opened or closed) and open them at startup
+	  
+	TODO : PDF importer (as vector objects)
 
 	TODO : Groups
 	
 	TODO : Add the ability to reorder CI filters	
 		
+	TODO : Improve the magnifying glass (change the size (??) ) 
+	-	TODO : Magnify a other part than just under the glass
+	-	DONE : A curved zoom slider
+
 	TODO : Give to the inspectors window and bar views the ability to have icons
 	
 	TODO : Better inspectors (something like OmniGraffie)

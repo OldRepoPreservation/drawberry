@@ -307,8 +307,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -326,7 +324,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C7B65DA0FB4499B003C3A7F</string>
+										<string>6C7B65E40FB44B94003C3A7F</string>
 										<key>history</key>
 										<array>
 											<string>6C7B655D0FB443CE003C3A7F</string>
@@ -377,6 +375,8 @@
 							<string>378pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -553,9 +553,9 @@
 		<string>6C7B65800FB44554003C3A7F</string>
 		<string>6C7B65810FB44554003C3A7F</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>6CA9624A0E4B21800018CF07</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -930,7 +930,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

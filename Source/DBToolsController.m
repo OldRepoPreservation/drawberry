@@ -12,6 +12,7 @@
 
 #import "GCollapsePanel.h"
 #import "DBApplicationController.h"
+#import "DBMagnifyingController.h"
 
 #import "DBPrefKeys.h"
 
@@ -126,7 +127,7 @@ enum {
 	[[_inspectorSelector cellWithTag:0] setState:[[[NSApp delegate] viewInspector] isVisible]];
 	[[_inspectorSelector cellWithTag:1] setState:[[[NSApp delegate] objectInspector] isVisible]];
 	[[_inspectorSelector cellWithTag:2] setState:[[[NSApp delegate] layerWindow] isVisible]];
-	[[_inspectorSelector cellWithTag:3] setState:[[[NSApp delegate] magnifyWindow] isVisible]];
+	[[_inspectorSelector cellWithTag:3] setState:[[DBMagnifyingController sharedMagnifyingController] isWindowLoaded]];
 
 }
 
@@ -176,12 +177,23 @@ enum {
 	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
 		key = DBMagGlassPanelOpened;
+	}else if(window == [[NSApp delegate] undoWindow]){
+		tag = 4;
+		key = DBUndoWindowOpened;
+	}else if(window == [[NSApp delegate] colorSwatchesWindow]){
+		tag = 5;
+		key = DBColorSwatchOpened;
+	}else if(window == [[NSApp delegate] shapeLibraryWindow]){
+		tag = 6;
+		key = DBShapeLibraryOpened;
 	}           
-
+	
+	
 	if(key){
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:key];
 		
-		[[_inspectorSelector cellWithTag:tag] setState:NSOffState];		
+		if(tag <= 3)
+			[[_inspectorSelector cellWithTag:tag] setState:NSOffState];		
 	}
 }
 

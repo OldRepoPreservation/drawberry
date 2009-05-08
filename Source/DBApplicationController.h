@@ -29,6 +29,7 @@ extern NSString *DBCurrentDocumentDidChange;
 - (NSWindow *)viewInspector;
 - (NSWindow *)objectInspector;
 - (NSWindow *)magnifyWindow;
+- (NSWindow *)undoWindow;
 - (NSWindow *)colorSwatchesWindow;
 - (NSWindow *)shapeLibraryWindow;
 

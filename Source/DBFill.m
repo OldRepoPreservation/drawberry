@@ -163,13 +163,38 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		[_fillColor set];
 		[path fill];
 	}else if(_fillMode == DBImageFillMode){
-		[_fillCache drawAtPoint:[_shape bounds].origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+//		[_fillCache drawAtPoint:[_shape bounds].origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		[_fillImage setFlipped:YES];
+
+		NSAffineTransform *translation= [NSAffineTransform transform];
+		NSAffineTransform *scale = [NSAffineTransform transform];
+		[translation translateXBy:[_shape bounds].origin.x yBy:[_shape bounds].origin.y];
+
+		if(_imageFillMode == DBStretchMode){
+			[scale scaleXBy:[_shape bounds].size.width/[_fillImage size].width yBy:[_shape bounds].size.height/[_fillImage size].height];
+		}else if(_imageFillMode == DBFillPathMode){
+			float multiplicationFactor;
+			multiplicationFactor = MAX([_shape bounds].size.width/[_fillImage size].width, [_shape bounds].size.height/[_fillImage size].height);
+			[scale scaleBy:multiplicationFactor];
+		}else if(_imageFillMode == DBDrawMode){
+			[translation translateXBy:_imageDrawPoint.x-[_fillImage size].width/2.0 yBy:_imageDrawPoint.y-[_fillImage size].height/2.0];
+		}
+		
+		[NSGraphicsContext saveGraphicsState];
+		[path addClip];
+		[translation concat];
+		[scale concat];
+		
+		[_fillImage drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		
+		[NSGraphicsContext restoreGraphicsState];
+		
+		[_fillImage setFlipped:NO];
 	}else if(_fillMode == DBGradientFillMode){
 
 		if(_grdType == GPLinearType){
 			[_gradient drawInBezierPath:path angle:_grdAngle];
 		}else{
-			//[_gradient drawInBezierPath:path relativeCenterPosition:NSZeroPoint];
 			NSAffineTransform *translation= [NSAffineTransform transform];
 			[translation translateXBy:[_shape bounds].origin.x yBy:[_shape bounds].origin.y];
 
@@ -177,124 +202,14 @@ static double distanceBetween(NSPoint a, NSPoint b)
 			[path addClip];
 			[translation concat];
 			
-//			[_gradient drawFromCenter:_grdStartingPoint radius:_grdBeginRadius toCenter:_grdEndingPoint radius:40.0 options:0];
 			[_gradient drawFromCenter:_grdStartingPoint radius:_grdStartingRadius toCenter:_grdEndingPoint radius:_grdEndingRadius options:(NSGradientDrawsBeforeStartingLocation | NSGradientDrawsAfterEndingLocation)];
 			[NSGraphicsContext restoreGraphicsState];
 		}
-//		[_gradient fillPath:path centreOffset:NSMakePoint(100,100)];
-//		[_gradient fillPath:path startingAtPoint:NSMakePoint(300,300) startRadius:10.0 endingAtPoint:_imageDrawPoint endRadius:120];
 	}
-	
-//	[[[_text layoutManagers] objectAtIndex:0] drawGlyphsForGlyphRange:NSMakeRange(0,[_text length]) atPoint:[_shape bounds].origin];
-	  
-//  	[self drawText];                      	
 } 
   
 - (void)updateFillForPath:(NSBezierPath *)path
 {
-/*	[_fillCache release];
-	_fillCache = nil;
-*/	                           
-	if(!_fillImage)
-		return;
-	
-	if(!_fillCache){
-		_fillCache = [[NSImage alloc] initWithSize:[_shape bounds].size];
-//		_maskImage = [[NSImage alloc] initWithSize:[_shape bounds].size];
-		[_fillCache setScalesWhenResized:NO];
-//		[_maskImage setScalesWhenResized:NO];
-	}else if(!NSEqualSizes([_shape bounds].size, [_fillCache size])){
-		[_fillCache release];
-		_fillCache = [[NSImage alloc] initWithSize:[_shape bounds].size];
-//		[_fillCache recache];
-		[_fillCache setSize:[_shape bounds].size];
-
-	}else{
-			[_fillCache release];
-			_fillCache = [[NSImage alloc] initWithSize:[_shape bounds].size];
-//			[_fillCache setSize:[_shape bounds].size];	
-	}
-	
-	[_fillImage setFlipped:YES];
-	[_fillImage setScalesWhenResized:YES];
-	
-	NSBezierPath *pathMask = path;
-	NSSize originalSize = [_fillImage size];
-	NSSize newSize;
-	NSPoint drawPoint;
-	NSAffineTransform *at = [NSAffineTransform transform];
-	
-	
-	newSize = NSZeroSize;
-	drawPoint = NSZeroPoint;
-	
-	if(_imageFillMode == DBStretchMode){
-		newSize = [_shape bounds].size;
-	}else if(_imageFillMode == DBFillPathMode){
-		float multiplicationFactor;
-		newSize = [_shape bounds].size;
-		
-		multiplicationFactor = MAX(newSize.width/originalSize.width, newSize.height/originalSize.height);
-		
-		newSize.width = originalSize.width*multiplicationFactor;
-		newSize.height = originalSize.height*multiplicationFactor;
-   	}else if(_imageFillMode == DBDrawMode){
-		newSize = originalSize;
-//		newSize.width *= [_shape zoom];
-//		newSize.height *= [_shape zoom];
-   	}
-		
-	drawPoint.x = floor(_imageDrawPoint.x - newSize.width/2);
-	drawPoint.y = floor(_imageDrawPoint.y - newSize.height/2);
-	
-//	drawPoint.x = floor(_imageDrawPoint.x*[_shape zoom] - newSize.width/2);
-//	drawPoint.y = floor(_imageDrawPoint.y*[_shape zoom] - newSize.height/2);
-	
-	[at translateXBy:-[_shape bounds].origin.x yBy:-[_shape bounds].origin.y];
-	
-	_maskImage = [[NSImage alloc] initWithSize:[_shape bounds].size];
-	
-	// create the mask 
-	[_maskImage recache];
-	[_maskImage lockFocus];
-//	[[NSColor redColor] set];
-//	[NSBezierPath fillRect:NSMakeRect(0, 0, [_maskImage size].width, [_maskImage size].height)];
-  
-	
-	[[NSColor blackColor] set];
-	[NSBezierPath fillRect:NSMakeRect(drawPoint.x, drawPoint.y, newSize.width, newSize.height)];
-	
-	[_maskImage unlockFocus];
-	
-	[_fillCache recache];
-	
-	[_fillCache lockFocus];
-	
-	[[NSColor clearColor] set];
-	[NSBezierPath fillRect:NSMakeRect(0, 0, [_fillCache size].width, [_fillCache size].height)];             
-  
-	// fill with the mask (the path)...
-	
-	[[NSColor blackColor] set];
-	[at concat];
-	[pathMask fill];
-	[at invert];
-	[at concat];	
-
-	// ... cut the mask to fit with the image bounds ... 
-	[_maskImage drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceIn fraction:1.0];
-	
-	// ... and then fill with the image
-	[_fillImage setSize:newSize];
-	[_fillImage drawAtPoint:drawPoint fromRect:NSZeroRect operation:NSCompositeSourceIn fraction:1.0];
-	[_fillImage setSize:originalSize];
-	          
-	[_fillCache unlockFocus];
-	
-	[_maskImage release];
-	_maskImage = nil;
-	
-	[_fillImage setFlipped:NO];
 }
 
 - (void)resetImageDrawPoint

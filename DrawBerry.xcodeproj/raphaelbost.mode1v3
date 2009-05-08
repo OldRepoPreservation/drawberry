@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DBDrawingView+DragAndDrop.m</string>
+								<string>DBFill.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,30 +324,34 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBDrawingView+DragAndDrop.m</string>
+										<string>DBFill.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6CCD46DE0FB4D64200256EBC</string>
+										<string>6CCD47240FB4DA7800256EBC</string>
 										<key>history</key>
 										<array>
 											<string>6CCD46750FB4CF0E00256EBC</string>
-											<string>6CCD46850FB4CF8200256EBC</string>
 											<string>6CCD46BA0FB4D38E00256EBC</string>
 											<string>6CCD46BB0FB4D38E00256EBC</string>
-											<string>6CCD46CA0FB4D49E00256EBC</string>
-											<string>6CCD46D90FB4D60500256EBC</string>
-											<string>6CCD46D60FB4D5D100256EBC</string>
+											<string>6CCD470F0FB4D96B00256EBC</string>
+											<string>6CCD47150FB4D9A400256EBC</string>
+											<string>6CCD471B0FB4DA1200256EBC</string>
+											<string>6CCD47180FB4D9A400256EBC</string>
 										</array>
 										<key>nextStack</key>
 										<array>
-											<string>6CCD46DA0FB4D60500256EBC</string>
+											<string>6CCD471C0FB4DA1200256EBC</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>6CCD46780FB4CF0E00256EBC</string>
 											<string>6CCD46800FB4CF3400256EBC</string>
 											<string>6CCD46BE0FB4D38E00256EBC</string>
+											<string>6CCD46ED0FB4D83000256EBC</string>
+											<string>6CCD47110FB4D96B00256EBC</string>
+											<string>6CCD47120FB4D96B00256EBC</string>
+											<string>6CCD47170FB4D9A400256EBC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -541,11 +545,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>6CCD46A10FB4D04600256EBC</string>
 		<string>6CCD46A20FB4D04600256EBC</string>
 		<string>6CA9624A0E4B21800018CF07</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
 	</array>
@@ -782,14 +786,12 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBFill.m</string>
+										<string>DBShape.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -810,6 +812,8 @@
 							<string>314pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -855,7 +859,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

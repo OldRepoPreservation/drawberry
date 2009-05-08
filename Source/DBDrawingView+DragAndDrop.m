@@ -46,7 +46,6 @@
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
-	NSLog(@"perform");
 	NSPoint point = [self convertPoint:[[self window] convertScreenToBase:[NSEvent mouseLocation]] fromView:nil];
 	DBShape *shape;
 	NSString *type;

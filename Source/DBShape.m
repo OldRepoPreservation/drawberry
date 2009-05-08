@@ -648,7 +648,7 @@ static NSBezierPath *__knob = nil;
 	NSEnumerator *e;
 	DBFill *fill;
 	
-	e = [_fills objectEnumerator];
+	e = [_fills reverseObjectEnumerator]; // to get the upper one first
 		
 	while ((fill = [e nextObject])) {
 		if([fill trackMouseWithEvent:theEvent inView:view])

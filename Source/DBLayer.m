@@ -546,8 +546,10 @@
 	[_render unlockFocus];
     */       
 	
-	NSSize size = [[_layerController drawingView] bounds].size;
-    NSGraphicsContext *mainContext = [NSGraphicsContext currentContext] ;
+
+	NSSize size = [(DBDrawingView *)view canevasSize];
+    
+	NSGraphicsContext *mainContext = [NSGraphicsContext currentContext] ;
 	[mainContext retain];
 	
 	CGLayerRelease(_renderLayer);

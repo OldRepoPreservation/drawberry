@@ -118,6 +118,11 @@
 	
 	context = [mainContext CIContext];
 	//	NSLog(@"CIContext : %@",context);
+
+	CGRect cgr;
+//	cgr = CGRectMake(0, 0, rect.size.width*[(DBDrawingView *)view zoom], rect.size.height*[(DBDrawingView *)view zoom]);
+	cgr = CGRectMake(0, 0, rect.size.width, rect.size.height);
+	
 	if(context){
 		//	  	NSLog(@"CIImage render : %@", _ciRender);
 		if ([context respondsToSelector:@selector(createCGImage:fromRect:format:colorSpace:)] ){
@@ -125,8 +130,6 @@
 //			image = [CIImage imageWithColor:[CIColor colorWithRed:.5 green:.5 blue:.5 alpha:1.0]];
 
 			CGImageRef cgImage;
-			CGRect cgr;
-			cgr = CGRectMake(0, 0, rect.size.width*[(DBDrawingView *)view zoom], rect.size.height*[(DBDrawingView *)view zoom]);
 			
 			cgImage = [context createCGImage:_ciRender fromRect:cgr];			
 			
@@ -144,7 +147,7 @@
 			
 			
 			//[context drawImage:image atPoint:CGPointZero fromRect:CGRectMake(0, 0, rect.size.width*[(DBDrawingView *)view zoom], rect.size.height*[(DBDrawingView *)view zoom])]; 
-			[context drawImage:_ciRender atPoint:CGPointZero fromRect:CGRectMake(0, 0, rect.size.width*[(DBDrawingView *)view zoom], rect.size.height*[(DBDrawingView *)view zoom])]; 
+			[context drawImage:_ciRender atPoint:CGPointZero fromRect:cgr]; 
 		}	
 		
 		if([_layerController selectedLayer] == self){

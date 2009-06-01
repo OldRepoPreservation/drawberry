@@ -33,7 +33,7 @@
 	_docHeight = size.height;
 	[_widthField setFloatValue:size.width];
 	[_heightField setFloatValue:size.height];
-	
+		
 	if(![[NSUserDefaults standardUserDefaults] boolForKey:DBNewDocumentAtStartup]){
 		[self newDocument:self];
 	}

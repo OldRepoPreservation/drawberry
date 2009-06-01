@@ -406,8 +406,8 @@
 			{
 			 	[layer drawInView:[self drawingView] rect:rect];
 			}else{
-				[layer displayRenderInRect:rect];
-//				[layer drawInView:[self drawingView] rect:rect];
+//				[layer displayRenderInRect:rect];
+				[layer drawInView:[self drawingView] rect:rect];
 			}
 		}
 	}

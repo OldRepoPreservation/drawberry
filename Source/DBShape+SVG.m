@@ -38,7 +38,7 @@ NSPoint DBPointWithString(NSString *pString)
 	if([_fills count] > 0)
 		return [NSString stringWithFormat:@"%@%@",[[_fills lastObject] SVGFillStyleString],[_stroke SVGStrokeStyleString]];
 	else
-		return [_stroke SVGStrokeStyleString];
+		return [NSString stringWithFormat:@"fill:none;%@",[_stroke SVGStrokeStyleString]];
 }              
 
 - (NSString *)SVGString

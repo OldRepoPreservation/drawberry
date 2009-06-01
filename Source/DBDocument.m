@@ -291,7 +291,10 @@ static NSArray *_sharedUnitArray = nil;
 	BOOL success;                
 	
 	if([[_exportFormatPopUp selectedItem] tag]== 7){ // SVG format
-		success = [[self SVGString] writeToFile:[sheet filename] atomically:YES];
+		NSData *data;
+		data = [[self SVGString] dataUsingEncoding:NSUTF8StringEncoding];
+		
+		success = [data writeToURL:[sheet URL] atomically:YES];
 	}else{
 		NSData *fileData = [_drawingView dataWithFormat:[format lowercaseString] jpegCompression:[_jpgQualitySlider floatValue]];
 	//	fileData = [_drawingView dataWithPDFInsideRect:[_drawingView bounds]];

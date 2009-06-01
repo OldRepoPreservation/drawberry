@@ -94,10 +94,12 @@
 		NSString * element;
 
 		while((element = [e nextObject])){
-			elementArray = [element componentsSeparatedByString:@":"];
-			key = [elementArray objectAtIndex:0];                  
-		   	object = [elementArray objectAtIndex:1];
-			[newAttr setObject:object forKey:key];
+			if([element length] >0){
+				elementArray = [element componentsSeparatedByString:@":"];
+				key = [elementArray objectAtIndex:0];                  
+				object = [elementArray objectAtIndex:1];
+				[newAttr setObject:object forKey:key];				
+			}
 		}
 	}
 	

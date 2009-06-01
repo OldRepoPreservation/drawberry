@@ -33,7 +33,6 @@
 
 - (void)awakeFromNib
 {
-//	[self showDonateWindowIfNecessary];
 }
 
 - (void)showDonateWindowIfNecessary
@@ -46,6 +45,7 @@
 
 	if(version > reminderVersion){
 		[self showWindow:self];
+		[[self window] setLevel:NSStatusWindowLevel];
 	}
 }
 

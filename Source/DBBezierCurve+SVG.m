@@ -10,6 +10,9 @@
 
 #import "DBShape+SVG.h"
 
+#import "DBSVGParser.h"
+#import "DBSVGStringParser.h"
+
 DBCurvePoint DBCurvePointWithString(NSString *pString)
 {       
 	NSArray*pStrings;
@@ -49,118 +52,14 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 - (id)initWithSVGAttributes:(NSDictionary *)attr
 {
 	self = [super initWithSVGAttributes:attr];
-	            
-	NSMutableString *pathBuffer;
-	NSString *substring;
-	NSRange range, lRange, cRange;
-	BOOL _isLine;
 	
-	pathBuffer = [[attr objectForKey:@"d"] mutableCopy];
+	DBSVGStringParser *stringParser;
 	
-	if(![[pathBuffer substringWithRange:NSMakeRange(0,1)] isEqualTo:@"M"] && ![[pathBuffer substringWithRange:NSMakeRange(0,1)] isEqualTo:@"m"]){
-		NSLog(@"Error in parsing SVG file : No introduction move to instruction");
-		[self dealloc];
-		return nil;
-	}              
+	stringParser = [[DBSVGStringParser alloc] initWithOwner:self];
 	
-	lRange = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
-    cRange = [pathBuffer rangeOfString:@"c" options: NSCaseInsensitiveSearch];
+	[stringParser parseString:[attr objectForKey:@"d"]];
 	
-	if(lRange.location == NSNotFound && cRange.location == NSNotFound){
-		NSLog(@"Error in parsing SVG file : No more instruction than the move to instruction");
-		[self dealloc];
-		return nil;		
-	}
-	
-//	secRange = [pathBuffer rangeOfString:@"M" options: NSCaseInsensitiveSearch];
-	
-//	range = NSMakeRange(secRange.location+secRange.length, range.location-(secRange.location+secRange.length)) ;
-//	substring = [pathBuffer substringWithRange:range];
-	
-	_points = malloc(sizeof(DBCurvePoint));
-//    _points[0] = DBPointWithString(substring);
-//    _pointCount = 1;	
-	
-//	[pathBuffer deleteCharactersInRange:range];
-	
-	lRange = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
-    cRange = [pathBuffer rangeOfString:@"c" options: NSCaseInsensitiveSearch];
-   	
-	range = DBBetterRange(lRange,cRange);
-	
-	if([[pathBuffer substringWithRange:range] isEqualToString:@"l"]){
-		_isLine = YES;
-	}else{
-		_isLine = NO;
-	}
-	
-	// skip the M character
-	
-	substring = [pathBuffer substringWithRange:NSMakeRange(1,range.location-1)];
-	_pointCount ++;
-	_points[_pointCount-1] = DBMakeCurvePoint( DBPointWithString(substring) );			
-	[pathBuffer deleteCharactersInRange:NSMakeRange(0,range.location+1)];
-	
-	//
-	
-	lRange = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
-    cRange = [pathBuffer rangeOfString:@"c" options: NSCaseInsensitiveSearch];
-   	
-	range = DBBetterRange(lRange,cRange);
-
-	while([pathBuffer length] > 0 && range.location != NSNotFound){
-		substring = [pathBuffer substringWithRange:NSMakeRange(1,range.location-1)];
-
-		_pointCount ++;
-		_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
-		
-		if(_isLine){
-			_points[_pointCount-1] = DBMakeCurvePoint( DBPointWithString(substring) );			
-			_points[_pointCount-2].controlPoint1 =  _points[_pointCount-1].controlPoint1;			
-		}else{
-			_points[_pointCount-1] = DBCurvePointWithString(substring);
-			_points[_pointCount-2].controlPoint1 =  _points[_pointCount-1].controlPoint1;			
-		}
-
-		[pathBuffer deleteCharactersInRange:NSMakeRange(0,range.location+1)];
-		lRange = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
-		cRange = [pathBuffer rangeOfString:@"c" options: NSCaseInsensitiveSearch];
-		
-		range = DBBetterRange(lRange,cRange);
-
-		if(range.location != NSNotFound && [[pathBuffer substringWithRange:range] isEqualToString:@"l"]){
-			_isLine = YES;
-		}else{
-			_isLine = NO;
-		}
-	}
-	
-	range = [pathBuffer rangeOfString:@"z" options: NSCaseInsensitiveSearch];
-	if(range.location != NSNotFound){
-		substring = [pathBuffer substringWithRange:NSMakeRange(1,range.location-1)];
-		_lineIsClosed = YES;
-	}else{
-		substring = pathBuffer;
-	}
-    
-	DBCurvePoint tmpPoint;
-	if(_isLine){
-    	tmpPoint = DBMakeCurvePoint( DBPointWithString(substring) );
-	}else{
-		tmpPoint = DBCurvePointWithString(substring);
-	}	
-		
-	if(!NSEqualPoints(_points[0].point, tmpPoint.point)){
-		_pointCount ++;
-		_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
-		_points[_pointCount-1] = tmpPoint;
-	   	_points[_pointCount-2].controlPoint1 = _points[_pointCount-1].controlPoint1;					
-	}else {
-		_points[_pointCount-1].controlPoint1 = tmpPoint.controlPoint1;
-	}
-
-//   	_points[_pointCount-1].controlPoint1 =  _points[0].controlPoint1;			
-	
+	[stringParser release];
 	
 	return self;
 }
@@ -196,4 +95,41 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 {
 	return [NSString stringWithFormat:@"<path  style=\"%@\" \n d=\"%@\"  />\n",[self SVGStyleString],[self SVGPathString]];
 }
+
+#pragma mark Callbacks
+- (void)addCurvePoint:(DBCurvePoint)cp
+{
+	_pointCount++;
+	_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
+	
+	_points[_pointCount-1]=cp;
+}
+
+- (void)SVGMoveTo:(NSPoint)p
+{
+	[self addCurvePoint:DBMakeCurvePoint(p)];
+}
+
+- (void)SVGLineTo:(NSPoint)p
+{
+	[self addCurvePoint:DBMakeCurvePoint(p)];
+}
+
+- (void)SVGCurveToPoint:(NSPoint)aPoint controlPoint1:(NSPoint)controlPoint1 controlPoint2:(NSPoint)controlPoint2
+{
+	DBCurvePoint cp;
+	cp.point = aPoint;
+	cp.controlPoint1 = controlPoint1;
+	cp.controlPoint2 = controlPoint2;
+	
+	[self addCurvePoint:cp];
+
+	_points[_pointCount-2].controlPoint1 =  _points[_pointCount-1].controlPoint1;			
+}
+
+- (void)SVGClosePath
+{
+	_lineIsClosed = YES;
+}
+
 @end

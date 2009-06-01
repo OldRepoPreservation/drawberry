@@ -62,7 +62,7 @@
     success = [_parser parse]; // return value not used
                 // if not successful, delegate is informed of error 
 
-//	NSLog(@"parse finished");
+	NSLog(@"parse finished");
 	return _parsedLayers;
 	
 }

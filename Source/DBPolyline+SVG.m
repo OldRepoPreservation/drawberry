@@ -9,66 +9,21 @@
 #import "DBPolyline+SVG.h"
 #import "DBShape+SVG.h"
 
+#import "DBSVGStringParser.h"
+
+
 @implementation DBPolyline (SVGAdditions)
 - (id)initWithSVGAttributes:(NSDictionary *)attr
 {
 	self = [super initWithSVGAttributes:attr];
-	            
-	NSMutableString *pathBuffer;
-	NSString *substring;
-	NSRange range, secRange;
 	
-	pathBuffer = [[attr objectForKey:@"d"] mutableCopy];
+	DBSVGStringParser *stringParser;
 	
-	if(![[pathBuffer substringWithRange:NSMakeRange(0,1)] isEqualTo:@"M"] && ![[pathBuffer substringWithRange:NSMakeRange(0,1)] isEqualTo:@"m"]){
-		NSLog(@"Error in parsing SVG file : No introduction move to instruction");
-		[self dealloc];
-		return nil;
-	}              
+	stringParser = [[DBSVGStringParser alloc] initWithOwner:self];
 	
-	range = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
+	[stringParser parseString:[attr objectForKey:@"d"]];
 	
-	if(range.location == NSNotFound){
-		NSLog(@"Error in parsing SVG file : No more instruction than the move to instruction");
-		[self dealloc];
-		return nil;		
-	}
-	
-//	secRange = [pathBuffer rangeOfString:@"M" options: NSCaseInsensitiveSearch];
-	
-//	range = NSMakeRange(secRange.location+secRange.length, range.location-(secRange.location+secRange.length)) ;
-//	substring = [pathBuffer substringWithRange:range];
-	
-	_points = malloc(sizeof(NSPoint));
-//    _points[0] = DBPointWithString(substring);
-//    _pointCount = 1;	
-	
-//	[pathBuffer deleteCharactersInRange:range];
-	
-	range = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];
-	
-	while([pathBuffer length] > 0 && range.location != NSNotFound){
-		substring = [pathBuffer substringWithRange:NSMakeRange(1,range.location-1)];
-
-		_pointCount ++;
-		_points = realloc(_points,_pointCount*sizeof(NSPoint));
-		_points[_pointCount-1] = DBPointWithString(substring);
-
-		[pathBuffer deleteCharactersInRange:NSMakeRange(0,range.location+1)];
-		range = [pathBuffer rangeOfString:@"l" options: NSCaseInsensitiveSearch];	
-	}
-	
-	range = [pathBuffer rangeOfString:@"z" options: NSCaseInsensitiveSearch];
-	if(range.location != NSNotFound){
-		substring = [pathBuffer substringWithRange:NSMakeRange(1,range.location-1)];
-		_lineIsClosed = YES;
-	}else{
-		substring = pathBuffer;
-	}
-
-	_pointCount ++;
-	_points = realloc(_points,_pointCount*sizeof(NSPoint));
-	_points[_pointCount-1] = DBPointWithString(substring);
+	[stringParser release];
 	
 	return self;
 }
@@ -99,6 +54,31 @@
 {
 	return [NSString stringWithFormat:@"<path  style=\"%@\" \n d=\"%@\"  />\n",[self SVGStyleString],[self SVGPathString]];
 }
+
+#pragma mark Callbacks
+- (void)addPoint:(NSPoint)p
+{
+	_pointCount++;
+	_points = realloc(_points, _pointCount*sizeof(NSPoint));
+	
+	_points[_pointCount-1]=p;
+}
+
+- (void)SVGMoveTo:(NSPoint)p
+{
+	[self addPoint:p];
+}
+
+- (void)SVGLineTo:(NSPoint)p
+{
+	[self addPoint:p];
+}
+
+- (void)SVGClosePath
+{
+	_lineIsClosed = YES;
+}
+
 @end 
 
 

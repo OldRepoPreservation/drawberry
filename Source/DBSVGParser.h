@@ -15,10 +15,15 @@
 	NSMutableArray *_parsedLayers;
 	
 	DBLayer *_currentLayer;
+	
+	BOOL _ignoreElements;
 }
 + (id)SVGParser;
 + (NSArray *)parseSVGFile:(NSString *)pathToFile;
 + (NSArray *)parseSVGURL:(NSURL *)urlToFile;
 - (NSArray *)parseSVGFile:(NSString *)pathToFile;
 - (NSArray *)parseSVGURL:(NSURL *)urlToFile;
+- (void)parseSVGURLInNewThread:(NSURL *)urlToFile;
+
+- (NSArray *)parsedLayers;
 @end

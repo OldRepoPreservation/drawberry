@@ -178,7 +178,7 @@
 	for( i = 0; i < count; i++ )
    	{
 		p = DBPointForCIFilterPoint(points[i]);
-		[DBShape drawBlueKnobAtPoint:p];
+		[DBShape drawGreenKnobAtPoint:p];
 	}
 }
 

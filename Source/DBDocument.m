@@ -67,6 +67,7 @@ static NSArray *_sharedUnitArray = nil;
         // If an error occurs here, send a [self release] message and return nil.
        
 		_undoMngr = [[DBUndoManager alloc] init];
+		_svgParser = nil;
     }
     return self;
 }
@@ -153,15 +154,21 @@ static NSArray *_sharedUnitArray = nil;
 				_tmpDict = nil;
 			}   		
 	}else if([typeName isEqualToString:@"SVG Document"]){
-		NSArray *svgLayers;
+//		NSArray *svgLayers;
+//				
+//		svgLayers = [DBSVGParser parseSVGURL:absoluteURL];
+//		
+//		if(!_layerController){
+//			_tmpLayers = [svgLayers retain];
+//		}else{
+//			[_layerController setLayers:svgLayers];
+//		}
 		
-		svgLayers = [DBSVGParser parseSVGURL:absoluteURL];
+		_svgParser = [[DBSVGParser alloc] init];
 		
-		if(!_layerController){
-			_tmpLayers = [svgLayers retain];
-		}else{
-			[_layerController setLayers:svgLayers];
-		}
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(threadWillExit:) name:NSThreadWillExitNotification object:nil];
+		
+		[NSThread detachNewThreadSelector:@selector(parseSVGURLInNewThread:) toTarget:_svgParser withObject:absoluteURL];
 		
 	}else{
 		// we have an image
@@ -226,6 +233,10 @@ static NSArray *_sharedUnitArray = nil;
 		[_tmpLayers release];
 	}
 	
+	if(_svgParser){
+		[self performSelector:@selector(showSVGSheet) withObject:nil afterDelay:1.0];
+	}
+	
 	[self updateChangeCount:NSChangeCleared];	
     
 	[[NSNotificationCenter defaultCenter] addObserver:self
@@ -244,6 +255,7 @@ static NSArray *_sharedUnitArray = nil;
 											   object:_undoMngr];
 	
 }   
+
 
 - (DBDrawingView *)drawingView
 {
@@ -280,7 +292,6 @@ static NSArray *_sharedUnitArray = nil;
 								  modalDelegate:self 
 								 didEndSelector:@selector(exportChooseFileDidEnd:returnCode:contextInfo:)
 									contextInfo:NULL];
-	
 }
 
 - (void)exportChooseFileDidEnd:(NSSavePanel*)sheet returnCode:(int)code contextInfo:(void*)contextInfo
@@ -432,4 +443,59 @@ static NSArray *_sharedUnitArray = nil;
 	}
 }
 
+#pragma mark SVG thread & sheet callbacks
+- (void)showSVGSheet
+{
+	if(_svgParser && [_drawingView window]){
+		[NSApp beginSheet:_svgSheet
+		   modalForWindow:[_drawingView window]
+			modalDelegate:nil
+		   didEndSelector:@selector(svgSheetDidEnd:returnCode:contextInfo:)
+			  contextInfo:nil];
+		
+		
+		[_svgProgressIndicator startAnimation:self];
+	}
+	
+}
+
+- (void)threadWillExit:(NSNotification *)note
+{
+	if(_svgParser){
+		[_svgSheet orderOut:self];
+		[_svgProgressIndicator stopAnimation:self];
+
+
+		NSArray *svgLayers;
+				
+		svgLayers = [_svgParser parsedLayers];
+		
+		if(!_layerController){
+			_tmpLayers = [svgLayers retain];
+		}else{
+			[_layerController setLayers:svgLayers];
+		}		
+		
+		[_svgParser release];
+		_svgParser = nil;
+		
+		[_drawingView setNeedsDisplay:YES];
+	}
+}
+
+- (void)svgSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	[_svgSheet orderOut:self];
+	
+	[_svgProgressIndicator stopAnimation:self];
+
+}
+
+- (IBAction)cancelSVGLoad:(id)sender
+{
+	[_svgSheet orderOut:self];
+	[_svgProgressIndicator stopAnimation:self];
+
+	[self close];
+}
 @end

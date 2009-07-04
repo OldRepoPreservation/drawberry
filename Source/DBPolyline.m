@@ -708,6 +708,9 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	test = [_path containsPoint:point];
 	DBDrawingView *view = [[_layer layerController] drawingView];
 	
+	if(!test && _pointCount == 2){
+		return NSPointInRect(point, [[self path] bounds]);
+	}
     if(!test){
 		int i;
 		NSPoint p;
@@ -1312,4 +1315,18 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
 	
 }
+
+#pragma mark Transform 
+
+- (void)applyTransform:(NSAffineTransform *)at
+{
+	int i;
+	
+	for (i = 0; i < _pointCount; i++) {
+		_points[i] = [at transformPoint:_points[i]];
+	}
+	
+	[self updateShape];
+}
+
 @end

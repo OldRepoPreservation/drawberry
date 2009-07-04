@@ -19,4 +19,6 @@
 
 - (void)updatePath;
 - (void)putPathInRect:(NSRect)newRect;
+
+- (DBShape *)convert;
 @end

@@ -112,6 +112,8 @@ enum {
 
 - (void)moveCorner:(int)corner toPoint:(NSPoint)point;
 - (NSPoint)translationToCenterInRect:(NSRect)rect;
+
+- (void)applyTransform:(NSAffineTransform *)at;
 @end 
 
 NSPoint DBMultiplyPointByFactor(NSPoint point, float factor);

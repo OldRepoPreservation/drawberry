@@ -21,13 +21,22 @@ NSPoint DBPointWithString(NSString *pString)
 {
 	self = [self init];
 
-	_stroke = [[DBStroke alloc] initWithShape:self SVGAttributes:attr];            
-	
-	DBFill *fill = [[DBFill alloc] initWithShape:self SVGAttributes:attr];
-	if(fill){
+	if(![attr objectForKey:@"stroke"] && ![attr objectForKey:@"stroke"]){
+		_stroke = [[DBStroke alloc] initWithShape:self];
+
+		DBFill *fill = [[DBFill alloc] initWithShape:self];
+		[fill setFillMode:DBColorFillMode];
+		[fill setFillColor:[NSColor blackColor]];
 		[self addFill:fill];		
+	}else{
+		_stroke = [[DBStroke alloc] initWithShape:self SVGAttributes:attr];            
+		
+		DBFill *fill = [[DBFill alloc] initWithShape:self SVGAttributes:attr];
+		if(fill){
+			[self addFill:fill];		
+		}		
 	}
-	
+		
 	_shadow = [[DBShadow alloc] initWithShape:self];
 
 	return self;

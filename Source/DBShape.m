@@ -455,7 +455,6 @@ static NSBezierPath *__knob = nil;
 
 - (void)setStroke:(DBStroke *)newStroke
 {
-	NSLog(@"setStroke");
 	[newStroke retain];
 	[_stroke release];
 	_stroke = newStroke;
@@ -932,6 +931,12 @@ static NSBezierPath *__knob = nil;
 - (void)applyFillsToPath:(NSBezierPath *)path
 {
 	[_fills makeObjectsPerformSelector:@selector(fillPath:) withObject:path];
+}
+
+#pragma mark Transform
+
+- (void)applyTransform:(NSAffineTransform *)at
+{
 }
 @end
 

@@ -11,6 +11,7 @@
 @class DBDrawingView;
 @class DBLayerController;
 @class DBUndoManager;
+@class DBSVGParser;
 
 @interface DBDocument : NSDocument {
 	IBOutlet DBDrawingView *_drawingView;
@@ -27,6 +28,12 @@
 	NSImage* _tmpImage;
 	
 	DBUndoManager *_undoMngr;
+	
+	DBSVGParser *_svgParser;
+	
+	// SVG sheet
+	IBOutlet NSPanel *_svgSheet;
+	IBOutlet NSProgressIndicator *_svgProgressIndicator;
 }
 + (id)sharedUnitArray;
 
@@ -42,4 +49,6 @@
 - (IBAction)exportAccessoryViewPopupFormatDidChange:(id)sender;
 
 - (DBUndoManager *)specialUndoManager;
+
+- (IBAction)cancelSVGLoad:(id)sender;
 @end

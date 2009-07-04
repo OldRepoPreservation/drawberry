@@ -297,7 +297,7 @@ rsvg_parse_path_do_cmd (RSVGParsePathCtx * ctx, gboolean final)
         /* lineto */
         if (ctx->param == 2 || final) {
             rsvg_parse_path_default_xy (ctx, 2);
-            (* moveToCallback) (ctx->sender, ctx->params[0], ctx->params[1]);
+            (* lineToCallback) (ctx->sender, ctx->params[0], ctx->params[1]);
             ctx->cpx = ctx->rpx = ctx->params[0];
             ctx->cpy = ctx->rpy = ctx->params[1];
             ctx->param = 0;

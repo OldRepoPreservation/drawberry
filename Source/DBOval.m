@@ -367,4 +367,16 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	return shape;
 }
 
+#pragma mark Transform 
+
+- (void)applyTransform:(NSAffineTransform *)at
+{
+	_point1 = [at transformPoint:_point1];
+	_point2 = [at transformPoint:_point2];
+	_point3 = [at transformPoint:_point3];
+	_point4 = [at transformPoint:_point4];
+	
+	[self updateShape];
+}
+
 @end

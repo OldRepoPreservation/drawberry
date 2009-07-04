@@ -13,6 +13,8 @@
 #import "DBPolyline+SVG.h"
 #import "DBBezierCurve+SVG.h"
 
+#import "NSAffineTransform+SVG.h"
+
 @implementation DBSVGParser
 + (id)SVGParser
 {
@@ -59,12 +61,30 @@
     _parser = [[NSXMLParser alloc] initWithContentsOfURL:urlToFile];
     [_parser setDelegate:self];
     [_parser setShouldResolveExternalEntities:YES];
+	
+	_ignoreElements = NO;
+	
     success = [_parser parse]; // return value not used
                 // if not successful, delegate is informed of error 
 
-	NSLog(@"parse finished");
-	return _parsedLayers;
+	if(_currentLayer){ // don't forget to add eventually a layer not closed by </g>
+		[_parsedLayers addObject:_currentLayer];
+		[_currentLayer release];
+		_currentLayer = nil;		
+	}
 	
+	return _parsedLayers;	
+}
+
+- (void)parseSVGURLInNewThread:(NSURL *)urlToFile
+{
+	NSAutoreleasePool *pool;
+	
+	pool = [[NSAutoreleasePool alloc] init];
+	
+	[self parseSVGURL:urlToFile];
+	
+	[pool release];
 }
 
 - (NSArray *)parsedLayers
@@ -79,9 +99,15 @@
 {
     //NSLog(@"start : name : %@ , attributes : %@",elementName,attributeDict);
 	              
+	if(_ignoreElements){
+		return;
+	}
+	
 	NSString *styleString = [[attributeDict objectForKey:@"style"] copy];
 	NSString *key, *object;
 	NSMutableDictionary *newAttr = [[NSMutableDictionary alloc] initWithDictionary:attributeDict];
+
+	NSAffineTransform *af = nil;
 
 	NSArray *styleArray, *elementArray;              
 	
@@ -103,12 +129,19 @@
 		}
 	}
 	
+	if([attributeDict objectForKey:@"transform"]){
+		af = [[NSAffineTransform alloc] initWithSVGString:[attributeDict objectForKey:@"transform"]];
+	}
+	
 	[styleString release];
 	
 //	NSLog(@"start : name : %@ , attributes : %@",elementName,newAttr);
-  
-  	if([elementName isEqualTo:@"g"] && [[newAttr objectForKey:@"inkscape:groupmode"] isEqualTo:@"layer"]){
+	if([elementName isEqualTo:@"pattern"]){
+		_ignoreElements = YES;
+	}
+  	else if([elementName isEqualTo:@"g"] && [[newAttr objectForKey:@"inkscape:groupmode"] isEqualTo:@"layer"]){
 		// add a layer
+		
 		_currentLayer = [[DBLayer alloc] initWithName:@""];
 	}else if([elementName isEqualTo:@"rect"]){
 		// add a rectangle to current layer
@@ -119,8 +152,23 @@
 		DBRectangle *rect;
 		rect = [[DBRectangle alloc] initWithSVGAttributes:newAttr];
 		
-		[_currentLayer addShape:rect];
-		[rect release];
+		if(af){
+			
+			DBPolyline *rectPolyline;
+			rectPolyline = [rect convert];
+			[rectPolyline setStroke:[rect stroke]];
+			[rectPolyline setFills:[rect fills]];
+
+			[rectPolyline applyTransform:af];
+			[_currentLayer addShape:rectPolyline];
+			
+			[rectPolyline release];
+		}else{
+			[_currentLayer addShape:rect];
+		}
+		
+		[rect release];			
+
 	}else if([elementName isEqualTo:@"ellipse"]){
 		// add an ellipse to current layer
 //		if(!_currentLayer){
@@ -143,15 +191,24 @@
 			polyline = [[DBPolyline alloc] initWithSVGAttributes:newAttr];
 			
 			[_currentLayer addShape:polyline];
+			
+			if(af){
+				[polyline applyTransform:af];
+			}
 			[polyline release];
 		}else{ // bezier curve
 			DBBezierCurve *bezierCurve;
 			bezierCurve = [[DBBezierCurve alloc] initWithSVGAttributes:newAttr];
 		
 			[_currentLayer addShape:bezierCurve];
+			if(af){
+				[bezierCurve applyTransform:af];
+			}
 			[bezierCurve release];
 		}
 	}
+	
+	[af release];
 }
 
 
@@ -160,10 +217,13 @@
 	//NSLog(@"end : name : %@",elementName);
 	
 	//here, add the elements
-	if([elementName isEqualTo:@"g"]){
+	if([elementName isEqualTo:@"pattern"]){
+		_ignoreElements = NO;
+	}else if(!_ignoreElements && [elementName isEqualTo:@"g"] && _currentLayer){
 		[_parsedLayers addObject:_currentLayer];
 		[_currentLayer release];
 		_currentLayer = nil;
+		NSLog(@"add layer");
 	}else{
 		// do nothing
 	}                       

@@ -107,16 +107,19 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 
 - (void)SVGMoveTo:(NSPoint)p
 {
+//	NSLog(@"moveTo:");
 	[self addCurvePoint:DBMakeCurvePoint(p)];
 }
 
 - (void)SVGLineTo:(NSPoint)p
 {
+//	NSLog(@"lineTo:");
 	[self addCurvePoint:DBMakeCurvePoint(p)];
 }
 
 - (void)SVGCurveToPoint:(NSPoint)aPoint controlPoint1:(NSPoint)controlPoint1 controlPoint2:(NSPoint)controlPoint2
 {
+//	NSLog(@"curveTo:");
 	DBCurvePoint cp;
 	cp.point = aPoint;
 	cp.controlPoint1 = controlPoint1;
@@ -124,7 +127,8 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 	
 	[self addCurvePoint:cp];
 
-	_points[_pointCount-2].controlPoint1 =  _points[_pointCount-1].controlPoint1;			
+	_points[_pointCount-2].controlPoint1 = controlPoint1;
+	_points[_pointCount-1].controlPoint1 = aPoint;			
 }
 
 - (void)SVGClosePath

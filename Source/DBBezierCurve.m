@@ -1998,4 +1998,20 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[_layer updateRenderInView:nil];
 	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
 }
+
+#pragma mark Transform 
+
+- (void)applyTransform:(NSAffineTransform *)at
+{
+	int i;
+	
+	for (i = 0; i < _pointCount; i++) {
+		_points[i].point = [at transformPoint:_points[i].point];
+		_points[i].controlPoint1 = [at transformPoint:_points[i].controlPoint1];
+		_points[i].controlPoint2 = [at transformPoint:_points[i].controlPoint2];
+	}
+	
+	[self updateShape];
+}
+
 @end

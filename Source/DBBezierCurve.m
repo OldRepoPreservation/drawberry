@@ -584,6 +584,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 //				_pointCount++; 
 				newPoints[seg] = _points[seg];
 				newPoints[seg+2] = _points[seg+1];
+				newPoints[seg+1].closePath = NO;
 				
 				// newPoints[j] = nearestPoint;
 				// 
@@ -787,6 +788,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 	index1 =  [_selectedPoints firstIndex];
 	index2 =  [_selectedPoints lastIndex];
+	
+	if(DBSubPathBegging(_points,index1) != DBSubPathBegging(_points,index2)){ // not on the same subpath
+		return NO;
+	}
 	
 	_oldPathFrag = [[self pathFragmentBetween:index1 and:index2] retain];
 	[self deletePathBetween:index1 and:index2];
@@ -1634,130 +1639,79 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 */	
 	
-	for( i = [_selectedPoints indexGreaterThanOrEqualToIndex:0]; i != NSNotFound; i++, i = [_selectedPoints indexGreaterThanOrEqualToIndex:i])
-	{
-		if([_selectedPoints containsIndex:i+1]){
-   			// add a point
-			bez[0] = newPoints[i].point;
-			bez[1] = newPoints[i].controlPoint1;
-			bez[2] = newPoints[i+1].controlPoint2;
-			bez[3] = newPoints[i+1].point;
 
-			subdivideBezier(bez,bez1,bez2);
-
-			newPoints[i].controlPoint1 = bez1[1];
-			newPoint.controlPoint2 = bez1[2];
-			newPoint.point = bez1[3];
-			newPoint.controlPoint1 = bez2[1];
-			newPoints[i+1].controlPoint2 = bez2[2];
-
-			// insert the new point
-			newPoints = insertCurvePointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);
-
-			newPointCount++;
-			addedPoints++;
-		}else{
-			// don't add
+	int subPathStart = 0;
+	
+	for (i = 0; i < _pointCount; i++) {
+		if(_points[i].subPathStart){
+			subPathStart = i;
 		}
-	}
-	
-	
-//	BOOL hasJustAddedPoint = NO;
-	
-/*	for( i = 0, j = 0; i < _pointCount; i++,j++ )
-	{
-		newPoints = realloc(newPoints, j*sizeof(DBCurvePoint));
+		
+		if([_selectedPoints containsIndex:i]){
+			if([_selectedPoints containsIndex:i+1] && _points[i+1].subPathStart == NO){
+				// add a point
+				bez[0] = newPoints[i].point;
+				bez[1] = newPoints[i].controlPoint1;
+				bez[2] = newPoints[i+1].controlPoint2;
+				bez[3] = newPoints[i+1].point;
+				
+				subdivideBezier(bez,bez1,bez2);
+				
+				newPoints[i].controlPoint1 = bez1[1];
+				newPoint.controlPoint2 = bez1[2];
+				newPoint.point = bez1[3];
+				newPoint.controlPoint1 = bez2[1];
+				newPoint.subPathStart = NO;
+				newPoint.closePath = NO;
+				newPoints[i+1].controlPoint2 = bez2[2];
+				
+				// insert the new point
+				newPoints = insertCurvePointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);
+				
+				newPointCount++;
+				addedPoints++;
+			}else if (_points[i].closePath && [_selectedPoints containsIndex:subPathStart]) {
+				bez[0] = newPoints[i].point;
+				bez[1] = newPoints[i].controlPoint1;
+				bez[2] = newPoints[subPathStart].controlPoint2;
+				bez[3] = newPoints[subPathStart].point;
+				
+				subdivideBezier(bez,bez1,bez2);
+				
+				newPoints[i].controlPoint1 = bez1[1];
+				newPoints[i].closePath = NO;
 
-		if([_selectedPoints containsIndex:i] && [_selectedPoints containsIndex:i+1]){
-   			// add a point
-			if(hasJustAddedPoint){
-				_points[j].controlPoint2 = bez2[2];
-				hasJustAddedPoint = NO;			
-			}
-
-			newPoints[j] = _points[i];
-			j++;
-
-			newPoints = realloc(newPoints, j*sizeof(DBCurvePoint));
-			
-			bez[0] = _points[i].point;
-			bez[1] = _points[i].controlPoint1;
-			bez[2] = _points[i+1].controlPoint2;
-			bez[3] = _points[i+1].point;
-             
-			subdivideBezier(bez,bez1,bez2);
-
-			newPoints[j-1].controlPoint1 = bez1[1];
-			newPoints[j].controlPoint2 = bez1[2];
-			newPoints[j].point = bez1[3];
-			newPoints[j].controlPoint1 = bez2[1];
-//			_points[i+1].controlPoint2 = bez2[2];
-			
-			hasJustAddedPoint = YES;
-		}else{
-			newPoints[j] = _points[i];
-
-			if(hasJustAddedPoint){
-				_points[j].controlPoint2 = bez2[2];
-				hasJustAddedPoint = NO;			
+				newPoint.controlPoint2 = bez1[2];
+				newPoint.point = bez1[3];
+				newPoint.controlPoint1 = bez2[1];
+				newPoint.subPathStart = NO;
+				newPoint.closePath = YES;
+				newPoints[subPathStart].controlPoint2 = bez2[2];
+				
+				// insert the new point
+				newPoints = insertCurvePointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);
+				
+				newPointCount++;
+				addedPoints++;
+				
 			}
 		}
 	}
-*/
-	
-/*	if(_lineIsClosed && [_selectedPoints containsIndex:0] && [_selectedPoints containsIndex:_pointCount-1]){
-
-		bez[0] = _points[_pointCount-1].point;
-		bez[1] = _points[_pointCount-1].controlPoint1;
-		bez[2] = _points[0].controlPoint2;
-		bez[3] = _points[0].point;
-         
-		subdivideBezier(bez,bez1,bez2);
-
-		_points[_pointCount-1].controlPoint1 = bez1[1];
-		newPoint.controlPoint2 = bez1[2];
-		newPoint.point = bez1[3];
-		newPoint.controlPoint1 = bez2[1];
-		_points[0].controlPoint2 = bez2[2];
-
-		_pointCount++;
-		_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
-		_points[_pointCount-1] = newPoint;
-	}
-*/
-	if(_lineIsClosed && [_selectedPoints containsIndex:0] && [_selectedPoints containsIndex:_pointCount-1]){
-
-		bez[0] = newPoints[newPointCount-1].point;
-		bez[1] = newPoints[newPointCount-1].controlPoint1;
-		bez[2] = newPoints[0].controlPoint2;
-		bez[3] = newPoints[0].point;
-         
-		subdivideBezier(bez,bez1,bez2);
-
-		newPoints[_pointCount-1].controlPoint1 = bez1[1];
-		newPoint.controlPoint2 = bez1[2];
-		newPoint.point = bez1[3];
-		newPoint.controlPoint1 = bez2[1];
-		newPoints[0].controlPoint2 = bez2[2];
-
-		newPointCount++;
-		newPoints = realloc(newPoints, newPointCount*sizeof(DBCurvePoint));
-		newPoints[newPointCount-1] = newPoint;
-	}
-	
 	
 	[self deselectAllPoints];
     
-	[self replacePoints:newPoints count:newPointCount insertion:YES];
-	
-	[self updatePath];
-	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
-	[_stroke updateStrokeForPath:_path]; 
-
-	[_layer updateRenderInView:nil];
-	[[[self layer] layerController] updateDependentLayers:[self layer]];
-	
-	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+	if(addedPoints > 0){
+		[self replacePoints:newPoints count:newPointCount insertion:YES];
+		
+		[self updatePath];
+		[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+		[_stroke updateStrokeForPath:_path]; 
+		
+		[_layer updateRenderInView:nil];
+		[[[self layer] layerController] updateDependentLayers:[self layer]];
+		
+		[[[_layer layerController] drawingView] setNeedsDisplay:YES];		
+	}
 }
 
 

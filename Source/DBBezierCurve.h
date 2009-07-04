@@ -13,6 +13,9 @@ typedef struct _DBCurvePoints {
 	NSPoint controlPoint1;
 	NSPoint controlPoint2;
 	BOOL hasControlPoints;
+	
+	BOOL closePath;
+	BOOL subPathStart;
 } DBCurvePoint;
 
 @interface DBBezierCurve : DBShape <NSCoding>{
@@ -53,11 +56,14 @@ typedef struct _DBCurvePoints {
 
 @end
 
+
 static DBCurvePoint DBMakeCurvePoint(NSPoint p){
 	DBCurvePoint cp;
 	cp.point = p;
 	cp.controlPoint1 = p;
 	cp.controlPoint2 = p;
+	cp.closePath = NO;
+	cp.subPathStart = NO;
 	
 	return cp;
 }
@@ -67,9 +73,26 @@ static DBCurvePoint DBMakeAnotherCurvePoint(NSPoint p){
 	cp.point = p;
 	cp.controlPoint1 = NSMakePoint(p.x+10, p.y+15);
 	cp.controlPoint2 = NSMakePoint(p.x-10, p.y-15);
-	
+	cp.closePath = NO;
+	cp.subPathStart = NO;
+
 	return cp;
 }
+
+
+static int DBSubPathBegging(DBCurvePoint *points, int pCount)
+{
+	int i;
+	
+	for (i = pCount-1; i > 0; i--) {
+		if(points[i].subPathStart){
+			return i;
+		}
+	}
+	
+	return 0;
+}
+
 
 /*
 static DBCurvePoint DBMakeCurvePoint(NSPoint p, NSPoint cp1, NSPoint cp2){

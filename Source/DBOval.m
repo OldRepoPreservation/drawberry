@@ -358,10 +358,14 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	DBShape *shape;
 	NSAffineTransform *af;
+	NSBezierPath *path;
 	
 	af = [[[[self layer] layerController] drawingView] appliedTransformation];
 	[af invert];
-	shape = [[DBBezierCurve alloc] initWithPath:[af transformBezierPath:_path]];		
+	
+	path = [af transformBezierPath:_path];
+	[path closePath];
+	shape = [[DBBezierCurve alloc] initWithPath:path];		
 	
 	
 	return shape;

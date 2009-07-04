@@ -51,6 +51,7 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 
 - (id)initWithSVGAttributes:(NSDictionary *)attr
 {
+	NSLog(@"new curve");
 	self = [super initWithSVGAttributes:attr];
 	
 	DBSVGStringParser *stringParser;
@@ -103,12 +104,17 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 	_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
 	
 	_points[_pointCount-1]=cp;
+	
+	_points[_pointCount-1].subPathStart = NO;
+	_points[_pointCount-1].closePath = NO;
+
 }
 
 - (void)SVGMoveTo:(NSPoint)p
 {
 //	NSLog(@"moveTo:");
 	[self addCurvePoint:DBMakeCurvePoint(p)];
+	_points[_pointCount-1].subPathStart = YES;
 }
 
 - (void)SVGLineTo:(NSPoint)p
@@ -133,6 +139,19 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 
 - (void)SVGClosePath
 {
+//	_points[_pointCount-1].closePath = YES;
+	
+	int subPathStart;
+	
+	subPathStart = DBSubPathBegging(_points,_pointCount);
+	
+	if(NSEqualPoints(_points[subPathStart].point, _points[_pointCount-1].point)){
+		_points[subPathStart].controlPoint2 = _points[_pointCount-1].controlPoint2;
+		_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
+		_pointCount--;
+		_points[_pointCount-1].closePath = YES;
+	}
+
 	_lineIsClosed = YES;
 }
 

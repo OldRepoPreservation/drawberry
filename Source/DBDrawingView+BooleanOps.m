@@ -138,7 +138,7 @@
 			// 
 			// [self replaceSelectionWithObject:[sel objectAtIndex:0]];
 			// [self commitSelectionUndoWithActionName:NSLocalizedString(@"Difference", @"undo string for diff op")];
-	        
+	        NSLog(@"elements count %d",[rp elementCount]);
 			result = [[DBBezierCurve alloc] initWithPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
 			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];

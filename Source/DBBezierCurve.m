@@ -160,27 +160,6 @@ DBCurvePoint * insertCurvePointAtIndex(DBCurvePoint newPoint, int index, DBCurve
 	return newPoints;
 }
 
-DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int pointsCount)
-{
-	DBCurvePoint *newPoints;
-	newPoints = malloc(sizeof(DBCurvePoint)*(pointsCount-1));
-                
-	int i;
-
-	for( i = 0; i < index; i++ )
-	{                            
-		newPoints[i] = points[i];
-	}                       
-	
-
-	for(i = index+1; i < pointsCount; i++)
-	{
-		newPoints[i-1] = points[i];
-	}
-
-	free(points);
-	return newPoints;
-}
 
 NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 {
@@ -206,6 +185,29 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	
 	return nearest;
 }
+
+DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int pointsCount)
+{
+	DBCurvePoint *newPoints;
+	newPoints = malloc(sizeof(DBCurvePoint)*(pointsCount-1));
+	
+	int i;
+	
+	for( i = 0; i < index; i++ )
+	{                            
+		newPoints[i] = points[i];
+	}                       
+	
+	
+	for(i = index+1; i < pointsCount; i++)
+	{
+		newPoints[i-1] = points[i];
+	}
+	
+	free(points);
+	return newPoints;
+}
+
 
 @implementation DBBezierCurve
 
@@ -241,53 +243,69 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	if(elementType == NSMoveToBezierPathElement){
 		_points[0].point = associatedPoints[0];
 		_points[0].controlPoint1 = associatedPoints[0];
-		_points[0].controlPoint2 = associatedPoints[0];            
+		_points[0].controlPoint2 = associatedPoints[0];   
+        _points[0].closePath = NO;
+        _points[0].subPathStart = YES;
 	}                                                              
 	
 	int i;
-
+	int beginningPoint;
+	
+	beginningPoint = 0;
+	
 	for( i = 1; i < elementCount; i++ )
 	{
 	    elementType = [path elementAtIndex:i associatedPoints:associatedPoints];
 	
 		if(elementType == NSClosePathBezierPathElement){
- 		    elementType = [path elementAtIndex:i-1 associatedPoints:associatedPoints];
-			_lineIsClosed = YES;
-			_points[0].hasControlPoints = YES;		
+//			NSLog(@"close path");
+			if(NSEqualPoints(_points[beginningPoint].point, _points[_pointCount-1].point)){
+//				NSLog(@"points egaux");
+				_points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
+				_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
+				_pointCount--;	
+			}
+			
+			_points[_pointCount-1].closePath = YES;
+		}else if(elementType == NSMoveToBezierPathElement){
 
-//			if(elementType == NSLineToBezierPathElement){
-				_points[i-1].controlPoint1 = _points[i-1].point;
-//			}else{   
-//				NSLog(@"hop");
-//				_points[i-1].controlPoint1 = associatedPoints[0];         
-//				_points[0].controlPoint2 = associatedPoints[1];            			
-//			}
-
-			break;
+			beginningPoint = _pointCount;
+			_pointCount++;
+			_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
+			
+			_points[_pointCount-1].point = associatedPoints[0];
+			_points[_pointCount-1].controlPoint1 = associatedPoints[0];
+			_points[_pointCount-1].controlPoint2 = associatedPoints[0];   
+			_points[_pointCount-1].closePath = NO;
+			_points[_pointCount-1].subPathStart = YES;
+			
 		}else if(elementType == NSLineToBezierPathElement){
 			_pointCount++;
 			_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
-			_points[i-1].controlPoint1 = _points[i-1].point;
-			_points[i].point = associatedPoints[0];
-			_points[i].controlPoint2 = associatedPoints[0];
-			_points[i].hasControlPoints = YES;		
+			_points[_pointCount-2].controlPoint1 = _points[_pointCount-2].point;
+			_points[_pointCount-1].point = associatedPoints[0];
+			_points[_pointCount-1].controlPoint2 = associatedPoints[0];
+			_points[_pointCount-1].controlPoint1 = associatedPoints[0];
+			_points[_pointCount-1].hasControlPoints = NO;		
+			_points[_pointCount-1].closePath = NO;		
+			_points[_pointCount-1].subPathStart = NO;		
 		}else{
 			_pointCount++;
 			_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
-			_points[i-1].controlPoint1 = associatedPoints[0];
-			_points[i].controlPoint2 = associatedPoints[1];            			
-			_points[i].point = associatedPoints[2];
-			_points[i].hasControlPoints = YES;		
+			_points[_pointCount-2].controlPoint1 = associatedPoints[0];
+			_points[_pointCount-1].controlPoint2 = associatedPoints[1];            			
+			_points[_pointCount-1].point = associatedPoints[2];
+			_points[_pointCount-1].hasControlPoints = YES;		
+			_points[_pointCount-1].closePath = NO;		
+			_points[_pointCount-1].subPathStart = NO;		
 		}
 	}
-	
-	if(NSEqualPoints(_points[0].point, _points[_pointCount-1].point)){
-		
-		_lineIsClosed = YES;
-		_points[0].controlPoint2 = _points[_pointCount-1].controlPoint2;
-		
+			
+	if(NSEqualPoints(_points[beginningPoint].point, _points[_pointCount-1].point)){
+		_points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
 		_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
-		_pointCount--;		
+		_pointCount--;
+		_points[_pointCount-1].closePath = YES;
 	}
 	
 	return self;
@@ -318,6 +336,10 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 		_points[i].controlPoint2 = NSPointFromString(pointString);
 		num = [e nextObject];
 		_points[i].hasControlPoints = [num boolValue];
+		num = [e nextObject];
+		_points[i].closePath = [num boolValue];
+		num = [e nextObject];
+		_points[i].subPathStart = [num boolValue];
 		i ++;
 	}
 	 
@@ -350,6 +372,8 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 		[array addObject:pointString];
 		
 		[array addObject:[NSNumber numberWithBool:_points[i].hasControlPoints]];
+		[array addObject:[NSNumber numberWithBool:_points[i].closePath]];
+		[array addObject:[NSNumber numberWithBool:_points[i].subPathStart]];
 		
 	}
     
@@ -376,6 +400,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	 
 	_points = malloc(2*sizeof(DBCurvePoint));
 	_points[0] = DBMakeCurvePoint(point);
+	_points[0].subPathStart = YES;
 	_points[1] = DBMakeCurvePoint(point);
 	_pointCount = 2;
      
@@ -408,11 +433,13 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 
 		
 		  	if(DBPointIsOnKnobAtPointZoom(point,_points[0].point,[view zoom])){
-					_lineIsClosed = YES;
-					_pointCount--;
-					_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
-					[pool release];
-					break;
+				_lineIsClosed = YES;
+				_pointCount--;
+				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+			
+				_points[_pointCount-1].closePath = YES;
+				[pool release];
+				break;
 			}
             
 	 		if([theEvent clickCount] > 1){
@@ -1011,7 +1038,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	if(!NSIsEmptyRect(rect) && !NSIntersectsRect(rect, _bounds) && !NSIsEmptyRect(_bounds)){
 		return;
 	}
-	
+
    	if([[NSGraphicsContext currentContext] isKindOfClass:[NSBitmapGraphicsContext class]]){
 		[_shadow reverseShadowOffsetHeight];
 	}
@@ -1167,6 +1194,7 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	BOOL canConvert; 
 
 	int i;
+	int beginningPoint;
 	NSPoint point;
 	NSPoint controlPoint1, controlPoint2;
 	
@@ -1200,7 +1228,9 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 	[_controlPointsPath lineToPoint:point];
 	[_controlPointsPath lineToPoint:controlPoint2];
 	
+	beginningPoint = 0;
 	
+	beginningPoint = 0;
 	
   	for( i = 1; i < _pointCount; i++ )
 	{
@@ -1214,37 +1244,63 @@ NSPoint nearestPointInArray(NSPoint array[], int count, NSPoint point)
 			controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
 			controlPoint2 = [view viewCoordinatesFromCanevasCoordinates:controlPoint2];
 		}
+
 		
-		[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
-		
-		controlPoint1 = _points[i].controlPoint1;
- 		if(canConvert)
-		{
-			controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
+		if(_points[i].subPathStart){
+			[_path moveToPoint:point];
+			beginningPoint = i;
+			
+			[_controlPointsPath moveToPoint:controlPoint1];
+			[_controlPointsPath lineToPoint:point];
+			[_controlPointsPath lineToPoint:controlPoint2];			
+		}else{
+			[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+			
+			controlPoint1 = _points[i].controlPoint1;
+			if(canConvert)
+			{
+				controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
+			}
+			[_controlPointsPath moveToPoint:controlPoint1];
+			[_controlPointsPath lineToPoint:point];
+			[_controlPointsPath lineToPoint:controlPoint2];
+			
+			
+			if(_points[i].closePath){
+				point = _points[beginningPoint].point;
+				controlPoint1 = _points[i].controlPoint1;
+				controlPoint2 = _points[beginningPoint].controlPoint2;
+				
+				if(canConvert)
+				{
+					point = [view viewCoordinatesFromCanevasCoordinates:point];
+					controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
+					controlPoint2 = [view viewCoordinatesFromCanevasCoordinates:controlPoint2];
+				}
+				
+				[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+				[_path closePath];				
+			}
 		}
-		[_controlPointsPath moveToPoint:controlPoint1];
-		[_controlPointsPath lineToPoint:point];
-		[_controlPointsPath lineToPoint:controlPoint2];
-  	}  
+	}  
 	
-	if(_lineIsClosed){
-		point = _points[0].point;
-		controlPoint1 = _points[_pointCount-1].controlPoint1;
-		controlPoint2 = _points[0].controlPoint2;
-		
-		if(canConvert)
-		{
-			point = [view viewCoordinatesFromCanevasCoordinates:point];
-			controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
-			controlPoint2 = [view viewCoordinatesFromCanevasCoordinates:controlPoint2];
-		}
-		
-		[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
-		[_path closePath];
-	} 
+//	if(_lineIsClosed){
+//		point = _points[0].point;
+//		controlPoint1 = _points[_pointCount-1].controlPoint1;
+//		controlPoint2 = _points[0].controlPoint2;
+//		
+//		if(canConvert)
+//		{
+//			point = [view viewCoordinatesFromCanevasCoordinates:point];
+//			controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
+//			controlPoint2 = [view viewCoordinatesFromCanevasCoordinates:controlPoint2];
+//		}
+//		
+//		[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+//		[_path closePath];
+//	} 
 	
 //	_bounds = [_path bounds];
-      
 }
 
 - (void)updateBounds

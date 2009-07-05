@@ -1201,7 +1201,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	int i;
 	int beginningPoint;
 	NSPoint point;
-	NSPoint controlPoint1, controlPoint2;
+	NSPoint controlPoint1, controlPoint2, controlPoint3;
 	
 	if (_pointCount <= 0) {
 		[_path release];
@@ -1242,22 +1242,24 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		point = _points[i].point;
 		controlPoint1 = _points[i-1].controlPoint1;
 		controlPoint2 = _points[i].controlPoint2;
+		controlPoint3 = _points[i].controlPoint1;
 		
 		if(canConvert)
 		{
 			point = [view viewCoordinatesFromCanevasCoordinates:point];
 			controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
 			controlPoint2 = [view viewCoordinatesFromCanevasCoordinates:controlPoint2];
+			controlPoint3 = [view viewCoordinatesFromCanevasCoordinates:controlPoint3];
 		}
 
+		[_controlPointsPath moveToPoint:controlPoint3];
+		[_controlPointsPath lineToPoint:point];
+		[_controlPointsPath lineToPoint:controlPoint2];			
 		
 		if(_points[i].subPathStart){
 			[_path moveToPoint:point];
 			beginningPoint = i;
 			
-			[_controlPointsPath moveToPoint:controlPoint1];
-			[_controlPointsPath lineToPoint:point];
-			[_controlPointsPath lineToPoint:controlPoint2];			
 		}else{
 			[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
 			

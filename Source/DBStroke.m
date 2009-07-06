@@ -424,7 +424,6 @@
 	[_text release];
 	_text = [newText mutableCopy];
 	
-	NSLog(@"text : %@",_text);
 	[_textPath release];
 	_textPath = nil ;
 	[_shape strokeUpdated];

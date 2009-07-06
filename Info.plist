@@ -31,6 +31,10 @@
 			<array>
 				<string>svg</string>
 			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>image/svg+xml</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>SVG Document</string>
 			<key>CFBundleTypeRole</key>

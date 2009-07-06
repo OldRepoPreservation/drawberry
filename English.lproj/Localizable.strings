@@ -59,3 +59,5 @@
 "Custom" = "Custom";
 
 "Untitled" = "Untitled";
+"Unable to save document" = "Unable to save document";
+"Save error recovery" = "DrawBerry can not save this file format. \nExport this file or save it as a DrawBerry document using Save As...";

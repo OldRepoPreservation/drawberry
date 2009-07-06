@@ -93,12 +93,18 @@ static NSArray *_sharedUnitArray = nil;
 {
     // Implement to provide a persistent data representation of your document OR remove this and implement the file-wrapper or file path based save methods.
 	       
-	//NSLog(@"typeName %@", typeName);                                     
+//	NSLog(@"typeName %@", typeName);                                     
 	
 	if(![typeName isEqualToString:@"DrawBerry Document"]){
-		NSString *path = [absoluteURL path];
-		path = [path stringByDeletingPathExtension];
-		path = [path stringByAppendingPathExtension:@"dbdoc"];
+
+		NSDictionary *errorUserInfo;
+		
+		errorUserInfo = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Unable to save document",nil),NSLocalizedDescriptionKey,
+																	NSLocalizedString(@"Save error recovery",nil),NSLocalizedRecoverySuggestionErrorKey,
+																	nil];
+		
+		*outError = [NSError errorWithDomain:@"DrawBerry Error" code:0 userInfo:errorUserInfo];
+		return NO;
 	}
 	
 	NSData *data;

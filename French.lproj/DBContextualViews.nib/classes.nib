@@ -20,9 +20,17 @@
 			<dict>
 				<key>_source</key>
 				<string>NSView</string>
+				<key>_zoomField</key>
+				<string>NSTextField</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSView</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>NSObject</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
 		</dict>
 		<dict>
 			<key>ACTIONS</key>
@@ -45,6 +53,8 @@
 		<dict>
 			<key>ACTIONS</key>
 			<dict>
+				<key>cancelSVGLoad</key>
+				<string>id</string>
 				<key>export</key>
 				<string>id</string>
 				<key>exportAccessoryViewPopupFormatDidChange</key>
@@ -66,9 +76,21 @@
 				<string>NSSlider</string>
 				<key>_layerController</key>
 				<string>DBLayerController</string>
+				<key>_svgProgressIndicator</key>
+				<string>NSProgressIndicator</string>
+				<key>_svgSheet</key>
+				<string>NSPanel</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSDocument</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>NSWindow</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSResponder</string>
 		</dict>
 		<dict>
 			<key>ACTIONS</key>

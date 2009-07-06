@@ -424,6 +424,7 @@
 	[_text release];
 	_text = [newText mutableCopy];
 	
+	NSLog(@"text : %@",_text);
 	[_textPath release];
 	_textPath = nil ;
 	[_shape strokeUpdated];
@@ -508,30 +509,6 @@
 {
 	NSBezierPath *path = drawPath;
 	
-	if([_shape isKindOfClass:[DBPolyline class]]){
-		if([path elementAtIndex:[path elementCount] -2] == NSClosePathBezierPathElement){ 
-
-			path = [[NSBezierPath alloc] init];
-			NSPoint point;
-			
-			[drawPath elementAtIndex:0 associatedPoints:&point];
-			[path moveToPoint:point];
-			
-			int i;
-
-			for( i = 1; i < [drawPath elementCount]-2; i++ )
-			{
-				[drawPath elementAtIndex:i associatedPoints:&point];
-				[path lineToPoint:point];
-			}
-
-			[drawPath elementAtIndex:0 associatedPoints:&point];
-			[path lineToPoint:point];
-			[path closePath];			
-		}
-	}
-	
-	
 	[_textPath release];
 	
 	if(_text && ![[_text string] isEqualTo:@""]){
@@ -540,6 +517,8 @@
 		}else{
 			_textPath = [path bezierPathWithTextOnPath:_text yOffset:_textOffset];
 		}
+	}else{
+		_textPath = nil;
 	}
 	
 	
@@ -548,11 +527,6 @@
 	[at translateXBy:-[_shape bounds].origin.x yBy:-[_shape bounds].origin.y];
 	[_textPath transformUsingAffineTransform:at ];
 	[at release];
-	
-	if([_shape isKindOfClass:[DBPolyline class]] && 
-		[path elementAtIndex:[path elementCount] -2] == NSClosePathBezierPathElement){
-			[path release];
-	}
 }   
 
 - (void)strokePath:(NSBezierPath *)drawPath

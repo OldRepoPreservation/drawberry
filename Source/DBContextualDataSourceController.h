@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class DBContextualBar, DBDrawingView;
+#import "DBContextualBar.h"
 
-@interface DBContextualDataSourceController : NSObject {
+@class DBDrawingView;
+
+@interface DBContextualDataSourceController : NSObject <DBContextualBarDataSource> {
 	IBOutlet DBContextualBar *_contextualBar;
 	IBOutlet DBDrawingView *_mainView;
 	

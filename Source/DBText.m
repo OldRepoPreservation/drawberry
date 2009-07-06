@@ -8,6 +8,8 @@
 
 #import "DBText.h"
 
+#import "DBDrawingView+TextEditing.h"
+
 static NSLayoutManager*		sharedDrawingLayoutManager()
 {
     // This method returns an NSLayoutManager that can be used to draw the contents of a GCTextShape.

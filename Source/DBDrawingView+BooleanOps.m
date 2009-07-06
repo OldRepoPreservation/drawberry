@@ -15,6 +15,9 @@
 #import "DBBezierCurve.h"
 
 
+#import "EMErrorManager.h"
+
+
 @implementation DBDrawingView (BooleanOps)
 ///*********************************************************************************************************************
 ///
@@ -64,7 +67,7 @@
 	
 	// make a new shape from the result path, inheriting style of the topmost object
 	
-	result = [[DBBezierCurve alloc] initWithPath:rp];
+	result = [[DBBezierCurve alloc] initWithBezierPath:rp];
 	[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
 	[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 	
@@ -139,7 +142,7 @@
 			// [self replaceSelectionWithObject:[sel objectAtIndex:0]];
 			// [self commitSelectionUndoWithActionName:NSLocalizedString(@"Difference", @"undo string for diff op")];
 	        NSLog(@"elements count %d",[rp elementCount]);
-			result = [[DBBezierCurve alloc] initWithPath:rp];
+			result = [[DBBezierCurve alloc] initWithBezierPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
 			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 
@@ -202,7 +205,7 @@
 		
 		if (! [rp isEmpty])
 		{	        
-			result = [[DBBezierCurve alloc] initWithPath:rp];
+			result = [[DBBezierCurve alloc] initWithBezierPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
 			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 
@@ -249,7 +252,7 @@
 		
 		if (! [rp isEmpty])
 		{	        
-			result = [[DBBezierCurve alloc] initWithPath:rp];
+			result = [[DBBezierCurve alloc] initWithBezierPath:rp];
 			[result setStroke:[[[(DBShape *)[sel lastObject] stroke] copy] autorelease] ];
 			[result setFills:[[[(DBShape *)[sel lastObject] fills] copy] autorelease] ];
 

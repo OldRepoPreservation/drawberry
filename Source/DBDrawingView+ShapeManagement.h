@@ -21,8 +21,8 @@ extern NSString *DBShapePboardType;
 - (void)replaceShapes:(NSArray *)shapes byShape:(DBShape *)newShape actionName:(NSString *)actionName;
 - (void)replaceShape:(DBShape *)oldShape byShapes:(NSArray *)newShapes actionName:(NSString *)actionName;
 
-- (void)lowerShapes:(NSArray *)shapes;
-- (void)raiseShapes:(NSArray *)shapes;
+- (void)lowerShapesInArray:(NSArray *)shapes;
+- (void)raiseShapesInArray:(NSArray *)shapes;
 - (void)raiseSelectedShapes:(id)sender;
 - (void)lowerSelectedShapes:(id)sender;
 

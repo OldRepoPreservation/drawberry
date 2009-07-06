@@ -502,8 +502,8 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		points[2] = _point3;
 		points[3] = _point4;
 		
-		[shape setPoints:points count:4];
-		[shape setLineIsClosed:YES];
+		[(DBPolyline *)shape setPoints:points count:4];
+		[(DBPolyline *)shape setLineIsClosed:YES];
 	}else{
 		NSAffineTransform *af;
 
@@ -511,9 +511,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		
 		if(af){
 			[af invert];
-			shape = [[DBBezierCurve alloc] initWithPath:[af transformBezierPath:_path]];					
+			shape = [[DBBezierCurve alloc] initWithBezierPath:[af transformBezierPath:_path]];					
 		}else {
-			shape = [[DBBezierCurve alloc] initWithPath:_path];		
+			shape = [[DBBezierCurve alloc] initWithBezierPath:_path];		
 		}
 	} 
 		

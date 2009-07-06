@@ -20,5 +20,5 @@
 	DBShape *_editedShape;
 }                                           
 - (void)editShape:(DBShape *)shape;
-
+- (void)removeEditedShape;
 @end

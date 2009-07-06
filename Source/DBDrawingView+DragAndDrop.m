@@ -64,7 +64,7 @@
 	   	
 	
 		if([[self selectedShapes] count] > 0){
-			layer = [[[self selectedShapes] objectAtIndex:0] layer];			
+			layer = (DBLayer *)[[[self selectedShapes] objectAtIndex:0] layer];			
 		}else if([[[self layerController] layers] count] > 0){
 			layer = [[self layerController] layerAtIndex:([[[self layerController] layers] count]-1)];
 		}else{

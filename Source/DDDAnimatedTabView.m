@@ -69,7 +69,6 @@
 
 	} else if(_transitionStyle < 10){ 	// Otherwise is the transition for CoreGraphics
 
-		int lastTab = [self numberOfTabViewItems]-1;		
 		// fromTab set before changing the tab, as we need to know where we're coming from
 		int fromTab = [self indexOfTabViewItem:[self selectedTabViewItem]];
 		// Change the tab. wont be rendered yet.

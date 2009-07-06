@@ -4,6 +4,7 @@
 // Copyright (c) 2004 Apple Computer, Inc. All Rights Reserved.
 
 #import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CIColor.h>
 #import "ParameterView.h"
 #import "FilterView.h"
 //#import "DBFilterStack.h"
@@ -390,7 +391,7 @@ static void format_floating_point_number(float v, int before, int after, char *s
     if (colorWell != nil)
     {
         // get the color well's color
-        color = [[CIColor alloc] initWithColor: [colorWell color]];
+        color = [(CIColor *)[CIColor alloc] initWithColor:[colorWell color]];
         // update the filter (using undo-compatible glue code)
         [master setFilter:filter value: color forKey:key];
         // and set up the undo string based on the filter and key names
@@ -722,7 +723,7 @@ static void format_floating_point_number(float v, int before, int after, char *s
     // see if strike through style differs
     strikeThroughStyle = [dattrs valueForKey:NSStrikethroughStyleAttributeName];
     if (strikeThroughStyle == nil)
-        strikeThrough = nil;
+        strikeThrough = 0;
     else
         strikeThrough = [strikeThroughStyle intValue];
     if ([dict valueForKey:@"strikeThroughStyle"] == nil)
@@ -734,7 +735,7 @@ static void format_floating_point_number(float v, int before, int after, char *s
     // see if underline style differs
     underlineStyle = [dattrs valueForKey:NSUnderlineStyleAttributeName];
     if (underlineStyle == nil)
-        underline = nil;
+        underline = 0;
     else
         underline = [underlineStyle intValue];
     if ([dict valueForKey:@"underlineStyle"] == nil)
@@ -1512,7 +1513,7 @@ NSString *unInterCap(NSString *s)
     
     // determine if we need to ellipsize
     columnwidth = width - 5;
-    stringwidth = [font widthOfString:label];
+	stringwidth = [label sizeWithAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]].width;
     if (stringwidth <= columnwidth)
         return label;
     label2 = [label mutableCopyWithZone:nil];
@@ -1525,7 +1526,7 @@ NSString *unInterCap(NSString *s)
         else
             [label2 replaceCharactersInRange:NSMakeRange(length-4, 4) withString:@"..."]; // must include ellipsis now
         first = NO;
-        stringwidth = [font widthOfString:label2];
+		stringwidth = [label2 sizeWithAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]].width;
     }
     return [label2 copy];
 }

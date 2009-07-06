@@ -20,4 +20,7 @@
 
 - (NSArray *)draggedTypes;
 - (void)dragObject:(id)object withEvent:(NSEvent *)theEvent pasteBoard:(NSPasteboard *)pboard;
+
+@optional
+- (void)doubleClickAction:(id)sender;
 @end

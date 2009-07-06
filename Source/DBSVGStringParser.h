@@ -19,3 +19,11 @@
 - (void)curveToPoint:(NSPoint)aPoint controlPoint1:(NSPoint)controlPoint1 controlPoint2:(NSPoint)controlPoint2;
 - (void)closePath;
 @end
+
+@interface NSObject (SVGStringParserOwner)
+- (void)SVGMoveTo:(NSPoint)p;
+- (void)SVGLineTo:(NSPoint)p;
+- (void)SVGCurveToPoint:(NSPoint)aPoint controlPoint1:(NSPoint)controlPoint1 controlPoint2:(NSPoint)controlPoint2;
+- (void)SVGClosePath;
+@end
+

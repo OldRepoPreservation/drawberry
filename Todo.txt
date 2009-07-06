@@ -128,6 +128,8 @@ What we have to do in the future (in function of milestone)
 
 	FIXED : SVG importer/exporter bug with rectangles and ovals
 
+	DONE : the SVG parser is much more compliant
+
 	DONE : A Donate panel at startup
 	
 	DONE : A curved zoom slider for the mag. glass
@@ -137,6 +139,7 @@ What we have to do in the future (in function of milestone)
 	DONE : Images drag & drop on shapes
 
 	DONE : A more efficient way to fill shapes with images using path clipping
+
 - After that
 	  
 	TODO : PDF importer (as vector objects)

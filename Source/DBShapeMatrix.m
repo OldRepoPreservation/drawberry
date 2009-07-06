@@ -8,7 +8,7 @@
 
 #import "DBShapeMatrix.h"
 
-@class DBShapeCell;
+#import "DBShapeCell.h"
 
 NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 
@@ -38,7 +38,7 @@ NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 	[super mouseDown:event];
 	
 	if([event clickCount] == 2){
-		[_dataSource doubleClickAction:self];
+			[_dataSource doubleClickAction:self];		
 	}else{
 		NSPoint point;
 	

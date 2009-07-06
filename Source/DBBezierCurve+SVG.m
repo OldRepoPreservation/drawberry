@@ -147,7 +147,7 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 	
 	if(NSEqualPoints(_points[subPathStart].point, _points[_pointCount-1].point)){
 		_points[subPathStart].controlPoint2 = _points[_pointCount-1].controlPoint2;
-		_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
+		_points = (DBCurvePoint *)removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
 		_pointCount--;
 		_points[_pointCount-1].closePath = YES;
 	}

@@ -8,8 +8,13 @@
 
 #import "DBDrawingView+ShapeManagement.h"
 
+
+#import "DBDocument.h"
+
 #import "DBLayer.h"
 #import "DBShape.h"
+#import "DBRectangle.h"
+#import "DBOval.h"
 
 #import "EMErrorManager.h"
 
@@ -89,7 +94,7 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	while((shape = [e nextObject])){
 		if([shape isKindOfClass:[DBRectangle class]] || [shape isKindOfClass:[DBOval class]]){
 			[shapesToConvert addObject:shape];
-			[convertedShapes addObject:[[shape convert] autorelease]];
+			[convertedShapes addObject:[[(DBRectangle *)shape convert] autorelease]];
 		}
 	}
 	
@@ -122,8 +127,8 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	
 //	[newShapes release];
 
-	[[[_document specialUndoManager] prepareWithInvocationTarget:self] replaceShapes:newShapes byShapes:[shapes retain] actionName:actionName]; 
-	[[_document specialUndoManager] setActionName:NSLocalizedString(actionName, nil)];
+	[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] replaceShapes:newShapes byShapes:[shapes retain] actionName:actionName]; 
+	[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(actionName, nil)];
 }
 
 - (void)replaceShapes:(NSArray *)shapes byShape:(DBShape *)newShape actionName:(NSString *)actionName
@@ -152,8 +157,8 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	 
 	[self setNeedsDisplay:YES]; 
 
-	[[[_document specialUndoManager] prepareWithInvocationTarget:self] replaceShape:newShape byShapes:[shapes retain] actionName:actionName]; 
-	[[_document specialUndoManager] setActionName:NSLocalizedString(actionName, nil)];
+	[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] replaceShape:newShape byShapes:[shapes retain] actionName:actionName]; 
+	[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(actionName, nil)];
 	
 }
 
@@ -176,17 +181,17 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	
 	[self setNeedsDisplay:YES]; 
 	
-	[[[_document specialUndoManager] prepareWithInvocationTarget:self] replaceShapes:newShapes byShape:[oldShape retain] actionName:actionName]; 
-	[[_document specialUndoManager] setActionName:NSLocalizedString(actionName, nil)];
+	[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] replaceShapes:newShapes byShape:[oldShape retain] actionName:actionName]; 
+	[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(actionName, nil)];
 	
 }
 
 - (void)raiseSelectedShapes:(id)sender
 {
-	[self raiseShapes:_selectedShapes];
+	[self raiseShapesInArray:_selectedShapes];
 }   
 
-- (void)raiseShapes:(NSArray *)shapes
+- (void)raiseShapesInArray:(NSArray *)shapes
 {
 	if(!shapes || [shapes count] == 0){
 		return;
@@ -203,17 +208,17 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	}
 
 	if(didChange){
-	[[[_document specialUndoManager] prepareWithInvocationTarget:self] raiseShapes:shapes]; 
-	[[_document specialUndoManager] setActionName:NSLocalizedString(@"Raise", nil)];
+	[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] lowerShapesInArray:shapes]; 
+	[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Raise", nil)];
 	}
 }
 
 - (void)lowerSelectedShapes:(id)sender
 {
-	[self lowerShapes:_selectedShapes];
+	[self lowerShapesInArray:_selectedShapes];
 }   
 
-- (void)lowerShapes:(NSArray *)shapes
+- (void)lowerShapesInArray:(NSArray *)shapes
 {
 	if(!shapes || [shapes count] == 0){
 		return;
@@ -229,8 +234,8 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	}
 	
 	if(didChange){
-		[[[_document specialUndoManager] prepareWithInvocationTarget:self] raiseShapes:shapes]; 
-		[[_document specialUndoManager] setActionName:NSLocalizedString(@"Lower", nil)];	
+		[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] raiseShapes:shapes]; 
+		[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Lower", nil)];	
 	}
 }
 

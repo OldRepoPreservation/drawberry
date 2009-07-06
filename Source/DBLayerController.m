@@ -12,6 +12,8 @@
 #import "DBShape.h"
 
 #import "DBFilterStack.h"
+#import "EffectStack.h"
+
 
 #import "DBDocument.h"
 #import "DBDrawingView.h"

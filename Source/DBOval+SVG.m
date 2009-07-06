@@ -8,6 +8,7 @@
 
 #import "DBOval+SVG.h"
 #import "DBShape+SVG.h"
+#import "DBPolyline+SVG.h"
 
 
 @implementation DBOval (SVGAdditions)
@@ -15,7 +16,7 @@
 {
 	NSString *pathString;
 	
-	pathString = [[self convert] SVGPathString];
+	pathString = [(DBPolyline *)[self convert] SVGPathString];
 	
 	return [NSString stringWithFormat:@"<path  style=\"%@\" \n d=\"%@\"  />\n",[self SVGStyleString],pathString];
 }

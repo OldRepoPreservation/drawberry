@@ -9,7 +9,7 @@
 #import "DBInspectorController.h"
 
 #import "GInspectWindow.h"
-#import <GradientPanel/GradientPanel.h>
+//#import <GradientPanel/GradientPanel.h>
 #import <GradientPanelFramework/GPGradientPanelFramework.h>
 
 #import "DBFill.h"
@@ -178,7 +178,7 @@ static DBInspectorController *_sharedInspectorController = nil;
 {
 	if([keyPath isEqualTo:@"gradient"]){
 		if([[_fillsController selectedObjects] count] >0 )
-			[[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[_fillGradientWell gradient]];
+			[(DBFill *)[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[(GPGradientWell *)_fillGradientWell gradient]];
 //		[[_fillController content] setGradientAngle:[_fillGradientWell gradientAngle]];
 	}else if([keyPath isEqualTo:@"gradientAngle"]){
 //		[[_fillController content] setGradientAngle:[_fillGradientWell gradientAngle]];
@@ -213,7 +213,7 @@ static DBInspectorController *_sharedInspectorController = nil;
 
 - (IBAction)takeGradientFrom:(id)sender
 {
-	[[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[_fillGradientWell gradient]];
+	[(DBFill *)[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[(GPGradientWell *)_fillGradientWell gradient]];
 	[[[_fillsController selectedObjects] objectAtIndex:0] setGradientAngle:-[(GPGradientWell *) _fillGradientWell gradientAngle]];
 	[[[_fillsController selectedObjects] objectAtIndex:0] setGradientType:[(GPGradientWell *) _fillGradientWell gradientType]];
 }

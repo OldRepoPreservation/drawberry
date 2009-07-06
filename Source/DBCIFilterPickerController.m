@@ -29,7 +29,8 @@ static DBCIFilterPickerController *_sharedCIFilterPickerController = nil;
     
     // determine if we need to ellipsize
     columnwidth = width - 5;
-    stringwidth = [font widthOfString:label];
+	stringwidth = [label sizeWithAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]].width;
+	
     if (stringwidth <= columnwidth)
         return label;
     label2 = [label mutableCopyWithZone:nil];
@@ -42,7 +43,7 @@ static DBCIFilterPickerController *_sharedCIFilterPickerController = nil;
         else
             [label2 replaceCharactersInRange:NSMakeRange(length-4, 4) withString:@"..."]; // must include ellipsis now
         first = NO;
-        stringwidth = [font widthOfString:label2];
+		stringwidth = [label sizeWithAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]].width;
     }
     return [label2 copy];
 }

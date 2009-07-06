@@ -208,7 +208,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	return newPoints;
 }
 
-
 @implementation DBBezierCurve
 
 - (id)init
@@ -220,7 +219,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	return self;
 }
 
-- (id)initWithPath:(NSBezierPath *)path
+- (id)initWithBezierPath:(NSBezierPath *)path
 {
 	self = [self init];
 	

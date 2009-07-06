@@ -155,7 +155,7 @@
 		if(af){
 			
 			DBPolyline *rectPolyline;
-			rectPolyline = [rect convert];
+			rectPolyline = (DBPolyline *)[rect convert];
 			[rectPolyline setStroke:[rect stroke]];
 			[rectPolyline setFills:[rect fills]];
 

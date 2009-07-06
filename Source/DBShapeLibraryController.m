@@ -12,7 +12,6 @@
 #import "DBRectangle.h"
 
 #import "DBShapeLibLayerController.h"
-#import "DBShapeMatrix.h"
 
 #import "DDDAnimatedTabView.h"
 

@@ -8,7 +8,7 @@
 
 #import "DBColorMatrix.h"
 
-@class DBColorCell;
+#import "DBColorCell.h"
 
 @implementation DBColorMatrix
 

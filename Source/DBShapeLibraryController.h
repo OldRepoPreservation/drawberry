@@ -8,13 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "DBMatrix.h"
+#import "DBShapeMatrix.h"
 @class DBShapeLibLayerController;
 @class DBShape;
 @class DDDAnimatedTabView, DBShapeCollection;
 
 @interface DBShapeLibraryController : NSWindowController {
-	IBOutlet DBMatrix *_matrix;
+	IBOutlet DBShapeMatrix *_matrix;
 	IBOutlet DBShapeLibLayerController *_layerController;
 	IBOutlet DDDAnimatedTabView *_tabView;
 	IBOutlet NSImageView *_lockImage;
@@ -43,4 +43,6 @@
 - (void)sortCollections;
 
 - (void)updateCollectionList;
+
+- (IBAction)doubleClickAction:(id)sender;
 @end

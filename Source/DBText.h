@@ -18,5 +18,13 @@
     int _vertPos;
 	NSTextAlignment _textAlignment;
 }
+
+- (void)setText:(id) newText;
+
 - (NSTextView*) editText:(NSTextStorage*) text inRect:(NSRect) rect delegate:(id) del;
+- (int)textVerticalPositon;
+- (void)setTextVerticalPositon:(int)newTextVerticalPositon;
+
+- (NSTextAlignment)textAlignment;
+- (void)setTextAlignment:(NSTextAlignment)newTextAlignment;
 @end

@@ -897,6 +897,10 @@ static NSBezierPath *__knob = nil;
 {
 }
 
+- (void)updatePath
+{
+}
+
 - (void)strokeUpdated
 {
 	if(!_isEditing)

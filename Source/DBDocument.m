@@ -18,6 +18,8 @@
 
 #import "DBPrefKeys.h"
 
+#import "DBLayer.h"
+
 static NSArray *_sharedUnitArray = nil;
 
 @implementation DBDocument

@@ -10,6 +10,8 @@
 
 #import "DBShapeLibLayerController.h"
 
+#import "DBDrawingView+ShapeManagement.h"
+
 @implementation DBShapeLibEditingView
 
 /*- (id)initWithFrame:(NSRect)frame

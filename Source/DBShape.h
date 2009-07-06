@@ -101,6 +101,7 @@ enum {
 - (void)updateFill;
 - (void)applyFillsToPath:(NSBezierPath *)path;
 - (void)updateBounds;
+- (void)updatePath;
 - (void)strokeUpdated;
 
 - (void)flipVerticallyWithNewKnob:(int)knob;
@@ -114,6 +115,17 @@ enum {
 - (NSPoint)translationToCenterInRect:(NSRect)rect;
 
 - (void)applyTransform:(NSAffineTransform *)at;
+
+// fills
+- (void)addFill:(DBFill *)aFill;
+- (void)insertFill:(DBFill *)aFill atIndex:(unsigned int)i;
+- (DBFill *)fillAtIndex:(unsigned int)i;
+- (unsigned int)indexOfFill:(DBFill *)aFill;
+- (void)removeFillAtIndex:(unsigned int)i;
+- (void)removeFill:(DBFill *)aFill;
+- (NSArray *)fills;
+- (unsigned int)countOfFills;
+- (void)setFills:(NSArray *)newFills;
 @end 
 
 NSPoint DBMultiplyPointByFactor(NSPoint point, float factor);

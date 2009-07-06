@@ -607,7 +607,9 @@ static DKPathUnflatteningPolicy		sSimplifyingPolicy = kGCPathUnflattenAuto;
 {
 	NSSize ps = [self bounds].size;
 	
-	float epsilon = MIN( ps.width, ps.height ) / 1000.0;
+	float epsilon;
+	
+	epsilon = MIN( ps.width, ps.height ) / 1000.0;
 	
 	//LogEvent_(kInfoEvent, @"curve fit epsilon: %f", epsilon );
 

@@ -12,7 +12,16 @@
 #import "DBDrawingView+ShapeManagement.h"
 #import "DBDrawingView+BooleanOps.h"
 
+#import "DBContextualBar.h"
+
 #import "DBShape.h"
+#import "DBText.h"
+#import "DBOval.h"
+#import "DBPolyline.h"
+#import "DBBezierCurve.h"
+
+
+#import "EMErrorManager.h"
 
 @class DBRectangle, DBOval, DBText,DBBezierCurve,DBPolyline;
 
@@ -101,8 +110,8 @@
 		[_textEditBox setHidden:NO];
 		                            
 //		[_alignControl setSelected:YES forSegment:[[_alignControl cell] segmentWithTag:[[_mainView selectedShape] textAlignment]]];
-		[_alignControl selectSegmentWithTag:[[_mainView selectedShape] textAlignment]];
-		[_vertAlignControl selectSegmentWithTag:[[_mainView selectedShape] textVerticalPositon]];
+		[_alignControl selectSegmentWithTag:[(DBText *)[_mainView selectedShape] textAlignment]];
+		[_vertAlignControl selectSegmentWithTag:[(DBText *)[_mainView selectedShape] textVerticalPositon]];
 		
 	}else if([shape isKindOfClass:[DBRectangle class]]){
 		[_convertBox setHidden:NO];
@@ -191,12 +200,12 @@
 - (IBAction)align:(id)sender
 {
 //	[[_mainView selectedShape] setTextAlignment:[sender selectedSegment]];
-	[[_mainView selectedShape] setTextAlignment:[[sender cell] tagForSegment:[sender selectedSegment]]];
+	[(DBText *)[_mainView selectedShape] setTextAlignment:[[sender cell] tagForSegment:[sender selectedSegment]]];
 }
 
 - (IBAction)vertAlign:(id)sender
 {
-	[[_mainView selectedShape] setTextVerticalPositon:[sender selectedSegment]];
+	[(DBText *)[_mainView selectedShape] setTextVerticalPositon:[sender selectedSegment]];
 } 
 
 - (IBAction)stopEditing:(id)sender

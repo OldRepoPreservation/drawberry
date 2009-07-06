@@ -8,6 +8,7 @@
 
 #import "DBToolsController.h"
 #import "DBToolMatrix.h"
+#import "DBButtonCell.h"
 
 
 #import "GCollapsePanel.h"
@@ -16,7 +17,12 @@
 
 #import "DBPrefKeys.h"
 
-@class DBShape, DBRectangle, DBOval, DBLine, DBPolyline, DBBezierCurve, DBText;
+#import "DBRectangle.h"
+#import "DBOval.h"
+#import "DBLine.h"
+#import "DBPolyline.h"
+#import "DBBezierCurve.h"
+#import "DBText.h"
 
 NSString *DBSelectedToolDidChangeNotification = @"DBSelectedToolDidChangeNotification";
 NSString *DBToolDidCreateShapeNotification = @"DBToolDidCreateShapeNotification";
@@ -75,7 +81,7 @@ enum {
 	[(GCollapsePanel *)[self window] setWidthWhenClosed:[[self window] frame].size.width];
 
    	[[_toolButtons cellWithTag:0] setHighlighted:YES];
-	[[_toolButtons cellWithTag:0] setLocked:YES];  	
+	[(DBButtonCell *)[_toolButtons cellWithTag:0] setLocked:YES];  	
 
 	
 	

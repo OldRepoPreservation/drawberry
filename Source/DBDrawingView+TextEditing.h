@@ -11,5 +11,6 @@
 #import "DBDrawingView.h"
 
 @interface DBDrawingView (TextEditing)
-
+- (void)addTextView:(NSTextView *)textView;
+- (void)removeTextView:(NSTextView *)textView;
 @end

@@ -31,7 +31,7 @@ typedef struct _DBCurvePoints {
 
 	NSMutableIndexSet *_selectedPoints;
 }
-- (id)initWithPath:(NSBezierPath *)path;
+- (id)initWithBezierPath:(NSBezierPath *)path;
 
 - (void)updatePath;
 - (void)putPathInRect:(NSRect)newRect;

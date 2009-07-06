@@ -23,6 +23,8 @@
 #import "DBDocumentController.h"
 #import "DBLayerController.h"
 
+#import "DBApplicationController.h"
+
 #import "DBToolsController.h"
 
 #import "DBShape.h"

@@ -419,6 +419,7 @@ static NSArray *_sharedUnitArray = nil;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
+	NSLog(@"validate %@",[item title]);
 	if([item action] == @selector(undoDocument:)){
 		[item setTitle:[_undoMngr undoMenuItemTitle]];
 		return [_undoMngr canUndo];
@@ -457,7 +458,7 @@ static NSArray *_sharedUnitArray = nil;
 	if(_svgParser && [_drawingView window]){
 		[NSApp beginSheet:_svgSheet
 		   modalForWindow:[_drawingView window]
-			modalDelegate:nil
+			modalDelegate:self
 		   didEndSelector:@selector(svgSheetDidEnd:returnCode:contextInfo:)
 			  contextInfo:nil];
 		
@@ -470,7 +471,7 @@ static NSArray *_sharedUnitArray = nil;
 - (void)threadWillExit:(NSNotification *)note
 {
 	if(_svgParser){
-		[_svgSheet orderOut:self];
+		[NSApp endSheet:_svgSheet];
 		[_svgProgressIndicator stopAnimation:self];
 
 

@@ -11,6 +11,7 @@
 void DBDrawGridWithPropertiesInRect(float majorSpacing,int tickCount, NSColor *gcolor, NSRect rect, NSPoint gridOrigin) 
 {
     int curMajLine, endMajLine;
+	int i;
     int curLine, endLine;
 	float tickSpacing;
     NSBezierPath *majGridPath = [NSBezierPath bezierPath];
@@ -20,42 +21,42 @@ void DBDrawGridWithPropertiesInRect(float majorSpacing,int tickCount, NSColor *g
 	tickSpacing = majorSpacing / tickCount;
 
     // Columns
-    curMajLine = floor((NSMinX(rect) - gridOrigin.x) / majorSpacing);
+    curMajLine = floor((NSMinX(rect) - gridOrigin.x) / majorSpacing)+1;
     endMajLine = floor((NSMaxX(rect) - gridOrigin.x) / majorSpacing);
 
-    for (; curMajLine-1 <=endMajLine; curMajLine++) {
+    for (i = 0; curMajLine+i <= endMajLine; i++) {
         
-		if(curMajLine ){
-			
+		if(i > 0 ){ // don't display the first line
+			[majGridPath moveToPoint:NSMakePoint(((curMajLine+i) * majorSpacing) + gridOrigin.x, NSMinY(rect))];
+			[majGridPath lineToPoint:NSMakePoint(((curMajLine+i) * majorSpacing) + gridOrigin.x, NSMaxY(rect))];
 		}
-		[majGridPath moveToPoint:NSMakePoint((curMajLine * majorSpacing) + gridOrigin.x, NSMinY(rect))];
-        [majGridPath lineToPoint:NSMakePoint((curMajLine * majorSpacing) + gridOrigin.x, NSMaxY(rect))];
 
 		curLine = 1;
-		endLine = MIN(tickCount, ceilf((NSMaxX(rect)- ((curMajLine * majorSpacing)))/tickSpacing));
+		endLine = MIN(tickCount, ceilf((NSMaxX(rect)- (((curMajLine+i) * majorSpacing)))/tickSpacing));
 
 		for(; curLine < endLine; curLine++ )
 		{
-		    [gridPath moveToPoint:NSMakePoint((curMajLine * majorSpacing) + (curLine * tickSpacing) + gridOrigin.x, NSMinY(rect))];
-            [gridPath lineToPoint:NSMakePoint((curMajLine * majorSpacing) + (curLine * tickSpacing) + gridOrigin.x, NSMaxY(rect))];  
+		    [gridPath moveToPoint:NSMakePoint(((curMajLine+i) * majorSpacing) + (curLine * tickSpacing) + gridOrigin.x, NSMinY(rect))];
+            [gridPath lineToPoint:NSMakePoint(((curMajLine+i) * majorSpacing) + (curLine * tickSpacing) + gridOrigin.x, NSMaxY(rect))];  
 		}
     }
 
     // Rows
-    curMajLine = floor((NSMinY(rect) - gridOrigin.y) / majorSpacing);
+    curMajLine = floor((NSMinY(rect) - gridOrigin.y) / majorSpacing)+1;
     endMajLine = floor((NSMaxY(rect) - gridOrigin.y) / majorSpacing);
  	
-   	for (; curMajLine<=endMajLine; curMajLine++) {
-        [majGridPath moveToPoint:NSMakePoint(NSMinX(rect), (curMajLine * majorSpacing) + gridOrigin.y)];
-        [majGridPath lineToPoint:NSMakePoint(NSMaxX(rect), (curMajLine * majorSpacing) + gridOrigin.y)];
-
+   	for (i = 0 ; curMajLine+i <=endMajLine; i++) {
+ 		if(i > 0 ){ // don't display the first line
+			[majGridPath moveToPoint:NSMakePoint(NSMinX(rect), ((curMajLine+i) * majorSpacing) + gridOrigin.y)];
+			[majGridPath lineToPoint:NSMakePoint(NSMaxX(rect), ((curMajLine+i) * majorSpacing) + gridOrigin.y)];
+		}
 		curLine = 1;
-		endLine = MIN(tickCount, ceilf((NSMaxY(rect)- ((curMajLine * majorSpacing)))/tickSpacing));
+		endLine = MIN(tickCount, ceilf((NSMaxY(rect)- (((curMajLine+i) * majorSpacing)))/tickSpacing));
 
   		for(; curLine < endLine; curLine++ )
 		{       
-			[gridPath moveToPoint:NSMakePoint(NSMinX(rect), (curMajLine * majorSpacing) + (curLine * tickSpacing) + gridOrigin.y)];
-	        [gridPath lineToPoint:NSMakePoint(NSMaxX(rect), (curMajLine * majorSpacing) + (curLine * tickSpacing) + gridOrigin.y)];
+			[gridPath moveToPoint:NSMakePoint(NSMinX(rect), ((curMajLine+i) * majorSpacing) + (curLine * tickSpacing) + gridOrigin.y)];
+	        [gridPath lineToPoint:NSMakePoint(NSMaxX(rect), ((curMajLine+i) * majorSpacing) + (curLine * tickSpacing) + gridOrigin.y)];
 		}
     }
 

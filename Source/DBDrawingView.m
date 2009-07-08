@@ -207,8 +207,10 @@
 	
 	// draw the grid  
 	if(_showGrid && !_isExporting){
-//		DBDrawGridWithPropertiesInRect([self gridSpacing]*_zoom,[self gridTickCount],[self gridColor], zoomedCanevasRect, NSMakePoint(_canevasRect.origin.x+0.5,_canevasRect.origin.y+0.5));
-		DBDrawGridWithPropertiesInRect([self gridSpacing]*_zoom,[self gridTickCount],[self gridColor], intersectionRect, NSMakePoint(_canevasRect.origin.x+0.5,_canevasRect.origin.y+0.5));
+		[NSGraphicsContext saveGraphicsState];
+		[NSBezierPath clipRect:zoomedCanevasRect];
+		DBDrawGridWithPropertiesInRect([self gridSpacing]*_zoom,[self gridTickCount],[self gridColor], zoomedCanevasRect, NSMakePoint(_canevasRect.origin.x+0.5,_canevasRect.origin.y+0.5));
+		[NSGraphicsContext restoreGraphicsState];
 	}
 	
 	[NSGraphicsContext saveGraphicsState];

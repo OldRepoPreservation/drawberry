@@ -804,7 +804,7 @@
 		[self selectRectWithEvent:theEvent];
 	}
 	
-	      
+	[_dataSourceController updateSelection];
 }
 
 - (void)selectRectWithEvent:(NSEvent *)theEvent
@@ -1327,7 +1327,7 @@
 	if(![[shape layer] editable]){
 		[_eManager postErrorName:NSLocalizedString(@"Uneditable Layer",nil) description:NSLocalizedString(@"Uneditable Layer msg",nil)];
 		_editingShape = nil; 
-		[_dataSourceController endEditing];
+//		[_dataSourceController endEditing];
 	}else if([shape canEdit]){
 		[[self layerController] beginEditing];
 		
@@ -1350,10 +1350,12 @@
 
 	[self willChangeValueForKey:@"selectedShape"];
 	[_editingShape setIsEditing:NO];
+	if(_editingShape)
+		[_dataSourceController endEditing];
+
 	_editingShape = nil;
 	[self didChangeValueForKey:@"selectedShape"];
 	[self setNeedsDisplay:YES];
-	[_dataSourceController endEditing];
 }
 
 - (DBShape *)editingShape
@@ -1373,7 +1375,6 @@
 		[self selectedShape];
 		
    		[self setNeedsDisplay:YES];
-		[_dataSourceController updateSelection];
 	}
 }
 
@@ -1386,7 +1387,6 @@
 		[self didChangeValueForKey:@"selectedShape"];
 		
 		[self setNeedsDisplay:YES];
- 		[_dataSourceController updateSelection];
    }
 }
 
@@ -1406,7 +1406,7 @@
 		[self didChangeValueForKey:@"selectedShape"];
 
 		[self setNeedsDisplay:YES]; 
-		[_dataSourceController updateSelection];
+//		[_dataSourceController updateSelection];
 	}		
 }
 
@@ -1416,7 +1416,7 @@
 	[_selectedShapes setArray:nil];
 	[self didChangeValueForKey:@"selectedShape"];
 	[self setNeedsDisplay:YES];
-	[_dataSourceController updateSelection];
+//	[_dataSourceController updateSelection];
 }
 
 - (BOOL)shapeIsSelected:(DBShape *)shape

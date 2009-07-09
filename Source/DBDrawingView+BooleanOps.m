@@ -79,6 +79,8 @@
 	[sel release]; 
 	[self setNeedsDisplay:YES];
 	
+	[_dataSourceController updateSelection];
+	
 //	NSLog(@"present shapes : %@", [[result layer] shapes]);
 }
 
@@ -153,6 +155,8 @@
 			[result release];
 			[sel release];
  			[self setNeedsDisplay:YES];
+			
+			[_dataSourceController updateSelection];
     	}
 	}else{
 		[_eManager postErrorName:NSLocalizedString(@"Too Many Objects",nil) description:NSLocalizedString(@"Too Many Objects diff msg",nil)];
@@ -216,6 +220,8 @@
 			[result release];
 			[sel release];
 			[self setNeedsDisplay:YES];
+			
+			[_dataSourceController updateSelection];
 	 	}
 	}else{
 		[_eManager postErrorName:NSLocalizedString(@"Too Many Objects",nil) description:NSLocalizedString(@"Too Many Objects inter msg",nil)];
@@ -264,6 +270,7 @@
 			[sel release];
 			
 			[self setNeedsDisplay:YES];
+			[_dataSourceController updateSelection];
 	 	}
 	}else{
 		[_eManager postErrorName:NSLocalizedString(@"Too Many Objects",nil) description:NSLocalizedString(@"Too Many Objects xor msg",nil)];

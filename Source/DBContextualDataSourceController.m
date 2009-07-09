@@ -56,6 +56,7 @@
 
 - (NSView *)itemAtIndex:(int)index
 {
+	NSLog(@"item at index, selection type %d",_selectionType);
 	if(_selectionType == 0){
 		return _voidView;	
 	}else if(_selectionType == 1){
@@ -90,6 +91,8 @@
 	}else if([_mainView editingShape]){
 		shape = [_mainView editingShape];
 		_selectionType = 2;
+	}else{
+		_selectionType = 0;
 	}
 	         
 	[_convertBox setHidden:YES];
@@ -146,7 +149,7 @@
 - (void)beginEditing
 {
 	_selectionType = 2;
-	[self updateSelection];
+//	[self updateSelection];
 	[_contextualBar updateViewForDataSource];
 }
 

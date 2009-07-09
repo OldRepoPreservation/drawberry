@@ -45,6 +45,8 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	[shapeLayers makeObjectsPerformSelector:@selector(updateRenderInView:) withObject:self];
 	[self setNeedsDisplay:YES];
 	
+	[_dataSourceController updateSelection];
+	
 	if(showError){
 		[_eManager postErrorName:@"Cannot remove all shapes" description:@"You cannot edit a locked layer"];
 	}
@@ -105,6 +107,8 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	[self deselectAllShapes];
 	[shapesToConvert release];
 	[convertedShapes release];
+	
+	[_dataSourceController updateSelection];
 }
 
 - (void)replaceShapes:(NSArray *)shapes byShapes:(NSArray *)newShapes actionName:(NSString *)actionName

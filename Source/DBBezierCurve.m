@@ -1231,9 +1231,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	[_controlPointsPath moveToPoint:controlPoint1];
 	[_controlPointsPath lineToPoint:point];
 	[_controlPointsPath lineToPoint:controlPoint2];
-	
-	beginningPoint = 0;
-	
+		
 	beginningPoint = 0;
 	
   	for( i = 1; i < _pointCount; i++ )
@@ -1612,35 +1610,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		newPoints[i] = _points[i];
 	}                             
 	
-/*	for( i = [_selectedPoints indexGreaterThanOrEqualToIndex:0]; i != NSNotFound; i++, i = [_selectedPoints indexGreaterThanOrEqualToIndex:i])
-	{
-		if([_selectedPoints containsIndex:i+1]){
-   			// add a point
-			bez[0] = _points[i].point;
-			bez[1] = _points[i].controlPoint1;
-			bez[2] = _points[i+1].controlPoint2;
-			bez[3] = _points[i+1].point;
-             
-			subdivideBezier(bez,bez1,bez2);
-
-			_points[i].controlPoint1 = bez1[1];
-			newPoint.controlPoint2 = bez1[2];
-			newPoint.point = bez1[3];
-			newPoint.controlPoint1 = bez2[1];
-			_points[i+1].controlPoint2 = bez2[2];
-			
-			// insert the new point
-			_points = insertCurvePointAtIndex(newPoint,i+addedPoints+1, _points, _pointCount);
-			
-			_pointCount++;
-			addedPoints++;
-		}else{
-			// don't add
-		}
-	}
-*/	
-	
-
 	int subPathStart = 0;
 	
 	for (i = 0; i < _pointCount; i++) {

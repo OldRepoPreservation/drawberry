@@ -140,6 +140,14 @@ What we have to do in the future (in function of milestone)
 
 	DONE : A more efficient way to fill shapes with images using path clipping
 
+- Version 0.9
+	
+	TODO : Improve the contextual bar
+
+	TODO : Improve help and translate it in French
+
+	TODO : New Inspectors
+
 - After that
 	  
 	TODO : PDF importer (as vector objects)

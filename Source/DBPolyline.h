@@ -8,9 +8,15 @@
 
 #import "DBShape.h"
 
+typedef struct _DBPolylinePoint {
+	NSPoint	point;
+	
+	BOOL closePath;
+	BOOL subPathStart;
+} DBPolylinePoint;
 
 @interface DBPolyline : DBShape <NSCoding>{
-	NSPoint *_points;
+	DBPolylinePoint *_points;
 	int _pointCount;
 	
 	BOOL _lineIsClosed;
@@ -29,7 +35,7 @@
 - (void)togglePointSelectionAtIndex:(int)index;
 - (BOOL)pointAtIndexIsSelected:(int)index; 
 
-- (NSPoint *)points;
+- (DBPolylinePoint *)points;
 - (int)pointCount;
 - (void)setPoints:(NSPoint *)points count:(int)count;
 
@@ -45,3 +51,16 @@
 - (void)deletePathBetween:(int)index1 and:(int)index2;
 - (NSBezierPath *)pathFragmentBetween:(int)index1 and:(int)index2;
 @end
+
+static int DBSubPolyPathBegging(DBPolylinePoint *points, int pCount)
+{
+	int i;
+	
+	for (i = pCount-1; i > 0; i--) {
+		if(points[i].subPathStart){
+			return i;
+		}
+	}
+	
+	return 0;
+}

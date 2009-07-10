@@ -20,10 +20,10 @@ static double distanceBetween(NSPoint a, NSPoint b)
   return sqrt (dx * dx + dy * dy);
 }
 
-NSPoint * insertPointAtIndex(NSPoint newPoint, int index, NSPoint *points, int pointsCount)
+DBPolylinePoint * insertPointAtIndex(NSPoint newPoint, int index, DBPolylinePoint *points, int pointsCount)
 {
-	NSPoint *newPoints;
-	newPoints = malloc(sizeof(NSPoint)*(pointsCount+1));
+	DBPolylinePoint *newPoints;
+	newPoints = malloc(sizeof(DBPolylinePoint)*(pointsCount+1));
                 
 	int i;
 
@@ -32,8 +32,11 @@ NSPoint * insertPointAtIndex(NSPoint newPoint, int index, NSPoint *points, int p
 		newPoints[i] = points[i];
 	}                       
 	
-	newPoints[index] = newPoint;
-
+	newPoints[index].point = newPoint;
+	newPoints[index].closePath = NO;
+	newPoints[index].subPathStart = NO;
+	
+	
 	for(i = index+1; i < pointsCount+1; i++)
 	{
 		newPoints[i] = points[i-1];
@@ -43,10 +46,10 @@ NSPoint * insertPointAtIndex(NSPoint newPoint, int index, NSPoint *points, int p
 	return newPoints;
 }
 
-NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
+DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int pointsCount)
 {
-	NSPoint *newPoints;
-	newPoints = malloc(sizeof(NSPoint)*(pointsCount-1));
+	DBPolylinePoint *newPoints;
+	newPoints = malloc(sizeof(DBPolylinePoint)*(pointsCount-1));
                 
 	int i;
 
@@ -84,17 +87,24 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	NSArray *array;
 	array = [decoder decodeObjectForKey:@"Points"];
-	_points = malloc(_pointCount*sizeof(NSPoint));
+	_points = malloc(_pointCount*sizeof(DBPolylinePoint));
 	
 	NSEnumerator *e = [array objectEnumerator];
 	NSString *pointString;
+	NSNumber *num;
 	int i = 0;
-
+    
+	
 	while((pointString = [e nextObject])){
-		_points[i] = NSPointFromString(pointString);
+		_points[i].point = NSPointFromString(pointString);
+		num = [e nextObject];
+		_points[i].closePath = [num boolValue];
+		num = [e nextObject];
+		_points[i].subPathStart = [num boolValue];
 		i ++;
 	}
-	 
+	
+	
 	return self;
 }   
 
@@ -107,16 +117,21 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	// create an NSArray of NSValues and fill it with the points
 	
-	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_pointCount];
+	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:4*_pointCount];
 	NSString *pointString;
 	
 	int i;
-
+	
 	for( i = 0; i < _pointCount; i++ )
 	{
-		pointString = NSStringFromPoint(_points[i]);
-		[array insertObject:pointString atIndex:i];
+		pointString = NSStringFromPoint(_points[i].point);
+		[array addObject:pointString];
+		
+		[array addObject:[NSNumber numberWithBool:_points[i].closePath]];
+		[array addObject:[NSNumber numberWithBool:_points[i].subPathStart]];
+		
 	}
+    
 	[encoder encodeObject:array forKey:@"Points"];
 	[array release];
 }
@@ -139,10 +154,13 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[_path release];
 	_path = nil;
 	
-	_points = malloc(2*sizeof(NSPoint));
-	_points[0] = point;
-	_points[1] = point; 
+	_points = malloc(2*sizeof(DBPolylinePoint));
+	_points[0].point = point;
+	_points[1].point = point; 
 	
+	_points[0].closePath = _points[1].closePath = NO;
+	_points[0].subPathStart = YES;
+	_points[1].subPathStart = NO;
 	
 	_pointCount = 2;
      
@@ -162,7 +180,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		if([theEvent window] && [theEvent window] != [view window]){
 			_lineIsClosed = NO;
 			_pointCount--;
-			_points = realloc(_points,_pointCount*sizeof(NSPoint));
+			_points = realloc(_points,_pointCount*sizeof(DBPolylinePoint));
 			[pool release];
 			break;   							
 						
@@ -179,17 +197,19 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			point = [view canevasCoordinatesFromViewCoordinates:point];
 		}
 
-		if(distanceBetween(point, _points[0]) <= 7/[(DBDrawingView *)view zoom]){ // 7 pixels on screen
-			point = _points[0];
+		if(distanceBetween(point, _points[0].point) <= 7/[(DBDrawingView *)view zoom]){ // 7 pixels on screen
+			point = _points[0].point;
 		}else{
 
     	}
 		////NSLog(@"add point to polyline");
   		if([theEvent type] == NSLeftMouseDown || [theEvent type] == NSRightMouseDown){
-    	  	if(DBPointIsOnKnobAtPointZoom(point,_points[0],[view zoom])){
+    	  	if(DBPointIsOnKnobAtPointZoom(point,_points[0].point,[view zoom])){
 				_lineIsClosed = YES;
 				_pointCount--;
-				_points = realloc(_points,_pointCount*sizeof(NSPoint));
+				_points = realloc(_points,_pointCount*sizeof(DBPolylinePoint));
+				_points[_pointCount-1].closePath = YES;
+				_points[_pointCount-1].subPathStart = NO;
 				[pool release];
 				break;
 			}
@@ -197,7 +217,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			if(mouseOutside){
 				_lineIsClosed = NO;
 				_pointCount--;
-				_points = realloc(_points,_pointCount*sizeof(NSPoint));
+				_points = realloc(_points,_pointCount*sizeof(DBPolylinePoint));
 				[pool release];
 				break;   							
 			}
@@ -205,17 +225,19 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	 		if([theEvent clickCount] > 1 || !NSPointInRect(point, [view bounds])){
 				_lineIsClosed = NO;
 				_pointCount--;
-				_points = realloc(_points,_pointCount*sizeof(NSPoint));
+				_points = realloc(_points,_pointCount*sizeof(DBPolylinePoint));
 				[pool release];
 				break;
 			}
 
 			_pointCount++;
 
-			_points = realloc(_points,_pointCount*sizeof(NSPoint));
+			_points = realloc(_points,_pointCount*sizeof(DBPolylinePoint));
 
-			_points[_pointCount-2] = point;
-			_points[_pointCount-1] = point;
+			_points[_pointCount-2].point = point;
+			_points[_pointCount-1].point = point;
+			_points[_pointCount-1].closePath = NO;
+			_points[_pointCount-1].subPathStart = NO;
 
 			[self updatePath];
 			[view setNeedsDisplay:YES];
@@ -225,12 +247,12 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			{   
 				_lineIsClosed = NO;
 				_pointCount--;
-				_points = realloc(_points,_pointCount*sizeof(NSPoint));
+				_points = realloc(_points,_pointCount*sizeof(DBPolylinePoint));
 				[pool release];                    
 				break;
 			}
 		}else if([theEvent type] == NSMouseMoved){ 
-			_points[_pointCount-1] = point;
+			_points[_pointCount-1].point = point;
 			
 			[self updatePath];
 			[view setNeedsDisplay:YES];			 
@@ -275,7 +297,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	for( i = 0; i < _pointCount; i++ )
 	{    
-		p = _points[i];
+		p = _points[i].point;
 		
 		if(DBPointIsOnKnobAtPointZoom(point,p,[view zoom]))
 		{
@@ -326,7 +348,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		}
 	}
     
-	previousPosition = _points[i];
+	previousPosition = _points[i].point;
 
 	previousSize = _bounds.size;
 	     
@@ -349,7 +371,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		if((xOffset*xOffset + yOffset*yOffset) >= 1){
 			didEdit = YES;
 			
-			_points[i] = point;
+			_points[i].point = point;
 
 			[self updatePath];
 			[self updateBounds];
@@ -398,50 +420,47 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 - (BOOL)replaceInView:(DBDrawingView *)view
 {
-	if([_selectedPoints count] != 2 /*&& [_selectedPoints count] != 3*/ ){
+	if([_selectedPoints count] != 2){
 		// not the good number of points
 		return NO;
 	}
 	
 	NSPoint point = [view convertPoint:[[view window] convertScreenToBase:[NSEvent mouseLocation]] fromView:nil];
 	NSEvent *theEvent;      
-
+	
 	NSAutoreleasePool *pool;
 	BOOL mouseOutside = NO;
-//	int index1, index2;
-	int indexes [3];
-
+	int index1, index2;
+	
 	if([view isKindOfClass:[DBDrawingView class]])
 	{		
 		point = [view pointSnapedToGrid:point];
 		point = [view canevasCoordinatesFromViewCoordinates:point];
 	}
+	index1 =  [_selectedPoints firstIndex];
+	index2 =  [_selectedPoints lastIndex];
 	
-	if([_selectedPoints count] == 2){
-		indexes[0] =  [_selectedPoints firstIndex];
-		indexes[1] =  [_selectedPoints lastIndex];		
-	}else{
-//		[_selectedPoints getIndexes:indexes maxCount:3 inIndexRange:nil];
-   	}                                        
-	                                        
+	if(DBSubPolyPathBegging(_points,index1) != DBSubPolyPathBegging(_points,index2)){ // not on the same subpath
+		return NO;
+	}
 	
-	_oldPathFrag = [[self pathFragmentBetween:indexes[0] and:indexes[1]] retain];
-	[self deletePathBetween:indexes[0] and:indexes[1]];
-	indexes[1] = indexes[0] + 1;
+	_oldPathFrag = [[self pathFragmentBetween:index1 and:index2] retain];
+	[self deletePathBetween:index1 and:index2];
+	index2 = index1 + 1;
 	[self deselectAllPoints];
 	
-	_points = insertPointAtIndex(point, indexes[1], _points, _pointCount);
+	_points = insertPointAtIndex(point, index2, _points, _pointCount);
 	_pointCount++;
-	indexes[1] ++; 
+	index2 ++; 
 	
 	
 	while(YES){
-
 		pool = [[NSAutoreleasePool alloc] init];
-
+		
 		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSMouseMovedMask)];
+		
 		[view moveMouseRulerMarkerWithEvent:theEvent];
-
+		
         point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 		
 		
@@ -452,81 +471,101 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 			point = [view pointSnapedToGrid:point];
 			point = [view canevasCoordinatesFromViewCoordinates:point];
 		}
-   
+		
 		if([theEvent window] && [theEvent window] != [view window]){
-			_points = removePointAtIndex( indexes[1] -1, _points, _pointCount);
+			_points = removePointAtIndex( index2-1, _points, _pointCount);
 			_pointCount--;
+			
+  			[self updatePath];
+			[self updateBounds];
+			
 			[pool release];
 			break;   							
-
+			
 		}
-
+		
   		if([theEvent type] == NSLeftMouseDown || [theEvent type] == NSRightMouseDown){
-
+			
 			if(mouseOutside){
-				_points = removePointAtIndex( indexes[1]-1, _points, _pointCount);
+				_points = removePointAtIndex( index2-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
+				
+	  			[self updatePath];
+				[self updateBounds];
+				
 				break;   							
 			}
-
+			
 	 		if([theEvent clickCount] > 1 || !NSPointInRect(point, [view bounds])){
-				_points = removePointAtIndex( indexes[1]-1, _points, _pointCount);
+				_points = removePointAtIndex( index2-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
+				
+	  			[self updatePath];
+				[self updateBounds];
+				
 				break;
 			}
-
-			_points = insertPointAtIndex(point, indexes[1]-1, _points, _pointCount);
+			
+			
+			_points = insertPointAtIndex(point, index2-1, _points, _pointCount);
 			_pointCount++;
-			indexes[1] ++; 
-
+			index2++;
+			
+			
 			[self updatePath];
 			[self updateBounds];
 			[view setNeedsDisplay:YES];
-
-
+			
+			
 			if(([theEvent modifierFlags] & NSControlKeyMask) || [theEvent type] == NSRightMouseDown)
 			{   
 				_lineIsClosed = NO;
-				_points = removePointAtIndex( indexes[1]-1, _points, _pointCount);
+				_points = removePointAtIndex( index2-1, _points, _pointCount);
 				_pointCount--;
 				[pool release];
 				break;
 			}
-		}else if([theEvent type] == NSMouseMoved){
-			_points[indexes[1]-1] = point;
+	    }else if([theEvent type] == NSMouseMoved){
+			
+			NSPoint oldPoint = _points[index2-1].point;
+			float dX, dY;
+			dX = point.x-oldPoint.x;
+			dY = point.y-oldPoint.y;       
+			
+			_points[index2-1].point.x += dX;
+			_points[index2-1].point.y += dY;		
 			[self updatePath];
 			[view setNeedsDisplay:YES];			 
 		}
    		[pool release];
 	}
-
+	
 	[_oldPathFrag release];
 	_oldPathFrag = nil;
-
+	
 	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
 	[_stroke updateStrokeForPath:_path]; 
-
+	
 	[_layer updateRenderInView:nil];
 	[[[self layer] layerController] updateDependentLayers:[self layer]];
 	
 	[view setNeedsDisplay:YES];
-	
 	
 	return YES;
 }
 
 - (void)deletePathBetween:(int)index1 and:(int)index2
 {
-	NSPoint * newPoints;
+	DBPolylinePoint * newPoints;
 	
 	int i, j;          
 	int begin, end;
 	begin = MIN(index1,index2);
 	end = MAX(index1,index2);
 	
-	newPoints = malloc(sizeof(NSPoint)* (_pointCount-(end - begin -1 ) ) );
+	newPoints = malloc(sizeof(DBPolylinePoint)* (_pointCount-(end - begin -1 ) ) );
    	
 	for( i = 0 , j = 0; i < _pointCount; i++ )
 	{
@@ -569,14 +608,14 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 */
 - (NSBezierPath *)pathFragmentBetween:(int)index1 and:(int)index2
 {
-	NSPoint * points;
+	DBPolylinePoint * points;
 	
 	int i, j;          
 	int begin, end;
 	begin = MIN(index1,index2);
 	end = MAX(index1,index2);
 	
-	points = malloc(sizeof(NSPoint)* (end - begin +1 ) );
+	points = malloc(sizeof(DBPolylinePoint)* (end - begin +1 ) );
    	
 	for( i = 0 , j = 0; i < _pointCount; i++ )
 	{
@@ -605,14 +644,14 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	if(canConvert)
 	{
-		point = [view viewCoordinatesFromCanevasCoordinates:points[0]];
+		point = [view viewCoordinatesFromCanevasCoordinates:points[0].point];
 	}
 
 	[path moveToPoint:point]; 
 
   	for( i = 1; i < (end - begin +1 ); i++ )
 	{
-		point = points[i];
+		point = points[i].point;
 
 		if(canConvert)
 		{
@@ -679,7 +718,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	for( i = 0; i < _pointCount; i++ )
 	{    
-		p = _points[i];
+		p = _points[i].point;
 		if(canConvert)
 		{
 			p = [view viewCoordinatesFromCanevasCoordinates:p];
@@ -718,7 +757,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		
 		for( i = 0; i < _pointCount; i++ )
 		{    
-			p = _points[i];
+			p = _points[i].point;
 
 			if(DBPointIsOnKnobAtPointZoom(point,p,[view zoom]))
 			{
@@ -752,7 +791,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	DBDrawingView *view;
 	BOOL canConvert; 
 
-	int i;
+	int i, beginningPoint;
 	NSPoint point;
 	
 	if (_pointCount <= 0) {
@@ -767,7 +806,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[_path release];
   	_path = [[NSBezierPath bezierPath] retain];
 
-	point = _points[0];
+	point = _points[0].point;
 	if(canConvert)
 	{
 		point = [view viewCoordinatesFromCanevasCoordinates:point];
@@ -775,16 +814,27 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	[_path moveToPoint:point]; 
 	
+	beginningPoint = 0;
+
   	for( i = 1; i < _pointCount; i++ )
 	{
-		point = _points[i];
+		point = _points[i].point;
 		
 		if(canConvert)
 		{
 			point = [view viewCoordinatesFromCanevasCoordinates:point];
 		}
-		       
-		[_path lineToPoint:point];
+		
+		if(_points[i].subPathStart){
+			beginningPoint = i;
+		}else{
+			[_path lineToPoint:point];
+			
+			if(_points[i].closePath){
+				[_path lineToPoint:_points[beginningPoint].point];
+				[_path closePath];
+			}
+		}
   	}  
 	
 	if(_lineIsClosed){
@@ -820,7 +870,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
    	for( i = 0; i < _pointCount; i++ )
 	{    
-		p = _points[i];
+		p = _points[i].point;
 		
 		p.x -= rotationCenter.x;
 		p.y -= rotationCenter.y;
@@ -831,7 +881,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		rotatedPoint.x += rotationCenter.x;
 		rotatedPoint.y += rotationCenter.y;
 		
-		_points[i]=rotatedPoint;
+		_points[i].point=rotatedPoint;
   	}
    	
 	[self updatePath];
@@ -851,12 +901,12 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		
    	for( i = 0; i < _pointCount; i++ )
 	{    
-		p = _points[i];
+		p = _points[i].point;
 		
 		p.x += deltaX;
 		p.y += deltaY;
 		
- 		_points[i]=p;
+ 		_points[i].point=p;
   	}
    	
 	[self updatePath];
@@ -884,13 +934,13 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	for( i = 0; i < _pointCount; i++ )
 	{    
-		p = _points[i];
+		p = _points[i].point;
 
 	   	p.x -= _bounds.origin.x;
 		p.x = -p.x;
 		p.x += _bounds.origin.x;
 
-		_points[i]=p;		
+		_points[i].point=p;		
 	}
 
 	[self updatePath];
@@ -904,13 +954,13 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	for( i = 0; i < _pointCount; i++ )
 	{    
-		p = _points[i];
+		p = _points[i].point;
 
 	   	p.y -= _bounds.origin.y;
 		p.y = -p.y;
 		p.y += _bounds.origin.y;
 
-		_points[i]=p;
+		_points[i].point=p;
 	}
 
 	[self updatePath];
@@ -935,7 +985,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
     
     for( i = 0; i < _pointCount; i++ )
  	{    
- 		p = _points[i];
+ 		p = _points[i].point;
 
     	p.x -= oldRect.origin.x;
     	p.y -= oldRect.origin.y;
@@ -946,7 +996,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
     	p.x += newRect.origin.x;
     	p.y += newRect.origin.y;
 		
-  		_points[i]=p;
+  		_points[i].point=p;
    	}
 
  	[self updatePath];
@@ -960,7 +1010,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	return _path;
 }              
 
-- (NSPoint *)points
+- (DBPolylinePoint *)points
 {
 	return _points;
 }                  
@@ -972,31 +1022,36 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 - (void)setPoints:(NSPoint *)points count:(int)count
 {
-	_points = realloc(_points,count*sizeof(NSPoint));
+	_points = realloc(_points,count*sizeof(DBPolylinePoint));
 	_pointCount = count;
 	
 	int i;
 
 	for( i = 0; i < count; i++ )
 	{
-		_points[i] = points[i];
-	}                          
+		_points[i].point = points[i];
+		_points[i].closePath = NO;
+		_points[i].subPathStart = NO;
+	}     
+	
+	_points[0].subPathStart = YES;
 }
 
 - (void)setLineIsClosed:(BOOL)flag
 {
 	if(_lineIsClosed != flag){
 		_lineIsClosed = flag;
+		_points[_pointCount -1].closePath = YES;
 		[self updateShape];
 	}
 }
 #pragma mark Undo & Redo
 - (void)setPoint:(NSPoint)p atIndex:(int)i
 {
-	[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i] atIndex:i];
+	[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i].point atIndex:i];
 	[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];
 	
-	_points[i] = p;
+	_points[i].point = p;
 	//NSLog(@"setpoint %@",NSStringFromPoint(_points[i]));
 	                 
 	[self updatePath];
@@ -1047,7 +1102,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 - (void)addPoint:(id)sender
 {
 //	int addedPoints = 0;
-	NSPoint * newPoints = malloc(sizeof(NSPoint));
+	NSPoint * newPoints = malloc(sizeof(DBPolylinePoint));
 	NSMutableIndexSet *idx;
   	int i,j;
     
@@ -1056,9 +1111,10 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	{
 		if([_selectedPoints containsIndex:i+1]){
    			// add a point
-			newPoints = realloc(newPoints, (j+1)*sizeof(NSPoint));
-			newPoints[j].x = (_points[i].x + _points[i+1].x)/2.0;
-			newPoints[j].y = (_points[i].y + _points[i+1].y)/2.0;
+			newPoints = realloc(newPoints, (j+1)*sizeof(DBPolylinePoint));
+			newPoints[j].x = (_points[i].point.x + _points[i+1].point.x)/2.0;
+			newPoints[j].y = (_points[i].point.y + _points[i+1].point.y)/2.0;
+//			newPoints
 			// insert the new point
 //			_points = insertPointAtIndex(newPoint,i+addedPoints+1, _points, _pointCount);
 
@@ -1072,10 +1128,10 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	}
 	
 	if(_lineIsClosed && [_selectedPoints containsIndex:0] && [_selectedPoints containsIndex:_pointCount-1]){
-		newPoints[j].x = (_points[0].x + _points[_pointCount-1].x)/2.0;
-		newPoints[j].y = (_points[0].y + _points[_pointCount-1].y)/2.0;
+		newPoints[j].x = (_points[0].point.x + _points[_pointCount-1].point.x)/2.0;
+		newPoints[j].y = (_points[0].point.y + _points[_pointCount-1].point.y)/2.0;
 //		_pointCount++;
-//		_points = realloc(_points, _pointCount*sizeof(NSPoint));
+//		_points = realloc(_points, _pointCount*sizeof(DBPolylinePoint));
 //		_points[_pointCount-1] = newPoint;
 	}
 	 
@@ -1093,37 +1149,6 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
 }
 
-/*- (void)delete:(id)sender
-{
-	// delete selected points
-	NSPoint *newPoints;
-	int i, j;
-	
-	newPoints = malloc(sizeof(NSPoint)*(_pointCount-[_selectedPoints count]));
-   	
-	for( i = 0, j = 0; i < _pointCount; i++ )
-	{
-		if(![_selectedPoints containsIndex:i]){
-			newPoints[j] = _points[i];
-			j++;
-		}
-	}
-	
-	free(_points);
-	_points = newPoints;
-	_pointCount = _pointCount-[_selectedPoints count];
-	
-	[self deselectAllPoints];
-
-	[self updatePath];
-	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
-	[_stroke updateStrokeForPath:_path]; 
-
-	[_layer updateRenderInView:nil];
-	[[[self layer] layerController] updateDependentLayers:[self layer]];
-	
-	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
-}  */
 
 - (void)delete:(id)sender
 {
@@ -1144,8 +1169,8 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 
 	for( i = 0; i < _pointCount-1; i++ )
 	{   
-		a = _points[i];
-		b = _points[i+1];
+		a = _points[i].point;
+		b = _points[i+1].point;
 		
 		dX = a.x - b.x;
 		dY = a.y - b.y;
@@ -1173,8 +1198,8 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	}
 	
 	if(_lineIsClosed){
-		a = _points[_pointCount-1];
-		b = _points[0];
+		a = _points[_pointCount-1].point;
+		b = _points[0].point;
 		
 		dX = a.x - b.x;
 		dY = a.y - b.y;
@@ -1219,7 +1244,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	for( i = 0, j = 0; i < _pointCount; i++ )
 	{
 		if([indexes containsIndex:i]){
-			points[j] = _points[i];
+			points[j] = _points[i].point;
 			j++;
 		}
 	}
@@ -1231,7 +1256,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 {
 	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
 	NSPoint *points = [self pointsForIndexes:indexes];
-	NSPoint *newPoints;
+	DBPolylinePoint *newPoints;
 	int i,j;
 	
     [[undo prepareWithInvocationTarget:self] insertPoints:points atIndexes:indexes];
@@ -1245,7 +1270,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 //	_pointCount--; 
 	
 	
-	newPoints = malloc(sizeof(NSPoint)*(_pointCount-[indexes count]));
+	newPoints = malloc(sizeof(DBPolylinePoint)*(_pointCount-[indexes count]));
    	
 	for( i = 0, j = 0; i < _pointCount; i++ )
 	{
@@ -1280,14 +1305,17 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];	
 	}
 	
-	NSPoint *newPoints = malloc(sizeof(NSPoint)*_pointCount+[indexes count]);
+	DBPolylinePoint *newPoints = malloc(sizeof(DBPolylinePoint)*_pointCount+[indexes count]);
 	
 	int i,j,k;
 
 	for( i = 0, j = 0,k = 0; i < _pointCount; j++ )
 	{
 		if([indexes containsIndex:j]){
-			newPoints[j] = points[k];
+			newPoints[j].point = points[k];
+			newPoints[j].closePath = NO;
+			newPoints[j].subPathStart = NO;
+		
 			k++;
 		}else{
 			newPoints[j] = _points[i];
@@ -1297,7 +1325,10 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	
 	for(;k !=NSNotFound; k = [indexes indexGreaterThanIndex:k], j++)
 	{                                                              
-		newPoints[j]= points[k];
+		newPoints[j].point= points[k];
+		newPoints[j].closePath = NO;
+		newPoints[j].subPathStart = NO;
+
 	}                                                              
 	
 	_pointCount += [indexes count];
@@ -1323,7 +1354,7 @@ NSPoint * removePointAtIndex( int index, NSPoint *points, int pointsCount)
 	int i;
 	
 	for (i = 0; i < _pointCount; i++) {
-		_points[i] = [at transformPoint:_points[i]];
+		_points[i].point = [at transformPoint:_points[i].point];
 	}
 	
 	[self updateShape];

@@ -69,12 +69,14 @@
 
 - (void)SVGMoveTo:(NSPoint)p
 {
+//	NSLog(@"move to %@",NSStringFromPoint(p));
 	[self addPoint:p];
 	_points[_pointCount-1].subPathStart = YES;
 }
 
 - (void)SVGLineTo:(NSPoint)p
 {
+//	NSLog(@"line to %@",NSStringFromPoint(p));
 	[self addPoint:p];
 }
 

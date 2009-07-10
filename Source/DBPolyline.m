@@ -827,6 +827,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 		
 		if(_points[i].subPathStart){
 			beginningPoint = i;
+			[_path moveToPoint:point];
 		}else{
 			[_path lineToPoint:point];
 			

@@ -56,7 +56,7 @@
 
 - (NSView *)itemAtIndex:(int)index
 {
-	NSLog(@"item at index, selection type %d",_selectionType);
+//	NSLog(@"item at index, selection type %d",_selectionType);
 	if(_selectionType == 0){
 		return _voidView;	
 	}else if(_selectionType == 1){

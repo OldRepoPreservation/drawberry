@@ -51,7 +51,7 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 
 - (id)initWithSVGAttributes:(NSDictionary *)attr
 {
-	NSLog(@"new curve");
+//	NSLog(@"new curve");
 	self = [super initWithSVGAttributes:attr];
 	
 	DBSVGStringParser *stringParser;

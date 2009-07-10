@@ -223,7 +223,7 @@
 		[_parsedLayers addObject:_currentLayer];
 		[_currentLayer release];
 		_currentLayer = nil;
-		NSLog(@"add layer");
+//		NSLog(@"add layer");
 	}else{
 		// do nothing
 	}                       

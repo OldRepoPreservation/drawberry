@@ -483,6 +483,8 @@ static NSArray *_sharedUnitArray = nil;
 			_tmpLayers = [svgLayers retain];
 		}else{
 			[_layerController setLayers:svgLayers];
+//			[_layerController performSelector:@selector(setLayers:) withObject:svgLayers afterDelay:FLT_MIN];
+			
 		}		
 		
 		[_svgParser release];

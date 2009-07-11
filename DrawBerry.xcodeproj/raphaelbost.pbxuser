@@ -1530,10 +1530,10 @@
 	};
 	6C129DA60E54ED4A00AD5C61 /* DBPolyline+SVG.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {864, 1568}}";
+			sepNavIntBoundsRect = "{{0, 0}, {864, 1512}}";
 			sepNavSelRange = "{1313, 0}";
-			sepNavVisRange = "{470, 1167}";
-			sepNavWindowFrame = "{{406, 150}, {749, 728}}";
+			sepNavVisRange = "{470, 1170}";
+			sepNavWindowFrame = "{{120, 150}, {749, 728}}";
 		};
 	};
 	6C129DA70E54ED4A00AD5C61 /* DBRectangle+SVG.h */ = {
@@ -1761,9 +1761,9 @@
 	};
 	6C34EAE50FAA1F3700F9C3C6 /* UKPrefsPanel.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1008, 854}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1008, 896}}";
 			sepNavSelRange = "{1405, 0}";
-			sepNavVisRange = "{1209, 963}";
+			sepNavVisRange = "{1303, 1140}";
 		};
 	};
 	6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */ = {
@@ -2140,9 +2140,9 @@
 		path = "/Users/raphaelbost/Bazaar/DrawBerry/Source/DBBezierCurve+SVG.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1008, 2268}}";
-			sepNavSelRange = "{2265, 29}";
-			sepNavVisRange = "{1757, 1002}";
+			sepNavIntBoundsRect = "{{0, 0}, {1008, 2310}}";
+			sepNavSelRange = "{2010, 0}";
+			sepNavVisRange = "{1757, 1032}";
 			sepNavWindowFrame = "{{38, 89}, {790, 763}}";
 		};
 	};

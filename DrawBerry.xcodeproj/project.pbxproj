@@ -214,7 +214,7 @@
 		6C129F710E54F64400AD5C61 /* tool-text.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129F0E0E54F64300AD5C61 /* tool-text.png */; };
 		6C129F720E54F64400AD5C61 /* tool-zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129F0F0E54F64300AD5C61 /* tool-zoom.png */; };
 		6C34EAE70FAA1F3700F9C3C6 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */; };
-		6C34EBA40FAA4A5900F9C3C6 /* prefs.Generals.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA20FAA4A5900F9C3C6 /* prefs.Generals.tiff */; };
+		6C34EBA40FAA4A5900F9C3C6 /* prefs.General.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */; };
 		6C34EBA50FAA4A5900F9C3C6 /* prefs.Templates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */; };
 		6C415A3C0D722AFA0014A6BB /* DBContextualViews.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C415A3A0D722AFA0014A6BB /* DBContextualViews.nib */; };
 		6C4A9DA30FD3D8B900CA2CBD /* DBSVGStringParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A9DA20FD3D8B900CA2CBD /* DBSVGStringParser.m */; };
@@ -607,7 +607,7 @@
 		6C129F0F0E54F64300AD5C61 /* tool-zoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-zoom.png"; sourceTree = "<group>"; };
 		6C34EAE50FAA1F3700F9C3C6 /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKPrefsPanel.h; path = Source/UKPrefsPanel.h; sourceTree = "<group>"; };
 		6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = Source/UKPrefsPanel.m; sourceTree = "<group>"; };
-		6C34EBA20FAA4A5900F9C3C6 /* prefs.Generals.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.Generals.tiff; path = Ressource/Toolbar/prefs.Generals.tiff; sourceTree = "<group>"; };
+		6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.General.tiff; path = Ressource/Toolbar/prefs.General.tiff; sourceTree = "<group>"; };
 		6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.Templates.tiff; path = Ressource/Toolbar/prefs.Templates.tiff; sourceTree = "<group>"; };
 		6C39C5B70BCBCB620015D712 /* mask_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask_left.png; sourceTree = "<group>"; };
 		6C39C5B80BCBCB620015D712 /* mask_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask_right.png; sourceTree = "<group>"; };
@@ -986,7 +986,7 @@
 		6C34EB9F0FAA48C900F9C3C6 /* Toolbar */ = {
 			isa = PBXGroup;
 			children = (
-				6C34EBA20FAA4A5900F9C3C6 /* prefs.Generals.tiff */,
+				6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */,
 				6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */,
 			);
 			name = Toolbar;
@@ -1556,7 +1556,7 @@
 				6C9334280FA45BF7007197B6 /* DBDonatePanel.nib in Resources */,
 				6C9334870FA47F3D007197B6 /* Donate.webloc in Resources */,
 				6C690A380FA8F9CC00F10440 /* Templates.plist in Resources */,
-				6C34EBA40FAA4A5900F9C3C6 /* prefs.Generals.tiff in Resources */,
+				6C34EBA40FAA4A5900F9C3C6 /* prefs.General.tiff in Resources */,
 				6C34EBA50FAA4A5900F9C3C6 /* prefs.Templates.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

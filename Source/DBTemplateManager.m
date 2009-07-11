@@ -74,6 +74,7 @@ NSString *DBTemplateMenuDidChangeNotification = @"DBTemplateMenuDidChangeNotific
     applicationSupportFolder = [DBTemplateManager applicationSupportFolder];
     
     if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
+		_customTemplates = [[NSMutableArray alloc] init];
 		return;
     }
 	
@@ -88,11 +89,15 @@ NSString *DBTemplateMenuDidChangeNotification = @"DBTemplateMenuDidChangeNotific
 	
 	if(!_customTemplates){
 		NSLog(@"cannot read custom templates file");
+		_customTemplates = [[NSMutableArray alloc] init];
 	}
 }
 
 - (void)writeCustomTemplates
 {
+	if(!_customTemplates)
+		return;
+	
 	NSFileManager *fileManager;
     NSString *applicationSupportFolder = nil;
 	NSString *path;
@@ -108,7 +113,7 @@ NSString *DBTemplateMenuDidChangeNotification = @"DBTemplateMenuDidChangeNotific
 	
 	if(![_customTemplates writeToFile:path atomically:NO]){
 		NSBeep();
-		NSLog(@"error when writing templates");
+		NSLog(@"error when writing templates %@",_customTemplates);
 	}
 }
 

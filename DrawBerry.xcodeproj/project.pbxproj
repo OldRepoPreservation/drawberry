@@ -609,8 +609,6 @@
 		6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = Source/UKPrefsPanel.m; sourceTree = "<group>"; };
 		6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.General.tiff; path = Ressource/Toolbar/prefs.General.tiff; sourceTree = "<group>"; };
 		6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.Templates.tiff; path = Ressource/Toolbar/prefs.Templates.tiff; sourceTree = "<group>"; };
-		6C39C5B70BCBCB620015D712 /* mask_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask_left.png; sourceTree = "<group>"; };
-		6C39C5B80BCBCB620015D712 /* mask_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask_right.png; sourceTree = "<group>"; };
 		6C415A3B0D722AFA0014A6BB /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBContextualViews.nib; sourceTree = "<group>"; };
 		6C415A3F0D722B130014A6BB /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBContextualViews.nib; sourceTree = "<group>"; };
 		6C4A9DA10FD3D8B900CA2CBD /* DBSVGStringParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSVGStringParser.h; path = Source/DBSVGStringParser.h; sourceTree = "<group>"; };
@@ -769,8 +767,6 @@
 			isa = PBXGroup;
 			children = (
 				6C129E050E54EEE000AD5C61 /* main.m */,
-				6C39C5B70BCBCB620015D712 /* mask_left.png */,
-				6C39C5B80BCBCB620015D712 /* mask_right.png */,
 				6C129E070E54EF1300AD5C61 /* DrawBerry_Prefix.pch */,
 			);
 			name = "Other Sources";

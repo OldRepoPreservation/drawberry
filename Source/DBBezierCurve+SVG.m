@@ -73,22 +73,30 @@ NSRange DBBetterRange(NSRange lRange,NSRange cRange)
 	                            
 	[buffer appendString:[NSString stringWithFormat:@"M %f,%f ",_points[0].point.x,_points[0].point.y]];
 	
-	int i;
+	int i, beginningPoint;
+	
+	beginningPoint = 0;
 
 	for( i = 1; i < _pointCount; i++ )
 	{
-		[buffer appendString:[NSString stringWithFormat:@"C %f,%f %f,%f %f,%f ",_points[i-1].controlPoint1.x,_points[i-1].controlPoint1.y,
-																   _points[i].controlPoint2.x,_points[i].controlPoint2.y,
-																   _points[i].point.x,_points[i].point.y]];
+		if(_points[i].subPathStart){
+			[buffer appendString:[NSString stringWithFormat:@"M %f,%f ",_points[i].point.x,_points[i].point.y]];
+			beginningPoint = i;
+		}else{
+			[buffer appendString:[NSString stringWithFormat:@"C %f,%f %f,%f %f,%f ",_points[i-1].controlPoint1.x,_points[i-1].controlPoint1.y,
+								  _points[i].controlPoint2.x,_points[i].controlPoint2.y,
+								  _points[i].point.x,_points[i].point.y]];
+			
+			if(_points[i].closePath){
+				[buffer appendString:[NSString stringWithFormat:@"C %f,%f %f,%f %f,%f ",_points[_pointCount-1].controlPoint1.x,_points[_pointCount-1].controlPoint1.y,
+									  _points[beginningPoint].controlPoint2.x,_points[beginningPoint].controlPoint2.y,
+									  _points[beginningPoint].point.x,_points[beginningPoint].point.y]];
+				
+				[buffer appendString:@" z"];
+			}			
+		}
 	}                                                                                    
-	
-	if(_lineIsClosed){
-		[buffer appendString:[NSString stringWithFormat:@"C %f,%f %f,%f %f,%f ",_points[_pointCount-1].controlPoint1.x,_points[_pointCount-1].controlPoint1.y,
-																   _points[0].controlPoint2.x,_points[0].controlPoint2.y,
-																   _points[0].point.x,_points[0].point.y]];
-		[buffer appendString:@" z"];
-	}
-	
+		
 	return [buffer autorelease];
 }
 

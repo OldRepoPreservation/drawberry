@@ -36,16 +36,25 @@
 	                            
 	[buffer appendString:[NSString stringWithFormat:@"M %f,%f ",_points[0].point.x,_points[0].point.y]];
 	
-	int i;
+	int i, beginningPoint;
+
+	beginningPoint = 0;
 
 	for( i = 1; i < _pointCount; i++ )
 	{
-		[buffer appendString:[NSString stringWithFormat:@"L %f,%f ",_points[i].point.x,_points[i].point.y]];
-	}                                                                                    
 	
-	if(_lineIsClosed){
-		[buffer appendString:@" z"];
-	}
+		if(_points[i].subPathStart){
+			[buffer appendString:[NSString stringWithFormat:@"M %f,%f ",_points[i].point.x,_points[i].point.y]];
+			beginningPoint = i;
+		}else{
+			[buffer appendString:[NSString stringWithFormat:@"L %f,%f ",_points[i].point.x,_points[i].point.y]];
+
+			if(_points[i].closePath){
+				[buffer appendString:[NSString stringWithFormat:@"L %f,%f ",_points[beginningPoint].point.x,_points[beginningPoint].point.y]];
+				[buffer appendString:@" z"];
+			}
+		}
+	}                                                                                    
 	
 	return [buffer autorelease];
 }

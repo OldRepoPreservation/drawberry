@@ -44,6 +44,18 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	
    	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBNewDocumentAtStartup];
 	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:DBDefaultTemplateTag]; // A4 template
+	
+	
+	
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBViewInspectorOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBObjectInspectorOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBLayerWindowOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBMagGlassPanelOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBUndoWindowOpened];
+	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBColorSwatchOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBShapeLibraryOpened];
+	
+	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 
 	[defaultValues release];

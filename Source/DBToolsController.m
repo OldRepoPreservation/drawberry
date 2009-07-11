@@ -40,24 +40,6 @@ enum {
 };   
 
 @implementation DBToolsController
-
-+ (void)initialize
-{
-	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
-
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBViewInspectorOpened];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBObjectInspectorOpened];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBLayerWindowOpened];
-   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBMagGlassPanelOpened];
-   	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBUndoWindowOpened];
-	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBColorSwatchOpened];
-   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBShapeLibraryOpened];
-
-	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
-	
-	[defaultValues release];	
-}
-
 + (id)sharedToolsController
 {
 	if(!_sharedToolsController)

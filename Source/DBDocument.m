@@ -187,10 +187,11 @@ static NSArray *_sharedUnitArray = nil;
 		if(!_layerController){
 
 		}else{      
-			[[[_layerController layers] objectAtIndex:0] setBackgroundImage:_tmpImage];
  		    [_drawingView setCanevasWidth:[_tmpImage size].width];
 			[_drawingView setCanevasHeight:[_tmpImage size].height];
-   	
+			
+			[_layerController addImageToCurrentLayer:_tmpImage];
+
 			[_tmpImage release];
 			_tmpImage = nil;
 		}
@@ -228,10 +229,10 @@ static NSArray *_sharedUnitArray = nil;
 		[_tmpDict release];
 		_tmpDict = nil;
 	}else if(_tmpImage){
-		[[[_layerController layers] objectAtIndex:0] setBackgroundImage:_tmpImage];
 	    [_drawingView setCanevasWidth:[_tmpImage size].width];
 		[_drawingView setCanevasHeight:[_tmpImage size].height];
 		
+		[_layerController addImageToCurrentLayer:_tmpImage];
 	
 		[_tmpImage release];
 		_tmpImage = nil;

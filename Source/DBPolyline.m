@@ -1100,56 +1100,120 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 }
 
 #pragma mark Actions
+//- (void)addPoint:(id)sender
+//{
+////	int addedPoints = 0;
+//	NSPoint * newPoints = malloc(sizeof(DBPolylinePoint));
+//	NSMutableIndexSet *idx;
+//  	int i,j;
+//    
+//	idx = [[NSMutableIndexSet alloc] init];
+//	for( i = [_selectedPoints indexGreaterThanOrEqualToIndex:0], j = 0; i != NSNotFound; i++, i = [_selectedPoints indexGreaterThanOrEqualToIndex:i])
+//	{
+//		if([_selectedPoints containsIndex:i+1]){
+//   			// add a point
+//			newPoints = realloc(newPoints, (j+1)*sizeof(DBPolylinePoint));
+//			newPoints[j].x = (_points[i].point.x + _points[i+1].point.x)/2.0;
+//			newPoints[j].y = (_points[i].point.y + _points[i+1].point.y)/2.0;
+////			newPoints
+//			// insert the new point
+////			_points = insertPointAtIndex(newPoint,i+addedPoints+1, _points, _pointCount);
+//
+////			_pointCount++;
+////			addedPoints++;
+//			[idx addIndex:i+j+1];
+//			j ++;
+//		}else{
+//			// don't add
+//		}
+//	}
+//	
+//	if(_lineIsClosed && [_selectedPoints containsIndex:0] && [_selectedPoints containsIndex:_pointCount-1]){
+//		newPoints[j].x = (_points[0].point.x + _points[_pointCount-1].point.x)/2.0;
+//		newPoints[j].y = (_points[0].point.y + _points[_pointCount-1].point.y)/2.0;
+////		_pointCount++;
+////		_points = realloc(_points, _pointCount*sizeof(DBPolylinePoint));
+////		_points[_pointCount-1] = newPoint;
+//	}
+//	 
+//	[self insertPoints:newPoints atIndexes:idx];
+//	
+//	[self deselectAllPoints];
+//	
+//	[self updatePath];
+//	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+//	[_stroke updateStrokeForPath:_path]; 
+//
+//	[_layer updateRenderInView:nil];
+//	[[[self layer] layerController] updateDependentLayers:[self layer]];
+//	
+//	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+//}
+
 - (void)addPoint:(id)sender
 {
-//	int addedPoints = 0;
-	NSPoint * newPoints = malloc(sizeof(DBPolylinePoint));
-	NSMutableIndexSet *idx;
-  	int i,j;
+	int addedPoints = 0;
+	NSPoint newPoint;
+	DBPolylinePoint *newPoints = malloc(_pointCount*sizeof(DBPolylinePoint));
+	int newPointCount = _pointCount;
+	int i;
     
-	idx = [[NSMutableIndexSet alloc] init];
-	for( i = [_selectedPoints indexGreaterThanOrEqualToIndex:0], j = 0; i != NSNotFound; i++, i = [_selectedPoints indexGreaterThanOrEqualToIndex:i])
+	// copy points
+	
+	for( i = 0; i < _pointCount; i++ )
 	{
-		if([_selectedPoints containsIndex:i+1]){
-   			// add a point
-			newPoints = realloc(newPoints, (j+1)*sizeof(DBPolylinePoint));
-			newPoints[j].x = (_points[i].point.x + _points[i+1].point.x)/2.0;
-			newPoints[j].y = (_points[i].point.y + _points[i+1].point.y)/2.0;
-//			newPoints
-			// insert the new point
-//			_points = insertPointAtIndex(newPoint,i+addedPoints+1, _points, _pointCount);
-
-//			_pointCount++;
-//			addedPoints++;
-			[idx addIndex:i+j+1];
-			j ++;
-		}else{
-			// don't add
+		newPoints[i] = _points[i];
+	}                             
+	
+	int subPathStart = 0;
+	
+	for (i = 0; i < _pointCount; i++) {
+		if(_points[i].subPathStart){
+			subPathStart = i;
+		}
+		
+		if([_selectedPoints containsIndex:i]){
+			if([_selectedPoints containsIndex:i+1] && _points[i+1].subPathStart == NO){
+				// add a point
+				
+				newPoint.x =  (_points[i].point.x + _points[i+1].point.x)/2.0;
+				newPoint.y =  (_points[i].point.y + _points[i+1].point.y)/2.0;
+				
+				// insert the new point
+				newPoints = insertPointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);
+				
+				newPointCount++;
+				addedPoints++;
+			}else if (_points[i].closePath && [_selectedPoints containsIndex:subPathStart]) {
+				newPoint.x =  (_points[i].point.x + _points[subPathStart].point.x)/2.0;
+				newPoint.y =  (_points[i].point.y + _points[subPathStart].point.y)/2.0;
+				
+				// insert the new point
+				newPoints = insertPointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);
+				newPoints[i+addedPoints+1].closePath = YES;
+				
+				newPointCount++;
+				addedPoints++;
+				
+			}
 		}
 	}
 	
-	if(_lineIsClosed && [_selectedPoints containsIndex:0] && [_selectedPoints containsIndex:_pointCount-1]){
-		newPoints[j].x = (_points[0].point.x + _points[_pointCount-1].point.x)/2.0;
-		newPoints[j].y = (_points[0].point.y + _points[_pointCount-1].point.y)/2.0;
-//		_pointCount++;
-//		_points = realloc(_points, _pointCount*sizeof(DBPolylinePoint));
-//		_points[_pointCount-1] = newPoint;
-	}
-	 
-	[self insertPoints:newPoints atIndexes:idx];
-	
 	[self deselectAllPoints];
-	
-	[self updatePath];
-	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
-	[_stroke updateStrokeForPath:_path]; 
-
-	[_layer updateRenderInView:nil];
-	[[[self layer] layerController] updateDependentLayers:[self layer]];
-	
-	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+    
+	if(addedPoints > 0){
+		[self replacePoints:newPoints count:newPointCount insertion:YES];
+		
+		[self updatePath];
+		[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+		[_stroke updateStrokeForPath:_path]; 
+		
+		[_layer updateRenderInView:nil];
+		[[[self layer] layerController] updateDependentLayers:[self layer]];
+		
+		[[[_layer layerController] drawingView] setNeedsDisplay:YES];		
+	}
 }
-
 
 - (void)delete:(id)sender
 {
@@ -1347,6 +1411,31 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
 	
 }
+
+
+- (void)replacePoints:(DBPolylinePoint *)points count:(int)count insertion:(BOOL)insert
+{
+	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount insertion:insert];
+	if(insert){
+		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];
+	}else{
+		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];	
+	}
+	
+	_pointCount = count;
+	_points = points;
+	
+	[self updatePath];
+	[self updateBounds];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+	[_stroke updateStrokeForPath:_path]; 
+	
+	
+	[_layer updateRenderInView:nil];
+	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+}
+
 
 #pragma mark Transform 
 

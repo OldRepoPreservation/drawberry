@@ -1610,30 +1610,31 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		newPoints[i] = _points[i];
 	}                             
 	
-	int subPathStart = 0;
+	int subPathStart = 0, newSubPathStart = 0;
 	
 	for (i = 0; i < _pointCount; i++) {
 		if(_points[i].subPathStart){
 			subPathStart = i;
+			newSubPathStart = i+addedPoints;
 		}
 		
 		if([_selectedPoints containsIndex:i]){
 			if([_selectedPoints containsIndex:i+1] && _points[i+1].subPathStart == NO){
 				// add a point
-				bez[0] = newPoints[i].point;
-				bez[1] = newPoints[i].controlPoint1;
-				bez[2] = newPoints[i+1].controlPoint2;
-				bez[3] = newPoints[i+1].point;
+				bez[0] = _points[i].point;
+				bez[1] = _points[i].controlPoint1;
+				bez[2] = _points[i+1].controlPoint2;
+				bez[3] = _points[i+1].point;
 				
 				subdivideBezier(bez,bez1,bez2);
 				
-				newPoints[i].controlPoint1 = bez1[1];
+				newPoints[i+addedPoints].controlPoint1 = bez1[1];
 				newPoint.controlPoint2 = bez1[2];
 				newPoint.point = bez1[3];
 				newPoint.controlPoint1 = bez2[1];
 				newPoint.subPathStart = NO;
 				newPoint.closePath = NO;
-				newPoints[i+1].controlPoint2 = bez2[2];
+				newPoints[i+addedPoints+1].controlPoint2 = bez2[2];
 				
 				// insert the new point
 				newPoints = insertCurvePointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);
@@ -1641,22 +1642,22 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				newPointCount++;
 				addedPoints++;
 			}else if (_points[i].closePath && [_selectedPoints containsIndex:subPathStart]) {
-				bez[0] = newPoints[i].point;
-				bez[1] = newPoints[i].controlPoint1;
-				bez[2] = newPoints[subPathStart].controlPoint2;
-				bez[3] = newPoints[subPathStart].point;
+				bez[0] = _points[i].point;
+				bez[1] = _points[i].controlPoint1;
+				bez[2] = _points[subPathStart].controlPoint2;
+				bez[3] = _points[subPathStart].point;
 				
 				subdivideBezier(bez,bez1,bez2);
 				
-				newPoints[i].controlPoint1 = bez1[1];
-				newPoints[i].closePath = NO;
+				newPoints[i+addedPoints].controlPoint1 = bez1[1];
+				newPoints[i+addedPoints].closePath = NO;
 
 				newPoint.controlPoint2 = bez1[2];
 				newPoint.point = bez1[3];
 				newPoint.controlPoint1 = bez2[1];
 				newPoint.subPathStart = NO;
 				newPoint.closePath = YES;
-				newPoints[subPathStart].controlPoint2 = bez2[2];
+				newPoints[newSubPathStart].controlPoint2 = bez2[2];
 				
 				// insert the new point
 				newPoints = insertCurvePointAtIndex(newPoint,i+addedPoints+1, newPoints, newPointCount);

@@ -65,7 +65,7 @@
 }
 
 #pragma mark Callbacks
-- (void)addPoint:(NSPoint)p
+- (void)addPolyPoint:(NSPoint)p
 {
 	_pointCount++;
 	_points = realloc(_points, _pointCount*sizeof(DBPolylinePoint));
@@ -79,14 +79,14 @@
 - (void)SVGMoveTo:(NSPoint)p
 {
 //	NSLog(@"move to %@",NSStringFromPoint(p));
-	[self addPoint:p];
+	[self addPolyPoint:p];
 	_points[_pointCount-1].subPathStart = YES;
 }
 
 - (void)SVGLineTo:(NSPoint)p
 {
 //	NSLog(@"line to %@",NSStringFromPoint(p));
-	[self addPoint:p];
+	[self addPolyPoint:p];
 }
 
 - (void)SVGClosePath

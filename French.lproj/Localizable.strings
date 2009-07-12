@@ -31,6 +31,7 @@
 "Delete Shape" = "Supprimer la forme";
 "Insert Point" = "Insérer les points";
 "Delete Point" = "Supprimer les points";
+"Replace Frag" = "Replacer le fragment";
 "Move" = "Déplacer";
 "Resize" = "Changer la taille";
 "Rotate" = "Rotation";

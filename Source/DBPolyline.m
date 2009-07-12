@@ -310,13 +310,13 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 		if([theEvent modifierFlags] & NSAlternateKeyMask){
 		 	// add a point 
 
-			NSPoint nearestPoint[1];
+			NSPoint nearestPoint;
 			int seg;
 			
-			nearestPoint[0] = [self nearestPointOfPathToPoint:point segment:&seg];    
+			nearestPoint = [self nearestPointOfPathToPoint:point segment:&seg];    
 
 			if(seg != -1){
-				[self insertPoints:nearestPoint atIndexes:[NSIndexSet indexSetWithIndex:seg+1]];
+				[self insertPoint:nearestPoint atIndex:seg+1];
 				
 				[self updatePath];
 				[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
@@ -444,6 +444,11 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 		return NO;
 	}
 	
+	DBPolylinePoint *oldPoints; int oldPointCount;
+	oldPoints = malloc(_pointCount*sizeof(DBPolylinePoint));
+	oldPoints = memcpy(oldPoints, _points, _pointCount*sizeof(DBPolylinePoint));
+	oldPointCount = _pointCount;
+	
 	_oldPathFrag = [[self pathFragmentBetween:index1 and:index2] retain];
 	[self deletePathBetween:index1 and:index2];
 	index2 = index1 + 1;
@@ -553,6 +558,10 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	
 	[view setNeedsDisplay:YES];
 	
+	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	[[undo prepareWithInvocationTarget:self] replacePoints:oldPoints count:oldPointCount type:DBFragReplaceReplacingType];
+	[undo setActionName:NSLocalizedString(@"Replace Frag", nil)];
+
 	return YES;
 }
 
@@ -1202,7 +1211,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	[self deselectAllPoints];
     
 	if(addedPoints > 0){
-		[self replacePoints:newPoints count:newPointCount insertion:YES];
+		[self replacePoints:newPoints count:newPointCount type:DBInsertionReplacingType];
 		
 		[self updatePath];
 		[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
@@ -1217,8 +1226,23 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 
 - (void)delete:(id)sender
 {
-	[self removePointsAtIndexes:_selectedPoints];
+	// delete selected points
+	DBPolylinePoint *newPoints;
+	int i, j;
+	
+	newPoints = malloc(sizeof(DBPolylinePoint)*(_pointCount-[_selectedPoints count]));
+   	
+	for( i = 0, j = 0; i < _pointCount; i++ )
+	{
+		if(![_selectedPoints containsIndex:i]){
+			newPoints[j] = _points[i];
+			j++;
+		}
+	}
+	
+	[self replacePoints:newPoints count:(_pointCount - [_selectedPoints count]) type:DBDeletionReplacingType];
 }
+
 
 - (NSPoint)nearestPointOfPathToPoint:(NSPoint)point segment:(int *)seg
 {
@@ -1317,110 +1341,28 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	return points;
 }
 
-- (void)removePointsAtIndexes:(NSIndexSet *)indexes
-{
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
-	NSPoint *points = [self pointsForIndexes:indexes];
-	DBPolylinePoint *newPoints;
-	int i,j;
-	
-    [[undo prepareWithInvocationTarget:self] insertPoints:points atIndexes:indexes];
-	if(![undo isUndoing]){
-		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];
-	}else{
-		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];	
-	}
-	
-//	_points = removePointAtIndex(index, _points, _pointCount);
-//	_pointCount--; 
-	
-	
-	newPoints = malloc(sizeof(DBPolylinePoint)*(_pointCount-[indexes count]));
-   	
-	for( i = 0, j = 0; i < _pointCount; i++ )
-	{
-		if(![indexes containsIndex:i]){
-			newPoints[j] = _points[i];
-			j++;
-		}
-	}
-	
-	free(_points);
-	_points = newPoints;
-	_pointCount = _pointCount-[indexes count];
-	
-	[self updatePath];
-	[self updateBounds];
-	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
-	[_stroke updateStrokeForPath:_path]; 
-
-	
-	[_layer updateRenderInView:nil];
-	[[[_layer layerController] drawingView] setNeedsDisplay:YES];	
-}   
-
-- (void)insertPoints:(NSPoint *)points atIndexes:(NSIndexSet *)indexes
+- (void)insertPoint:(NSPoint)point atIndex:(int)index
 {   
-	// indexes represents the position of the points indexes in the new array
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
-	[[undo prepareWithInvocationTarget:self] removePointsAtIndexes:indexes];
-	if(![undo isUndoing]){
-		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];
-	}else{
-		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];	
-	}
+	DBPolylinePoint *newPoints;
 	
-	DBPolylinePoint *newPoints = malloc(sizeof(DBPolylinePoint)*_pointCount+[indexes count]);
+	newPoints = malloc(_pointCount*sizeof(DBPolylinePoint));
+	newPoints = memcpy(newPoints, _points, _pointCount*sizeof(DBPolylinePoint));
+	newPoints = insertPointAtIndex(point,index,newPoints,_pointCount);
 	
-	int i,j,k;
-
-	for( i = 0, j = 0,k = 0; i < _pointCount; j++ )
-	{
-		if([indexes containsIndex:j]){
-			newPoints[j].point = points[k];
-			newPoints[j].closePath = NO;
-			newPoints[j].subPathStart = NO;
-		
-			k++;
-		}else{
-			newPoints[j] = _points[i];
-			i++;
-		}
-	}
-	
-	for(;k !=NSNotFound; k = [indexes indexGreaterThanIndex:k], j++)
-	{                                                              
-		newPoints[j].point= points[k];
-		newPoints[j].closePath = NO;
-		newPoints[j].subPathStart = NO;
-
-	}                                                              
-	
-	_pointCount += [indexes count];
-	free(_points);
-	_points = newPoints;
-	
-	
-	[self updatePath];
-	[self updateBounds];
-	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
-	[_stroke updateStrokeForPath:_path]; 
-
-	
-	[_layer updateRenderInView:nil];
-	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
-	
+	[self replacePoints:newPoints count:_pointCount+1 type:DBInsertionReplacingType];
 }
 
 
-- (void)replacePoints:(DBPolylinePoint *)points count:(int)count insertion:(BOOL)insert
+- (void)replacePoints:(DBPolylinePoint *)points count:(int)count type:(int)replacingType
 {
 	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
-	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount insertion:insert];
-	if(insert){
+	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount type:replacingType];
+	if(replacingType == DBInsertionReplacingType){
 		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];
-	}else{
+	}else if(replacingType == DBDeletionReplacingType){
 		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];	
+	}else if(replacingType == DBFragReplaceReplacingType){
+		[undo setActionName:NSLocalizedString(@"Replace Frag", nil)];
 	}
 	
 	_pointCount = count;

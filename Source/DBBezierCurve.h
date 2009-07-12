@@ -49,7 +49,7 @@ typedef struct _DBCurvePoints {
 
 - (void)insertPoint:(DBCurvePoint)point atIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next;
 - (void)removePointAtIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next;
-- (void)replacePoints:(DBCurvePoint *)points count:(int)count insertion:(BOOL)insert;
+- (void)replacePoints:(DBCurvePoint *)points count:(int)count type:(int)replacingType;
 
 - (void)deletePathBetween:(int)index1 and:(int)index2;
 - (NSBezierPath *)pathFragmentBetween:(int)index1 and:(int)index2;

@@ -15,6 +15,11 @@
 #import "DBFill.h"
 #import "DBShadow.h"
 
+
+#define DBInsertionReplacingType 0
+#define DBDeletionReplacingType 1
+#define DBFragReplaceReplacingType 2
+
 enum {
     NoKnob = 0,
     UpperLeftKnob,

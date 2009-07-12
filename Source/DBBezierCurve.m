@@ -596,7 +596,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				newPoints[seg].controlPoint1 = beforePt.controlPoint1;
 				newPoints[seg+2].controlPoint2 = afterPt.controlPoint2;
 				
-				[self replacePoints:newPoints count:(_pointCount +1) insertion:YES];
+				[self replacePoints:newPoints count:(_pointCount +1) type:DBInsertionReplacingType];
 				
 				[self updatePath];
 				[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
@@ -792,6 +792,11 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		return NO;
 	}
 	
+	DBCurvePoint *oldPoints; int oldPointCount;
+	oldPoints = malloc(_pointCount*sizeof(DBCurvePoint));
+	oldPoints = memcpy(oldPoints, _points, _pointCount*sizeof(DBCurvePoint));
+	oldPointCount = _pointCount;
+	
 	_oldPathFrag = [[self pathFragmentBetween:index1 and:index2] retain];
 	[self deletePathBetween:index1 and:index2];
 	index2 = index1 + 1;
@@ -933,6 +938,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	[[[self layer] layerController] updateDependentLayers:[self layer]];
 	
 	[view setNeedsDisplay:YES];
+	
+	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	[[undo prepareWithInvocationTarget:self] replacePoints:oldPoints count:oldPointCount type:DBFragReplaceReplacingType];
+	[undo setActionName:NSLocalizedString(@"Replace Frag", nil)];
 	
 	return YES;
 }
@@ -1672,7 +1681,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	[self deselectAllPoints];
     
 	if(addedPoints > 0){
-		[self replacePoints:newPoints count:newPointCount insertion:YES];
+		[self replacePoints:newPoints count:newPointCount type:DBInsertionReplacingType];
 		
 		[self updatePath];
 		[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
@@ -1702,23 +1711,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
 	}
 	
-//	free(_points);
-//	_points = newPoints;
-//	_pointCount = _pointCount-[_selectedPoints count];
-	
-	[self replacePoints:newPoints count:(_pointCount - [_selectedPoints count]) insertion:NO];
-	
-/*	[self deselectAllPoints];
-
-	[self updatePath];
-	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
-	[_stroke updateStrokeForPath:_path]; 
-
-	[_layer updateRenderInView:nil];
-	[[[self layer] layerController] updateDependentLayers:[self layer]];
-	
-	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
-*/
+	[self replacePoints:newPoints count:(_pointCount - [_selectedPoints count]) type:DBDeletionReplacingType];
 }
 
 #pragma mark Point insertion routines
@@ -1957,14 +1950,16 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 }
 
-- (void)replacePoints:(DBCurvePoint *)points count:(int)count insertion:(BOOL)insert
+- (void)replacePoints:(DBCurvePoint *)points count:(int)count type:(int)replacingType
 {
 	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
-	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount insertion:insert];
-	if(insert){
+	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount type:replacingType];
+	if(replacingType == DBInsertionReplacingType){
 		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];
-	}else{
+	}else if(replacingType == DBDeletionReplacingType){
 		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];	
+	}else if(replacingType == DBFragReplaceReplacingType){
+		[undo setActionName:NSLocalizedString(@"Replace Frag", nil)];
 	}
 	
 	_pointCount = count;

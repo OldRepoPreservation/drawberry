@@ -44,9 +44,8 @@ typedef struct _DBPolylinePoint {
 
 - (NSPoint)nearestPointOfPathToPoint:(NSPoint)point segment:(int *)seg;
                                       
-- (void)insertPoints:(NSPoint *)point atIndexes:(NSIndexSet *)indexes;
-- (void)removePointsAtIndexes:(NSIndexSet *)indexes;
-- (void)replacePoints:(DBPolylinePoint *)points count:(int)count insertion:(BOOL)insert;
+- (void)insertPoint:(NSPoint)points atIndex:(int)index;
+- (void)replacePoints:(DBPolylinePoint *)points count:(int)count type:(int)replacingType;
 
 - (void)deletePathBetween:(int)index1 and:(int)index2;
 - (NSBezierPath *)pathFragmentBetween:(int)index1 and:(int)index2;

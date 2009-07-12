@@ -419,7 +419,6 @@ static NSArray *_sharedUnitArray = nil;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
-	NSLog(@"validate %@",[item title]);
 	if([item action] == @selector(undoDocument:)){
 		[item setTitle:[_undoMngr undoMenuItemTitle]];
 		return [_undoMngr canUndo];

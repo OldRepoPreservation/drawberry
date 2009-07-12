@@ -58,6 +58,10 @@ NSPoint DBInvertVector(NSPoint vect)
 - (void)rotateShape:(DBShape *)shape withAngle:(float)angle
 {
 	[shape setRotation:[shape rotation]+angle];
+	[shape updatePath];
+	[shape updateBounds];
+	[shape updateFill];
+
 	
 	[[shape layer] updateRenderInView:self];
 	[[self layerController] updateDependentLayers:[shape layer]];

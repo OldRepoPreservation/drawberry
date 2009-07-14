@@ -21,7 +21,7 @@ NSPoint DBPointWithString(NSString *pString)
 {
 	self = [self init];
 
-	if(![attr objectForKey:@"stroke"] && ![attr objectForKey:@"stroke"]){
+	if(![attr objectForKey:@"stroke"] && ![attr objectForKey:@"fill"]){
 		_stroke = [[DBStroke alloc] initWithShape:self];
 
 		DBFill *fill = [[DBFill alloc] initWithShape:self];

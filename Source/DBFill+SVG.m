@@ -32,7 +32,6 @@
 		if([fill characterAtIndex:0] == '#'){
 			fill = [fill substringFromIndex:1];
 		}
-
 		[self setFillColor:[[NSColor colorFromHexRGB:fill] colorWithAlphaComponent:alpha]];
 		_fillMode = DBColorFillMode;
 	}else{

@@ -10,6 +10,15 @@
 
 #import "DBDrawingView+TextEditing.h"
 
+static double distanceBetween(NSPoint a, NSPoint b)
+{
+	float dx = a.x - b.x;
+	float dy = a.y - b.y;
+	
+	return sqrt (dx * dx + dy * dy);
+}
+
+
 static NSLayoutManager*		sharedDrawingLayoutManager()
 {
     // This method returns an NSLayoutManager that can be used to draw the contents of a GCTextShape.
@@ -222,7 +231,12 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 } 
 - (void) drawText                         
 {
-	NSSize osize = [self bounds].size;
+	float width, height;
+	
+	width = distanceBetween(_point2, _point1);
+	height = distanceBetween(_point2, _point3);
+	
+	NSSize osize = NSMakeSize(width, height);
 	          
 	NSTextStorage *contents = _text;
 
@@ -234,16 +248,13 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 
 		NSRange		glyphRange;
 		NSRange		grange;
-//		NSRect		frag;
-
-		
+					
 		NSAffineTransform *af = [NSAffineTransform transform];
 		NSAffineTransform *translate = [NSAffineTransform transform];
 		NSAffineTransform *rotate = [NSAffineTransform transform];
-//		NSPoint originPoint = [_shape bounds].origin;
  		NSPoint textOrigin;
-
- 		[rotate rotateByDegrees:[self rotation]];
+		
+		[rotate rotateByDegrees:[self rotation]];
 		[translate translateXBy:[self rotationCenter].x yBy:[self rotationCenter].y];
 
 		[af appendTransform:rotate];
@@ -251,7 +262,7 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 		
 		[NSGraphicsContext saveGraphicsState];
 		[af concat];
-
+		
 		[tc setContainerSize:osize];
 		[contents addLayoutManager:lm];
 
@@ -265,28 +276,25 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 		{
 			grange = glyphRange;
 
-			//NSPoint textOrigin = [self textOriginForSize:textSize objectSize:osize];
-
 			textOrigin = NSZeroPoint;
-			textOrigin.x = - ([self bounds].size.width)/2;
+			textOrigin.x = - (width)/2;
 			switch(_vertPos)
 			{
 				case 0:
- 					textOrigin.y = -([self bounds].size.height)/2;
+ 					textOrigin.y = -(height)/2;
    					break;
 
 				case 1:
 					break;
 
 				case 2:
-					textOrigin.y = [self bounds].size.height/2 -[lm usedRectForTextContainer:tc].size.height;
+					textOrigin.y =height/2 -[lm usedRectForTextContainer:tc].size.height;
 					break;
 			}
 
 			[lm drawGlyphsForGlyphRange:grange atPoint:textOrigin];
 		}
 		[NSGraphicsContext restoreGraphicsState];
-//		[contents release];
 	}
 }
 

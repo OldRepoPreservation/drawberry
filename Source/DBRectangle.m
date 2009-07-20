@@ -370,7 +370,6 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	NSRect rect;
 	NSPoint translationVec;
-//	float minX, minY;
 	NSAffineTransform *transform;
 	float zoom;
 	DBDrawingView *view;
@@ -386,15 +385,13 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		zoom = 1.0f;
 	}
 	zoom = 1.0;
+	
 	rect.size = NSMakeSize(zoom*distanceBetween(_point2, _point1), zoom*distanceBetween(_point2, _point3));
  // make the rectangle center be on (0,0)
-
 	rect.origin = NSMakePoint(-rect.size.width/2.0, -rect.size.height/2.0);
+
 	[_path release];
-// 	_path = [[NSBezierPath bezierPath] retain];  
-//	[_path appendBezierPathWithRect:rect];
-  
-  	_path = [NSBezierPath bezierPathWithRoundedRect:rect cornerRadius:distanceBetween(_point2, _radiusKnob)*zoom];
+	_path = [NSBezierPath bezierPathWithRoundedRect:rect cornerRadius:distanceBetween(_point2, _radiusKnob)*zoom];
 	[_path retain];
 	
 	transform = [[NSAffineTransform alloc] init];

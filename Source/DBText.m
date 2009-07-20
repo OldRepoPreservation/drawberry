@@ -210,10 +210,16 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 {
 	[super setIsEditing:flag];
 	
-	if(flag && !_editor){ 
-		_editor = [self editText:_text inRect:[self bounds] delegate:self];
+	if(flag && !_editor){
+		NSRect rect;
+		
+		rect.origin = [[[[_layer layerController] drawingView] appliedTransformation] transformPoint:[self bounds].origin];
+		rect.size = [[[[_layer layerController] drawingView] appliedTransformation] transformSize:[self bounds].size];
+
+		_editor = [self editText:_text inRect:rect delegate:self];
 		
 		[[[_layer layerController] drawingView] addTextView:_editor];
+		[_editor scaleUnitSquareToSize:NSMakeSize([[[_layer layerController] drawingView] zoom], [[[_layer layerController] drawingView] zoom])];
 		[self setText:nil];
 	}else if(!flag && 	_editor){     
 			[self setText:[_editor textStorage]];
@@ -313,7 +319,7 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	// before ending the mode. You can only set one item at a time to be editable.
 	
 	NSTextView *textEditView;
-	
+
 	textEditView = [[NSTextView alloc] initWithFrame:rect];
 	NSLayoutManager*	lm = [textEditView layoutManager];
 	

@@ -112,6 +112,11 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	[_dataSourceController updateSelection];
 }
 
+- (IBAction)convertToCurve:(id)sender
+{
+	[self convertSelectedShapesToBezier];
+}                                
+
 - (void)convertSelectedShapesToCurve
 {
 	NSMutableArray *shapesToConvert = [[NSMutableArray alloc] init];
@@ -123,7 +128,7 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	while((shape = [e nextObject])){
 		if([shape isKindOfClass:[DBPolyline class]]){
 			[shapesToConvert addObject:shape];
-			[convertedShapes addObject:[[shape convertToCurve] autorelease]];
+			[convertedShapes addObject:[[(DBPolyline *)shape convertToCurve] autorelease]];
 		}
 	}
 	

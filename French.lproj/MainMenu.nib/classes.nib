@@ -157,6 +157,10 @@
 				<string>id</string>
 				<key>alignTop</key>
 				<string>id</string>
+				<key>convertRectInPath</key>
+				<string>id</string>
+				<key>convertToCurve</key>
+				<string>id</string>
 				<key>diffSelectedObjects</key>
 				<string>id</string>
 				<key>intersectionSelectedObjects</key>

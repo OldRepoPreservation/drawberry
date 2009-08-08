@@ -16,6 +16,11 @@ extern NSString *DBShapePboardType;
 - (void)writeShapes:(NSArray *)shapes toPasteboard:(NSPasteboard *)pb;
 - (NSArray *)shapesFromPasteboard:(NSPasteboard *)pb;
 - (void)convertSelectedShapesToBezier;                                                                           
+- (void)convertSelectedShapesToCurve;
+
+- (IBAction)convertRectInPath:(id)sender;
+- (IBAction)convertToCurve:(id)sender;
+
 
 - (void)replaceShapes:(NSArray *)shapes byShapes:(NSArray *)newShapes actionName:(NSString *)actionName;
 - (void)replaceShapes:(NSArray *)shapes byShape:(DBShape *)newShape actionName:(NSString *)actionName;

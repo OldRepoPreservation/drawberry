@@ -41,7 +41,7 @@
 #import "DBPrefKeys.h"
 
 @class DBCILayer;
-@class DBRectangle;
+@class DBRectangle, DBPolyline, DBOval;
 
 @interface DBDrawingView (Private)
 - (void)_drawCanevasBackgroundInRect:(NSRect)rect;
@@ -1608,6 +1608,35 @@
 	return NO;
 }
 
+#pragma mark Validate Menu Items
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+	if([item action] == @selector(convertRectInPath:))
+	{
+		NSEnumerator *e = [_selectedShapes objectEnumerator];
+		DBShape * shape;
+		
+		while((shape = [e nextObject])){
+			if([shape isKindOfClass:[DBRectangle class]] || [shape isKindOfClass:[DBOval class]]){
+				return YES;
+			}
+		}		
+		return NO;
+	}else if([item action] == @selector(convertToCurve:)){
+		NSEnumerator *e = [_selectedShapes objectEnumerator];
+		DBShape * shape;
+		
+		while((shape = [e nextObject])){
+			if([shape isKindOfClass:[DBPolyline class]]){
+				return YES;
+			}
+		}
+		return NO;
+	}else{
+	//	return [super validateMenuItem:item];
+		return YES;
+	}
+}
 @end
 
 NSRect DBRectWithPoints(NSPoint firstPoint, NSPoint secondPoint){

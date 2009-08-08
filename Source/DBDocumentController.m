@@ -3,7 +3,7 @@
 //  DrawBerry
 //
 //  Created by Raphael Bost on 26/04/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Raphael Bost. All rights reserved.
 //
 
 #import "DBDocumentController.h"

@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>10</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -311,14 +311,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DBDrawingView.m</string>
+								<string>DBPolylineTransformation.mm</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBDrawingView.m</string>
+										<string>DBPolylineTransformation.mm</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C412CB5102E30B2009F12DD</string>
+										<string>6C412CD5102E31A3009F12DD</string>
 										<key>history</key>
 										<array>
 											<string>6CCD46BA0FB4D38E00256EBC</string>
@@ -429,8 +427,6 @@
 											<string>6CDF811C1008B51D00E68B68</string>
 											<string>6CDF811D1008B51D00E68B68</string>
 											<string>6CDF811F1008B51D00E68B68</string>
-											<string>6CDF81201008B51D00E68B68</string>
-											<string>6CDF82BD10090C1900E68B68</string>
 											<string>6CDF82BE10090C1900E68B68</string>
 											<string>6CDF82C710090E7200E68B68</string>
 											<string>6CDF82C910090E7200E68B68</string>
@@ -445,15 +441,12 @@
 											<string>6C4F215D100A8FBA00CCEAD7</string>
 											<string>6C4C53FA100CAC3D00685DD3</string>
 											<string>6C4C5405100CAE2700685DD3</string>
-											<string>6C412C4A102E2CA5009F12DD</string>
 											<string>6C412C4B102E2CA5009F12DD</string>
 											<string>6C412C4C102E2CA5009F12DD</string>
 											<string>6C412C4D102E2CA5009F12DD</string>
 											<string>6C412C4E102E2CA5009F12DD</string>
 											<string>6C412C4F102E2CA5009F12DD</string>
 											<string>6C412C50102E2CA5009F12DD</string>
-											<string>6C412C51102E2CA5009F12DD</string>
-											<string>6C412C52102E2CA5009F12DD</string>
 											<string>6C412C53102E2CA5009F12DD</string>
 											<string>6C412C54102E2CA5009F12DD</string>
 											<string>6C412C55102E2CA5009F12DD</string>
@@ -462,7 +455,14 @@
 											<string>6C412C96102E2FC1009F12DD</string>
 											<string>6C412C97102E2FC1009F12DD</string>
 											<string>6C412CAF102E3095009F12DD</string>
-											<string>6C412CB0102E3095009F12DD</string>
+											<string>6C412CC7102E31A3009F12DD</string>
+											<string>6C412CC8102E31A3009F12DD</string>
+											<string>6C412CC9102E31A3009F12DD</string>
+											<string>6C412CCA102E31A3009F12DD</string>
+											<string>6C412CCB102E31A3009F12DD</string>
+											<string>6C412CCC102E31A3009F12DD</string>
+											<string>6C412CCD102E31A3009F12DD</string>
+											<string>6C412C52102E2CA5009F12DD</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -604,6 +604,13 @@
 											<string>6C412C8F102E2ECC009F12DD</string>
 											<string>6C412CB1102E3095009F12DD</string>
 											<string>6C412CB2102E3095009F12DD</string>
+											<string>6C412CCE102E31A3009F12DD</string>
+											<string>6C412CCF102E31A3009F12DD</string>
+											<string>6C412CD0102E31A3009F12DD</string>
+											<string>6C412CD1102E31A3009F12DD</string>
+											<string>6C412CD2102E31A3009F12DD</string>
+											<string>6C412CD3102E31A3009F12DD</string>
+											<string>6C412CD4102E31A3009F12DD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -625,6 +632,8 @@
 							<string>378pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -797,9 +806,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>6CA9624A0E4B21800018CF07</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
 	</array>
@@ -1043,7 +1052,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBDocument.m</string>
+										<string>DDDAnimatedTabView.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -1109,7 +1118,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

@@ -3,7 +3,7 @@
 //  DrawBerry
 //
 //  Created by Raphael Bost on 02/08/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Raphael Bost. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

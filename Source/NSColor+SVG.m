@@ -3,7 +3,7 @@
 //  DBSVGReader
 //
 //  Created by Raphael Bost on 12/04/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Raphael Bost. All rights reserved.
 //
 /*
 	NSColor: Instantiate from Web-like Hex RRGGBB string

@@ -392,6 +392,36 @@
 			6C412CB2102E3095009F12DD /* PBXTextBookmark */ = 6C412CB2102E3095009F12DD /* PBXTextBookmark */;
 			6C412CB3102E3095009F12DD /* PBXTextBookmark */ = 6C412CB3102E3095009F12DD /* PBXTextBookmark */;
 			6C412CB5102E30B2009F12DD /* PBXTextBookmark */ = 6C412CB5102E30B2009F12DD /* PBXTextBookmark */;
+			6C412CB7102E3154009F12DD /* PBXTextBookmark */ = 6C412CB7102E3154009F12DD /* PBXTextBookmark */;
+			6C412CB8102E3185009F12DD /* PBXTextBookmark */ = 6C412CB8102E3185009F12DD /* PBXTextBookmark */;
+			6C412CB9102E3185009F12DD /* PBXTextBookmark */ = 6C412CB9102E3185009F12DD /* PBXTextBookmark */;
+			6C412CBA102E3185009F12DD /* PBXTextBookmark */ = 6C412CBA102E3185009F12DD /* PBXTextBookmark */;
+			6C412CBB102E3185009F12DD /* PBXTextBookmark */ = 6C412CBB102E3185009F12DD /* PBXTextBookmark */;
+			6C412CBC102E3185009F12DD /* PBXTextBookmark */ = 6C412CBC102E3185009F12DD /* PBXTextBookmark */;
+			6C412CBD102E3185009F12DD /* PBXTextBookmark */ = 6C412CBD102E3185009F12DD /* PBXTextBookmark */;
+			6C412CBE102E3185009F12DD /* PBXTextBookmark */ = 6C412CBE102E3185009F12DD /* PBXTextBookmark */;
+			6C412CBF102E3185009F12DD /* PBXTextBookmark */ = 6C412CBF102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC0102E3185009F12DD /* PBXTextBookmark */ = 6C412CC0102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC1102E3185009F12DD /* PBXTextBookmark */ = 6C412CC1102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC2102E3185009F12DD /* PBXTextBookmark */ = 6C412CC2102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC3102E3185009F12DD /* PBXTextBookmark */ = 6C412CC3102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC4102E3185009F12DD /* PBXTextBookmark */ = 6C412CC4102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC5102E3185009F12DD /* PBXTextBookmark */ = 6C412CC5102E3185009F12DD /* PBXTextBookmark */;
+			6C412CC7102E31A3009F12DD /* PBXTextBookmark */ = 6C412CC7102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CC8102E31A3009F12DD /* PBXTextBookmark */ = 6C412CC8102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CC9102E31A3009F12DD /* PBXTextBookmark */ = 6C412CC9102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CCA102E31A3009F12DD /* PBXTextBookmark */ = 6C412CCA102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CCB102E31A3009F12DD /* PBXTextBookmark */ = 6C412CCB102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CCC102E31A3009F12DD /* PBXTextBookmark */ = 6C412CCC102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CCD102E31A3009F12DD /* PBXTextBookmark */ = 6C412CCD102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CCE102E31A3009F12DD /* PBXTextBookmark */ = 6C412CCE102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CCF102E31A3009F12DD /* PBXTextBookmark */ = 6C412CCF102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CD0102E31A3009F12DD /* PBXTextBookmark */ = 6C412CD0102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CD1102E31A3009F12DD /* PBXTextBookmark */ = 6C412CD1102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CD2102E31A3009F12DD /* PBXTextBookmark */ = 6C412CD2102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CD3102E31A3009F12DD /* PBXTextBookmark */ = 6C412CD3102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CD4102E31A3009F12DD /* PBXTextBookmark */ = 6C412CD4102E31A3009F12DD /* PBXTextBookmark */;
+			6C412CD5102E31A3009F12DD /* PBXTextBookmark */ = 6C412CD5102E31A3009F12DD /* PBXTextBookmark */;
 			6C423D960FFEB3E3000DDAC3 = 6C423D960FFEB3E3000DDAC3 /* PBXTextBookmark */;
 			6C423DB60FFEB60F000DDAC3 = 6C423DB60FFEB60F000DDAC3 /* PBXTextBookmark */;
 			6C423DB70FFEB60F000DDAC3 = 6C423DB70FFEB60F000DDAC3 /* PBXTextBookmark */;
@@ -1105,9 +1135,9 @@
 	};
 	6C129D330E54E9C700AD5C61 /* DBDocument.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {882, 7434}}";
-			sepNavSelRange = "{6627, 0}";
-			sepNavVisRange = "{15088, 416}";
+			sepNavIntBoundsRect = "{{0, 0}, {882, 7518}}";
+			sepNavSelRange = "{13873, 49}";
+			sepNavVisRange = "{13556, 588}";
 			sepNavWindowFrame = "{{153, 189}, {750, 558}}";
 		};
 	};
@@ -1724,8 +1754,8 @@
 	};
 	6C129E050E54EEE000AD5C61 /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {439, 210}}";
-			sepNavSelRange = "{0, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {766, 358}}";
+			sepNavSelRange = "{86, 17}";
 			sepNavVisRange = "{0, 256}";
 		};
 	};
@@ -1778,16 +1808,39 @@
 			sepNavVisRange = "{10504, 817}";
 		};
 	};
+	6C412BCA102E232A009F12DD /* moult.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 659}}";
+			sepNavSelRange = "{101, 0}";
+			sepNavVisRange = "{0, 200}";
+			sepNavWindowFrame = "{{15, 86}, {770, 787}}";
+		};
+	};
 	6C412BCB102E232A009F12DD /* moult.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 3500}}";
+			sepNavIntBoundsRect = "{{0, 0}, {711, 3528}}";
+			sepNavSelRange = "{99, 0}";
+			sepNavVisRange = "{0, 779}";
+			sepNavWindowFrame = "{{15, 86}, {770, 787}}";
+		};
+	};
+	6C412BCC102E232A009F12DD /* nE.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 364}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 468}";
+			sepNavVisRange = "{0, 411}";
+		};
+	};
+	6C412BCD102E232A009F12DD /* nE.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 462}}";
+			sepNavSelRange = "{528, 0}";
+			sepNavVisRange = "{0, 467}";
 		};
 	};
 	6C412BD0102E233D009F12DD /* point.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 1904}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1752, 1904}}";
 			sepNavSelRange = "{6752, 0}";
 			sepNavVisRange = "{0, 579}";
 		};
@@ -1795,30 +1848,30 @@
 	6C412BD1102E2345009F12DD /* vectorisation.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 2660}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 473}";
+			sepNavSelRange = "{105, 10}";
+			sepNavVisRange = "{0, 466}";
 		};
 	};
 	6C412BD2102E2345009F12DD /* vectorisation.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 346}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 443}";
+			sepNavSelRange = "{113, 0}";
+			sepNavVisRange = "{0, 436}";
 		};
 	};
 	6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 346}}";
-			sepNavSelRange = "{346, 0}";
-			sepNavVisRange = "{0, 351}";
+			sepNavSelRange = "{341, 0}";
+			sepNavVisRange = "{0, 346}";
 			sepNavWindowFrame = "{{15, 86}, {770, 787}}";
 		};
 	};
 	6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 1498}}";
-			sepNavSelRange = "{1775, 112}";
-			sepNavVisRange = "{1427, 515}";
+			sepNavSelRange = "{1770, 112}";
+			sepNavVisRange = "{0, 462}";
 		};
 	};
 	6C412BEC102E2729009F12DD /* PBXTextBookmark */ = {
@@ -1826,7 +1879,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 11";
 		rLen = 1;
-		rLoc = 184;
+		rLoc = 179;
 		rType = 0;
 		vrLen = 406;
 		vrLoc = 3;
@@ -1836,7 +1889,7 @@
 		fRef = 6C129D830E54ECCE00AD5C61 /* DBOval.h */;
 		name = "DBOval.h: 12";
 		rLen = 0;
-		rLoc = 185;
+		rLoc = 180;
 		rType = 0;
 		vrLen = 392;
 		vrLoc = 0;
@@ -1854,7 +1907,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 11";
 		rLen = 1;
-		rLoc = 184;
+		rLoc = 179;
 		rType = 0;
 		vrLen = 406;
 		vrLoc = 3;
@@ -1864,7 +1917,7 @@
 		fRef = 6C129D830E54ECCE00AD5C61 /* DBOval.h */;
 		name = "DBOval.h: 12";
 		rLen = 0;
-		rLoc = 185;
+		rLoc = 180;
 		rType = 0;
 		vrLen = 392;
 		vrLoc = 0;
@@ -1874,7 +1927,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 48";
 		rLen = 42;
-		rLoc = 982;
+		rLoc = 977;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 735;
@@ -1884,7 +1937,7 @@
 		fRef = 6C129D840E54ECCE00AD5C61 /* DBOval.m */;
 		name = "DBOval.m: 357";
 		rLen = 13;
-		rLoc = 9043;
+		rLoc = 9038;
 		rType = 0;
 		vrLen = 420;
 		vrLoc = 8984;
@@ -1894,7 +1947,7 @@
 		fRef = 6C129D830E54ECCE00AD5C61 /* DBOval.h */;
 		name = "DBOval.h: 19";
 		rLen = 20;
-		rLoc = 365;
+		rLoc = 360;
 		rType = 0;
 		vrLen = 370;
 		vrLoc = 0;
@@ -1904,7 +1957,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 23";
 		rLen = 0;
-		rLoc = 425;
+		rLoc = 420;
 		rType = 0;
 		vrLen = 433;
 		vrLoc = 0;
@@ -1914,7 +1967,7 @@
 		fRef = 6C42403A100211B4000DDAC3 /* DBRectangle.m */;
 		name = "DBRectangle.m: 490";
 		rLen = 0;
-		rLoc = 13368;
+		rLoc = 13363;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 13327;
@@ -1924,7 +1977,7 @@
 		fRef = 6C42419F10021D1C000DDAC3 /* DBRectangle+SVG.m */;
 		name = "DBRectangle+SVG.m: 51";
 		rLen = 0;
-		rLoc = 1064;
+		rLoc = 1059;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 645;
@@ -1934,7 +1987,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 20;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 0;
@@ -1944,7 +1997,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 99";
 		rLen = 0;
-		rLoc = 2448;
+		rLoc = 2443;
 		rType = 0;
 		vrLen = 781;
 		vrLoc = 2033;
@@ -1953,7 +2006,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129E330E54F19700AD5C61 /* DBSVGParser.m */;
 		rLen = 21;
-		rLoc = 3962;
+		rLoc = 3957;
 		rType = 0;
 	};
 	6C412BFA102E2729009F12DD /* PBXTextBookmark */ = {
@@ -1961,7 +2014,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 7;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 486;
 		vrLoc = 0;
@@ -1971,7 +2024,7 @@
 		fRef = 6C42403A100211B4000DDAC3 /* DBRectangle.m */;
 		name = "DBRectangle.m: 490";
 		rLen = 20;
-		rLoc = 13371;
+		rLoc = 13366;
 		rType = 0;
 		vrLen = 619;
 		vrLoc = 13327;
@@ -1981,7 +2034,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 23";
 		rLen = 0;
-		rLoc = 448;
+		rLoc = 443;
 		rType = 0;
 		vrLen = 427;
 		vrLoc = 0;
@@ -1991,7 +2044,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 7;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 486;
 		vrLoc = 0;
@@ -2001,7 +2054,7 @@
 		fRef = 6C129D840E54ECCE00AD5C61 /* DBOval.m */;
 		name = "DBOval.m: 357";
 		rLen = 0;
-		rLoc = 9079;
+		rLoc = 9074;
 		rType = 0;
 		vrLen = 461;
 		vrLoc = 8984;
@@ -2011,7 +2064,7 @@
 		fRef = 6C129D830E54ECCE00AD5C61 /* DBOval.h */;
 		name = "DBOval.h: 19";
 		rLen = 0;
-		rLoc = 385;
+		rLoc = 380;
 		rType = 0;
 		vrLen = 364;
 		vrLoc = 0;
@@ -2021,7 +2074,7 @@
 		fRef = 6C42419F10021D1C000DDAC3 /* DBRectangle+SVG.m */;
 		name = "DBRectangle+SVG.m: 51";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1085;
 		rType = 0;
 		vrLen = 592;
 		vrLoc = 645;
@@ -2031,7 +2084,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 20;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 0;
@@ -2041,7 +2094,7 @@
 		fRef = 6C129D840E54ECCE00AD5C61 /* DBOval.m */;
 		name = "DBOval.m: 357";
 		rLen = 13;
-		rLoc = 9043;
+		rLoc = 9038;
 		rType = 0;
 		vrLen = 420;
 		vrLoc = 8984;
@@ -2051,7 +2104,7 @@
 		fRef = 6C129D830E54ECCE00AD5C61 /* DBOval.h */;
 		name = "DBOval.h: 19";
 		rLen = 20;
-		rLoc = 365;
+		rLoc = 360;
 		rType = 0;
 		vrLen = 370;
 		vrLoc = 0;
@@ -2061,7 +2114,7 @@
 		fRef = 6C42403A100211B4000DDAC3 /* DBRectangle.m */;
 		name = "DBRectangle.m: 490";
 		rLen = 0;
-		rLoc = 13368;
+		rLoc = 13363;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 13327;
@@ -2071,7 +2124,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 23";
 		rLen = 0;
-		rLoc = 425;
+		rLoc = 420;
 		rType = 0;
 		vrLen = 433;
 		vrLoc = 0;
@@ -2081,7 +2134,7 @@
 		fRef = 6C42403A100211B4000DDAC3 /* DBRectangle.m */;
 		name = "DBRectangle.m: 490";
 		rLen = 0;
-		rLoc = 13368;
+		rLoc = 13363;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 13327;
@@ -2091,7 +2144,7 @@
 		fRef = 6C42419F10021D1C000DDAC3 /* DBRectangle+SVG.m */;
 		name = "DBRectangle+SVG.m: 51";
 		rLen = 0;
-		rLoc = 1064;
+		rLoc = 1059;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 645;
@@ -2101,7 +2154,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 21;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 0;
@@ -2111,7 +2164,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 159";
 		rLen = 0;
-		rLoc = 4006;
+		rLoc = 4001;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 3563;
@@ -2121,7 +2174,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 20;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 0;
@@ -2131,7 +2184,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 99";
 		rLen = 0;
-		rLoc = 2448;
+		rLoc = 2443;
 		rType = 0;
 		vrLen = 781;
 		vrLoc = 2033;
@@ -2141,7 +2194,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 157";
 		rLen = 0;
-		rLoc = 3922;
+		rLoc = 3917;
 		rType = 0;
 		vrLen = 626;
 		vrLoc = 3563;
@@ -2151,7 +2204,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 48";
 		rLen = 42;
-		rLoc = 982;
+		rLoc = 977;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 735;
@@ -2161,7 +2214,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 165";
 		rLen = 0;
-		rLoc = 4179;
+		rLoc = 4174;
 		rType = 0;
 		vrLen = 664;
 		vrLoc = 3563;
@@ -2171,7 +2224,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 48";
 		rLen = 42;
-		rLoc = 982;
+		rLoc = 977;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 735;
@@ -2181,7 +2234,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 48";
 		rLen = 49;
-		rLoc = 1115;
+		rLoc = 1110;
 		rType = 0;
 		vrLen = 936;
 		vrLoc = 676;
@@ -2191,7 +2244,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 42";
 		rLen = 44;
-		rLoc = 863;
+		rLoc = 858;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 785;
@@ -2201,7 +2254,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1435";
 		rLen = 0;
-		rLoc = 33032;
+		rLoc = 33027;
 		rType = 0;
 		vrLen = 300;
 		vrLoc = 32919;
@@ -2219,7 +2272,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 48";
 		rLen = 42;
-		rLoc = 982;
+		rLoc = 977;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 735;
@@ -2229,7 +2282,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 12";
 		rLen = 0;
-		rLoc = 191;
+		rLoc = 186;
 		rType = 0;
 		vrLen = 462;
 		vrLoc = 1996;
@@ -2239,7 +2292,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 42";
 		rLen = 44;
-		rLoc = 863;
+		rLoc = 858;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 785;
@@ -2249,7 +2302,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 48";
 		rLen = 49;
-		rLoc = 1115;
+		rLoc = 1110;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 715;
@@ -2259,7 +2312,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 42";
 		rLen = 44;
-		rLoc = 863;
+		rLoc = 858;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 785;
@@ -2269,7 +2322,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 48";
 		rLen = 49;
-		rLoc = 1115;
+		rLoc = 1110;
 		rType = 0;
 		vrLen = 937;
 		vrLoc = 676;
@@ -2279,7 +2332,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 42";
 		rLen = 44;
-		rLoc = 863;
+		rLoc = 858;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 785;
@@ -2289,7 +2342,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 48";
 		rLen = 49;
-		rLoc = 1115;
+		rLoc = 1110;
 		rType = 0;
 		vrLen = 936;
 		vrLoc = 676;
@@ -2299,7 +2352,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 42";
 		rLen = 44;
-		rLoc = 863;
+		rLoc = 858;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 785;
@@ -2309,7 +2362,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 48";
 		rLen = 49;
-		rLoc = 1115;
+		rLoc = 1110;
 		rType = 0;
 		vrLen = 936;
 		vrLoc = 676;
@@ -2319,7 +2372,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1063";
 		rLen = 14;
-		rLoc = 23580;
+		rLoc = 23575;
 		rType = 0;
 		vrLen = 729;
 		vrLoc = 23260;
@@ -2329,7 +2382,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 42";
 		rLen = 44;
-		rLoc = 863;
+		rLoc = 858;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 785;
@@ -2339,7 +2392,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1435";
 		rLen = 0;
-		rLoc = 33032;
+		rLoc = 33027;
 		rType = 0;
 		vrLen = 300;
 		vrLoc = 32919;
@@ -2349,7 +2402,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 224";
 		rLen = 15;
-		rLoc = 6779;
+		rLoc = 6774;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 6465;
@@ -2359,7 +2412,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 9;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 0;
@@ -2369,7 +2422,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 158";
 		rLen = 9;
-		rLoc = 3962;
+		rLoc = 3957;
 		rType = 0;
 		vrLen = 664;
 		vrLoc = 3563;
@@ -2379,7 +2432,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 21;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 97;
@@ -2389,7 +2442,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 85";
 		rLen = 29;
-		rLoc = 1899;
+		rLoc = 1894;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 1825;
@@ -2399,7 +2452,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 601";
 		rLen = 0;
-		rLoc = 16326;
+		rLoc = 16321;
 		rType = 0;
 		vrLen = 1107;
 		vrLoc = 15327;
@@ -2409,7 +2462,7 @@
 		fRef = 6C129D300E54E9AA00AD5C61 /* DBContextualDataSourceController.h */;
 		name = "DBContextualDataSourceController.h: 41";
 		rLen = 15;
-		rLoc = 1014;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 660;
 		vrLoc = 695;
@@ -2419,7 +2472,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 273";
 		rLen = 15;
-		rLoc = 8101;
+		rLoc = 8096;
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 7332;
@@ -2429,7 +2482,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 79";
 		rLen = 15;
-		rLoc = 1684;
+		rLoc = 1679;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 1406;
@@ -2439,7 +2492,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 165";
 		rLen = 0;
-		rLoc = 4179;
+		rLoc = 4174;
 		rType = 0;
 		vrLen = 664;
 		vrLoc = 3563;
@@ -2449,7 +2502,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 9;
-		rLoc = 327;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 485;
 		vrLoc = 0;
@@ -2459,7 +2512,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 158";
 		rLen = 9;
-		rLoc = 3962;
+		rLoc = 3957;
 		rType = 0;
 		vrLen = 664;
 		vrLoc = 3563;
@@ -2469,7 +2522,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 88";
 		rLen = 29;
-		rLoc = 1974;
+		rLoc = 1969;
 		rType = 0;
 		vrLen = 753;
 		vrLoc = 1779;
@@ -2479,7 +2532,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 21;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 97;
@@ -2489,7 +2542,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 85";
 		rLen = 29;
-		rLoc = 1899;
+		rLoc = 1894;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 1825;
@@ -2499,7 +2552,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 200";
 		rLen = 0;
-		rLoc = 4760;
+		rLoc = 4755;
 		rType = 0;
 		vrLen = 725;
 		vrLoc = 4423;
@@ -2509,7 +2562,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 601";
 		rLen = 0;
-		rLoc = 16326;
+		rLoc = 16321;
 		rType = 0;
 		vrLen = 1107;
 		vrLoc = 15327;
@@ -2519,7 +2572,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 79";
 		rLen = 15;
-		rLoc = 1684;
+		rLoc = 1679;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 1406;
@@ -2529,7 +2582,7 @@
 		fRef = 6C129D300E54E9AA00AD5C61 /* DBContextualDataSourceController.h */;
 		name = "DBContextualDataSourceController.h: 41";
 		rLen = 15;
-		rLoc = 1014;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 661;
 		vrLoc = 695;
@@ -2539,7 +2592,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 273";
 		rLen = 15;
-		rLoc = 8101;
+		rLoc = 8096;
 		rType = 0;
 		vrLen = 718;
 		vrLoc = 7559;
@@ -2549,7 +2602,7 @@
 		fRef = 6C129D300E54E9AA00AD5C61 /* DBContextualDataSourceController.h */;
 		name = "DBContextualDataSourceController.h: 41";
 		rLen = 15;
-		rLoc = 1014;
+		rLoc = 1009;
 		rType = 0;
 		vrLen = 660;
 		vrLoc = 695;
@@ -2559,7 +2612,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 273";
 		rLen = 15;
-		rLoc = 8101;
+		rLoc = 8096;
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 7332;
@@ -2569,7 +2622,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 9";
 		rLen = 32;
-		rLoc = 172;
+		rLoc = 167;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 0;
@@ -2579,7 +2632,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 224";
 		rLen = 15;
-		rLoc = 6779;
+		rLoc = 6774;
 		rType = 0;
 		vrLen = 534;
 		vrLoc = 6465;
@@ -2597,7 +2650,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 224";
 		rLen = 15;
-		rLoc = 6779;
+		rLoc = 6774;
 		rType = 0;
 		vrLen = 534;
 		vrLoc = 6465;
@@ -2607,7 +2660,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 19";
 		rLen = 0;
-		rLoc = 293;
+		rLoc = 288;
 		rType = 0;
 		vrLen = 382;
 		vrLoc = 3;
@@ -2617,7 +2670,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 9";
 		rLen = 32;
-		rLoc = 172;
+		rLoc = 167;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 0;
@@ -2657,7 +2710,7 @@
 		fRef = 6CF78B090FA5016F00CC00FB /* DBDocumentController.h */;
 		name = "DBDocumentController.h: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 405;
 		rType = 0;
 		vrLen = 569;
 		vrLoc = 0;
@@ -2667,7 +2720,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 0;
-		rLoc = 347;
+		rLoc = 342;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 0;
@@ -2677,7 +2730,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 24";
 		rLen = 41;
-		rLoc = 409;
+		rLoc = 404;
 		rType = 0;
 		vrLen = 455;
 		vrLoc = 0;
@@ -2687,7 +2740,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 222";
 		rLen = 45;
-		rLoc = 4921;
+		rLoc = 4916;
 		rType = 0;
 		vrLen = 1007;
 		vrLoc = 5812;
@@ -2697,7 +2750,7 @@
 		fRef = 6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */;
 		name = "DBPolylineTransformation.h: 13";
 		rLen = 0;
-		rLoc = 346;
+		rLoc = 341;
 		rType = 0;
 		vrLen = 351;
 		vrLoc = 0;
@@ -2707,7 +2760,7 @@
 		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
 		name = "DBPolylineTransformation.mm: 103";
 		rLen = 112;
-		rLoc = 1775;
+		rLoc = 1770;
 		rType = 0;
 		vrLen = 515;
 		vrLoc = 1427;
@@ -2717,7 +2770,7 @@
 		fRef = 6C129D5C0E54EC1600AD5C61 /* DBDrawingView+TextEditing.h */;
 		name = "DBDrawingView+TextEditing.h: 14";
 		rLen = 0;
-		rLoc = 290;
+		rLoc = 285;
 		rType = 0;
 		vrLen = 343;
 		vrLoc = 0;
@@ -2737,7 +2790,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1403";
 		rLen = 34;
-		rLoc = 32220;
+		rLoc = 32215;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 32094;
@@ -2747,7 +2800,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 48";
 		rLen = 0;
-		rLoc = 1149;
+		rLoc = 1144;
 		rType = 0;
 		vrLen = 773;
 		vrLoc = 692;
@@ -2797,7 +2850,7 @@
 		fRef = 6CF78B090FA5016F00CC00FB /* DBDocumentController.h */;
 		name = "DBDocumentController.h: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 405;
 		rType = 0;
 		vrLen = 569;
 		vrLoc = 0;
@@ -2807,7 +2860,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1399";
 		rLen = 0;
-		rLoc = 33216;
+		rLoc = 33211;
 		rType = 0;
 		vrLen = 286;
 		vrLoc = 31838;
@@ -2817,7 +2870,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 19";
 		rLen = 0;
-		rLoc = 347;
+		rLoc = 342;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 0;
@@ -2827,7 +2880,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 24";
 		rLen = 41;
-		rLoc = 409;
+		rLoc = 404;
 		rType = 0;
 		vrLen = 455;
 		vrLoc = 0;
@@ -2837,7 +2890,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1399";
 		rLen = 0;
-		rLoc = 33216;
+		rLoc = 33211;
 		rType = 0;
 		vrLen = 297;
 		vrLoc = 31838;
@@ -2847,7 +2900,7 @@
 		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
 		name = "DBPolylineTransformation.mm: 107";
 		rLen = 0;
-		rLoc = 1938;
+		rLoc = 1933;
 		rType = 0;
 		vrLen = 515;
 		vrLoc = 1427;
@@ -2857,7 +2910,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1399";
 		rLen = 34;
-		rLoc = 32220;
+		rLoc = 32215;
 		rType = 0;
 		vrLen = 412;
 		vrLoc = 31831;
@@ -2867,7 +2920,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 222";
 		rLen = 45;
-		rLoc = 4921;
+		rLoc = 4916;
 		rType = 0;
 		vrLen = 1007;
 		vrLoc = 5812;
@@ -2877,7 +2930,7 @@
 		fRef = 6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */;
 		name = "DBPolylineTransformation.h: 13";
 		rLen = 0;
-		rLoc = 346;
+		rLoc = 341;
 		rType = 0;
 		vrLen = 351;
 		vrLoc = 0;
@@ -2887,7 +2940,7 @@
 		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
 		name = "DBPolylineTransformation.mm: 103";
 		rLen = 112;
-		rLoc = 1775;
+		rLoc = 1770;
 		rType = 0;
 		vrLen = 515;
 		vrLoc = 1427;
@@ -2897,7 +2950,7 @@
 		fRef = 6C129D5C0E54EC1600AD5C61 /* DBDrawingView+TextEditing.h */;
 		name = "DBDrawingView+TextEditing.h: 14";
 		rLen = 0;
-		rLoc = 290;
+		rLoc = 285;
 		rType = 0;
 		vrLen = 343;
 		vrLoc = 0;
@@ -2917,7 +2970,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 48";
 		rLen = 0;
-		rLoc = 1149;
+		rLoc = 1144;
 		rType = 0;
 		vrLen = 773;
 		vrLoc = 692;
@@ -2927,7 +2980,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1403";
 		rLen = 34;
-		rLoc = 32220;
+		rLoc = 32215;
 		rType = 0;
 		vrLen = 680;
 		vrLoc = 32094;
@@ -2937,7 +2990,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 56";
 		rLen = 0;
-		rLoc = 1360;
+		rLoc = 1355;
 		rType = 0;
 		vrLen = 671;
 		vrLoc = 863;
@@ -2947,7 +3000,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 56";
 		rLen = 0;
-		rLoc = 1360;
+		rLoc = 1355;
 		rType = 0;
 		vrLen = 671;
 		vrLoc = 863;
@@ -2956,7 +3009,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129D2F0E54E9AA00AD5C61 /* DBContextualDataSourceController.m */;
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 	};
 	6C412C6E102E2DC7009F12DD /* PBXTextBookmark */ = {
@@ -2964,7 +3017,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 56";
 		rLen = 0;
-		rLoc = 1360;
+		rLoc = 1355;
 		rType = 0;
 		vrLen = 671;
 		vrLoc = 863;
@@ -2974,7 +3027,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 198";
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 4423;
@@ -2984,7 +3037,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 198";
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 4423;
@@ -2994,7 +3047,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 19";
 		rLen = 0;
-		rLoc = 293;
+		rLoc = 288;
 		rType = 0;
 		vrLen = 382;
 		vrLoc = 3;
@@ -3004,7 +3057,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 82";
 		rLen = 42;
-		rLoc = 2283;
+		rLoc = 2278;
 		rType = 0;
 		vrLen = 500;
 		vrLoc = 2012;
@@ -3022,7 +3075,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 19";
 		rLen = 0;
-		rLoc = 293;
+		rLoc = 288;
 		rType = 0;
 		vrLen = 382;
 		vrLoc = 3;
@@ -3032,7 +3085,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 82";
 		rLen = 42;
-		rLoc = 2283;
+		rLoc = 2278;
 		rType = 0;
 		vrLen = 500;
 		vrLoc = 2012;
@@ -3042,7 +3095,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 131";
 		rLen = 0;
-		rLoc = 3236;
+		rLoc = 3231;
 		rType = 0;
 		vrLen = 585;
 		vrLoc = 2927;
@@ -3052,7 +3105,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 602";
 		rLen = 29;
-		rLoc = 16337;
+		rLoc = 16332;
 		rType = 0;
 		vrLen = 1107;
 		vrLoc = 15327;
@@ -3062,7 +3115,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 200";
 		rLen = 29;
-		rLoc = 4731;
+		rLoc = 4726;
 		rType = 0;
 		vrLen = 690;
 		vrLoc = 4422;
@@ -3072,7 +3125,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 84";
 		rLen = 41;
-		rLoc = 1849;
+		rLoc = 1844;
 		rType = 0;
 		vrLen = 771;
 		vrLoc = 1805;
@@ -3082,7 +3135,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 22";
 		rLen = 0;
-		rLoc = 657;
+		rLoc = 652;
 		rType = 0;
 		vrLen = 1011;
 		vrLoc = 186;
@@ -3092,7 +3145,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 200";
 		rLen = 29;
-		rLoc = 4731;
+		rLoc = 4726;
 		rType = 0;
 		vrLen = 690;
 		vrLoc = 4422;
@@ -3102,7 +3155,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 115";
 		rLen = 38;
-		rLoc = 2708;
+		rLoc = 2703;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 2469;
@@ -3112,7 +3165,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 21;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1030;
 		vrLoc = 187;
@@ -3122,7 +3175,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 115";
 		rLen = 38;
-		rLoc = 2708;
+		rLoc = 2703;
 		rType = 0;
 		vrLen = 596;
 		vrLoc = 2472;
@@ -3132,7 +3185,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 0;
-		rLoc = 475;
+		rLoc = 470;
 		rType = 0;
 		vrLen = 1030;
 		vrLoc = 187;
@@ -3142,7 +3195,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 120";
 		rLen = 37;
-		rLoc = 2822;
+		rLoc = 2817;
 		rType = 0;
 		vrLen = 596;
 		vrLoc = 2472;
@@ -3152,7 +3205,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 19";
 		rLen = 0;
-		rLoc = 657;
+		rLoc = 652;
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 186;
@@ -3162,7 +3215,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 115";
 		rLen = 38;
-		rLoc = 2708;
+		rLoc = 2703;
 		rType = 0;
 		vrLen = 596;
 		vrLoc = 2472;
@@ -3172,7 +3225,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 22";
 		rLen = 0;
-		rLoc = 657;
+		rLoc = 652;
 		rType = 0;
 		vrLen = 1011;
 		vrLoc = 186;
@@ -3182,7 +3235,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 84";
 		rLen = 41;
-		rLoc = 1849;
+		rLoc = 1844;
 		rType = 0;
 		vrLen = 771;
 		vrLoc = 1805;
@@ -3192,7 +3245,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 22";
 		rLen = 0;
-		rLoc = 656;
+		rLoc = 651;
 		rType = 0;
 		vrLen = 1023;
 		vrLoc = 186;
@@ -3202,7 +3255,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 198";
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 4423;
@@ -3212,7 +3265,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 131";
 		rLen = 0;
-		rLoc = 3236;
+		rLoc = 3231;
 		rType = 0;
 		vrLen = 585;
 		vrLoc = 2927;
@@ -3222,7 +3275,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 22";
 		rLen = 0;
-		rLoc = 656;
+		rLoc = 651;
 		rType = 0;
 		vrLen = 867;
 		vrLoc = 0;
@@ -3232,7 +3285,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 198";
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 4423;
@@ -3242,7 +3295,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 198";
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 4423;
@@ -3252,7 +3305,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 598";
 		rLen = 0;
-		rLoc = 16117;
+		rLoc = 16112;
 		rType = 0;
 		vrLen = 877;
 		vrLoc = 15623;
@@ -3262,7 +3315,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 198";
 		rLen = 8;
-		rLoc = 4698;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 4423;
@@ -3272,7 +3325,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1614";
 		rLen = 0;
-		rLoc = 45579;
+		rLoc = 45574;
 		rType = 0;
 		vrLen = 629;
 		vrLoc = 44743;
@@ -3282,7 +3335,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 247";
 		rLen = 0;
-		rLoc = 6578;
+		rLoc = 6573;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 5091;
@@ -3292,7 +3345,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 29;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 187;
@@ -3302,7 +3355,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1616";
 		rLen = 0;
-		rLoc = 45378;
+		rLoc = 45373;
 		rType = 0;
 		vrLen = 385;
 		vrLoc = 44743;
@@ -3312,7 +3365,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 29;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 187;
@@ -3322,7 +3375,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 247";
 		rLen = 0;
-		rLoc = 6578;
+		rLoc = 6573;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 5091;
@@ -3332,7 +3385,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 29;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 187;
@@ -3342,7 +3395,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 44";
 		rLen = 0;
-		rLoc = 801;
+		rLoc = 796;
 		rType = 0;
 		vrLen = 449;
 		vrLoc = 486;
@@ -3352,7 +3405,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 29;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 0;
@@ -3362,7 +3415,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 125";
 		rLen = 285;
-		rLoc = 2995;
+		rLoc = 2990;
 		rType = 0;
 		vrLen = 1148;
 		vrLoc = 2578;
@@ -3372,7 +3425,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 125";
 		rLen = 285;
-		rLoc = 2995;
+		rLoc = 2990;
 		rType = 0;
 		vrLen = 1148;
 		vrLoc = 2578;
@@ -3382,7 +3435,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 18";
 		rLen = 29;
-		rLoc = 431;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 0;
@@ -3392,7 +3445,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 98";
 		rLen = 89;
-		rLoc = 2248;
+		rLoc = 2243;
 		rType = 0;
 		vrLen = 1183;
 		vrLoc = 1638;
@@ -3402,7 +3455,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1626";
 		rLen = 0;
-		rLoc = 45308;
+		rLoc = 45303;
 		rType = 0;
 		vrLen = 567;
 		vrLoc = 45097;
@@ -3412,7 +3465,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1639";
 		rLen = 0;
-		rLoc = 45643;
+		rLoc = 45638;
 		rType = 0;
 		vrLen = 552;
 		vrLoc = 45484;
@@ -3422,7 +3475,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1614";
 		rLen = 0;
-		rLoc = 45026;
+		rLoc = 45021;
 		rType = 0;
 		vrLen = 634;
 		vrLoc = 44811;
@@ -3432,7 +3485,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1630";
 		rLen = 0;
-		rLoc = 45380;
+		rLoc = 45375;
 		rType = 0;
 		vrLen = 545;
 		vrLoc = 45209;
@@ -3442,7 +3495,7 @@
 		fRef = 6C129D520E54EC1600AD5C61 /* DBDrawingView.h */;
 		name = "DBDrawingView.h: 76";
 		rLen = 17;
-		rLoc = 1558;
+		rLoc = 1553;
 		rType = 0;
 		vrLen = 443;
 		vrLoc = 170;
@@ -3452,7 +3505,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1630";
 		rLen = 0;
-		rLoc = 45380;
+		rLoc = 45375;
 		rType = 0;
 		vrLen = 651;
 		vrLoc = 44947;
@@ -3462,7 +3515,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1630";
 		rLen = 0;
-		rLoc = 45380;
+		rLoc = 45375;
 		rType = 0;
 		vrLen = 651;
 		vrLoc = 44947;
@@ -3472,7 +3525,7 @@
 		fRef = 6C129D520E54EC1600AD5C61 /* DBDrawingView.h */;
 		name = "DBDrawingView.h: 76";
 		rLen = 17;
-		rLoc = 1558;
+		rLoc = 1553;
 		rType = 0;
 		vrLen = 443;
 		vrLoc = 170;
@@ -3482,7 +3535,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1626";
 		rLen = 0;
-		rLoc = 45375;
+		rLoc = 45370;
 		rType = 0;
 		vrLen = 674;
 		vrLoc = 44947;
@@ -3492,17 +3545,314 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 1625";
 		rLen = 0;
-		rLoc = 45378;
+		rLoc = 45373;
 		rType = 0;
 		vrLen = 595;
 		vrLoc = 44947;
+	};
+	6C412CB7102E3154009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
+		name = "DBDrawingView.m: 6";
+		rLen = 0;
+		rLoc = 112;
+		rType = 0;
+		vrLen = 445;
+		vrLoc = 0;
+	};
+	6C412CB8102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
+		name = "DBDrawingView+ShapeManagement.m: 131";
+		rLen = 0;
+		rLoc = 3231;
+		rType = 0;
+		vrLen = 609;
+		vrLoc = 2854;
+	};
+	6C412CB9102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
+		name = "DBDrawingView+ShapeManagement.h: 22";
+		rLen = 0;
+		rLoc = 651;
+		rType = 0;
+		vrLen = 867;
+		vrLoc = 0;
+	};
+	6C412CBA102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D330E54E9C700AD5C61 /* DBDocument.m */;
+		name = "DBDocument.m: 429";
+		rLen = 49;
+		rLoc = 13868;
+		rType = 0;
+		vrLen = 588;
+		vrLoc = 13556;
+	};
+	6C412CBB102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129E050E54EEE000AD5C61 /* main.m */;
+		name = "main.m: 6";
+		rLen = 12;
+		rLoc = 86;
+		rType = 0;
+		vrLen = 256;
+		vrLoc = 0;
+	};
+	6C412CBC102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C424201100220C4000DDAC3 /* DDDAnimatedTabView.m */;
+		name = "DDDAnimatedTabView.m: 9";
+		rLen = 18;
+		rLoc = 156;
+		rType = 0;
+		vrLen = 529;
+		vrLoc = 0;
+	};
+	6C412CBD102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */;
+		name = "NSBezierPath+Editing.m: 1302";
+		rLen = 4;
+		rLoc = 37025;
+		rType = 0;
+		vrLen = 711;
+		vrLoc = 36325;
+	};
+	6C412CBE102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD1102E2345009F12DD /* vectorisation.cpp */;
+		rLen = 4;
+		rLoc = 110;
+		rType = 0;
+	};
+	6C412CBF102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
+		name = "DBDrawingView+ShapeManagement.h: 22";
+		rLen = 0;
+		rLoc = 651;
+		rType = 0;
+		vrLen = 867;
+		vrLoc = 0;
+	};
+	6C412CC0102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D330E54E9C700AD5C61 /* DBDocument.m */;
+		name = "DBDocument.m: 429";
+		rLen = 49;
+		rLoc = 13868;
+		rType = 0;
+		vrLen = 588;
+		vrLoc = 13556;
+	};
+	6C412CC1102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD1102E2345009F12DD /* vectorisation.cpp */;
+		name = "vectorisation.cpp: 6";
+		rLen = 0;
+		rLoc = 115;
+		rType = 0;
+		vrLen = 479;
+		vrLoc = 0;
+	};
+	6C412CC2102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129E050E54EEE000AD5C61 /* main.m */;
+		name = "main.m: 6";
+		rLen = 12;
+		rLoc = 86;
+		rType = 0;
+		vrLen = 256;
+		vrLoc = 0;
+	};
+	6C412CC3102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C424201100220C4000DDAC3 /* DDDAnimatedTabView.m */;
+		name = "DDDAnimatedTabView.m: 9";
+		rLen = 18;
+		rLoc = 156;
+		rType = 0;
+		vrLen = 529;
+		vrLoc = 0;
+	};
+	6C412CC4102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */;
+		name = "NSBezierPath+Editing.m: 1302";
+		rLen = 4;
+		rLoc = 37025;
+		rType = 0;
+		vrLen = 711;
+		vrLoc = 36325;
+	};
+	6C412CC5102E3185009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD1102E2345009F12DD /* vectorisation.cpp */;
+		name = "vectorisation.cpp: 6";
+		rLen = 10;
+		rLoc = 105;
+		rType = 0;
+		vrLen = 479;
+		vrLoc = 0;
+	};
+	6C412CC7102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
+		name = "DBDrawingView.m: 6";
+		rLen = 0;
+		rLoc = 112;
+		rType = 0;
+		vrLen = 445;
+		vrLoc = 0;
+	};
+	6C412CC8102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BCC102E232A009F12DD /* nE.cpp */;
+		name = "nE.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 411;
+		vrLoc = 0;
+	};
+	6C412CC9102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BCD102E232A009F12DD /* nE.h */;
+		name = "nE.h: 30";
+		rLen = 0;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 467;
+		vrLoc = 0;
+	};
+	6C412CCA102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD0102E233D009F12DD /* point.h */;
+		name = "point.h: 125";
+		rLen = 0;
+		rLoc = 6752;
+		rType = 0;
+		vrLen = 579;
+		vrLoc = 0;
+	};
+	6C412CCB102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD2102E2345009F12DD /* vectorisation.h */;
+		name = "vectorisation.h: 6";
+		rLen = 0;
+		rLoc = 113;
+		rType = 0;
+		vrLen = 436;
+		vrLoc = 0;
+	};
+	6C412CCC102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD1102E2345009F12DD /* vectorisation.cpp */;
+		name = "vectorisation.cpp: 6";
+		rLen = 10;
+		rLoc = 105;
+		rType = 0;
+		vrLen = 466;
+		vrLoc = 0;
+	};
+	6C412CCD102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */;
+		name = "DBPolylineTransformation.h: 13";
+		rLen = 0;
+		rLoc = 341;
+		rType = 0;
+		vrLen = 346;
+		vrLoc = 0;
+	};
+	6C412CCE102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
+		name = "DBDrawingView.m: 6";
+		rLen = 0;
+		rLoc = 112;
+		rType = 0;
+		vrLen = 445;
+		vrLoc = 0;
+	};
+	6C412CCF102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BCC102E232A009F12DD /* nE.cpp */;
+		name = "nE.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 411;
+		vrLoc = 0;
+	};
+	6C412CD0102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BCD102E232A009F12DD /* nE.h */;
+		name = "nE.h: 30";
+		rLen = 0;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 467;
+		vrLoc = 0;
+	};
+	6C412CD1102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD0102E233D009F12DD /* point.h */;
+		name = "point.h: 125";
+		rLen = 0;
+		rLoc = 6752;
+		rType = 0;
+		vrLen = 579;
+		vrLoc = 0;
+	};
+	6C412CD2102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD2102E2345009F12DD /* vectorisation.h */;
+		name = "vectorisation.h: 6";
+		rLen = 0;
+		rLoc = 113;
+		rType = 0;
+		vrLen = 436;
+		vrLoc = 0;
+	};
+	6C412CD3102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD1102E2345009F12DD /* vectorisation.cpp */;
+		name = "vectorisation.cpp: 6";
+		rLen = 10;
+		rLoc = 105;
+		rType = 0;
+		vrLen = 466;
+		vrLoc = 0;
+	};
+	6C412CD4102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */;
+		name = "DBPolylineTransformation.h: 13";
+		rLen = 0;
+		rLoc = 341;
+		rType = 0;
+		vrLen = 346;
+		vrLoc = 0;
+	};
+	6C412CD5102E31A3009F12DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
+		name = "DBPolylineTransformation.mm: 103";
+		rLen = 112;
+		rLoc = 1770;
+		rType = 0;
+		vrLen = 462;
+		vrLoc = 0;
 	};
 	6C423D960FFEB3E3000DDAC3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 6C129E330E54F19700AD5C61 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 90";
 		rLen = 25;
-		rLoc = 1954;
+		rLoc = 1949;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 1443;
@@ -3512,9 +3862,9 @@
 		fRef = 6C129E320E54F19700AD5C61 /* DBSVGParser.h */;
 		name = "DBSVGParser.h: 28";
 		rLen = 0;
-		rLoc = 616;
+		rLoc = 611;
 		rType = 0;
-		vrLen = 581;
+		vrLen = 576;
 		vrLoc = 40;
 	};
 	6C423DB70FFEB60F000DDAC3 /* PBXTextBookmark */ = {
@@ -3522,7 +3872,7 @@
 		fRef = 6CF78B090FA5016F00CC00FB /* DBDocumentController.h */;
 		name = "DBDocumentController.h: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 405;
 		rType = 0;
 		vrLen = 569;
 		vrLoc = 0;
@@ -3532,9 +3882,9 @@
 		fRef = 6C129E320E54F19700AD5C61 /* DBSVGParser.h */;
 		name = "DBSVGParser.h: 28";
 		rLen = 0;
-		rLoc = 616;
+		rLoc = 611;
 		rType = 0;
-		vrLen = 581;
+		vrLen = 576;
 		vrLoc = 40;
 	};
 	6C423DBB0FFEB60F000DDAC3 /* PBXTextBookmark */ = {
@@ -3542,7 +3892,7 @@
 		fRef = 6CF78B090FA5016F00CC00FB /* DBDocumentController.h */;
 		name = "DBDocumentController.h: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 405;
 		rType = 0;
 		vrLen = 569;
 		vrLoc = 0;
@@ -3559,7 +3909,7 @@
 		fRef = 6C129D320E54E9C700AD5C61 /* DBDocument.h */;
 		name = "DBDocument.h: 36";
 		rLen = 0;
-		rLoc = 805;
+		rLoc = 800;
 		rType = 0;
 		vrLen = 586;
 		vrLoc = 166;
@@ -3596,7 +3946,7 @@
 		fRef = 6C8083D40FE2F9B1007D6E75 /* NSString+Extensions.m */;
 		name = "NSString+Extensions.m: 13";
 		rLen = 33;
-		rLoc = 223;
+		rLoc = 218;
 		rType = 0;
 		vrLen = 508;
 		vrLoc = 0;
@@ -3606,7 +3956,7 @@
 		fRef = 6C8083C90FE2F735007D6E75 /* NSAffineTransform+SVG.m */;
 		name = "NSAffineTransform+SVG.m: 142";
 		rLen = 0;
-		rLoc = 3434;
+		rLoc = 3429;
 		rType = 0;
 		vrLen = 515;
 		vrLoc = 3084;
@@ -3616,9 +3966,9 @@
 		fRef = 6C8083C80FE2F735007D6E75 /* NSAffineTransform+SVG.h */;
 		name = "NSAffineTransform+SVG.h: 13";
 		rLen = 0;
-		rLoc = 260;
+		rLoc = 255;
 		rType = 0;
-		vrLen = 266;
+		vrLen = 261;
 		vrLoc = 0;
 	};
 	6C423F220FFF6631000DDAC3 /* DBDrawingView+BooleanOps.m:108 */ = {
@@ -3643,7 +3993,7 @@
 		fRef = 6C129D840E54ECCE00AD5C61 /* DBOval.m */;
 		name = "DBOval.m: 274";
 		rLen = 0;
-		rLoc = 6937;
+		rLoc = 6932;
 		rType = 0;
 		vrLen = 815;
 		vrLoc = 6823;
@@ -3653,7 +4003,7 @@
 		fRef = 6C129D840E54ECCE00AD5C61 /* DBOval.m */;
 		name = "DBOval.m: 274";
 		rLen = 0;
-		rLoc = 6937;
+		rLoc = 6932;
 		rType = 0;
 		vrLen = 815;
 		vrLoc = 6823;
@@ -3663,7 +4013,7 @@
 		fRef = 6C129CA60E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.h */;
 		name = "DBDrawingView+BooleanOps.h: 13";
 		rLen = 0;
-		rLoc = 224;
+		rLoc = 219;
 		rType = 0;
 		vrLen = 576;
 		vrLoc = 0;
@@ -3751,7 +4101,7 @@
 		fRef = 6C129CA60E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.h */;
 		name = "DBDrawingView+BooleanOps.h: 11";
 		rLen = 13;
-		rLoc = 183;
+		rLoc = 178;
 		rType = 0;
 		vrLen = 577;
 		vrLoc = 0;
@@ -3761,7 +4111,7 @@
 		fRef = 6C129D520E54EC1600AD5C61 /* DBDrawingView.h */;
 		name = "DBDrawingView.h: 76";
 		rLen = 17;
-		rLoc = 1558;
+		rLoc = 1553;
 		rType = 0;
 		vrLen = 444;
 		vrLoc = 169;
@@ -3771,7 +4121,7 @@
 		fRef = 6C129D520E54EC1600AD5C61 /* DBDrawingView.h */;
 		name = "DBDrawingView.h: 76";
 		rLen = 17;
-		rLoc = 1558;
+		rLoc = 1553;
 		rType = 0;
 		vrLen = 444;
 		vrLoc = 169;
@@ -3781,7 +4131,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 70";
 		rLen = 18;
-		rLoc = 1908;
+		rLoc = 1903;
 		rType = 0;
 		vrLen = 778;
 		vrLoc = 1564;
@@ -3849,7 +4199,7 @@
 		fRef = 6C42407510021346000DDAC3 /* DBCIFilterPickerController.m */;
 		name = "DBCIFilterPickerController.m: 47";
 		rLen = 0;
-		rLoc = 1541;
+		rLoc = 1536;
 		rType = 0;
 		vrLen = 717;
 		vrLoc = 1067;
@@ -3859,7 +4209,7 @@
 		fRef = 6C4240791002134A000DDAC3 /* DBColorMatrix.m */;
 		name = "DBColorMatrix.m: 11";
 		rLen = 0;
-		rLoc = 191;
+		rLoc = 186;
 		rType = 0;
 		vrLen = 402;
 		vrLoc = 0;
@@ -3869,7 +4219,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 15";
 		rLen = 28;
-		rLoc = 315;
+		rLoc = 310;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 0;
@@ -3879,7 +4229,7 @@
 		fRef = 6C129D800E54ECBF00AD5C61 /* DBShape.h */;
 		name = "DBShape.h: 104";
 		rLen = 0;
-		rLoc = 2642;
+		rLoc = 2637;
 		rType = 0;
 		vrLen = 720;
 		vrLoc = 2404;
@@ -3889,7 +4239,7 @@
 		fRef = 6C129D810E54ECBF00AD5C61 /* DBShape.m */;
 		name = "DBShape.m: 900";
 		rLen = 19;
-		rLoc = 21597;
+		rLoc = 21592;
 		rType = 0;
 		vrLen = 460;
 		vrLoc = 21244;
@@ -3899,7 +4249,7 @@
 		fRef = 6C42403A100211B4000DDAC3 /* DBRectangle.m */;
 		name = "DBRectangle.m: 506";
 		rLen = 0;
-		rLoc = 13681;
+		rLoc = 13676;
 		rType = 0;
 		vrLen = 505;
 		vrLoc = 13443;
@@ -3909,7 +4259,7 @@
 		fRef = 6C42407510021346000DDAC3 /* DBCIFilterPickerController.m */;
 		name = "DBCIFilterPickerController.m: 47";
 		rLen = 0;
-		rLoc = 1541;
+		rLoc = 1536;
 		rType = 0;
 		vrLen = 717;
 		vrLoc = 1067;
@@ -3919,7 +4269,7 @@
 		fRef = 6C4240791002134A000DDAC3 /* DBColorMatrix.m */;
 		name = "DBColorMatrix.m: 11";
 		rLen = 0;
-		rLoc = 191;
+		rLoc = 186;
 		rType = 0;
 		vrLen = 402;
 		vrLoc = 0;
@@ -3929,7 +4279,7 @@
 		fRef = 6C42409E10021480000DDAC3 /* DBContextualDataSourceController.m */;
 		name = "DBContextualDataSourceController.m: 139";
 		rLen = 57;
-		rLoc = 3700;
+		rLoc = 3695;
 		rType = 0;
 		vrLen = 536;
 		vrLoc = 3304;
@@ -3939,7 +4289,7 @@
 		fRef = 6C129D300E54E9AA00AD5C61 /* DBContextualDataSourceController.h */;
 		name = "DBContextualDataSourceController.h: 13";
 		rLen = 0;
-		rLoc = 323;
+		rLoc = 318;
 		rType = 0;
 		vrLen = 617;
 		vrLoc = 0;
@@ -3949,7 +4299,7 @@
 		fRef = 6C4240B510021568000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 24";
 		rLen = 11;
-		rLoc = 982;
+		rLoc = 977;
 		rType = 0;
 		vrLen = 1009;
 		vrLoc = 186;
@@ -3961,9 +4311,9 @@
 		path = "/Users/raphaelbost/Bazaar/DrawBerry/Source/DBDrawingView+ShapeManagement.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {711, 5808}}";
-			sepNavSelRange = "{2248, 89}";
-			sepNavVisRange = "{1772, 1278}";
+			sepNavIntBoundsRect = "{{0, 0}, {809, 5768}}";
+			sepNavSelRange = "{3231, 0}";
+			sepNavVisRange = "{2854, 609}";
 			sepNavWindowFrame = "{{15, 86}, {770, 787}}";
 		};
 	};
@@ -4000,7 +4350,7 @@
 		fRef = 6C42412F10021650000DDAC3 /* DBDrawingView+DragAndDrop.m */;
 		name = "DBDrawingView+DragAndDrop.m: 67";
 		rLen = 0;
-		rLoc = 2238;
+		rLoc = 2233;
 		rType = 0;
 		vrLen = 815;
 		vrLoc = 1814;
@@ -4010,7 +4360,7 @@
 		fRef = 6C42413610021661000DDAC3 /* DBDrawingView+ShapeManagement.h */;
 		name = "DBDrawingView+ShapeManagement.h: 25";
 		rLen = 46;
-		rLoc = 1020;
+		rLoc = 1015;
 		rType = 0;
 		vrLen = 1008;
 		vrLoc = 187;
@@ -4020,7 +4370,7 @@
 		fRef = 6C42413810021669000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 211";
 		rLen = 0;
-		rLoc = 6578;
+		rLoc = 6573;
 		rType = 0;
 		vrLen = 638;
 		vrLoc = 5191;
@@ -4047,7 +4397,7 @@
 		fRef = 6C129D750E54EC7400AD5C61 /* DBFill.m */;
 		name = "DBFill.m: 325";
 		rLen = 46;
-		rLoc = 8599;
+		rLoc = 8594;
 		rType = 0;
 		vrLen = 384;
 		vrLoc = 8840;
@@ -4057,7 +4407,7 @@
 		fRef = 6C129D740E54EC7400AD5C61 /* DBFill.h */;
 		name = "DBFill.h: 25";
 		rLen = 18;
-		rLoc = 432;
+		rLoc = 427;
 		rType = 0;
 		vrLen = 720;
 		vrLoc = 1065;
@@ -4067,7 +4417,7 @@
 		fRef = 6C42410110021619000DDAC3 /* DBDrawingView+ShapeManagement.m */;
 		name = "DBDrawingView+ShapeManagement.m: 233";
 		rLen = 62;
-		rLoc = 7035;
+		rLoc = 7030;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 5847;
@@ -4077,7 +4427,7 @@
 		fRef = 6C42416310021746000DDAC3 /* DBInspectorController.m */;
 		name = "DBInspectorController.m: 181";
 		rLen = 11;
-		rLoc = 6016;
+		rLoc = 6011;
 		rType = 0;
 		vrLen = 793;
 		vrLoc = 5680;
@@ -4087,7 +4437,7 @@
 		fRef = 6C129D740E54EC7400AD5C61 /* DBFill.h */;
 		name = "DBFill.h: 25";
 		rLen = 18;
-		rLoc = 432;
+		rLoc = 427;
 		rType = 0;
 		vrLen = 720;
 		vrLoc = 1065;
@@ -4123,7 +4473,7 @@
 		fRef = 6C42418410021CAA000DDAC3 /* DBInspectorController.m */;
 		name = "DBInspectorController.m: 181";
 		rLen = 0;
-		rLoc = 5963;
+		rLoc = 5958;
 		rType = 0;
 		vrLen = 803;
 		vrLoc = 5680;
@@ -4143,7 +4493,7 @@
 		fRef = 6C42418C10021CE3000DDAC3 /* DBLayerController.m */;
 		name = "DBLayerController.m: 515";
 		rLen = 0;
-		rLoc = 12651;
+		rLoc = 12646;
 		rType = 0;
 		vrLen = 613;
 		vrLoc = 12319;
@@ -4153,7 +4503,7 @@
 		fRef = 6C42418C10021CE3000DDAC3 /* DBLayerController.m */;
 		name = "DBLayerController.m: 515";
 		rLen = 0;
-		rLoc = 12651;
+		rLoc = 12646;
 		rType = 0;
 		vrLen = 613;
 		vrLoc = 12319;
@@ -4232,6 +4582,11 @@
 		name = DDDAnimatedTabView.m;
 		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/DDDAnimatedTabView.m;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {766, 2212}}";
+			sepNavSelRange = "{156, 18}";
+			sepNavVisRange = "{0, 529}";
+		};
 	};
 	6C424205100220D4000DDAC3 /* NSBezierPath+GPC.m */ = {
 		isa = PBXFileReference;
@@ -4252,7 +4607,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 11";
 		rLen = 27;
-		rLoc = 188;
+		rLoc = 183;
 		rType = 0;
 		vrLen = 486;
 		vrLoc = 0;
@@ -4264,7 +4619,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 294;
+		vrLen = 289;
 		vrLoc = 0;
 	};
 	6C42422810022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4272,7 +4627,7 @@
 		fRef = 6C42419F10021D1C000DDAC3 /* DBRectangle+SVG.m */;
 		name = "DBRectangle+SVG.m: 51";
 		rLen = 0;
-		rLoc = 1064;
+		rLoc = 1059;
 		rType = 0;
 		vrLen = 500;
 		vrLoc = 729;
@@ -4284,7 +4639,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 353;
+		vrLen = 348;
 		vrLoc = 0;
 	};
 	6C42422A10022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4292,7 +4647,7 @@
 		fRef = 6C4241A410021D34000DDAC3 /* DBShapeLibEditingView.m */;
 		name = "DBShapeLibEditingView.m: 14";
 		rLen = 0;
-		rLoc = 268;
+		rLoc = 263;
 		rType = 0;
 		vrLen = 441;
 		vrLoc = 0;
@@ -4302,7 +4657,7 @@
 		fRef = 6C129DF20E54EE8500AD5C61 /* DBShapeLibraryController.h */;
 		name = "DBShapeLibraryController.h: 11";
 		rLen = 0;
-		rLoc = 202;
+		rLoc = 197;
 		rType = 0;
 		vrLen = 713;
 		vrLoc = 92;
@@ -4312,7 +4667,7 @@
 		fRef = 6C4241CE10021E84000DDAC3 /* DBShapeMatrix.m */;
 		name = "DBShapeMatrix.m: 42";
 		rLen = 0;
-		rLoc = 710;
+		rLoc = 705;
 		rType = 0;
 		vrLen = 414;
 		vrLoc = 469;
@@ -4322,9 +4677,9 @@
 		fRef = 6C129E010E54EEC100AD5C61 /* DBShapeMatrix.h */;
 		name = "DBShapeMatrix.h: 15";
 		rLen = 8;
-		rLoc = 261;
+		rLoc = 256;
 		rType = 0;
-		vrLen = 420;
+		vrLen = 415;
 		vrLoc = 0;
 	};
 	6C42423010022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4366,9 +4721,9 @@
 		fRef = 6C129DFF0E54EEB700AD5C61 /* DBMatrixDataSource.h */;
 		name = "DBMatrixDataSource.h: 25";
 		rLen = 0;
-		rLoc = 623;
+		rLoc = 618;
 		rType = 0;
-		vrLen = 631;
+		vrLen = 626;
 		vrLoc = 28;
 	};
 	6C42423510022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4376,9 +4731,9 @@
 		fRef = 6C4A9DA10FD3D8B900CA2CBD /* DBSVGStringParser.h */;
 		name = "DBSVGStringParser.h: 24";
 		rLen = 9;
-		rLoc = 533;
+		rLoc = 528;
 		rType = 0;
-		vrLen = 684;
+		vrLen = 679;
 		vrLoc = 44;
 	};
 	6C42423910022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4386,7 +4741,7 @@
 		fRef = 6C424201100220C4000DDAC3 /* DDDAnimatedTabView.m */;
 		name = "DDDAnimatedTabView.m: 72";
 		rLen = 0;
-		rLoc = 1546;
+		rLoc = 1541;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 1257;
@@ -4426,7 +4781,7 @@
 		fRef = 6C42419210021CF7000DDAC3 /* DBOval+SVG.m */;
 		name = "DBOval+SVG.m: 11";
 		rLen = 27;
-		rLoc = 188;
+		rLoc = 183;
 		rType = 0;
 		vrLen = 486;
 		vrLoc = 0;
@@ -4436,7 +4791,7 @@
 		fRef = 6C42419F10021D1C000DDAC3 /* DBRectangle+SVG.m */;
 		name = "DBRectangle+SVG.m: 51";
 		rLen = 0;
-		rLoc = 1064;
+		rLoc = 1059;
 		rType = 0;
 		vrLen = 500;
 		vrLoc = 729;
@@ -4446,7 +4801,7 @@
 		fRef = 6C4241A410021D34000DDAC3 /* DBShapeLibEditingView.m */;
 		name = "DBShapeLibEditingView.m: 46";
 		rLen = 20;
-		rLoc = 946;
+		rLoc = 941;
 		rType = 0;
 		vrLen = 472;
 		vrLoc = 0;
@@ -4458,7 +4813,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 353;
+		vrLen = 348;
 		vrLoc = 0;
 	};
 	6C42424310022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4466,7 +4821,7 @@
 		fRef = 6C4241AA10021D9F000DDAC3 /* DBShapeLibraryController.m */;
 		name = "DBShapeLibraryController.m: 18";
 		rLen = 0;
-		rLoc = 312;
+		rLoc = 307;
 		rType = 0;
 		vrLen = 534;
 		vrLoc = 4190;
@@ -4476,7 +4831,7 @@
 		fRef = 6C129DF20E54EE8500AD5C61 /* DBShapeLibraryController.h */;
 		name = "DBShapeLibraryController.h: 11";
 		rLen = 0;
-		rLoc = 202;
+		rLoc = 197;
 		rType = 0;
 		vrLen = 713;
 		vrLoc = 92;
@@ -4486,9 +4841,9 @@
 		fRef = 6C129E010E54EEC100AD5C61 /* DBShapeMatrix.h */;
 		name = "DBShapeMatrix.h: 16";
 		rLen = 23;
-		rLoc = 272;
+		rLoc = 267;
 		rType = 0;
-		vrLen = 420;
+		vrLen = 415;
 		vrLoc = 0;
 	};
 	6C42424910022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4496,7 +4851,7 @@
 		fRef = 6C4241B610021DF6000DDAC3 /* DBShapeMatrix.m */;
 		name = "DBShapeMatrix.m: 42";
 		rLen = 17;
-		rLoc = 682;
+		rLoc = 677;
 		rType = 0;
 		vrLen = 456;
 		vrLoc = 470;
@@ -4540,9 +4895,9 @@
 		fRef = 6C129DFF0E54EEB700AD5C61 /* DBMatrixDataSource.h */;
 		name = "DBMatrixDataSource.h: 25";
 		rLen = 0;
-		rLoc = 623;
+		rLoc = 618;
 		rType = 0;
-		vrLen = 631;
+		vrLen = 626;
 		vrLoc = 28;
 	};
 	6C42425210022249000DDAC3 /* PBXTextBookmark */ = {
@@ -4550,7 +4905,7 @@
 		fRef = 6C4241D610021EE0000DDAC3 /* DBStroke.m */;
 		name = "DBStroke.m: 509";
 		rLen = 0;
-		rLoc = 11173;
+		rLoc = 11168;
 		rType = 0;
 		vrLen = 551;
 		vrLoc = 11056;
@@ -4560,7 +4915,7 @@
 		fRef = 6C4241F010022034000DDAC3 /* DBText.m */;
 		name = "DBText.m: 10";
 		rLen = 0;
-		rLoc = 156;
+		rLoc = 151;
 		rType = 0;
 		vrLen = 731;
 		vrLoc = 0;
@@ -4570,7 +4925,7 @@
 		fRef = 6C424201100220C4000DDAC3 /* DDDAnimatedTabView.m */;
 		name = "DDDAnimatedTabView.m: 72";
 		rLen = 0;
-		rLoc = 1546;
+		rLoc = 1541;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 1257;
@@ -4607,7 +4962,7 @@
 		fRef = 6C42427A1002529B000DDAC3 /* DBStroke.m */;
 		name = "DBStroke.m: 427";
 		rLen = 0;
-		rLoc = 9621;
+		rLoc = 9616;
 		rType = 0;
 		vrLen = 365;
 		vrLoc = 9471;
@@ -4698,7 +5053,7 @@
 		fRef = 6C4241E810021FCF000DDAC3 /* DBSVGStringParser.m */;
 		name = "DBSVGStringParser.m: 11";
 		rLen = 4;
-		rLoc = 194;
+		rLoc = 189;
 		rType = 0;
 		vrLen = 637;
 		vrLoc = 0;
@@ -4878,7 +5233,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 22";
 		rLen = 13;
-		rLoc = 439;
+		rLoc = 434;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 40;
@@ -4902,7 +5257,7 @@
 		fRef = 6C9334040FA4587E007197B6 /* DBDonateWindowController.m */;
 		name = "DBDonateWindowController.m: 36";
 		rLen = 0;
-		rLoc = 721;
+		rLoc = 716;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 678;
@@ -4932,7 +5287,7 @@
 		fRef = 6C129D350E54E9E200AD5C61 /* DBInspectorController.h */;
 		name = "DBInspectorController.h: 33";
 		rLen = 32;
-		rLoc = 690;
+		rLoc = 685;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 477;
@@ -4942,9 +5297,9 @@
 		fRef = 6C129D270E54E98100AD5C61 /* DBApplicationController.h */;
 		name = "DBApplicationController.h: 34";
 		rLen = 18;
-		rLoc = 922;
+		rLoc = 917;
 		rType = 0;
-		vrLen = 738;
+		vrLen = 733;
 		vrLoc = 253;
 	};
 	6C4A9EB60FD42E0800CA2CBD /* PBXTextBookmark */ = {
@@ -4982,7 +5337,7 @@
 		fRef = 6C129D350E54E9E200AD5C61 /* DBInspectorController.h */;
 		name = "DBInspectorController.h: 33";
 		rLen = 32;
-		rLoc = 690;
+		rLoc = 685;
 		rType = 0;
 		vrLen = 722;
 		vrLoc = 477;
@@ -4992,9 +5347,9 @@
 		fRef = 6C129D270E54E98100AD5C61 /* DBApplicationController.h */;
 		name = "DBApplicationController.h: 34";
 		rLen = 18;
-		rLoc = 922;
+		rLoc = 917;
 		rType = 0;
-		vrLen = 738;
+		vrLen = 733;
 		vrLoc = 253;
 	};
 	6C4A9EC20FD42E0800CA2CBD /* PBXTextBookmark */ = {
@@ -5002,7 +5357,7 @@
 		fRef = 6C129D260E54E98100AD5C61 /* DBApplicationController.m */;
 		name = "DBApplicationController.m: 242";
 		rLen = 0;
-		rLoc = 8978;
+		rLoc = 8973;
 		rType = 0;
 		vrLen = 597;
 		vrLoc = 7867;
@@ -5042,7 +5397,7 @@
 		fRef = 6C6909B90FA7818600F10440 /* DBTemplateManager.h */;
 		name = "DBTemplateManager.h: 36";
 		rLen = 0;
-		rLoc = 984;
+		rLoc = 979;
 		rType = 0;
 		vrLen = 520;
 		vrLoc = 0;
@@ -5052,9 +5407,9 @@
 		fRef = 6C129D6B0E54EC5300AD5C61 /* DBCILayer.h */;
 		name = "DBCILayer.h: 15";
 		rLen = 9;
-		rLoc = 228;
+		rLoc = 223;
 		rType = 0;
-		vrLen = 470;
+		vrLen = 465;
 		vrLoc = 0;
 	};
 	6C4A9EE70FD434D600CA2CBD /* PBXTextBookmark */ = {
@@ -5062,9 +5417,9 @@
 		fRef = 6C129D6B0E54EC5300AD5C61 /* DBCILayer.h */;
 		name = "DBCILayer.h: 15";
 		rLen = 9;
-		rLoc = 228;
+		rLoc = 223;
 		rType = 0;
-		vrLen = 470;
+		vrLen = 465;
 		vrLoc = 0;
 	};
 	6C4A9EF80FD439C700CA2CBD /* PBXTextBookmark */ = {
@@ -5072,7 +5427,7 @@
 		fRef = 6C129D6E0E54EC5300AD5C61 /* DBLayer.m */;
 		name = "DBLayer.m: 559";
 		rLen = 0;
-		rLoc = 12720;
+		rLoc = 12715;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 13379;
@@ -5082,7 +5437,7 @@
 		fRef = 6C129D6E0E54EC5300AD5C61 /* DBLayer.m */;
 		name = "DBLayer.m: 559";
 		rLen = 0;
-		rLoc = 12720;
+		rLoc = 12715;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 13379;
@@ -5094,7 +5449,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 252;
+		vrLen = 247;
 		vrLoc = 0;
 	};
 	6C4A9F210FD43ED000CA2CBD /* PBXTextBookmark */ = {
@@ -5104,7 +5459,7 @@
 		rLen = 11;
 		rLoc = 7;
 		rType = 0;
-		vrLen = 566;
+		vrLen = 561;
 		vrLoc = 141;
 	};
 	6C4A9F240FD43ED000CA2CBD /* PBXTextBookmark */ = {
@@ -5112,7 +5467,7 @@
 		fRef = 6C129DA20E54ED4A00AD5C61 /* DBLayer+SVG.m */;
 		name = "DBLayer+SVG.m: 24";
 		rLen = 0;
-		rLoc = 574;
+		rLoc = 569;
 		rType = 0;
 		vrLen = 618;
 		vrLoc = 3;
@@ -5124,7 +5479,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 252;
+		vrLen = 247;
 		vrLoc = 0;
 	};
 	6C4A9F410FD46B2700CA2CBD /* PBXTextBookmark */ = {
@@ -5132,7 +5487,7 @@
 		fRef = 6C129D9E0E54ED4A00AD5C61 /* DBDocument+SVG.m */;
 		name = "DBDocument+SVG.m: 15";
 		rLen = 9;
-		rLoc = 280;
+		rLoc = 275;
 		rType = 0;
 		vrLen = 1212;
 		vrLoc = 401;
@@ -5142,7 +5497,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 666";
 		rLen = 0;
-		rLoc = 6338;
+		rLoc = 6333;
 		rType = 0;
 		vrLen = 584;
 		vrLoc = 28687;
@@ -5203,7 +5558,7 @@
 		fRef = 6C129DAC0E54ED4A00AD5C61 /* DBStroke+SVG.m */;
 		name = "DBStroke+SVG.m: 39";
 		rLen = 14;
-		rLoc = 891;
+		rLoc = 886;
 		rType = 0;
 		vrLen = 624;
 		vrLoc = 350;
@@ -5213,9 +5568,9 @@
 		fRef = 6C129D6C0E54EC5300AD5C61 /* DBCILayer.m */;
 		name = "DBCILayer.m: 181";
 		rLen = 4;
-		rLoc = 4372;
+		rLoc = 4367;
 		rType = 0;
-		vrLen = 329;
+		vrLen = 324;
 		vrLoc = 5287;
 	};
 	6C4A9FA00FD47BCC00CA2CBD /* PBXTextBookmark */ = {
@@ -5223,9 +5578,9 @@
 		fRef = 6C129D6C0E54EC5300AD5C61 /* DBCILayer.m */;
 		name = "DBCILayer.m: 181";
 		rLen = 4;
-		rLoc = 4372;
+		rLoc = 4367;
 		rType = 0;
-		vrLen = 329;
+		vrLen = 324;
 		vrLoc = 5287;
 	};
 	6C4A9FA30FD47BCC00CA2CBD /* PBXTextBookmark */ = {
@@ -5233,7 +5588,7 @@
 		fRef = 6C129DA60E54ED4A00AD5C61 /* DBPolyline+SVG.m */;
 		name = "DBPolyline+SVG.m: 16";
 		rLen = 49;
-		rLoc = 273;
+		rLoc = 268;
 		rType = 0;
 		vrLen = 456;
 		vrLoc = 174;
@@ -5277,7 +5632,7 @@
 		fRef = 6C129D330E54E9C700AD5C61 /* DBDocument.m */;
 		name = "DBDocument.m: 190";
 		rLen = 0;
-		rLoc = 6627;
+		rLoc = 6622;
 		rType = 0;
 		vrLen = 416;
 		vrLoc = 15088;
@@ -5287,7 +5642,7 @@
 		fRef = 6C129DAA0E54ED4A00AD5C61 /* DBShape+SVG.m */;
 		name = "DBShape+SVG.m: 24";
 		rLen = 0;
-		rLoc = 516;
+		rLoc = 511;
 		rType = 0;
 		vrLen = 683;
 		vrLoc = 264;
@@ -5297,9 +5652,9 @@
 		fRef = 6C129DA00E54ED4A00AD5C61 /* DBFill+SVG.m */;
 		name = "DBFill+SVG.m: 43";
 		rLen = 0;
-		rLoc = 909;
+		rLoc = 904;
 		rType = 0;
-		vrLen = 549;
+		vrLen = 544;
 		vrLoc = 597;
 	};
 	6C4C540B100CB22700685DD3 /* PBXTextBookmark */ = {
@@ -5307,9 +5662,9 @@
 		fRef = 6C129DA00E54ED4A00AD5C61 /* DBFill+SVG.m */;
 		name = "DBFill+SVG.m: 43";
 		rLen = 0;
-		rLoc = 909;
+		rLoc = 904;
 		rType = 0;
-		vrLen = 549;
+		vrLen = 544;
 		vrLoc = 597;
 	};
 	6C4C575C1014A94C00685DD3 /* PBXBookmark */ = {
@@ -5336,7 +5691,7 @@
 		fRef = 6C4241F010022034000DDAC3 /* DBText.m */;
 		name = "DBText.m: 284";
 		rLen = 0;
-		rLoc = 7124;
+		rLoc = 7119;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 5877;
@@ -5346,7 +5701,7 @@
 		fRef = 6C4241F010022034000DDAC3 /* DBText.m */;
 		name = "DBText.m: 284";
 		rLen = 0;
-		rLoc = 7124;
+		rLoc = 7119;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 5877;
@@ -5356,7 +5711,7 @@
 		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
 		name = "DBRectangle.m: 292";
 		rLen = 89;
-		rLoc = 8130;
+		rLoc = 8125;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 7787;
@@ -5366,7 +5721,7 @@
 		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
 		name = "DBRectangle.m: 373";
 		rLen = 0;
-		rLoc = 10329;
+		rLoc = 10324;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 10522;
@@ -5376,7 +5731,7 @@
 		fRef = 6C129D8D0E54ED1600AD5C61 /* DBText.m */;
 		name = "DBText.m: 298";
 		rLen = 0;
-		rLoc = 7388;
+		rLoc = 7383;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 5539;
@@ -5386,7 +5741,7 @@
 		fRef = 6C6909BA0FA7818600F10440 /* DBTemplateManager.m */;
 		name = "DBTemplateManager.m: 65";
 		rLen = 0;
-		rLoc = 1454;
+		rLoc = 1449;
 		rType = 0;
 		vrLen = 741;
 		vrLoc = 1453;
@@ -5396,9 +5751,9 @@
 		fRef = 6C129D320E54E9C700AD5C61 /* DBDocument.h */;
 		name = "DBDocument.h: 48";
 		rLen = 4;
-		rLoc = 1085;
+		rLoc = 1080;
 		rType = 0;
-		vrLen = 641;
+		vrLen = 636;
 		vrLoc = 651;
 	};
 	6C4F2054100A40EC00CCEAD7 /* PBXTextBookmark */ = {
@@ -5406,7 +5761,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1674";
 		rLen = 7;
-		rLoc = 43403;
+		rLoc = 43398;
 		rType = 0;
 		vrLen = 643;
 		vrLoc = 42580;
@@ -5418,9 +5773,9 @@
 		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/DBDrawingView.m;
 		sourceTree = "<group>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 23686}}";
-			sepNavSelRange = "{45378, 0}";
-			sepNavVisRange = "{44947, 595}";
+			sepNavIntBoundsRect = "{{0, 0}, {1158, 23756}}";
+			sepNavSelRange = "{112, 0}";
+			sepNavVisRange = "{0, 445}";
 		};
 	};
 	6C4F208D100A42B300CCEAD7 /* PBXTextBookmark */ = {
@@ -5428,7 +5783,7 @@
 		fRef = 6C129D860E54ECE800AD5C61 /* DBPolyline.h */;
 		name = "DBPolyline.h: 49";
 		rLen = 0;
-		rLoc = 1149;
+		rLoc = 1144;
 		rType = 0;
 		vrLen = 811;
 		vrLoc = 644;
@@ -5438,7 +5793,7 @@
 		fRef = 6C4F207C100A421300CCEAD7 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 598";
 		rLen = 0;
-		rLoc = 16117;
+		rLoc = 16112;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 15746;
@@ -5450,7 +5805,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 293;
+		vrLen = 288;
 		vrLoc = 0;
 	};
 	6C4F2094100A42B300CCEAD7 /* PBXTextBookmark */ = {
@@ -5460,7 +5815,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 293;
+		vrLen = 288;
 		vrLoc = 0;
 	};
 	6C4F20DB100A4CB500CCEAD7 /* PBXTextBookmark */ = {
@@ -5468,7 +5823,7 @@
 		fRef = 6C129DA60E54ED4A00AD5C61 /* DBPolyline+SVG.m */;
 		name = "DBPolyline+SVG.m: 80";
 		rLen = 0;
-		rLoc = 1931;
+		rLoc = 1926;
 		rType = 0;
 		vrLen = 547;
 		vrLoc = 1455;
@@ -5478,7 +5833,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1675";
 		rLen = 7;
-		rLoc = 43403;
+		rLoc = 43398;
 		rType = 0;
 		vrLen = 689;
 		vrLoc = 42554;
@@ -5488,7 +5843,7 @@
 		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
 		name = "DBPolyline.m: 1365";
 		rLen = 12;
-		rLoc = 31632;
+		rLoc = 31627;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 30522;
@@ -5508,7 +5863,7 @@
 		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
 		name = "DBDrawingView+BooleanOps.m: 82";
 		rLen = 42;
-		rLoc = 2283;
+		rLoc = 2278;
 		rType = 0;
 		vrLen = 700;
 		vrLoc = 2012;
@@ -5518,7 +5873,7 @@
 		fRef = 6C129CA40E54E5D400AD5C61 /* DBPrefKeys.h */;
 		name = "DBPrefKeys.h: 15";
 		rLen = 58;
-		rLoc = 335;
+		rLoc = 330;
 		rType = 0;
 		vrLen = 937;
 		vrLoc = 0;
@@ -5538,7 +5893,7 @@
 		fRef = 6C129CA40E54E5D400AD5C61 /* DBPrefKeys.h */;
 		name = "DBPrefKeys.h: 15";
 		rLen = 58;
-		rLoc = 335;
+		rLoc = 330;
 		rType = 0;
 		vrLen = 937;
 		vrLoc = 0;
@@ -5587,7 +5942,7 @@
 		fRef = 6C129D800E54ECBF00AD5C61 /* DBShape.h */;
 		name = "DBShape.h: 116";
 		rLen = 47;
-		rLoc = 2968;
+		rLoc = 2963;
 		rType = 0;
 		vrLen = 751;
 		vrLoc = 2404;
@@ -5645,7 +6000,7 @@
 		fRef = 6C129DAE0E54ED4A00AD5C61 /* NSColor+SVG.m */;
 		name = "NSColor+SVG.m: 106";
 		rLen = 20;
-		rLoc = 2936;
+		rLoc = 2931;
 		rType = 0;
 		vrLen = 678;
 		vrLoc = 1380;
@@ -5665,9 +6020,9 @@
 		fRef = 6C129CAF0E54E62000AD5C61 /* NSColorList+Extension.h */;
 		name = "NSColorList+Extension.h: 12";
 		rLen = 13;
-		rLoc = 208;
+		rLoc = 203;
 		rType = 0;
-		vrLen = 406;
+		vrLen = 401;
 		vrLoc = 0;
 	};
 	6C8083E40FE2FBA0007D6E75 /* PBXTextBookmark */ = {
@@ -5675,9 +6030,9 @@
 		fRef = 6C8083D30FE2F9B1007D6E75 /* NSString+Extensions.h */;
 		name = "NSString+Extensions.h: 13";
 		rLen = 0;
-		rLoc = 244;
+		rLoc = 239;
 		rType = 0;
-		vrLen = 250;
+		vrLen = 245;
 		vrLoc = 0;
 	};
 	6C8083E70FE2FBA0007D6E75 /* PBXTextBookmark */ = {
@@ -5685,7 +6040,7 @@
 		fRef = 6C8083C80FE2F735007D6E75 /* NSAffineTransform+SVG.h */;
 		name = "NSAffineTransform+SVG.h: 12";
 		rLen = 0;
-		rLoc = 188;
+		rLoc = 183;
 		rType = 0;
 		vrLen = 233;
 		vrLoc = 0;
@@ -5695,7 +6050,7 @@
 		fRef = 6C129DAE0E54ED4A00AD5C61 /* NSColor+SVG.m */;
 		name = "NSColor+SVG.m: 106";
 		rLen = 20;
-		rLoc = 2936;
+		rLoc = 2931;
 		rType = 0;
 		vrLen = 678;
 		vrLoc = 1380;
@@ -5715,7 +6070,7 @@
 		fRef = 6C8083D30FE2F9B1007D6E75 /* NSString+Extensions.h */;
 		name = "NSString+Extensions.h: 12";
 		rLen = 0;
-		rLoc = 196;
+		rLoc = 191;
 		rType = 0;
 		vrLen = 208;
 		vrLoc = 0;
@@ -5735,9 +6090,9 @@
 		fRef = 6C129CAF0E54E62000AD5C61 /* NSColorList+Extension.h */;
 		name = "NSColorList+Extension.h: 12";
 		rLen = 13;
-		rLoc = 208;
+		rLoc = 203;
 		rType = 0;
-		vrLen = 406;
+		vrLen = 401;
 		vrLoc = 0;
 	};
 	6C8083F50FE2FBA0007D6E75 /* PBXTextBookmark */ = {
@@ -5745,7 +6100,7 @@
 		fRef = 6C8083D40FE2F9B1007D6E75 /* NSString+Extensions.m */;
 		name = "NSString+Extensions.m: 12";
 		rLen = 0;
-		rLoc = 222;
+		rLoc = 217;
 		rType = 0;
 		vrLen = 229;
 		vrLoc = 0;
@@ -5755,7 +6110,7 @@
 		fRef = 6C129DAA0E54ED4A00AD5C61 /* DBShape+SVG.m */;
 		name = "DBShape+SVG.m: 12";
 		rLen = 0;
-		rLoc = 216;
+		rLoc = 211;
 		rType = 0;
 		vrLen = 574;
 		vrLoc = 0;
@@ -5765,7 +6120,7 @@
 		fRef = 6C4A9DA20FD3D8B900CA2CBD /* DBSVGStringParser.m */;
 		name = "DBSVGStringParser.m: 76";
 		rLen = 0;
-		rLoc = 1679;
+		rLoc = 1674;
 		rType = 0;
 		vrLen = 637;
 		vrLoc = 0;
@@ -5792,7 +6147,7 @@
 		fRef = 6C8083C90FE2F735007D6E75 /* NSAffineTransform+SVG.m */;
 		name = "NSAffineTransform+SVG.m: 25";
 		rLen = 0;
-		rLoc = 545;
+		rLoc = 540;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 272;
@@ -5802,7 +6157,7 @@
 		fRef = 6C129D830E54ECCE00AD5C61 /* DBOval.h */;
 		name = "DBOval.h: 19";
 		rLen = 0;
-		rLoc = 386;
+		rLoc = 381;
 		rType = 0;
 		vrLen = 351;
 		vrLoc = 0;
@@ -5812,7 +6167,7 @@
 		fRef = 6C129D890E54ED0500AD5C61 /* DBRectangle.h */;
 		name = "DBRectangle.h: 23";
 		rLen = 7;
-		rLoc = 428;
+		rLoc = 423;
 		rType = 0;
 		vrLen = 414;
 		vrLoc = 0;
@@ -5862,9 +6217,9 @@
 	};
 	6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 18508}}";
-			sepNavSelRange = "{558, 0}";
-			sepNavVisRange = "{0, 844}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 18760}}";
+			sepNavSelRange = "{37025, 4}";
+			sepNavVisRange = "{36325, 711}";
 		};
 	};
 	6C8444EE0C4C1D3C00FFA2FF /* French */ = {
@@ -5902,7 +6257,7 @@
 		fRef = 6CCD473C0FB4DC8400256EBC /* DBShapeCollectionDocument.m */;
 		name = "DBShapeCollectionDocument.m: 46";
 		rLen = 0;
-		rLoc = 1287;
+		rLoc = 1282;
 		rType = 0;
 		vrLen = 715;
 		vrLoc = 894;
@@ -5912,7 +6267,7 @@
 		fRef = 6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */;
 		name = "DBDocumentController.m: 36";
 		rLen = 0;
-		rLoc = 1346;
+		rLoc = 1341;
 		rType = 0;
 		vrLen = 818;
 		vrLoc = 895;
@@ -5922,7 +6277,7 @@
 		fRef = 6CCD473C0FB4DC8400256EBC /* DBShapeCollectionDocument.m */;
 		name = "DBShapeCollectionDocument.m: 46";
 		rLen = 0;
-		rLoc = 1287;
+		rLoc = 1282;
 		rType = 0;
 		vrLen = 715;
 		vrLoc = 894;
@@ -5932,7 +6287,7 @@
 		fRef = 6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */;
 		name = "DBDocumentController.m: 37";
 		rLen = 0;
-		rLoc = 1347;
+		rLoc = 1342;
 		rType = 0;
 		vrLen = 778;
 		vrLoc = 895;
@@ -5942,7 +6297,7 @@
 		fRef = 6C129D330E54E9C700AD5C61 /* DBDocument.m */;
 		name = "DBDocument.m: 25";
 		rLen = 10;
-		rLoc = 438;
+		rLoc = 433;
 		rType = 0;
 		vrLen = 472;
 		vrLoc = 14047;
@@ -5952,7 +6307,7 @@
 		fRef = 6C129CEB0E54E78100AD5C61 /* DBContextualBar.h */;
 		name = "DBContextualBar.h: 18";
 		rLen = 15;
-		rLoc = 292;
+		rLoc = 287;
 		rType = 0;
 		vrLen = 628;
 		vrLoc = 50;
@@ -5961,7 +6316,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129D300E54E9AA00AD5C61 /* DBContextualDataSourceController.h */;
 		name = "DBContextualDataSourceController.h: 6";
-		rLen = 17;
+		rLen = 12;
 		rLoc = 119;
 		rType = 0;
 		vrLen = 591;
@@ -5972,7 +6327,7 @@
 		fRef = 6C129CEA0E54E78100AD5C61 /* DBContextualBar.m */;
 		name = "DBContextualBar.m: 51";
 		rLen = 28;
-		rLoc = 986;
+		rLoc = 981;
 		rType = 0;
 		vrLen = 604;
 		vrLoc = 0;
@@ -5982,7 +6337,7 @@
 		fRef = 6C129CEA0E54E78100AD5C61 /* DBContextualBar.m */;
 		name = "DBContextualBar.m: 51";
 		rLen = 28;
-		rLoc = 986;
+		rLoc = 981;
 		rType = 0;
 		vrLen = 604;
 		vrLoc = 0;
@@ -6027,7 +6382,7 @@
 		fRef = 6C42406010021220000DDAC3 /* DBSVGParser.m */;
 		name = "DBSVGParser.m: 79";
 		rLen = 50;
-		rLoc = 1777;
+		rLoc = 1772;
 		rType = 0;
 		vrLen = 506;
 		vrLoc = 1499;
@@ -6037,7 +6392,7 @@
 		fRef = 6C42403A100211B4000DDAC3 /* DBRectangle.m */;
 		name = "DBRectangle.m: 292";
 		rLen = 89;
-		rLoc = 8130;
+		rLoc = 8125;
 		rType = 0;
 		vrLen = 664;
 		vrLoc = 7905;
@@ -6083,7 +6438,7 @@
 		fRef = 6C129D530E54EC1600AD5C61 /* DBDrawingView.m */;
 		name = "DBDrawingView.m: 163";
 		rLen = 0;
-		rLoc = 6293;
+		rLoc = 6288;
 		rType = 0;
 		vrLen = 1763;
 		vrLoc = 4681;
@@ -6093,7 +6448,7 @@
 		fRef = 6C129D960E54ED2E00AD5C61 /* DBUndoUIController.m */;
 		name = "DBUndoUIController.m: 24";
 		rLen = 0;
-		rLoc = 526;
+		rLoc = 521;
 		rType = 0;
 		vrLen = 740;
 		vrLoc = 217;
@@ -6103,7 +6458,7 @@
 		fRef = 6C129D960E54ED2E00AD5C61 /* DBUndoUIController.m */;
 		name = "DBUndoUIController.m: 24";
 		rLen = 0;
-		rLoc = 526;
+		rLoc = 521;
 		rType = 0;
 		vrLen = 740;
 		vrLoc = 217;
@@ -6113,7 +6468,7 @@
 		fRef = 6C129D570E54EC1600AD5C61 /* DBDrawingView+DragAndDrop.m */;
 		name = "DBDrawingView+DragAndDrop.m: 123";
 		rLen = 0;
-		rLoc = 3833;
+		rLoc = 3828;
 		rType = 0;
 		vrLen = 467;
 		vrLoc = 3642;
@@ -6123,7 +6478,7 @@
 		fRef = 6C129D810E54ECBF00AD5C61 /* DBShape.m */;
 		name = "DBShape.m: 894";
 		rLen = 0;
-		rLoc = 21521;
+		rLoc = 21516;
 		rType = 0;
 		vrLen = 584;
 		vrLoc = 21079;
@@ -6140,7 +6495,7 @@
 		fRef = 6C129D750E54EC7400AD5C61 /* DBFill.m */;
 		name = "DBFill.m: 167";
 		rLen = 10;
-		rLoc = 4949;
+		rLoc = 4944;
 		rType = 0;
 		vrLen = 1126;
 		vrLoc = 4516;
@@ -6192,10 +6547,10 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129CEB0E54E78100AD5C61 /* DBContextualBar.h */;
 		name = "DBContextualBar.h: 36";
-		rLen = 4;
-		rLoc = 926;
+		rLen = 1;
+		rLoc = 921;
 		rType = 0;
-		vrLen = 752;
+		vrLen = 747;
 		vrLoc = 180;
 	};
 	6CDF7F8610065B8E00E68B68 /* PBXBookmark */ = {
@@ -6235,7 +6590,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 11";
 		rLen = 32;
-		rLoc = 165;
+		rLoc = 160;
 		rType = 0;
 		vrLen = 476;
 		vrLoc = 37;
@@ -6247,7 +6602,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 245;
+		vrLen = 240;
 		vrLoc = 0;
 	};
 	6CDF809C100757C900E68B68 /* PBXTextBookmark */ = {
@@ -6257,7 +6612,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 245;
+		vrLen = 240;
 		vrLoc = 0;
 	};
 	6CDF80C91007D0BC00E68B68 /* PBXTextBookmark */ = {
@@ -6275,7 +6630,7 @@
 		fRef = 6C42406510021234000DDAC3 /* DBBezierCurve+SVG.m */;
 		name = "DBBezierCurve+SVG.m: 85";
 		rLen = 0;
-		rLoc = 2010;
+		rLoc = 2005;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 1757;
@@ -6388,7 +6743,7 @@
 		fRef = 6C129CB30E54E63B00AD5C61 /* moult.h */;
 		name = "moult.h: 9";
 		rLen = 145;
-		rLoc = 147;
+		rLoc = 140;
 		rType = 0;
 		vrLen = 409;
 		vrLoc = 0;
@@ -6412,7 +6767,7 @@
 		fRef = 6C42406510021234000DDAC3 /* DBBezierCurve+SVG.m */;
 		name = "DBBezierCurve+SVG.m: 85";
 		rLen = 0;
-		rLoc = 2010;
+		rLoc = 2005;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 1757;
@@ -6525,7 +6880,7 @@
 		fRef = 6C129CB30E54E63B00AD5C61 /* moult.h */;
 		name = "moult.h: 9";
 		rLen = 145;
-		rLoc = 147;
+		rLoc = 140;
 		rType = 0;
 		vrLen = 409;
 		vrLoc = 0;
@@ -6561,7 +6916,7 @@
 		rLen = 0;
 		rLoc = 528;
 		rType = 0;
-		vrLen = 498;
+		vrLen = 437;
 		vrLoc = 112;
 	};
 	6CDF82BE10090C1900E68B68 /* PBXTextBookmark */ = {
@@ -6569,7 +6924,7 @@
 		fRef = 6C4241AA10021D9F000DDAC3 /* DBShapeLibraryController.m */;
 		name = "DBShapeLibraryController.m: 118";
 		rLen = 56;
-		rLoc = 3184;
+		rLoc = 3179;
 		rType = 0;
 		vrLen = 826;
 		vrLoc = 2902;
@@ -6589,7 +6944,7 @@
 		fRef = 6C129D260E54E98100AD5C61 /* DBApplicationController.m */;
 		name = "DBApplicationController.m: 49";
 		rLen = 0;
-		rLoc = 1296;
+		rLoc = 1291;
 		rType = 0;
 		vrLen = 1052;
 		vrLoc = 2208;
@@ -6599,7 +6954,7 @@
 		fRef = 6C4241FC1002209E000DDAC3 /* DBToolsController.m */;
 		name = "DBToolsController.m: 43";
 		rLen = 0;
-		rLoc = 896;
+		rLoc = 891;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 777;
@@ -6609,7 +6964,7 @@
 		fRef = 6C6909B90FA7818600F10440 /* DBTemplateManager.h */;
 		name = "DBTemplateManager.h: 15";
 		rLen = 16;
-		rLoc = 316;
+		rLoc = 311;
 		rType = 0;
 		vrLen = 520;
 		vrLoc = 0;
@@ -6619,7 +6974,7 @@
 		fRef = 6C6909BA0FA7818600F10440 /* DBTemplateManager.m */;
 		name = "DBTemplateManager.m: 94";
 		rLen = 20;
-		rLoc = 2331;
+		rLoc = 2326;
 		rType = 0;
 		vrLen = 670;
 		vrLoc = 1931;
@@ -6629,7 +6984,7 @@
 		fRef = 6C4241FC1002209E000DDAC3 /* DBToolsController.m */;
 		name = "DBToolsController.m: 43";
 		rLen = 0;
-		rLoc = 896;
+		rLoc = 891;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 777;
@@ -6639,7 +6994,7 @@
 		fRef = 6C9334040FA4587E007197B6 /* DBDonateWindowController.m */;
 		name = "DBDonateWindowController.m: 37";
 		rLen = 0;
-		rLoc = 721;
+		rLoc = 716;
 		rType = 0;
 		vrLen = 590;
 		vrLoc = 550;

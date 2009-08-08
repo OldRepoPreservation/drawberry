@@ -3,7 +3,7 @@
  *  nouvelleCourbe
  *
  *  Created by iBook G4 on 23/09/2006.
- *  Copyright 2006 __MyCompanyName__. All rights reserved.
+ *  Copyright 2006 Gael Ferre. All rights reserved.
  *
  */
 #ifndef vectorisation_H

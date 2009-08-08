@@ -20,14 +20,13 @@ public:
 		
 		
 		float l= n.magcarre();
-		float fHalf = 0.5f*l;// methode pour une approximation rapide de l' inverce de la racine carre
-		int i  = *(int*)&l;// ou comment gratter qq ms
+		float fHalf = 0.5f*l; // quick way to calculate the inverse of the square root
+		int i  = *(int*)&l;
 		i = 0x5f3759df - (i >> 1);
 		l = *(float*)&i;
 		l = l*(1.5f - fHalf*l*l);
 		n*=l;
 		
-	//	n.normaliz();
 		return n;
 	}
 };

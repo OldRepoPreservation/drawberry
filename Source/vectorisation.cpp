@@ -51,42 +51,37 @@ void lisse(nE* start,float marge) {
 	}while(!ok);
 }
 
-void vectoriz(nE* start,Moult * resultat,float marge)	{
+void vectoriz(nE* start,Moult * result,float marge)	{
 	if(start->next==NULL) return; 
-	resultat->add(new point(start->p));
+	result->add(new point(start->p));
 	marge*=marge;
 	nE * end=start;
 	
-	point courbe[4];
+	point curve[4];
 	point bk[2];
 	vec stv;
 	
 	while(1) {
-		courbe[0]= start->p;
-		stv=start->getDir()+courbe[0];
+		curve[0]= start->p;
+		stv=start->getDir()+curve[0];
 		while(1) {
 			end=end->next;
-			courbe[1]= stv;
-			courbe[3]= end->p;
+			curve[1]= stv;
+			curve[3]= end->p;
+			curve[2]= curve[3]-end->getDir();
 			
-		/*	float dis= courbe[0].distance(courbe[3])*0.1;
-			courbe[1]= start->getDir()*dis+courbe[0];
-			courbe[2]= courbe[3]-end->getDir()*dis;
-		*/	
-			courbe[2]= courbe[3]-end->getDir();
-			
-			if(!vectoriz(start,end,courbe,marge,8,100,true,true)) {
+			if(!vectoriz(start,end,curve,marge,8,100,true,true)) {
 				end=end->prev;
-				courbe[1]=bk[0];
-				courbe[2]=bk[1];
-				courbe[3]=end->p;
+				curve[1]=bk[0];
+				curve[2]=bk[1];
+				curve[3]=end->p;
 			//	vectoriz(start,end,courbe,marge*0.25,16,500,true,true);// tante d' avoir un meilleur resultat, je c pas si ca vraimant de l' effet.
 				break;
 			}else if(end->next==NULL) break;
-			bk[0]=courbe[1];bk[1]=courbe[2];
+			bk[0]=curve[1];bk[1]=curve[2];
 		}
 		for(int i=1;i!=4;i++) {
-			resultat->add(new point(courbe[i]));
+			result->add(new point(curve[i]));
 		}
 		if(end->next==NULL) break;
 		start=end;
@@ -94,7 +89,7 @@ void vectoriz(nE* start,Moult * resultat,float marge)	{
 }
 
 
-bool vectoriz(nE* start,nE* end, point * courbe,float margec,int ntest,int nit,bool lock1,bool lock2) {
+bool vectoriz(nE* start,nE* end, point * curve,float margec,int ntest,int nit,bool lock1,bool lock2) {
 	//start et end, les points repere de debut et fin sur la chaine de points a vectoriser
 	// courbe[4], le resultat trouvé, on peut donner une estimation de la position des points de controle pour aider,
 	//	ou une contrainte de direction en appliquant lock1 et/ou 2
@@ -114,8 +109,8 @@ bool vectoriz(nE* start,nE* end, point * courbe,float margec,int ntest,int nit,b
 		r[i]= ((float)i+1)/((float)ntest+2);
 	}
 		
-	if(lock1)l1=courbe[1]-courbe[0];
-	if(lock2)l2=courbe[2]-courbe[3];
+	if(lock1)l1=curve[1]-curve[0];
+	if(lock2)l2=curve[2]-curve[3];
 	
 	float t,t1,d,dec=5.0f/(float)ntest;
 	
@@ -123,7 +118,7 @@ bool vectoriz(nE* start,nE* end, point * courbe,float margec,int ntest,int nit,b
 		for(int i=0;i!=ntest;i++) { // trouve les points temoins
 			t=r[i];
 			t1 = 1.0f - t; 
-			zt[i]= courbe[0]*(t1*t1*t1) +courbe[1]*(3*t*t1*t1) +courbe[2]*(3*t*t*t1) +courbe[3]*(t*t*t);
+			zt[i]= curve[0]*(t1*t1*t1) +curve[1]*(3*t*t1*t1) +curve[2]*(3*t*t*t1) +curve[3]*(t*t*t);
 		//	mc[i]=start->p;
 			disc[i]=MAXFLOAT;// start->p.magcarre(zt[i]);
 		}
@@ -180,8 +175,8 @@ bool vectoriz(nE* start,nE* end, point * courbe,float margec,int ntest,int nit,b
 		if(lock1) {float prj=v1.dot(l1)/l1.magcarre(); v1= l1*prj;}
 		if(lock2) {float prj=v2.dot(l2)/l2.magcarre(); v2= l2*prj;}
 #endif
-		courbe[1]+=v1;
-		courbe[2]+=v2;
+		curve[1]+=v1;
+		curve[2]+=v2;
 	}
 	
 }

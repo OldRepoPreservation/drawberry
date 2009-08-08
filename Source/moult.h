@@ -38,7 +38,7 @@ struct ObjPtr {
 	}
 };
 
-typedef bool (*classDansMoult) (void*,void*,void*); // > croissant , < decroissant
+typedef bool (*classDansMoult) (void*,void*,void*);
 
 class Moult :public ObjPtr {
 public:
@@ -168,7 +168,7 @@ public:
 			cc= big;
 			big=c;
 			if(methodReclass(c->ptr,cc->ptr,context)) 
-				continue; // rien a classer on pass
+				continue; // nothing to class
 			for(;;) {
 				sp=c->ptr;c->ptr=cc->ptr;cc->ptr=sp;
 				c=cc;
@@ -214,7 +214,7 @@ public:
 	inline CAST* cur() {
 		return (CAST*)o->ptr;
 	}
-	inline CAST* next() {// null pour le dernier
+	inline CAST* next() {// null for the last one
 		o=o->next;
 		return (CAST*)o->ptr;
 	}

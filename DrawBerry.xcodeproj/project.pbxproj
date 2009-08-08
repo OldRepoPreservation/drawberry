@@ -216,6 +216,10 @@
 		6C34EAE70FAA1F3700F9C3C6 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */; };
 		6C34EBA40FAA4A5900F9C3C6 /* prefs.General.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */; };
 		6C34EBA50FAA4A5900F9C3C6 /* prefs.Templates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */; };
+		6C412BCE102E232A009F12DD /* moult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C412BCA102E232A009F12DD /* moult.cpp */; };
+		6C412BCF102E232A009F12DD /* nE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C412BCC102E232A009F12DD /* nE.cpp */; };
+		6C412BD3102E2345009F12DD /* vectorisation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C412BD1102E2345009F12DD /* vectorisation.cpp */; };
+		6C412BD6102E236C009F12DD /* DBPolylineTransformation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */; };
 		6C415A3C0D722AFA0014A6BB /* DBContextualViews.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C415A3A0D722AFA0014A6BB /* DBContextualViews.nib */; };
 		6C4A9DA30FD3D8B900CA2CBD /* DBSVGStringParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A9DA20FD3D8B900CA2CBD /* DBSVGStringParser.m */; };
 		6C4A9E7C0FD4260000CA2CBD /* rsvg-path.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A9E7A0FD4260000CA2CBD /* rsvg-path.c */; };
@@ -294,12 +298,6 @@
 		6C129CAC0E54E60D00AD5C61 /* NSBezierPath+GPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+GPC.h"; path = "Source/NSBezierPath+GPC.h"; sourceTree = "<group>"; };
 		6C129CAE0E54E62000AD5C61 /* NSColorList+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColorList+Extension.m"; path = "Source/NSColorList+Extension.m"; sourceTree = "<group>"; };
 		6C129CAF0E54E62000AD5C61 /* NSColorList+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColorList+Extension.h"; path = "Source/NSColorList+Extension.h"; sourceTree = "<group>"; };
-		6C129CB10E54E63B00AD5C61 /* vectorisation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vectorisation.cpp; path = Source/vectorisation.cpp; sourceTree = "<group>"; };
-		6C129CB20E54E63B00AD5C61 /* vectorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vectorisation.h; path = Source/vectorisation.h; sourceTree = "<group>"; };
-		6C129CB30E54E63B00AD5C61 /* moult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = moult.h; path = Source/moult.h; sourceTree = "<group>"; };
-		6C129CB40E54E63B00AD5C61 /* moult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = moult.cpp; path = Source/moult.cpp; sourceTree = "<group>"; };
-		6C129CB70E54E64F00AD5C61 /* nE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nE.h; path = Source/nE.h; sourceTree = "<group>"; };
-		6C129CB80E54E64F00AD5C61 /* nE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nE.cpp; path = Source/nE.cpp; sourceTree = "<group>"; };
 		6C129CBA0E54E67600AD5C61 /* DBFilterStackDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBFilterStackDataSource.m; path = Source/DBFilterStackDataSource.m; sourceTree = "<group>"; };
 		6C129CBB0E54E67600AD5C61 /* DBFilterStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBFilterStack.m; path = Source/DBFilterStack.m; sourceTree = "<group>"; };
 		6C129CBC0E54E67600AD5C61 /* DBFilterStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBFilterStack.h; path = Source/DBFilterStack.h; sourceTree = "<group>"; };
@@ -460,12 +458,6 @@
 		6C129DAC0E54ED4A00AD5C61 /* DBStroke+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBStroke+SVG.m"; path = "Source/DBStroke+SVG.m"; sourceTree = "<group>"; };
 		6C129DAD0E54ED4A00AD5C61 /* NSColor+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+SVG.h"; path = "Source/NSColor+SVG.h"; sourceTree = "<group>"; };
 		6C129DAE0E54ED4A00AD5C61 /* NSColor+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+SVG.m"; path = "Source/NSColor+SVG.m"; sourceTree = "<group>"; };
-		6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenHUD.h; path = Source/OpenHUD.h; sourceTree = "<group>"; };
-		6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTitledFrame.h; path = Source/NSTitledFrame.h; sourceTree = "<group>"; };
-		6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+FrameworkImage.h"; path = "Source/NSImage+FrameworkImage.h"; sourceTree = "<group>"; };
-		6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+FrameworkImage.m"; path = "Source/NSImage+FrameworkImage.m"; sourceTree = "<group>"; };
-		6C129DE00E54EE1100AD5C61 /* NSFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSFrameView.h; path = Source/NSFrameView.h; sourceTree = "<group>"; };
-		6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSThemeFrame.h; path = Source/NSThemeFrame.h; sourceTree = "<group>"; };
 		6C129DE20E54EE4000AD5C61 /* DBShapeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBShapeCell.h; path = Source/DBShapeCell.h; sourceTree = "<group>"; };
 		6C129DE30E54EE4000AD5C61 /* DBShapeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBShapeCell.m; path = Source/DBShapeCell.m; sourceTree = "<group>"; };
 		6C129DE40E54EE4000AD5C61 /* DBShapeCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBShapeCollection.h; path = Source/DBShapeCollection.h; sourceTree = "<group>"; };
@@ -609,6 +601,15 @@
 		6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = Source/UKPrefsPanel.m; sourceTree = "<group>"; };
 		6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.General.tiff; path = Ressource/Toolbar/prefs.General.tiff; sourceTree = "<group>"; };
 		6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.Templates.tiff; path = Ressource/Toolbar/prefs.Templates.tiff; sourceTree = "<group>"; };
+		6C412BCA102E232A009F12DD /* moult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = moult.cpp; path = Source/moult.cpp; sourceTree = "<group>"; };
+		6C412BCB102E232A009F12DD /* moult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = moult.h; path = Source/moult.h; sourceTree = "<group>"; };
+		6C412BCC102E232A009F12DD /* nE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nE.cpp; path = Source/nE.cpp; sourceTree = "<group>"; };
+		6C412BCD102E232A009F12DD /* nE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nE.h; path = Source/nE.h; sourceTree = "<group>"; };
+		6C412BD0102E233D009F12DD /* point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = point.h; path = Source/point.h; sourceTree = "<group>"; };
+		6C412BD1102E2345009F12DD /* vectorisation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vectorisation.cpp; path = Source/vectorisation.cpp; sourceTree = "<group>"; };
+		6C412BD2102E2345009F12DD /* vectorisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vectorisation.h; path = Source/vectorisation.h; sourceTree = "<group>"; };
+		6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPolylineTransformation.h; path = Source/DBPolylineTransformation.h; sourceTree = "<group>"; };
+		6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DBPolylineTransformation.mm; path = Source/DBPolylineTransformation.mm; sourceTree = "<group>"; };
 		6C415A3B0D722AFA0014A6BB /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBContextualViews.nib; sourceTree = "<group>"; };
 		6C415A3F0D722B130014A6BB /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBContextualViews.nib; sourceTree = "<group>"; };
 		6C4A9DA10FD3D8B900CA2CBD /* DBSVGStringParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSVGStringParser.h; path = Source/DBSVGStringParser.h; sourceTree = "<group>"; };
@@ -744,20 +745,19 @@
 				6C34EAE50FAA1F3700F9C3C6 /* UKPrefsPanel.h */,
 				6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */,
 				6C129CA40E54E5D400AD5C61 /* DBPrefKeys.h */,
-				6C825DF20EFD6323006057AB /* DrawKit Files */,
-				6C6171030E040E6800E7840C /* Boolean Ops */,
-				6CCF97C20DDF7E6600743CE9 /* Cocoa Extensions */,
-				6C7FB9E20D73615B00789CB3 /* Vectorization */,
-				6C4E9D570C2D3B3E00035195 /* CI Filter Classes */,
-				6CCAE8FE0C10B4D400F71D77 /* EM Classes */,
-				6C4AB2910BCCD0DE0035522E /* UI Subclasses */,
-				6C4AB2970BCCD10B0035522E /* Controllers */,
-				6CAEAB950FABA84600F700AD /* Magnifying glass */,
 				6C4AB2940BCCD1000035522E /* Views */,
 				6C4AB29A0BCCD1160035522E /* Models */,
+				6C4AB2970BCCD10B0035522E /* Controllers */,
+				6C825DF20EFD6323006057AB /* DrawKit Files */,
+				6C6171030E040E6800E7840C /* Boolean Ops */,
+				6C412BD7102E2386009F12DD /* Transform Polyline2Curve */,
+				6CCF97C20DDF7E6600743CE9 /* Cocoa Extensions */,
+				6C4E9D570C2D3B3E00035195 /* CI Filter Classes */,
+				6CCAE8FE0C10B4D400F71D77 /* Error Manager Classes */,
+				6C4AB2910BCCD0DE0035522E /* UI Subclasses */,
+				6CAEAB950FABA84600F700AD /* Magnifying glass */,
 				6CBF84740C56479D00F9554F /* Undo Manager */,
 				6CF709580E1E0ED400BDB401 /* SVG Additions */,
-				6CB4DFF70E5B8720008CBB3A /* HUD */,
 				6CEFC95B0E2F9D710057CDED /* Color Swatches & Shape Lib. */,
 			);
 			name = Classes;
@@ -988,6 +988,46 @@
 			name = Toolbar;
 			sourceTree = "<group>";
 		};
+		6C412BD7102E2386009F12DD /* Transform Polyline2Curve */ = {
+			isa = PBXGroup;
+			children = (
+				6C412BCA102E232A009F12DD /* moult.cpp */,
+				6C412BCB102E232A009F12DD /* moult.h */,
+				6C412BCC102E232A009F12DD /* nE.cpp */,
+				6C412BCD102E232A009F12DD /* nE.h */,
+				6C412BD0102E233D009F12DD /* point.h */,
+				6C412BD1102E2345009F12DD /* vectorisation.cpp */,
+				6C412BD2102E2345009F12DD /* vectorisation.h */,
+				6C412BD4102E236C009F12DD /* DBPolylineTransformation.h */,
+				6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */,
+			);
+			name = "Transform Polyline2Curve";
+			sourceTree = "<group>";
+		};
+		6C412BD8102E23C3009F12DD /* Array Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6C129D410E54EA3200AD5C61 /* DBReverseArrayController.h */,
+				6C129D420E54EA3200AD5C61 /* DBReverseArrayController.m */,
+			);
+			name = "Array Controller";
+			sourceTree = "<group>";
+		};
+		6C412BD9102E23CD009F12DD /* App & Doc Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6CF78B090FA5016F00CC00FB /* DBDocumentController.h */,
+				6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */,
+				6C129D270E54E98100AD5C61 /* DBApplicationController.h */,
+				6C129D260E54E98100AD5C61 /* DBApplicationController.m */,
+				6C129D290E54E98100AD5C61 /* DBApplication.h */,
+				6C129D280E54E98100AD5C61 /* DBApplication.m */,
+				6C129D320E54E9C700AD5C61 /* DBDocument.h */,
+				6C129D330E54E9C700AD5C61 /* DBDocument.m */,
+			);
+			name = "App & Doc Controller";
+			sourceTree = "<group>";
+		};
 		6C4A9EA60FD42B7E00CA2CBD /* Objects Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,7 +1037,7 @@
 			name = "Objects Controller";
 			sourceTree = "<group>";
 		};
-		6C4A9EA70FD42BA200CA2CBD /* UI Controllers */ = {
+		6C4A9EA70FD42BA200CA2CBD /* Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6C129D350E54E9E200AD5C61 /* DBInspectorController.h */,
@@ -1017,7 +1057,7 @@
 				6C6909B90FA7818600F10440 /* DBTemplateManager.h */,
 				6C6909BA0FA7818600F10440 /* DBTemplateManager.m */,
 			);
-			name = "UI Controllers";
+			name = "Window Controllers";
 			sourceTree = "<group>";
 		};
 		6C4AB2910BCCD0DE0035522E /* UI Subclasses */ = {
@@ -1062,18 +1102,10 @@
 		6C4AB2970BCCD10B0035522E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6C412BD9102E23CD009F12DD /* App & Doc Controller */,
 				6C4A9EA60FD42B7E00CA2CBD /* Objects Controller */,
-				6C4A9EA70FD42BA200CA2CBD /* UI Controllers */,
-				6C129D410E54EA3200AD5C61 /* DBReverseArrayController.h */,
-				6C129D420E54EA3200AD5C61 /* DBReverseArrayController.m */,
-				6CF78B090FA5016F00CC00FB /* DBDocumentController.h */,
-				6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */,
-				6C129D270E54E98100AD5C61 /* DBApplicationController.h */,
-				6C129D260E54E98100AD5C61 /* DBApplicationController.m */,
-				6C129D290E54E98100AD5C61 /* DBApplication.h */,
-				6C129D280E54E98100AD5C61 /* DBApplication.m */,
-				6C129D320E54E9C700AD5C61 /* DBDocument.h */,
-				6C129D330E54E9C700AD5C61 /* DBDocument.m */,
+				6C4A9EA70FD42BA200CA2CBD /* Window Controllers */,
+				6C412BD8102E23C3009F12DD /* Array Controller */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1168,19 +1200,6 @@
 			name = "Boolean Ops";
 			sourceTree = "<group>";
 		};
-		6C7FB9E20D73615B00789CB3 /* Vectorization */ = {
-			isa = PBXGroup;
-			children = (
-				6C129CB10E54E63B00AD5C61 /* vectorisation.cpp */,
-				6C129CB20E54E63B00AD5C61 /* vectorisation.h */,
-				6C129CB30E54E63B00AD5C61 /* moult.h */,
-				6C129CB40E54E63B00AD5C61 /* moult.cpp */,
-				6C129CB70E54E64F00AD5C61 /* nE.h */,
-				6C129CB80E54E64F00AD5C61 /* nE.cpp */,
-			);
-			name = Vectorization;
-			sourceTree = "<group>";
-		};
 		6C825DF20EFD6323006057AB /* DrawKit Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1256,19 +1275,6 @@
 			name = "Magnifying glass";
 			sourceTree = "<group>";
 		};
-		6CB4DFF70E5B8720008CBB3A /* HUD */ = {
-			isa = PBXGroup;
-			children = (
-				6C129DDB0E54EDCC00AD5C61 /* OpenHUD.h */,
-				6C129DDC0E54EDDE00AD5C61 /* NSTitledFrame.h */,
-				6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */,
-				6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */,
-				6C129DE00E54EE1100AD5C61 /* NSFrameView.h */,
-				6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */,
-			);
-			name = HUD;
-			sourceTree = "<group>";
-		};
 		6CBF84740C56479D00F9554F /* Undo Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1285,7 +1291,7 @@
 			name = "Undo Manager";
 			sourceTree = "<group>";
 		};
-		6CCAE8FE0C10B4D400F71D77 /* EM Classes */ = {
+		6CCAE8FE0C10B4D400F71D77 /* Error Manager Classes */ = {
 			isa = PBXGroup;
 			children = (
 				6C129CD70E54E70A00AD5C61 /* EMErrorManager.h */,
@@ -1295,7 +1301,7 @@
 				6C129CD90E54E70A00AD5C61 /* EMError.h */,
 				6C129CDA0E54E70A00AD5C61 /* EMError.m */,
 			);
-			name = "EM Classes";
+			name = "Error Manager Classes";
 			sourceTree = "<group>";
 		};
 		6CCF97C20DDF7E6600743CE9 /* Cocoa Extensions */ = {
@@ -1670,6 +1676,10 @@
 				6C4A9E7C0FD4260000CA2CBD /* rsvg-path.c in Sources */,
 				6C8083CA0FE2F735007D6E75 /* NSAffineTransform+SVG.m in Sources */,
 				6C8083D50FE2F9B1007D6E75 /* NSString+Extensions.m in Sources */,
+				6C412BCE102E232A009F12DD /* moult.cpp in Sources */,
+				6C412BCF102E232A009F12DD /* nE.cpp in Sources */,
+				6C412BD3102E2345009F12DD /* vectorisation.cpp in Sources */,
+				6C412BD6102E236C009F12DD /* DBPolylineTransformation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

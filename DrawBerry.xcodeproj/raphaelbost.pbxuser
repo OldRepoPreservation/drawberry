@@ -14,6 +14,7 @@
 		activeExecutable = 6CF834F40BC7C1100058CCFA /* DrawBerry */;
 		activeTarget = 8D15AC270486D014006FF6A4 /* DrawBerry */;
 		addToTargets = (
+			8D15AC270486D014006FF6A4 /* DrawBerry */,
 		);
 		breakpoints = (
 			6CCDD8620F9A7774000FF25F /* [NSException raise] */,
@@ -218,8 +219,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 269798269;
-			PBXWorkspaceStateSaveDate = 269798269;
+			PBXPerProjectTemplateStateSaveDate = 271458976;
+			PBXWorkspaceStateSaveDate = 271458976;
 		};
 		perUserProjectItems = {
 			6C423D960FFEB3E3000DDAC3 = 6C423D960FFEB3E3000DDAC3 /* PBXTextBookmark */;
@@ -401,7 +402,7 @@
 			6CB72F041003E5D000420A10 = 6CB72F041003E5D000420A10 /* PBXTextBookmark */;
 			6CB72F061003E5D000420A10 = 6CB72F061003E5D000420A10 /* PBXTextBookmark */;
 			6CB72F131003E67F00420A10 = 6CB72F131003E67F00420A10 /* PBXTextBookmark */;
-			6CB89BE71014CB9B008B388F /* PBXTextBookmark */ = 6CB89BE71014CB9B008B388F /* PBXTextBookmark */;
+			6CB89BE71014CB9B008B388F = 6CB89BE71014CB9B008B388F /* PBXTextBookmark */;
 			6CC902700FC9E16B00F8F49C = 6CC902700FC9E16B00F8F49C /* PBXTextBookmark */;
 			6CC902740FC9E16B00F8F49C = 6CC902740FC9E16B00F8F49C /* PBXTextBookmark */;
 			6CCD46800FB4CF3400256EBC = 6CCD46800FB4CF3400256EBC /* PBXTextBookmark */;
@@ -549,6 +550,12 @@
 		};
 	};
 	6C129CB30E54E63B00AD5C61 /* moult.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = moult.h;
+		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/moult.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 3528}}";
 			sepNavSelRange = "{147, 145}";
@@ -556,6 +563,12 @@
 		};
 	};
 	6C129CB70E54E64F00AD5C61 /* nE.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = nE.h;
+		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/nE.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 476}}";
 			sepNavSelRange = "{528, 0}";
@@ -563,6 +576,12 @@
 		};
 	};
 	6C129CB80E54E64F00AD5C61 /* nE.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = nE.cpp;
+		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/nE.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {759, 364}}";
 			sepNavSelRange = "{0, 0}";
@@ -1410,28 +1429,6 @@
 			sepNavVisRange = "{1380, 678}";
 		};
 	};
-	6C129DDD0E54EDF300AD5C61 /* NSImage+FrameworkImage.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {710, 430}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 449}";
-			sepNavWindowFrame = "{{84, 252}, {750, 558}}";
-		};
-	};
-	6C129DDE0E54EDF300AD5C61 /* NSImage+FrameworkImage.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {748, 462}}";
-			sepNavSelRange = "{7, 8}";
-			sepNavVisRange = "{359, 515}";
-		};
-	};
-	6C129DE10E54EE1F00AD5C61 /* NSThemeFrame.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {748, 3010}}";
-			sepNavSelRange = "{140, 13}";
-			sepNavVisRange = "{0, 337}";
-		};
-	};
 	6C129DE30E54EE4000AD5C61 /* DBShapeCell.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {748, 1218}}";
@@ -1600,9 +1597,9 @@
 	};
 	6C34EAE50FAA1F3700F9C3C6 /* UKPrefsPanel.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1008, 896}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1008, 868}}";
 			sepNavSelRange = "{1405, 0}";
-			sepNavVisRange = "{1303, 1140}";
+			sepNavVisRange = "{1303, 1093}";
 		};
 	};
 	6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */ = {
@@ -1610,6 +1607,41 @@
 			sepNavIntBoundsRect = "{{0, 0}, {906, 4578}}";
 			sepNavSelRange = "{8007, 7}";
 			sepNavVisRange = "{10504, 817}";
+		};
+	};
+	6C412BCB102E232A009F12DD /* moult.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 3500}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 468}";
+		};
+	};
+	6C412BD0102E233D009F12DD /* point.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1904}}";
+			sepNavSelRange = "{6752, 0}";
+			sepNavVisRange = "{0, 579}";
+		};
+	};
+	6C412BD1102E2345009F12DD /* vectorisation.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 2660}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 473}";
+		};
+	};
+	6C412BD2102E2345009F12DD /* vectorisation.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 346}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 443}";
+		};
+	};
+	6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1498}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 467}";
 		};
 	};
 	6C423D960FFEB3E3000DDAC3 /* PBXTextBookmark */ = {
@@ -1850,12 +1882,6 @@
 		name = DBRectangle.m;
 		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/DBRectangle.m;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {912, 7406}}";
-			sepNavSelRange = "{8130, 89}";
-			sepNavVisRange = "{7905, 664}";
-			sepNavWindowFrame = "{{582, 91}, {770, 787}}";
-		};
 	};
 	6C42403E100211E3000DDAC3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2297,12 +2323,6 @@
 		name = DBText.m;
 		path = /Users/raphaelbost/Bazaar/DrawBerry/Source/DBText.m;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {690, 4746}}";
-			sepNavSelRange = "{7388, 0}";
-			sepNavVisRange = "{5539, 1163}";
-			sepNavWindowFrame = "{{84, 82}, {749, 728}}";
-		};
 	};
 	6C4241FC1002209E000DDAC3 /* DBToolsController.m */ = {
 		isa = PBXFileReference;

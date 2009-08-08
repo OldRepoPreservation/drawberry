@@ -487,7 +487,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 #pragma mark Convert
 
-- (DBShape *)convert
+- (DBBezierCurve *)convertToBezierCurve
 {
 	DBShape *shape;
 	if(distanceBetween(_point2, _radiusKnob) == 0){

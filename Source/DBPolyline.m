@@ -8,7 +8,13 @@
 
 #import "DBPolyline.h"
 
+#import "DBBezierCurve.h"
+
 #import "AJHBezierUtils.h"
+
+#import "DBPolylineTransformation.h"
+
+#define DBPOLY2CURVE_PRECISION 1.0f
 
 @class NSBitmapGraphicsContext;
 
@@ -398,7 +404,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	}
 	
 	if(didEdit){
-		[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
+		[(DBPolyline *)[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
 		[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];		
 	}
 	
@@ -1058,7 +1064,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 #pragma mark Undo & Redo
 - (void)setPoint:(NSPoint)p atIndex:(int)i
 {
-	[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i].point atIndex:i];
+	[(DBPolyline *) [[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i].point atIndex:i];
 	[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];
 	
 	_points[i].point = p;
@@ -1390,6 +1396,53 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	}
 	
 	[self updateShape];
+}
+
+#pragma mark Convert to bezier curve
+
+- (DBBezierCurve *)convertToCurve
+{
+	NSBezierPath *path;
+	
+	path = [[NSBezierPath alloc] init];
+	NSPoint *pointStack = NULL;
+	int i = 0,j = 0;
+	
+	for (i = 0; i < _pointCount; i++) {
+		if(pointStack){
+			if(_points[i].closePath){
+				// convert polyline in pointStack into curve
+				[path appendBezierPath:[NSBezierPath transformPointsToCurve:pointStack count:j+1 precision:DBPOLY2CURVE_PRECISION]];
+				j = 0;
+				free(pointStack);
+				pointStack = NULL;
+			}else{ // add a point to the stack
+				pointStack = realloc(pointStack, (j+1)*sizeof(NSPoint));
+				pointStack[j] = _points[i].point;
+			}
+		}else{ // initialize point stack and add a point
+			pointStack = malloc(sizeof(NSPoint));
+			j = 0;
+			pointStack[0] = _points[i].point;
+		}
+	}
+	
+	// be sure to free all
+	if(pointStack){
+		free(pointStack);
+	}
+	
+	if(![path isEmpty]){
+		DBBezierCurve *curve;
+		
+		curve = [[DBBezierCurve alloc] initWithBezierPath:path];
+		[path release];
+		
+		return [curve autorelease];
+	}else {
+		return nil;
+	}
+
 }
 
 @end

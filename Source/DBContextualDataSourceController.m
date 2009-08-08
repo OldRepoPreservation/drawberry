@@ -197,7 +197,7 @@
 
 - (IBAction)convert:(id)sender
 {
-	[_mainView convertSelectedShapes];
+	[_mainView convertSelectedShapesToBezier];
 }
 
 - (IBAction)align:(id)sender

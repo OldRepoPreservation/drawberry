@@ -15,6 +15,7 @@
 #import "DBShape.h"
 #import "DBRectangle.h"
 #import "DBOval.h"
+#import "DBPolyline.h"
 
 #import "EMErrorManager.h"
 
@@ -82,10 +83,10 @@ NSString *DBShapePboardType = @"ShapePboardType";
 
 - (IBAction)convertRectInPath:(id)sender
 {
-	[self convertSelectedShapes];
+	[self convertSelectedShapesToBezier];
 }                                
 
-- (void)convertSelectedShapes
+- (void)convertSelectedShapesToBezier
 {
 	NSMutableArray *shapesToConvert = [[NSMutableArray alloc] init];
 	NSMutableArray *convertedShapes = [[NSMutableArray alloc] init];
@@ -96,12 +97,38 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	while((shape = [e nextObject])){
 		if([shape isKindOfClass:[DBRectangle class]] || [shape isKindOfClass:[DBOval class]]){
 			[shapesToConvert addObject:shape];
-			[convertedShapes addObject:[[(DBRectangle *)shape convert] autorelease]];
+			[convertedShapes addObject:[[(DBRectangle *)shape convertToBezierCurve] autorelease]];
 		}
 	}
 	
 	[self replaceShapes:shapesToConvert byShapes:convertedShapes actionName:@"Convert"];
 		
+	// add undo
+	
+	[self deselectAllShapes];
+	[shapesToConvert release];
+	[convertedShapes release];
+	
+	[_dataSourceController updateSelection];
+}
+
+- (void)convertSelectedShapesToCurve
+{
+	NSMutableArray *shapesToConvert = [[NSMutableArray alloc] init];
+	NSMutableArray *convertedShapes = [[NSMutableArray alloc] init];
+	
+	NSEnumerator *e = [_selectedShapes objectEnumerator];
+	DBShape * shape;
+	
+	while((shape = [e nextObject])){
+		if([shape isKindOfClass:[DBPolyline class]]){
+			[shapesToConvert addObject:shape];
+			[convertedShapes addObject:[[shape convertToCurve] autorelease]];
+		}
+	}
+	
+	[self replaceShapes:shapesToConvert byShapes:convertedShapes actionName:@"Convert"];
+	
 	// add undo
 	
 	[self deselectAllShapes];

@@ -8,6 +8,7 @@
 
 #import "DBShape.h"
 
+@class DBBezierCurve;
 
 @interface DBRectangle : DBShape {
 	NSPoint _point1, _point2, _point3, _point4; 
@@ -20,5 +21,5 @@
 - (void)updatePath;
 - (void)putPathInRect:(NSRect)newRect;
 
-- (DBShape *)convert;
+- (DBBezierCurve *)convertToBezierCurve;
 @end

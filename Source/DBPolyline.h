@@ -15,6 +15,8 @@ typedef struct _DBPolylinePoint {
 	BOOL subPathStart;
 } DBPolylinePoint;
 
+@class DBBezierCurve;
+
 @interface DBPolyline : DBShape <NSCoding>{
 	DBPolylinePoint *_points;
 	int _pointCount;
@@ -49,6 +51,9 @@ typedef struct _DBPolylinePoint {
 
 - (void)deletePathBetween:(int)index1 and:(int)index2;
 - (NSBezierPath *)pathFragmentBetween:(int)index1 and:(int)index2;
+
+
+- (DBBezierCurve *)convertToCurve;
 @end
 
 static int DBSubPolyPathBegging(DBPolylinePoint *points, int pCount)

@@ -15,7 +15,7 @@ extern NSString *DBShapePboardType;
 - (void)deleteSelectedShapes;
 - (void)writeShapes:(NSArray *)shapes toPasteboard:(NSPasteboard *)pb;
 - (NSArray *)shapesFromPasteboard:(NSPasteboard *)pb;
-- (void)convertSelectedShapes;                                                                           
+- (void)convertSelectedShapesToBezier;                                                                           
 
 - (void)replaceShapes:(NSArray *)shapes byShapes:(NSArray *)newShapes actionName:(NSString *)actionName;
 - (void)replaceShapes:(NSArray *)shapes byShape:(DBShape *)newShape actionName:(NSString *)actionName;

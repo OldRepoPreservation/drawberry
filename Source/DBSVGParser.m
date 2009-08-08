@@ -154,8 +154,8 @@
 		
 		if(af){
 			
-			DBPolyline *rectPolyline;
-			rectPolyline = (DBPolyline *)[rect convert];
+			DBBezierCurve *rectPolyline;
+			rectPolyline = [rect convertToBezierCurve];
 			[rectPolyline setStroke:[rect stroke]];
 			[rectPolyline setFills:[rect fills]];
 

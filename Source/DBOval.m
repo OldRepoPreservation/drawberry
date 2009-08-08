@@ -354,7 +354,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 #pragma mark Convert
 
-- (DBShape *)convert
+- (DBBezierCurve *)convertToBezierCurve
 {
 	DBShape *shape;
 	NSAffineTransform *af;

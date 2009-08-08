@@ -598,8 +598,8 @@
 		[_editingShape addPoint:self];
 	}else if([[theEvent characters] isEqualTo:@"r"]){
 	 	[_editingShape replaceInView:self];
-	}else if([[theEvent characters] isEqualTo:@"c"]){
-		[self convertSelectedShapes];
+	}else if([[theEvent characters] isEqualTo:@"c"]){ // should we add the 'c' shortcut ?
+//		[self convertSelectedShapesToBezier];
 	}else{
 		[super keyDown:theEvent];
 	}

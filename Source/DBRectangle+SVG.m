@@ -48,7 +48,7 @@
 {
 	NSString *pathString;
 	
-	pathString = [(DBPolyline *)[self convert] SVGPathString];
+	pathString = [[self convertToBezierCurve] SVGPathString];
 	
 	return [NSString stringWithFormat:@"<path  style=\"%@\" \n d=\"%@\"  />\n",[self SVGStyleString],pathString];
 }

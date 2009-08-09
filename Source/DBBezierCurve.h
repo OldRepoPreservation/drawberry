@@ -10,8 +10,12 @@
 
 typedef struct _DBCurvePoints {
 	NSPoint	point;
+	
+	BOOL hasControlPoint1;
 	NSPoint controlPoint1;
+	BOOL hasControlPoint2;
 	NSPoint controlPoint2;
+
 	BOOL hasControlPoints;
 	
 	BOOL closePath;
@@ -64,15 +68,18 @@ static DBCurvePoint DBMakeCurvePoint(NSPoint p){
 	cp.controlPoint2 = p;
 	cp.closePath = NO;
 	cp.subPathStart = NO;
+	cp.hasControlPoints = NO;
+	cp.hasControlPoint1 = NO;
+	cp.hasControlPoint2 = NO;
 	
-	return cp;
+	;return cp;
 }
 
 static DBCurvePoint DBMakeAnotherCurvePoint(NSPoint p){
 	DBCurvePoint cp;
 	cp.point = p;
-	cp.controlPoint1 = NSMakePoint(p.x+10, p.y+15);
-	cp.controlPoint2 = NSMakePoint(p.x-10, p.y-15);
+	cp.controlPoint1 = NSMakePoint(p.x+10, p.y+15); cp.hasControlPoint1 = YES;
+	cp.controlPoint2 = NSMakePoint(p.x-10, p.y-15); cp.hasControlPoint2 = YES;
 	cp.closePath = NO;
 	cp.subPathStart = NO;
 

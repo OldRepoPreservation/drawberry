@@ -317,6 +317,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	_pointCount = [decoder decodeIntForKey:@"Point count"];
 	_lineIsClosed = [decoder decodeBoolForKey:@"Close Path"];
 
+	NSString *version;
+	version = [decoder decodeObjectForKey:@"Version"];
+
 	NSArray *array;
 	array = [decoder decodeObjectForKey:@"Points"];
 	_points = malloc(_pointCount*sizeof(DBCurvePoint));
@@ -335,10 +338,19 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		_points[i].controlPoint2 = NSPointFromString(pointString);
 		num = [e nextObject];
 		_points[i].hasControlPoints = [num boolValue];
+
+		if([version isEqual:@"0.9"]){
+			num = [e nextObject];
+			_points[i].hasControlPoint1 = [num boolValue];
+			num = [e nextObject];
+			_points[i].hasControlPoint2 = [num boolValue];
+		}
+		
 		num = [e nextObject];
 		_points[i].closePath = [num boolValue];
 		num = [e nextObject];
 		_points[i].subPathStart = [num boolValue];
+		
 		i ++;
 	}
 	 
@@ -348,6 +360,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
 	[super encodeWithCoder:encoder];
+	
+	[encoder encodeObject:@"0.9" forKey:@"Version"];
 	
 	[encoder encodeInt:_pointCount forKey:@"Point count"];
 	[encoder encodeBool:_lineIsClosed forKey:@"Close Path"];
@@ -371,6 +385,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		[array addObject:pointString];
 		
 		[array addObject:[NSNumber numberWithBool:_points[i].hasControlPoints]];
+		
+		[array addObject:[NSNumber numberWithBool:_points[i].hasControlPoint1]]; // introduced in version 0.9
+		[array addObject:[NSNumber numberWithBool:_points[i].hasControlPoint2]]; // introduced in version 0.9
+
 		[array addObject:[NSNumber numberWithBool:_points[i].closePath]];
 		[array addObject:[NSNumber numberWithBool:_points[i].subPathStart]];
 		
@@ -482,6 +500,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			if([theEvent type] != NSLeftMouseUp){
 				controlPointSet = YES;
 				_points[_pointCount-2].hasControlPoints = YES;
+				_points[_pointCount-2].hasControlPoint1 = YES;
+				_points[_pointCount-2].hasControlPoint2 = YES;
 			}
 			//_points[_pointCount-1] = _points[_pointCount-2];
 	    }else if([theEvent type] == NSMouseMoved){
@@ -511,7 +531,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	NSPoint point;
 	BOOL canConvert, didEdit;     
 	int i;
-	int controlPointIndex;
+	int controlPointIndex = -1;
 	NSPoint p;
 	NSPoint oldPoint;
 	NSSize previousSize, newSize;
@@ -530,29 +550,34 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 	
 	for( i = 0; i < _pointCount; i++ )
-	{
-	    if(_points[i].hasControlPoints){
-		 	p = _points[i].controlPoint1;
-			if(DBPointIsOnKnobAtPointZoom(point,p,[view zoom]))
+	{		
+//		if(_points[i].hasControlPoints){
+			if(DBPointIsOnKnobAtPointZoom(point,_points[i].controlPoint1,[view zoom]))
 			{   
 				controlPointIndex = 1;
-				break;
 			}
-			p = _points[i].controlPoint2;
-			if(DBPointIsOnKnobAtPointZoom(point,p, [view zoom]))
+			if(DBPointIsOnKnobAtPointZoom(point,_points[i].controlPoint2, [view zoom]))
 			{   
-				controlPointIndex = 2;
-				break;
+				if(controlPointIndex == 1){ // point also on cp 1
+					// get the nearest one
+					controlPointIndex = (distanceBetween(p, _points[i].controlPoint1) <= distanceBetween(p, _points[i].controlPoint2) ) ? 1 : 2;
+				}else{
+					controlPointIndex = 2;
+				}
+			}
+//		}
+		if(DBPointIsOnKnobAtPointZoom(point, _points[i].point,[view zoom])) // priority to the main control point
+		{   
+			if(([theEvent modifierFlags] & NSShiftKeyMask) && controlPointIndex != -1){
+				// if shift pressed then select cp 1 or 2
+			}else{
+				controlPointIndex = 0;
 			}
 		}
 		
-		p = _points[i].point;
-
-		if(DBPointIsOnKnobAtPointZoom(point,p,[view zoom]))
-		{   
-			controlPointIndex = 0;
+		if(controlPointIndex != -1) // control point found
 			break;
-		}
+
    	}
 	
 	if(i >= _pointCount)
@@ -580,18 +605,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				}                            
 
 				newPoints = insertCurvePointAtIndex(nearestPoint, seg+1, newPoints, _pointCount);
-//				_pointCount++; 
 				newPoints[seg] = _points[seg];
 				newPoints[seg+2] = _points[seg+1];
 				newPoints[seg+1].closePath = NO;
-				
-				// newPoints[j] = nearestPoint;
-				// 
-				// for(;j < _pointCount; j++)
-				// {
-				// 	newPoints[j] =  _points[j+1];
-				// }                                
-				// 
 
 				newPoints[seg].controlPoint1 = beforePt.controlPoint1;
 				newPoints[seg+2].controlPoint2 = afterPt.controlPoint2;
@@ -645,11 +661,11 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 
 		if((xOffset*xOffset + yOffset*yOffset) >= 1){
 			didEdit = YES;
-
+			
 			switch(controlPointIndex){
 				case 0 :	oldPoint = _points[i].point;  _points[i].point = point; break;
-				case 1 :	oldPoint = _points[i].controlPoint1;  _points[i].controlPoint1 = point; break;
-				case 2 :	oldPoint = _points[i].controlPoint2;  _points[i].controlPoint2 = point; break;
+				case 1 :	oldPoint = _points[i].controlPoint1;  _points[i].controlPoint1 = point; _points[i].hasControlPoint1 = YES; break;
+				case 2 :	oldPoint = _points[i].controlPoint2;  _points[i].controlPoint2 = point; _points[i].hasControlPoint2 = YES; break;
 				default : 	oldPoint = _points[i].point;  _points[i].point = point; break;
 			}       
         
@@ -672,22 +688,24 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
             
 	            if([theEvent modifierFlags] & NSAlternateKeyMask){
 
-				}else if([theEvent modifierFlags] & NSControlKeyMask){
+				}else if([theEvent modifierFlags] & NSControlKeyMask || NSEqualPoints(oldPoint, _points[i].point)){
 					_points[i].controlPoint2 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
 				}else{
-					angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint1);
-					controlPoint = _points[i].controlPoint2;
-			
-					controlPoint.x -= curvePoint.x;
-					controlPoint.y -= curvePoint.y;
+					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint2) && !NSEqualPoints(oldPoint, _points[i].point)){
+						angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint1);
+						controlPoint = _points[i].controlPoint2;
+				
+						controlPoint.x -= curvePoint.x;
+						controlPoint.y -= curvePoint.y;
 
-		            rotatedPoint.x = controlPoint.x*cos(angle)-controlPoint.y*sin(angle);
-					rotatedPoint.y = controlPoint.x*sin(angle)+controlPoint.y*cos(angle);
-			
+						rotatedPoint.x = controlPoint.x*cos(angle)-controlPoint.y*sin(angle);
+						rotatedPoint.y = controlPoint.x*sin(angle)+controlPoint.y*cos(angle);
+				
 
-					rotatedPoint.x += curvePoint.x;
-					rotatedPoint.y += curvePoint.y;
-					_points[i].controlPoint2 = rotatedPoint;
+						rotatedPoint.x += curvePoint.x;
+						rotatedPoint.y += curvePoint.y;
+						_points[i].controlPoint2 = rotatedPoint;
+					}
 				}
 			}else if(controlPointIndex == 2){  
 				NSPoint curvePoint;
@@ -697,22 +715,24 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
             
 	            if([theEvent modifierFlags] & NSAlternateKeyMask){
 			
-				}else if([theEvent modifierFlags] & NSControlKeyMask){
+				}else if([theEvent modifierFlags] & NSControlKeyMask || NSEqualPoints(oldPoint, _points[i].point)){
 	            	_points[i].controlPoint1 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
 		   		}else{
-					angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint2);
-					controlPoint = _points[i].controlPoint1;
-			
-					controlPoint.x -= curvePoint.x;
-					controlPoint.y -= curvePoint.y;
+					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint1) && !NSEqualPoints(oldPoint, _points[i].point)){
+						angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint2);
+						controlPoint = _points[i].controlPoint1;
+				
+						controlPoint.x -= curvePoint.x;
+						controlPoint.y -= curvePoint.y;
 
-		            rotatedPoint.x = controlPoint.x*cos(angle)-controlPoint.y*sin(angle);
-					rotatedPoint.y = controlPoint.x*sin(angle)+controlPoint.y*cos(angle);
-			
+						rotatedPoint.x = controlPoint.x*cos(angle)-controlPoint.y*sin(angle);
+						rotatedPoint.y = controlPoint.x*sin(angle)+controlPoint.y*cos(angle);
+				
 
-					rotatedPoint.x += curvePoint.x;
-					rotatedPoint.y += curvePoint.y;
-					_points[i].controlPoint1 = rotatedPoint;
+						rotatedPoint.x += curvePoint.x;
+						rotatedPoint.y += curvePoint.y;
+						_points[i].controlPoint1 = rotatedPoint;
+					}
 				}
 			}   
 		
@@ -1093,7 +1113,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	for( i = 0; i < _pointCount; i++ )
 	{    
 		
-		if(_points[i].hasControlPoints){
+		if(_points[i].hasControlPoint1){
 			p = _points[i].controlPoint1;
 			if(canConvert)
 			{
@@ -1101,7 +1121,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			}
 		
 			[DBShape drawWhiteKnobAtPoint:p];
-			
+		}	
+		
+		if(_points[i].hasControlPoint2){
 			p = _points[i].controlPoint2;
 			if(canConvert)
 			{
@@ -1267,7 +1289,16 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			beginningPoint = i;
 			
 		}else{
-			[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+			
+			if(!_points[i-1].hasControlPoint1 && !_points[i].hasControlPoint2){
+				[_path lineToPoint:_points[i].point];
+			}else if (!_points[i-1].hasControlPoint1) {
+				[_path curveToPoint:point controlPoint1:controlPoint2 controlPoint2:controlPoint2];
+			}else if (!_points[i].hasControlPoint2) {
+				[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint1];
+			}else{
+				[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+			}
 			
 			controlPoint1 = _points[i].controlPoint1;
 			if(canConvert)
@@ -1291,7 +1322,16 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 					controlPoint2 = [view viewCoordinatesFromCanevasCoordinates:controlPoint2];
 				}
 				
-				[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+				if(!_points[i].hasControlPoint1 && !_points[beginningPoint].hasControlPoint2){
+					[_path lineToPoint:_points[i].point];
+				}else if (!_points[i].hasControlPoint1) {
+					[_path curveToPoint:point controlPoint1:controlPoint2 controlPoint2:controlPoint2];
+				}else if (!_points[beginningPoint].hasControlPoint2) {
+					[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint1];
+				}else{
+					[_path curveToPoint:point controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+				}
+
 				[_path closePath];				
 			}
 		}

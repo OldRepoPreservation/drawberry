@@ -186,26 +186,15 @@
 		NSString *pathString;
 		
 		pathString = [newAttr objectForKey:@"d"];
-		if([pathString rangeOfString:@"c" options:NSCaseInsensitiveSearch].location == NSNotFound){ //polyline
-			DBPolyline *polyline;
-			polyline = [[DBPolyline alloc] initWithSVGAttributes:newAttr];
-			
-			[_currentLayer addShape:polyline];
-			
-			if(af){
-				[polyline applyTransform:af];
-			}
-			[polyline release];
-		}else{ // bezier curve
-			DBBezierCurve *bezierCurve;
-			bezierCurve = [[DBBezierCurve alloc] initWithSVGAttributes:newAttr];
-		
-			[_currentLayer addShape:bezierCurve];
-			if(af){
-				[bezierCurve applyTransform:af];
-			}
-			[bezierCurve release];
+
+		DBBezierCurve *bezierCurve;
+		bezierCurve = [[DBBezierCurve alloc] initWithSVGAttributes:newAttr];
+	
+		[_currentLayer addShape:bezierCurve];
+		if(af){
+			[bezierCurve applyTransform:af];
 		}
+		[bezierCurve release];
 	}
 	
 	[af release];

@@ -11,4 +11,5 @@
 #import "DBBezierCurve.h"
 
 @interface DBBezierCurve (SVGAdditions)
+- (NSString *)SVGPathString;
 @end

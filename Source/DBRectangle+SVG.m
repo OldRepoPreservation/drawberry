@@ -8,7 +8,7 @@
 
 #import "DBRectangle+SVG.h"
 #import "DBShape+SVG.h"
-#import "DBPolyline+SVG.h"
+#import "DBBezierCurve+SVG.h"
 
 
 @implementation DBRectangle (SVGAdditions)

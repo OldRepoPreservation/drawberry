@@ -9,7 +9,6 @@
 #import "DBRectangle.h"
 #import "DBShape.h"  
 
-#import "DBPolyline.h"
 #import "DBBezierCurve.h"
 
 #import "NSBezierPath+Extensions.h"

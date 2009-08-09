@@ -9,7 +9,6 @@
 #import "DBStroke.h"
 
 #import "DBShape.h"
-#import "DBPolyline.h"
 
 #import "NSBezierPath+Extensions.h"
 
@@ -18,7 +17,6 @@
 #import "DKDrawKitMacros.h"
 
    
-@class DBPolyline;
 
 @implementation DBStroke
 + (void)initialize

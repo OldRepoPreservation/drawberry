@@ -476,6 +476,76 @@
 			6C53DA54102F7246004B2388 /* PBXTextBookmark */ = 6C53DA54102F7246004B2388 /* PBXTextBookmark */;
 			6C53DA55102F7246004B2388 /* PBXTextBookmark */ = 6C53DA55102F7246004B2388 /* PBXTextBookmark */;
 			6C53DA56102F7246004B2388 /* PBXTextBookmark */ = 6C53DA56102F7246004B2388 /* PBXTextBookmark */;
+			6C53DA5A102F7465004B2388 /* PBXTextBookmark */ = 6C53DA5A102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA5B102F7465004B2388 /* PBXTextBookmark */ = 6C53DA5B102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA5C102F7465004B2388 /* PBXTextBookmark */ = 6C53DA5C102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA5D102F7465004B2388 /* PBXTextBookmark */ = 6C53DA5D102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA5E102F7465004B2388 /* PBXTextBookmark */ = 6C53DA5E102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA5F102F7465004B2388 /* PBXBookmark */ = 6C53DA5F102F7465004B2388 /* PBXBookmark */;
+			6C53DA60102F7465004B2388 /* PBXTextBookmark */ = 6C53DA60102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA61102F7465004B2388 /* PBXTextBookmark */ = 6C53DA61102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA62102F7465004B2388 /* PBXTextBookmark */ = 6C53DA62102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA63102F7465004B2388 /* PBXTextBookmark */ = 6C53DA63102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA64102F7465004B2388 /* PBXTextBookmark */ = 6C53DA64102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA65102F7465004B2388 /* PBXTextBookmark */ = 6C53DA65102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA66102F7465004B2388 /* PBXTextBookmark */ = 6C53DA66102F7465004B2388 /* PBXTextBookmark */;
+			6C53DA69102F753B004B2388 /* PBXTextBookmark */ = 6C53DA69102F753B004B2388 /* PBXTextBookmark */;
+			6C53DA6A102F753B004B2388 /* PBXTextBookmark */ = 6C53DA6A102F753B004B2388 /* PBXTextBookmark */;
+			6C53DA6B102F753B004B2388 /* PBXTextBookmark */ = 6C53DA6B102F753B004B2388 /* PBXTextBookmark */;
+			6C53DA6C102F753B004B2388 /* PBXTextBookmark */ = 6C53DA6C102F753B004B2388 /* PBXTextBookmark */;
+			6C53DA6F102F753B004B2388 /* PBXBookmark */ = 6C53DA6F102F753B004B2388 /* PBXBookmark */;
+			6C53DA70102F753B004B2388 /* PBXTextBookmark */ = 6C53DA70102F753B004B2388 /* PBXTextBookmark */;
+			6C53DA71102F753B004B2388 /* PBXTextBookmark */ = 6C53DA71102F753B004B2388 /* PBXTextBookmark */;
+			6C53DA74102F75AE004B2388 /* PBXTextBookmark */ = 6C53DA74102F75AE004B2388 /* PBXTextBookmark */;
+			6C53DA75102F75AE004B2388 /* PBXTextBookmark */ = 6C53DA75102F75AE004B2388 /* PBXTextBookmark */;
+			6C53DA76102F75AE004B2388 /* PBXTextBookmark */ = 6C53DA76102F75AE004B2388 /* PBXTextBookmark */;
+			6C53DA77102F75FE004B2388 /* PBXTextBookmark */ = 6C53DA77102F75FE004B2388 /* PBXTextBookmark */;
+			6C53DA78102F75FE004B2388 /* PBXTextBookmark */ = 6C53DA78102F75FE004B2388 /* PBXTextBookmark */;
+			6C53DA79102F75FE004B2388 /* PBXTextBookmark */ = 6C53DA79102F75FE004B2388 /* PBXTextBookmark */;
+			6C53DA7B102F7638004B2388 /* PBXTextBookmark */ = 6C53DA7B102F7638004B2388 /* PBXTextBookmark */;
+			6C53DA7C102F7638004B2388 /* PBXTextBookmark */ = 6C53DA7C102F7638004B2388 /* PBXTextBookmark */;
+			6C53DA7D102F7638004B2388 /* PBXTextBookmark */ = 6C53DA7D102F7638004B2388 /* PBXTextBookmark */;
+			6C53DA7F102F76D3004B2388 /* PBXTextBookmark */ = 6C53DA7F102F76D3004B2388 /* PBXTextBookmark */;
+			6C53DA80102F76D3004B2388 /* PBXTextBookmark */ = 6C53DA80102F76D3004B2388 /* PBXTextBookmark */;
+			6C53DA81102F76D3004B2388 /* PBXTextBookmark */ = 6C53DA81102F76D3004B2388 /* PBXTextBookmark */;
+			6C53DA83102F7718004B2388 /* PBXTextBookmark */ = 6C53DA83102F7718004B2388 /* PBXTextBookmark */;
+			6C53DA84102F7718004B2388 /* PBXTextBookmark */ = 6C53DA84102F7718004B2388 /* PBXTextBookmark */;
+			6C53DA85102F7718004B2388 /* PBXTextBookmark */ = 6C53DA85102F7718004B2388 /* PBXTextBookmark */;
+			6C53DA87102F7723004B2388 /* PBXTextBookmark */ = 6C53DA87102F7723004B2388 /* PBXTextBookmark */;
+			6C53DA88102F7723004B2388 /* PBXTextBookmark */ = 6C53DA88102F7723004B2388 /* PBXTextBookmark */;
+			6C53DA89102F7723004B2388 /* PBXTextBookmark */ = 6C53DA89102F7723004B2388 /* PBXTextBookmark */;
+			6C53DA8B102F7746004B2388 /* PBXTextBookmark */ = 6C53DA8B102F7746004B2388 /* PBXTextBookmark */;
+			6C53DA8C102F7746004B2388 /* PBXTextBookmark */ = 6C53DA8C102F7746004B2388 /* PBXTextBookmark */;
+			6C53DA8D102F7746004B2388 /* PBXTextBookmark */ = 6C53DA8D102F7746004B2388 /* PBXTextBookmark */;
+			6C53DA8F102F7756004B2388 /* PBXTextBookmark */ = 6C53DA8F102F7756004B2388 /* PBXTextBookmark */;
+			6C53DA90102F7756004B2388 /* PBXTextBookmark */ = 6C53DA90102F7756004B2388 /* PBXTextBookmark */;
+			6C53DA91102F7756004B2388 /* PBXTextBookmark */ = 6C53DA91102F7756004B2388 /* PBXTextBookmark */;
+			6C53DA93102F777E004B2388 /* PBXTextBookmark */ = 6C53DA93102F777E004B2388 /* PBXTextBookmark */;
+			6C53DA94102F777E004B2388 /* PBXTextBookmark */ = 6C53DA94102F777E004B2388 /* PBXTextBookmark */;
+			6C53DA95102F777E004B2388 /* PBXTextBookmark */ = 6C53DA95102F777E004B2388 /* PBXTextBookmark */;
+			6C53DA97102F7790004B2388 /* PBXTextBookmark */ = 6C53DA97102F7790004B2388 /* PBXTextBookmark */;
+			6C53DA98102F7790004B2388 /* PBXTextBookmark */ = 6C53DA98102F7790004B2388 /* PBXTextBookmark */;
+			6C53DA99102F7790004B2388 /* PBXTextBookmark */ = 6C53DA99102F7790004B2388 /* PBXTextBookmark */;
+			6C53DA9B102F780F004B2388 /* PBXTextBookmark */ = 6C53DA9B102F780F004B2388 /* PBXTextBookmark */;
+			6C53DA9C102F780F004B2388 /* PBXTextBookmark */ = 6C53DA9C102F780F004B2388 /* PBXTextBookmark */;
+			6C53DA9D102F7816004B2388 /* PBXBookmark */ = 6C53DA9D102F7816004B2388 /* PBXBookmark */;
+			6C53DA9E102F7818004B2388 /* PBXBookmark */ = 6C53DA9E102F7818004B2388 /* PBXBookmark */;
+			6C53DAA2102F7954004B2388 /* PBXTextBookmark */ = 6C53DAA2102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAA5102F7954004B2388 /* PBXTextBookmark */ = 6C53DAA5102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAA6102F7954004B2388 /* PBXTextBookmark */ = 6C53DAA6102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAA7102F7954004B2388 /* PBXTextBookmark */ = 6C53DAA7102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAA8102F7954004B2388 /* PBXTextBookmark */ = 6C53DAA8102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAA9102F7954004B2388 /* PBXTextBookmark */ = 6C53DAA9102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAAC102F7954004B2388 /* PBXTextBookmark */ = 6C53DAAC102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAAD102F7954004B2388 /* PBXTextBookmark */ = 6C53DAAD102F7954004B2388 /* PBXTextBookmark */;
+			6C53DAB0102F7969004B2388 /* PBXTextBookmark */ = 6C53DAB0102F7969004B2388 /* PBXTextBookmark */;
+			6C53DAB1102F7969004B2388 /* PBXTextBookmark */ = 6C53DAB1102F7969004B2388 /* PBXTextBookmark */;
+			6C53DAB3102F797B004B2388 /* PBXTextBookmark */ = 6C53DAB3102F797B004B2388 /* PBXTextBookmark */;
+			6C53DAB4102F797B004B2388 /* PBXTextBookmark */ = 6C53DAB4102F797B004B2388 /* PBXTextBookmark */;
+			6C53DAB5102F797B004B2388 /* PBXTextBookmark */ = 6C53DAB5102F797B004B2388 /* PBXTextBookmark */;
+			6C53DAB6102F797B004B2388 /* PBXTextBookmark */ = 6C53DAB6102F797B004B2388 /* PBXTextBookmark */;
+			6C53DAB7102F797B004B2388 /* PBXTextBookmark */ = 6C53DAB7102F797B004B2388 /* PBXTextBookmark */;
+			6C53DABA102F79FC004B2388 /* PBXTextBookmark */ = 6C53DABA102F79FC004B2388 /* PBXTextBookmark */;
 			6C8083B60FE2F537007D6E75 = 6C8083B60FE2F537007D6E75 /* PBXTextBookmark */;
 			6C8083B70FE2F537007D6E75 = 6C8083B70FE2F537007D6E75 /* PBXTextBookmark */;
 			6C8083BD0FE2F537007D6E75 = 6C8083BD0FE2F537007D6E75 /* PBXTextBookmark */;
@@ -1270,26 +1340,34 @@
 			sepNavWindowFrame = "{{95, 70}, {715, 808}}";
 		};
 	};
+	6C129D770E54EC8E00AD5C61 /* DBShadow.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {759, 448}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{133, 528}";
+		};
+	};
 	6C129D780E54EC8E00AD5C61 /* DBShadow.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {805, 1918}}";
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1918}}";
 			sepNavSelRange = "{1385, 0}";
-			sepNavVisRange = "{1548, 601}";
+			sepNavVisRange = "{1543, 632}";
 		};
 	};
 	6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {918, 1582}}";
-			sepNavSelRange = "{2071, 15}";
-			sepNavVisRange = "{1585, 629}";
+			sepNavIntBoundsRect = "{{0, 0}, {918, 1596}}";
+			sepNavSelRange = "{1591, 0}";
+			sepNavVisRange = "{459, 1435}";
+			sepNavWindowFrame = "{{240, 150}, {749, 728}}";
 		};
 	};
 	6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1008, 28938}}";
-			sepNavSelRange = "{10309, 0}";
-			sepNavVisRange = "{9099, 1211}";
-			sepNavWindowFrame = "{{240, 150}, {749, 728}}";
+			sepNavIntBoundsRect = "{{0, 0}, {759, 28938}}";
+			sepNavSelRange = "{4843, 1}";
+			sepNavVisRange = "{4619, 345}";
+			sepNavWindowFrame = "{{418, 150}, {749, 728}}";
 		};
 	};
 	6C129D800E54ECBF00AD5C61 /* DBShape.h */ = {
@@ -1333,25 +1411,25 @@
 	};
 	6C129D870E54ECE800AD5C61 /* DBPolyline.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {906, 19950}}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 20090}}";
 			sepNavSelRange = "{25159, 10}";
-			sepNavVisRange = "{24801, 919}";
+			sepNavVisRange = "{24549, 1494}";
 			sepNavWindowFrame = "{{689, 121}, {715, 757}}";
 		};
 	};
 	6C129D890E54ED0500AD5C61 /* DBRectangle.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 364}}";
-			sepNavSelRange = "{409, 41}";
-			sepNavVisRange = "{0, 455}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 450}";
 		};
 	};
 	6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {996, 7798}}";
-			sepNavSelRange = "{14021, 15}";
-			sepNavVisRange = "{13740, 605}";
-			sepNavWindowFrame = "{{-40, 320}, {750, 558}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1320, 7854}}";
+			sepNavSelRange = "{13347, 40}";
+			sepNavVisRange = "{13389, 758}";
+			sepNavWindowFrame = "{{17, 320}, {750, 558}}";
 		};
 	};
 	6C129D8C0E54ED1600AD5C61 /* DBText.h */ = {
@@ -1749,9 +1827,9 @@
 	};
 	6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 1512}}";
-			sepNavSelRange = "{1906, 0}";
-			sepNavVisRange = "{1422, 533}";
+			sepNavIntBoundsRect = "{{0, 0}, {759, 1442}}";
+			sepNavSelRange = "{1885, 0}";
+			sepNavVisRange = "{1422, 515}";
 		};
 	};
 	6C412C4B102E2CA5009F12DD /* PBXTextBookmark */ = {
@@ -1801,7 +1879,7 @@
 		rLen = 41;
 		rLoc = 404;
 		rType = 0;
-		vrLen = 455;
+		vrLen = 450;
 		vrLoc = 0;
 	};
 	6C412C50102E2CA5009F12DD /* PBXTextBookmark */ = {
@@ -1871,7 +1949,7 @@
 		rLen = 41;
 		rLoc = 404;
 		rType = 0;
-		vrLen = 455;
+		vrLen = 450;
 		vrLoc = 0;
 	};
 	6C412C63102E2CA5009F12DD /* PBXTextBookmark */ = {
@@ -2240,7 +2318,7 @@
 		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {864, 4044}}";
-			sepNavSelRange = "{325, 0}";
+			sepNavSelRange = "{559, 0}";
 			sepNavVisRange = "{86, 697}";
 		};
 	};
@@ -3674,7 +3752,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1674";
 		rLen = 7;
-		rLoc = 45527;
+		rLoc = 46306;
 		rType = 0;
 		vrLen = 643;
 		vrLoc = 42580;
@@ -3775,7 +3853,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 878;
 		vrLoc = 17183;
@@ -3795,7 +3873,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 830;
 		vrLoc = 17232;
@@ -3805,7 +3883,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 514";
 		rLen = 0;
-		rLoc = 14271;
+		rLoc = 15050;
 		rType = 0;
 		vrLen = 910;
 		vrLoc = 13359;
@@ -3815,7 +3893,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 17268;
@@ -3825,7 +3903,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 553";
 		rLen = 0;
-		rLoc = 15453;
+		rLoc = 16232;
 		rType = 0;
 		vrLen = 1206;
 		vrLoc = 14088;
@@ -3835,7 +3913,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 17175;
@@ -3845,7 +3923,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 548";
 		rLen = 0;
-		rLoc = 15231;
+		rLoc = 16010;
 		rType = 0;
 		vrLen = 1185;
 		vrLoc = 13906;
@@ -3855,7 +3933,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 17268;
@@ -3865,7 +3943,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 552";
 		rLen = 0;
-		rLoc = 15398;
+		rLoc = 16177;
 		rType = 0;
 		vrLen = 1243;
 		vrLoc = 14050;
@@ -3875,7 +3953,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 17268;
@@ -3885,7 +3963,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 552";
 		rLen = 0;
-		rLoc = 15398;
+		rLoc = 16177;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 31707;
@@ -3895,7 +3973,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 509";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 759;
 		vrLoc = 17355;
@@ -3905,7 +3983,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 348";
 		rLen = 42;
-		rLoc = 9274;
+		rLoc = 10053;
 		rType = 0;
 		vrLen = 1131;
 		vrLoc = 8478;
@@ -3925,7 +4003,7 @@
 		comments = "warning: distinct Objective-C type in return";
 		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
 		rLen = 1;
-		rLoc = 516;
+		rLoc = 514;
 		rType = 1;
 	};
 	6C53D9E5102F3DAC004B2388 /* PBXTextBookmark */ = {
@@ -3943,7 +4021,7 @@
 		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
 		name = "DBRectangle.m: 517";
 		rLen = 15;
-		rLoc = 14021;
+		rLoc = 13979;
 		rType = 0;
 		vrLen = 449;
 		vrLoc = 13740;
@@ -3953,7 +4031,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 511";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 890;
 		vrLoc = 17268;
@@ -3971,7 +4049,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 511";
 		rLen = 70;
-		rLoc = 14115;
+		rLoc = 14894;
 		rType = 0;
 		vrLen = 890;
 		vrLoc = 17268;
@@ -3991,7 +4069,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 71";
 		rLen = 0;
-		rLoc = 1851;
+		rLoc = 1937;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 1585;
@@ -4001,7 +4079,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 486";
 		rLen = 0;
-		rLoc = 13693;
+		rLoc = 14472;
 		rType = 0;
 		vrLen = 1187;
 		vrLoc = 11039;
@@ -4011,7 +4089,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 336";
 		rLen = 0;
-		rLoc = 8862;
+		rLoc = 9641;
 		rType = 0;
 		vrLen = 1007;
 		vrLoc = 0;
@@ -4021,7 +4099,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 79";
 		rLen = 0;
-		rLoc = 2163;
+		rLoc = 2249;
 		rType = 0;
 		vrLen = 817;
 		vrLoc = 1585;
@@ -4031,7 +4109,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 486";
 		rLen = 0;
-		rLoc = 13693;
+		rLoc = 14472;
 		rType = 0;
 		vrLen = 1187;
 		vrLoc = 11039;
@@ -4041,7 +4119,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 71";
 		rLen = 0;
-		rLoc = 1851;
+		rLoc = 1937;
 		rType = 0;
 		vrLen = 819;
 		vrLoc = 1585;
@@ -4051,7 +4129,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 454";
 		rLen = 0;
-		rLoc = 12461;
+		rLoc = 13240;
 		rType = 0;
 		vrLen = 1212;
 		vrLoc = 11416;
@@ -4071,7 +4149,7 @@
 		comments = "warning: receiver 'NSBitmapGraphicsContext' is a forward class and corresponding @interface may not exist";
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		rLen = 1;
-		rLoc = 1074;
+		rLoc = 1111;
 		rType = 1;
 	};
 	6C53D9F7102F3F2F004B2388 /* PBXTextBookmark */ = {
@@ -4089,7 +4167,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1064";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 399;
 		vrLoc = 28709;
@@ -4119,7 +4197,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1064";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 475;
 		vrLoc = 28627;
@@ -4129,7 +4207,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1287";
 		rLen = 0;
-		rLoc = 35223;
+		rLoc = 36002;
 		rType = 0;
 		vrLen = 1567;
 		vrLoc = 33230;
@@ -4139,7 +4217,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1064";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 475;
 		vrLoc = 28627;
@@ -4149,7 +4227,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1316";
 		rLen = 0;
-		rLoc = 36282;
+		rLoc = 37061;
 		rType = 0;
 		vrLen = 1505;
 		vrLoc = 34304;
@@ -4159,7 +4237,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1064";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 28678;
@@ -4169,7 +4247,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1115";
 		rLen = 0;
-		rLoc = 30830;
+		rLoc = 31609;
 		rType = 0;
 		vrLen = 861;
 		vrLoc = 29720;
@@ -4179,7 +4257,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1064";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 479;
 		vrLoc = 28719;
@@ -4189,7 +4267,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 660";
 		rLen = 0;
-		rLoc = 18246;
+		rLoc = 19025;
 		rType = 0;
 		vrLen = 1568;
 		vrLoc = 18359;
@@ -4199,7 +4277,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1064";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 479;
 		vrLoc = 28720;
@@ -4209,7 +4287,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 545";
 		rLen = 0;
-		rLoc = 15122;
+		rLoc = 15901;
 		rType = 0;
 		vrLen = 1208;
 		vrLoc = 13858;
@@ -4219,7 +4297,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1065";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 28739;
@@ -4229,7 +4307,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 556";
 		rLen = 0;
-		rLoc = 15475;
+		rLoc = 16254;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 13873;
@@ -4239,7 +4317,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1067";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 475;
 		vrLoc = 28782;
@@ -4249,7 +4327,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 544";
 		rLen = 0;
-		rLoc = 14967;
+		rLoc = 15746;
 		rType = 0;
 		vrLen = 1203;
 		vrLoc = 13656;
@@ -4259,7 +4337,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1069";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 452;
 		vrLoc = 28915;
@@ -4269,7 +4347,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 555";
 		rLen = 0;
-		rLoc = 15235;
+		rLoc = 16014;
 		rType = 0;
 		vrLen = 1385;
 		vrLoc = 13805;
@@ -4279,7 +4357,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1070";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 450;
 		vrLoc = 28921;
@@ -4289,7 +4367,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 564";
 		rLen = 0;
-		rLoc = 15517;
+		rLoc = 16296;
 		rType = 0;
 		vrLen = 1360;
 		vrLoc = 13873;
@@ -4299,7 +4377,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1070";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 432;
 		vrLoc = 28942;
@@ -4309,7 +4387,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1070";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 28942;
@@ -4359,7 +4437,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1764";
 		rLen = 10;
-		rLoc = 46819;
+		rLoc = 47598;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 46246;
@@ -4416,7 +4494,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1764";
 		rLen = 10;
-		rLoc = 46819;
+		rLoc = 47598;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 46246;
@@ -4436,7 +4514,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1070";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 28921;
@@ -4453,7 +4531,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1070";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 28921;
@@ -4473,7 +4551,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 718";
 		rLen = 0;
-		rLoc = 20464;
+		rLoc = 21243;
 		rType = 0;
 		vrLen = 1399;
 		vrLoc = 17331;
@@ -4483,7 +4561,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1070";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 28942;
@@ -4493,7 +4571,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1288";
 		rLen = 15;
-		rLoc = 34765;
+		rLoc = 35544;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 34031;
@@ -4502,7 +4580,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		rLen = 15;
-		rLoc = 2071;
+		rLoc = 2157;
 		rType = 0;
 	};
 	6C53DA2E102F4338004B2388 /* PBXTextBookmark */ = {
@@ -4510,7 +4588,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1288";
 		rLen = 15;
-		rLoc = 34765;
+		rLoc = 35544;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 34031;
@@ -4520,7 +4598,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 81";
 		rLen = 15;
-		rLoc = 2071;
+		rLoc = 2157;
 		rType = 0;
 		vrLen = 629;
 		vrLoc = 1585;
@@ -4539,7 +4617,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		rLen = 15;
-		rLoc = 13677;
+		rLoc = 14456;
 		rType = 0;
 	};
 	6C53DA35102F43B0004B2388 /* PBXTextBookmark */ = {
@@ -4557,7 +4635,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 486";
 		rLen = 15;
-		rLoc = 13677;
+		rLoc = 14456;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 12779;
@@ -4567,7 +4645,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 720";
 		rLen = 0;
-		rLoc = 20457;
+		rLoc = 21236;
 		rType = 0;
 		vrLen = 1669;
 		vrLoc = 18928;
@@ -4577,7 +4655,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1074";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 370;
 		vrLoc = 29078;
@@ -4587,7 +4665,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 81";
 		rLen = 15;
-		rLoc = 2071;
+		rLoc = 2157;
 		rType = 0;
 		vrLen = 629;
 		vrLoc = 1585;
@@ -4596,7 +4674,7 @@
 		isa = PBXTextBookmark;
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 	};
 	6C53DA3C102F4408004B2388 /* PBXTextBookmark */ = {
@@ -4604,7 +4682,7 @@
 		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
 		name = "DBBezierCurve.h: 81";
 		rLen = 15;
-		rLoc = 2071;
+		rLoc = 2157;
 		rType = 0;
 		vrLen = 629;
 		vrLoc = 1585;
@@ -4614,7 +4692,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 634";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 825;
 		vrLoc = 16506;
@@ -4624,7 +4702,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 634";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 474;
 		vrLoc = 16992;
@@ -4634,7 +4712,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 720";
 		rLen = 0;
-		rLoc = 20456;
+		rLoc = 21235;
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 18530;
@@ -4644,7 +4722,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 634";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 474;
 		vrLoc = 16992;
@@ -4654,7 +4732,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 720";
 		rLen = 0;
-		rLoc = 20455;
+		rLoc = 21234;
 		rType = 0;
 		vrLen = 1442;
 		vrLoc = 19422;
@@ -4664,7 +4742,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 626";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 16938;
@@ -4674,7 +4752,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 682";
 		rLen = 0;
-		rLoc = 19150;
+		rLoc = 19929;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 17726;
@@ -4684,7 +4762,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1066";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 446;
 		vrLoc = 29044;
@@ -4694,7 +4772,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 626";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 593;
 		vrLoc = 16630;
@@ -4704,7 +4782,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 623";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 17406;
@@ -4714,7 +4792,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 322";
 		rLen = 0;
-		rLoc = 8332;
+		rLoc = 9111;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 7967;
@@ -4724,7 +4802,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 1075";
 		rLen = 92;
-		rLoc = 29621;
+		rLoc = 30400;
 		rType = 0;
 		vrLen = 496;
 		vrLoc = 29607;
@@ -4734,7 +4812,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 635";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 729;
 		vrLoc = 17190;
@@ -4744,7 +4822,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 635";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 17494;
@@ -4764,7 +4842,7 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 635";
 		rLen = 7;
-		rLoc = 17307;
+		rLoc = 18086;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 17494;
@@ -4784,10 +4862,674 @@
 		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
 		name = "DBBezierCurve.m: 390";
 		rLen = 0;
-		rLoc = 10309;
+		rLoc = 11088;
 		rType = 0;
 		vrLen = 1211;
 		vrLoc = 9099;
+	};
+	6C53DA5A102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
+		name = "DBDrawingView+BooleanOps.m: 24";
+		rLen = 0;
+		rLoc = 559;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 86;
+	};
+	6C53DA5B102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
+		name = "DBPolylineTransformation.mm: 105";
+		rLen = 0;
+		rLoc = 1885;
+		rType = 0;
+		vrLen = 515;
+		vrLoc = 1422;
+	};
+	6C53DA5C102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 664";
+		rLen = 0;
+		rLoc = 18833;
+		rType = 0;
+		vrLen = 1033;
+		vrLoc = 18971;
+	};
+	6C53DA5D102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D770E54EC8E00AD5C61 /* DBShadow.h */;
+		name = "DBShadow.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 528;
+		vrLoc = 133;
+	};
+	6C53DA5E102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D780E54EC8E00AD5C61 /* DBShadow.m */;
+		name = "DBShadow.m: 79";
+		rLen = 0;
+		rLoc = 1385;
+		rType = 0;
+		vrLen = 632;
+		vrLoc = 1543;
+	};
+	6C53DA5F102F7465004B2388 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+	};
+	6C53DA60102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C42402910021110000DDAC3 /* DBDrawingView+BooleanOps.m */;
+		name = "DBDrawingView+BooleanOps.m: 24";
+		rLen = 0;
+		rLoc = 559;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 86;
+	};
+	6C53DA61102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
+		name = "DBPolylineTransformation.mm: 105";
+		rLen = 0;
+		rLoc = 1885;
+		rType = 0;
+		vrLen = 515;
+		vrLoc = 1422;
+	};
+	6C53DA62102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 664";
+		rLen = 0;
+		rLoc = 18833;
+		rType = 0;
+		vrLen = 1033;
+		vrLoc = 18971;
+	};
+	6C53DA63102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D770E54EC8E00AD5C61 /* DBShadow.h */;
+		name = "DBShadow.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 528;
+		vrLoc = 133;
+	};
+	6C53DA64102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D780E54EC8E00AD5C61 /* DBShadow.m */;
+		name = "DBShadow.m: 79";
+		rLen = 0;
+		rLoc = 1385;
+		rType = 0;
+		vrLen = 632;
+		vrLoc = 1543;
+	};
+	6C53DA65102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+		name = "DBRectangle.m: 515";
+		rLen = 0;
+		rLoc = 13972;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 13406;
+	};
+	6C53DA66102F7465004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 390";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 9099;
+	};
+	6C53DA69102F753B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+		name = "DBRectangle.m: 513";
+		rLen = 18;
+		rLoc = 13939;
+		rType = 0;
+		vrLen = 656;
+		vrLoc = 13406;
+	};
+	6C53DA6A102F753B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		rLen = 1;
+		rLoc = 221;
+		rType = 1;
+	};
+	6C53DA6B102F753B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+		name = "DBRectangle.m: 513";
+		rLen = 18;
+		rLoc = 13939;
+		rType = 0;
+		vrLen = 656;
+		vrLoc = 13406;
+	};
+	6C53DA6C102F753B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA6F102F753B004B2388 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+	};
+	6C53DA70102F753B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 308";
+		rLen = 0;
+		rLoc = 8075;
+		rType = 0;
+		vrLen = 1739;
+		vrLoc = 6415;
+	};
+	6C53DA71102F753B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 400";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1161;
+		vrLoc = 8290;
+	};
+	6C53DA74102F75AE004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA75102F75AE004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 281";
+		rLen = 0;
+		rLoc = 6903;
+		rType = 0;
+		vrLen = 1717;
+		vrLoc = 6266;
+	};
+	6C53DA76102F75AE004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 400";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1118;
+		vrLoc = 8244;
+	};
+	6C53DA77102F75FE004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 1085";
+		rLen = 92;
+		rLoc = 30400;
+		rType = 0;
+		vrLen = 416;
+		vrLoc = 29663;
+	};
+	6C53DA78102F75FE004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		rLen = 15;
+		rLoc = 7857;
+		rType = 0;
+	};
+	6C53DA79102F75FE004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 303";
+		rLen = 15;
+		rLoc = 7857;
+		rType = 0;
+		vrLen = 909;
+		vrLoc = 7397;
+	};
+	6C53DA7B102F7638004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA7C102F7638004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 315";
+		rLen = 0;
+		rLoc = 8299;
+		rType = 0;
+		vrLen = 1598;
+		vrLoc = 6756;
+	};
+	6C53DA7D102F7638004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 401";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1265;
+		vrLoc = 7989;
+	};
+	6C53DA7F102F76D3004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA80102F76D3004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 1344";
+		rLen = 0;
+		rLoc = 37083;
+		rType = 0;
+		vrLen = 1555;
+		vrLoc = 35852;
+	};
+	6C53DA81102F76D3004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 401";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1265;
+		vrLoc = 7989;
+	};
+	6C53DA83102F7718004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA84102F7718004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 249";
+		rLen = 0;
+		rLoc = 5665;
+		rType = 0;
+		vrLen = 1326;
+		vrLoc = 5130;
+	};
+	6C53DA85102F7718004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 404";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1186;
+		vrLoc = 7721;
+	};
+	6C53DA87102F7723004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA88102F7723004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 249";
+		rLen = 0;
+		rLoc = 5654;
+		rType = 0;
+		vrLen = 1328;
+		vrLoc = 5130;
+	};
+	6C53DA89102F7723004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 404";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1321;
+		vrLoc = 7582;
+	};
+	6C53DA8B102F7746004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA8C102F7746004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 317";
+		rLen = 0;
+		rLoc = 8170;
+		rType = 0;
+		vrLen = 1572;
+		vrLoc = 6852;
+	};
+	6C53DA8D102F7746004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 405";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1334;
+		vrLoc = 7582;
+	};
+	6C53DA8F102F7756004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA90102F7756004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 317";
+		rLen = 0;
+		rLoc = 8170;
+		rType = 0;
+		vrLen = 1590;
+		vrLoc = 6852;
+	};
+	6C53DA91102F7756004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 405";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1352;
+		vrLoc = 7582;
+	};
+	6C53DA93102F777E004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA94102F777E004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 268";
+		rLen = 0;
+		rLoc = 6258;
+		rType = 0;
+		vrLen = 1312;
+		vrLoc = 5093;
+	};
+	6C53DA95102F777E004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 406";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1360;
+		vrLoc = 7444;
+	};
+	6C53DA97102F7790004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DA98102F7790004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 1312";
+		rLen = 0;
+		rLoc = 35684;
+		rType = 0;
+		vrLen = 1529;
+		vrLoc = 35049;
+	};
+	6C53DA99102F7790004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 406";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1360;
+		vrLoc = 7444;
+	};
+	6C53DA9B102F780F004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 1091";
+		rLen = 92;
+		rLoc = 30400;
+		rType = 0;
+		vrLen = 446;
+		vrLoc = 29778;
+	};
+	6C53DA9C102F780F004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 308";
+		rLen = 15;
+		rLoc = 7857;
+		rType = 0;
+		vrLen = 1043;
+		vrLoc = 7046;
+	};
+	6C53DA9D102F7816004B2388 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
+	};
+	6C53DA9E102F7818004B2388 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+	};
+	6C53DAA2102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DAA5102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+		name = "DBRectangle.m: 504";
+		rLen = 0;
+		rLoc = 13664;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 13325;
+	};
+	6C53DAA6102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 329";
+		rLen = 85;
+		rLoc = 8453;
+		rType = 0;
+		vrLen = 1038;
+		vrLoc = 7977;
+	};
+	6C53DAA7102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
+		rLen = 0;
+		rLoc = 2147483733;
+		rType = 0;
+	};
+	6C53DAA8102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 329";
+		rLen = 85;
+		rLoc = 8453;
+		rType = 0;
+		vrLen = 1038;
+		vrLoc = 7977;
+	};
+	6C53DAA9102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7A0E54ECA900AD5C61 /* DBBezierCurve.h */;
+		name = "DBBezierCurve.h: 39";
+		rLen = 0;
+		rLoc = 786;
+		rType = 0;
+		vrLen = 1392;
+		vrLoc = 459;
+	};
+	6C53DAAC102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
+		name = "DBPolyline.m: 1126";
+		rLen = 10;
+		rLoc = 25159;
+		rType = 0;
+		vrLen = 1334;
+		vrLoc = 24549;
+	};
+	6C53DAAD102F7954004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 426";
+		rLen = 0;
+		rLoc = 11088;
+		rType = 0;
+		vrLen = 1265;
+		vrLoc = 7444;
+	};
+	6C53DAB0102F7969004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 1111";
+		rLen = 92;
+		rLoc = 30400;
+		rType = 0;
+		vrLen = 478;
+		vrLoc = 30188;
+	};
+	6C53DAB1102F7969004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 308";
+		rLen = 15;
+		rLoc = 7857;
+		rType = 0;
+		vrLen = 1043;
+		vrLoc = 7046;
+	};
+	6C53DAB3102F797B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 4619;
+	};
+	6C53DAB4102F797B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		rLen = 1;
+		rLoc = 328;
+		rType = 1;
+	};
+	6C53DAB5102F797B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 346";
+		rLen = 0;
+		rLoc = 8809;
+		rType = 0;
+		vrLen = 996;
+		vrLoc = 7831;
+	};
+	6C53DAB6102F797B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D8A0E54ED0500AD5C61 /* DBRectangle.m */;
+		name = "DBRectangle.m: 501";
+		rLen = 22;
+		rLoc = 13613;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 13325;
+	};
+	6C53DAB7102F797B004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D870E54ECE800AD5C61 /* DBPolyline.m */;
+		name = "DBPolyline.m: 1126";
+		rLen = 10;
+		rLoc = 25159;
+		rType = 0;
+		vrLen = 1334;
+		vrLoc = 24549;
+	};
+	6C53DABA102F79FC004B2388 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6C129D7B0E54ECA900AD5C61 /* DBBezierCurve.m */;
+		name = "DBBezierCurve.m: 216";
+		rLen = 1;
+		rLoc = 4843;
+		rType = 0;
+		vrLen = 345;
+		vrLoc = 4619;
 	};
 	6C6909B90FA7818600F10440 /* DBTemplateManager.h */ = {
 		uiCtxt = {
@@ -5391,7 +6133,7 @@
 		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
 		name = "DBPolylineTransformation.mm: 105";
 		rLen = 0;
-		rLoc = 1906;
+		rLoc = 1885;
 		rType = 0;
 		vrLen = 533;
 		vrLoc = 1422;
@@ -5408,7 +6150,7 @@
 		fRef = 6C412BD5102E236C009F12DD /* DBPolylineTransformation.mm */;
 		name = "DBPolylineTransformation.mm: 105";
 		rLen = 0;
-		rLoc = 1906;
+		rLoc = 1885;
 		rType = 0;
 		vrLen = 533;
 		vrLoc = 1422;

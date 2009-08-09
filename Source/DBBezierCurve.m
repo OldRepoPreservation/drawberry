@@ -245,6 +245,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		_points[0].controlPoint2 = associatedPoints[0];   
         _points[0].closePath = NO;
         _points[0].subPathStart = YES;
+		
+//		_points[0].hasControlPoint2 = YES;
+
 	}                                                              
 	
 	int i;
@@ -261,6 +264,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			if(NSEqualPoints(_points[beginningPoint].point, _points[_pointCount-1].point)){
 //				NSLog(@"points egaux");
 				_points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
+				_points[beginningPoint].hasControlPoint2 = YES;
+
 				_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
 				_pointCount--;	
 			}
@@ -278,6 +283,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			_points[_pointCount-1].closePath = NO;
 			_points[_pointCount-1].subPathStart = YES;
 			
+			_points[_pointCount-1].hasControlPoint2 = NO;
+			
 		}else if(elementType == NSLineToBezierPathElement){
 			_pointCount++;
 			_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
@@ -287,7 +294,11 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			_points[_pointCount-1].controlPoint1 = associatedPoints[0];
 			_points[_pointCount-1].hasControlPoints = NO;		
 			_points[_pointCount-1].closePath = NO;		
-			_points[_pointCount-1].subPathStart = NO;		
+			_points[_pointCount-1].subPathStart = NO;	
+			
+			_points[_pointCount-2].hasControlPoint1 = NO;
+			_points[_pointCount-1].hasControlPoint2 = NO;
+
 		}else{
 			_pointCount++;
 			_points = realloc(_points, _pointCount*sizeof(DBCurvePoint));
@@ -296,17 +307,43 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			_points[_pointCount-1].point = associatedPoints[2];
 			_points[_pointCount-1].hasControlPoints = YES;		
 			_points[_pointCount-1].closePath = NO;		
-			_points[_pointCount-1].subPathStart = NO;		
+			_points[_pointCount-1].subPathStart = NO;	
+			
+			_points[_pointCount-2].hasControlPoint1 = YES;
+			_points[_pointCount-1].hasControlPoint2 = YES;
+
 		}
 	}
 			
 	if(NSEqualPoints(_points[beginningPoint].point, _points[_pointCount-1].point)){
 		_points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
+		_points[beginningPoint].hasControlPoint2 = YES;
 		_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
 		_pointCount--;
 		_points[_pointCount-1].closePath = YES;
 	}
 	
+	return self;
+}
+
+- (id)initWithPolylinePoints:(NSPoint *)points count:(int)pCount closed:(BOOL)closed
+{
+	self = [self init];
+	
+	_points = malloc(pCount*sizeof(DBCurvePoint));
+	
+	int i;
+	
+	i = 0;
+	
+	for (i = 0; i < pCount; i++) {
+		_points[i] = DBMakeCurvePoint(points[i]);
+	}
+	
+	_points[0].subPathStart = YES;
+	_points[pCount-1].closePath = closed;
+	
+	_pointCount = pCount;
 	return self;
 }
 

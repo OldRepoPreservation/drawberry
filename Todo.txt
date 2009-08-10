@@ -73,7 +73,7 @@ What we have to do in the future (in function of milestone)
 	
 	FIXED : Finish the interface
 	
-	FIXME : Make a document icon
+	FIXED : Make a document icon
 
 	FIXED : Finish the localization
 	
@@ -102,10 +102,8 @@ What we have to do in the future (in function of milestone)
 	DONE : Color swatch (with drag & drop)
 
 	DONE : A shape panel with predefinded shapes (don't open it at startup)
-	
-	TODO : Contextual Cursors
-	
-	TODO : Write a great help
+		
+	DONE : Write a great help
 	
 - Version 0.7 :
 	
@@ -142,28 +140,36 @@ What we have to do in the future (in function of milestone)
 
 - Version 0.9
 	
+	TODO : Replace the polyline by the bezier curve
+	
+	TODO : Introduce a freehand tool
+
 	TODO : Improve the contextual bar
 
 	TODO : Improve help and translate it in French
 
 	TODO : New Inspectors
 
+	TODO : Add a vectorization plug-in 
+
+	TODO : Improve the layer inspector
+
+	TODO : Groups
+
+	TODO : Introduce a contextual menu
+
+- Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES
+	
+	TODO : The performances are very bad when multiple objects are displayed
+
 - After that
 	  
 	TODO : PDF importer (as vector objects)
 
-	TODO : Groups
-	
 	TODO : Add the ability to reorder CI filters	
 		
 	TODO : Improve the magnifying glass (change the size (??) ) 
 	-	TODO : Magnify a other part than just under the glass
 	-	DONE : A curved zoom slider
-
-	TODO : Give to the inspectors window and bar views the ability to have icons
-	
-	TODO : Better inspectors (something like OmniGraffie)
-  	
-	TODO : Add a vectorization plug-in 
-	
+  		
 	TODO : LinkBack support

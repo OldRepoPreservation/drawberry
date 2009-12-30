@@ -321,6 +321,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
 		_pointCount--;
 		_points[_pointCount-1].closePath = YES;
+	}else{
+		_points[_pointCount-1].controlPoint1 = _points[_pointCount-1].point;
+//		_points[_pointCount-1].hasControlPoint2 = NO;
+
 	}
 	
 	return self;

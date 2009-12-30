@@ -1410,19 +1410,23 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	
 	for (i = 0; i < _pointCount; i++) {
 		if(pointStack){
-			if(_points[i].closePath){
+			
+			// add a point to the stack
+			j++;
+			pointStack = realloc(pointStack, j*sizeof(NSPoint));
+			pointStack[j-1] = _points[i].point;
+
+			if(i == _pointCount-1 || _points[i+1].subPathStart){
 				// convert polyline in pointStack into curve
-				[path appendBezierPath:[NSBezierPath transformPointsToCurve:pointStack count:j+1 precision:DBPOLY2CURVE_PRECISION]];
+				NSBezierPath *p = [NSBezierPath transformPointsToCurve:pointStack count:j precision:DBPOLY2CURVE_PRECISION];
+				[path appendBezierPath:p];
 				j = 0;
 				free(pointStack);
 				pointStack = NULL;
-			}else{ // add a point to the stack
-				pointStack = realloc(pointStack, (j+1)*sizeof(NSPoint));
-				pointStack[j] = _points[i].point;
 			}
 		}else{ // initialize point stack and add a point
 			pointStack = malloc(sizeof(NSPoint));
-			j = 0;
+			j = 1; // initialize pointStack count to 1
 			pointStack[0] = _points[i].point;
 		}
 	}

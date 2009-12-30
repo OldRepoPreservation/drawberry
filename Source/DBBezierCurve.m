@@ -700,6 +700,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
 	}
    
+	DBCurvePoint previousPosition;
+	
+	previousPosition = _points[i];
  
 	while(YES){
 		pool = [[NSAutoreleasePool alloc] init];
@@ -820,7 +823,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 	
 	if(didEdit){
-		[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i] atIndex:i];
+		[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
 		[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];
 	}
 	

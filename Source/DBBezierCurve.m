@@ -856,8 +856,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 	
 	if(didEdit){
-		[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
-		[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];
+		[[[self undoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
+		[[self undoManager] setActionName:NSLocalizedString(@"Edit", nil)];
 	}
 	
 	_bounds = [_path bounds];
@@ -1053,7 +1053,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 	[view setNeedsDisplay:YES];
 	
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	DBUndoManager *undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] replacePoints:oldPoints count:oldPointCount type:DBFragReplaceReplacingType];
 	[undo setActionName:NSLocalizedString(@"Replace Frag", nil)];
 	
@@ -1687,8 +1687,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 
 - (void)setPoint:(DBCurvePoint)p atIndex:(int)i
 {
-	[[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i] atIndex:i];
-	[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];
+	[[[self undoManager] prepareWithInvocationTarget:self] setPoint:_points[i] atIndex:i];
+	[[self undoManager] setActionName:NSLocalizedString(@"Edit", nil)];
 	
 	_points[i] = p;                 
 	[self updatePath];
@@ -2035,7 +2035,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 
 - (void)removePointAtIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next
 {
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	DBUndoManager *undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] insertPoint:_points[index] atIndex:index previousPoint:_points[index-1] nextPoint:_points[index+1]];
 	if(![undo isUndoing]){
 		[undo setActionName:NSLocalizedString(@"Delete Point", nil)];
@@ -2060,7 +2060,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 
 - (void)insertPoint:(DBCurvePoint)point atIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next
 {
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	DBUndoManager *undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] removePointAtIndex:index previousPoint:_points[index-1] nextPoint:_points[index]];
 	if(![undo isUndoing]){
 		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];
@@ -2086,7 +2086,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 
 - (void)replacePoints:(DBCurvePoint *)points count:(int)count type:(int)replacingType
 {
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	DBUndoManager *undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount type:replacingType];
 	if(replacingType == DBInsertionReplacingType){
 		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];

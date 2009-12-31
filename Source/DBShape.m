@@ -9,7 +9,6 @@
 #import "DBShape.h"
 #import "DBLayer.h"
 
-
 static NSBezierPath *__knob = nil;
 
 
@@ -522,6 +521,11 @@ static NSBezierPath *__knob = nil;
 - (float)zoom
 {
 	return [[[[self layer] layerController] drawingView] zoom];
+}
+
+- (DBUndoManager *)undoManager
+{
+	return [[self layer] undoManager];
 }
 
 #pragma mark Edition and Creation

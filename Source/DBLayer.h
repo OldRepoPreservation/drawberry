@@ -84,6 +84,7 @@
 - (NSPoint)bckgrdImagePos;
 - (void)setBckgrdImagePos:(NSPoint)newBckgrdImagePos;
 
+- (DBUndoManager *)undoManager;
                                      
 - (BOOL)lowerShapes:(NSArray *)shapes;
 - (BOOL)raiseShapes:(NSArray *)shapes;

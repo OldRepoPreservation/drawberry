@@ -404,8 +404,8 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	}
 	
 	if(didEdit){
-		[(DBPolyline *)[[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
-		[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];		
+		[(DBPolyline *)[[self undoManager] prepareWithInvocationTarget:self] setPoint:previousPosition atIndex:i];
+		[[self undoManager] setActionName:NSLocalizedString(@"Edit", nil)];		
 	}
 	
 	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
@@ -564,7 +564,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	
 	[view setNeedsDisplay:YES];
 	
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	DBUndoManager *undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] replacePoints:oldPoints count:oldPointCount type:DBFragReplaceReplacingType];
 	[undo setActionName:NSLocalizedString(@"Replace Frag", nil)];
 
@@ -1064,8 +1064,8 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 #pragma mark Undo & Redo
 - (void)setPoint:(NSPoint)p atIndex:(int)i
 {
-	[(DBPolyline *) [[[_layer layerController] documentUndoManager] prepareWithInvocationTarget:self] setPoint:_points[i].point atIndex:i];
-	[[[_layer layerController] documentUndoManager] setActionName:NSLocalizedString(@"Edit", nil)];
+	[(DBPolyline *) [[self undoManager] prepareWithInvocationTarget:self] setPoint:_points[i].point atIndex:i];
+	[[self undoManager] setActionName:NSLocalizedString(@"Edit", nil)];
 	
 	_points[i].point = p;
 	//NSLog(@"setpoint %@",NSStringFromPoint(_points[i]));
@@ -1361,7 +1361,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 
 - (void)replacePoints:(DBPolylinePoint *)points count:(int)count type:(int)replacingType
 {
-	DBUndoManager *undo = [[_layer layerController] documentUndoManager];
+	DBUndoManager *undo = [self undoManager];
 	[[undo prepareWithInvocationTarget:self] replacePoints:_points count:_pointCount type:replacingType];
 	if(replacingType == DBInsertionReplacingType){
 		[undo setActionName:NSLocalizedString(@"Insert Point", nil)];

@@ -202,24 +202,24 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>6C9DEE9810EADFCB003D6E84</string>
+				<string>6C9DEF5110ECC911003D6E84</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>DBBezierCurve.m</string>
+				<string>DBFill.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>6C9DEE9910EADFCB003D6E84</string>
+						<string>6C9DEF5210ECC911003D6E84</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>DBBezierCurve.m</string>
+						<string>DBFill.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEF3310ECC56F003D6E84</string>
+						<string>6C9DEF5410ECC911003D6E84</string>
 						<key>history</key>
 						<array>
-							<string>6C9DEEC710EAE927003D6E84</string>
+							<string>6C9DEF5310ECC911003D6E84</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -231,11 +231,11 @@
 			<key>Geometry</key>
 			<dict>
 				<key>Frame</key>
-				<string>{{0, 20}, {749, 631}}</string>
+				<string>{{0, 20}, {715, 711}}</string>
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>418 206 749 672 0 0 1440 878 </string>
+				<string>535 126 715 752 0 0 1440 878 </string>
 			</dict>
 		</dict>
 		<dict>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEF3410ECC56F003D6E84</string>
+						<string>6C9DEF5510ECC911003D6E84</string>
 						<key>history</key>
 						<array>
 							<string>6C9DEF1510ECBF75003D6E84</string>
@@ -409,7 +409,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C9DEF3210ECC56F003D6E84</string>
+										<string>6C9DEF5010ECC911003D6E84</string>
 										<key>history</key>
 										<array>
 											<string>6CCD46BA0FB4D38E00256EBC</string>
@@ -450,7 +450,6 @@
 											<string>6C42416610021763000DDAC3</string>
 											<string>6C42416A10021763000DDAC3</string>
 											<string>6C42416C10021763000DDAC3</string>
-											<string>6C42416D10021763000DDAC3</string>
 											<string>6C42419310021D0E000DDAC3</string>
 											<string>6C42419410021D0E000DDAC3</string>
 											<string>6C42419510021D0E000DDAC3</string>
@@ -539,7 +538,6 @@
 											<string>6C412CCD102E31A3009F12DD</string>
 											<string>6C53D9BE102EE726004B2388</string>
 											<string>6C53DA33102F43B0004B2388</string>
-											<string>6C53DA5A102F7465004B2388</string>
 											<string>6C53DA5D102F7465004B2388</string>
 											<string>6C53DA5E102F7465004B2388</string>
 											<string>6C53DB0410301745004B2388</string>
@@ -549,7 +547,9 @@
 											<string>6C9DEEBF10EAE927003D6E84</string>
 											<string>6C9DEEC010EAE927003D6E84</string>
 											<string>6C9DEED010EBF766003D6E84</string>
-											<string>6C9DEECD10EBF764003D6E84</string>
+											<string>6C9DEF4B10ECC911003D6E84</string>
+											<string>6C9DEF4C10ECC911003D6E84</string>
+											<string>6C9DEF4810ECC910003D6E84</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -689,6 +689,9 @@
 											<string>6C9DEEC410EAE927003D6E84</string>
 											<string>6C9DEEC510EAE927003D6E84</string>
 											<string>6C9DEED110EBF766003D6E84</string>
+											<string>6C9DEF4D10ECC911003D6E84</string>
+											<string>6C9DEF4E10ECC911003D6E84</string>
+											<string>6C9DEF4F10ECC911003D6E84</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -887,12 +890,12 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>6C9DEE5510EA9452003D6E84</string>
 		<string>6C9DEE5610EA9452003D6E84</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6CA9624A0E4B21800018CF07</string>
-		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>6C9DEF1310ECBF75003D6E84</string>
-		<string>6C9DEE9810EADFCB003D6E84</string>
+		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
+		<string>6C9DEF5110ECC911003D6E84</string>
 	</array>
 	<key>WindowString</key>
 	<string>397 129 1028 749 0 0 1440 878 </string>
@@ -916,7 +919,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DBBezierCurve.m</string>
+								<string>DBOval.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -1132,7 +1135,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBPolylineTransformation.h</string>
+										<string>DBBezierCurve.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -1266,7 +1269,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

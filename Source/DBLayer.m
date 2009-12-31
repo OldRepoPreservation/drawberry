@@ -439,6 +439,11 @@
 	[self updateRenderInView:[_layerController drawingView]];
 }
 
+
+- (DBUndoManager *)undoManager
+{
+	return [_layerController documentUndoManager];
+}
 #pragma mark Shape Hierarchy
 
 - (BOOL)lowerShapes:(NSArray *)shapes

@@ -131,6 +131,9 @@ enum {
 - (NSArray *)fills;
 - (unsigned int)countOfFills;
 - (void)setFills:(NSArray *)newFills;
+
+// undo manager
+- (DBUndoManager *)undoManager;
 @end 
 
 NSPoint DBMultiplyPointByFactor(NSPoint point, float factor);

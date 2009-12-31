@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEEC810EAE927003D6E84</string>
+						<string>6C9DEF0310EC1F99003D6E84</string>
 						<key>history</key>
 						<array>
 							<string>6C9DEEC710EAE927003D6E84</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEECC10EAE927003D6E84</string>
+						<string>6C9DEF0410EC1F99003D6E84</string>
 						<key>history</key>
 						<array>
 							<string>6C9DEECB10EAE927003D6E84</string>
@@ -397,7 +397,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DBPolyline.m</string>
+								<string>DBBezierCurve.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -405,11 +405,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DBPolyline.m</string>
+										<string>DBBezierCurve.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C9DEEC610EAE927003D6E84</string>
+										<string>6C9DEF0210EC1F99003D6E84</string>
 										<key>history</key>
 										<array>
 											<string>6CCD46BA0FB4D38E00256EBC</string>
@@ -548,8 +548,8 @@
 											<string>6C9DEEBE10EAE927003D6E84</string>
 											<string>6C9DEEBF10EAE927003D6E84</string>
 											<string>6C9DEEC010EAE927003D6E84</string>
-											<string>6C9DEEC110EAE927003D6E84</string>
-											<string>6C9DEEB310EAE765003D6E84</string>
+											<string>6C9DEED010EBF766003D6E84</string>
+											<string>6C9DEECD10EBF764003D6E84</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -688,6 +688,7 @@
 											<string>6C9DEEC310EAE927003D6E84</string>
 											<string>6C9DEEC410EAE927003D6E84</string>
 											<string>6C9DEEC510EAE927003D6E84</string>
+											<string>6C9DEED110EBF766003D6E84</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -886,11 +887,11 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>6C9DEE5510EA9452003D6E84</string>
 		<string>6C9DEE5610EA9452003D6E84</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6CA9624A0E4B21800018CF07</string>
 		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
 		<string>6C9DEEC910EAE927003D6E84</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>6C9DEE9810EADFCB003D6E84</string>
 	</array>
 	<key>WindowString</key>
@@ -910,12 +911,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>DBBezierCurve.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -1263,7 +1266,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

@@ -724,10 +724,31 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			didEdit = YES;
 			
 			switch(controlPointIndex){
-				case 0 :	oldPoint = _points[i].point;  _points[i].point = point; break;
-				case 1 :	oldPoint = _points[i].controlPoint1;  _points[i].controlPoint1 = point; _points[i].hasControlPoint1 = YES; break;
-				case 2 :	oldPoint = _points[i].controlPoint2;  _points[i].controlPoint2 = point; _points[i].hasControlPoint2 = YES; break;
-				default : 	oldPoint = _points[i].point;  _points[i].point = point; break;
+				case 0 :	oldPoint = _points[i].point;  _points[i].point = point;
+					break;
+				case 1 :	oldPoint = _points[i].controlPoint1;  
+					if(distanceBetween(point, _points[i].point)<=2){
+						_points[i].controlPoint1 = _points[i].point; 
+						_points[i].hasControlPoint1 = NO;
+						NSLog(@"very near");
+					}else{
+						_points[i].controlPoint1 = point; 
+						_points[i].hasControlPoint1 = YES; 					
+					}
+					break;
+				case 2 :	oldPoint = _points[i].controlPoint2;  
+					if(distanceBetween(point, _points[i].point)<=2){
+						_points[i].controlPoint2 = _points[i].point; 
+						_points[i].hasControlPoint2 = NO; 
+						NSLog(@"very near");
+					}else{
+						_points[i].controlPoint2 = point; 
+						_points[i].hasControlPoint2 = YES; 	
+					}
+					break;
+					
+				default : 	oldPoint = _points[i].point;  _points[i].point = point; 
+					break;
 			}       
         
 
@@ -749,11 +770,12 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
             
 	            if([theEvent modifierFlags] & NSAlternateKeyMask){
 
-				}else if([theEvent modifierFlags] & NSControlKeyMask || NSEqualPoints(oldPoint, _points[i].point)){
+				}else if([theEvent modifierFlags] & NSControlKeyMask ){
+					NSLog(@"toto");
 					_points[i].controlPoint2 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
 				}else{
-					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint2) && !NSEqualPoints(oldPoint, _points[i].point)){
-						angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint1);
+					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint1) && !NSEqualPoints(_points[i].point, _points[i].controlPoint2) && !NSEqualPoints(oldPoint, _points[i].point)){
+						angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint1);							
 						controlPoint = _points[i].controlPoint2;
 				
 						controlPoint.x -= curvePoint.x;
@@ -766,6 +788,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 						rotatedPoint.x += curvePoint.x;
 						rotatedPoint.y += curvePoint.y;
 						_points[i].controlPoint2 = rotatedPoint;
+					}else{
+						NSLog(@"tata");
 					}
 				}
 			}else if(controlPointIndex == 2){  
@@ -776,10 +800,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
             
 	            if([theEvent modifierFlags] & NSAlternateKeyMask){
 			
-				}else if([theEvent modifierFlags] & NSControlKeyMask || NSEqualPoints(oldPoint, _points[i].point)){
+				}else if([theEvent modifierFlags] & NSControlKeyMask){
 	            	_points[i].controlPoint1 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
 		   		}else{
-					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint1) && !NSEqualPoints(oldPoint, _points[i].point)){
+					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint1) && !NSEqualPoints(_points[i].point, _points[i].controlPoint2) && !NSEqualPoints(oldPoint, _points[i].point)){
 						angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint2);
 						controlPoint = _points[i].controlPoint1;
 				

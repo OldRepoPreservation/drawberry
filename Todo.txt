@@ -158,6 +158,8 @@ What we have to do in the future (in function of milestone)
 
 	TODO : Introduce a contextual menu
 
+	TODO : Almost all the actions must be undoable
+
 - Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES
 	
 	TODO : The performances are very bad when multiple objects are displayed

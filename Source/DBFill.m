@@ -360,6 +360,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setImageDrawPoint:(NSPoint)newImageDrawPoint
 {
+	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
+		[[[_shape undoManager] prepareWithInvocationTarget:self] setImageDrawPoint:[self imageDrawPoint]];
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}
+	
 	_imageDrawPoint = newImageDrawPoint;
 	
 //	if(_fillMode == DBImageFillMode)
@@ -382,6 +387,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 }
 - (void)setGradientStartingPoint:(NSPoint)newPoint
 {
+	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
+		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientStartingPoint:[self gradientStartingPoint]];
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}
+	
 	_grdStartingPoint = newPoint;
 	
    	[_shape strokeUpdated];
@@ -393,6 +403,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 }
 - (void)setGradientEndingPoint:(NSPoint)newPoint
 {
+	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
+		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientEndingPoint:[self gradientEndingPoint]];
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}
+
 	_grdEndingPoint = newPoint;
 	
    	[_shape strokeUpdated];
@@ -404,6 +419,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 }
 - (void)setGradientStartingRadius:(CGFloat)radius
 {
+	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
+		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientStartingRadius:[self gradientStartingRadius]];
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}
+	
 	_grdStartingRadius = radius;
 	[_shape strokeUpdated];
 }
@@ -413,6 +433,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 }
 - (void)setGradientEndingRadius:(CGFloat)radius
 {
+	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
+		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientEndingRadius:[self gradientEndingRadius]];
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}
+	
 	_grdEndingRadius = radius;
 	[_shape strokeUpdated];
 }
@@ -539,6 +564,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	
 	[[self shape] setIsEditing:YES];
 	
+	NSPoint previousPosition;
+	previousPosition = [self imageDrawPoint];
+	
 	while(YES){
 		pool = [[NSAutoreleasePool alloc] init];
 		
@@ -566,6 +594,10 @@ static double distanceBetween(NSPoint a, NSPoint b)
 			break;
 		}
 	}
+	
+	[[[_shape undoManager] prepareWithInvocationTarget:self] setImageDrawPoint:previousPosition];
+	[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+
 	[[self shape] setIsEditing:NO];
 	
 	[[[self shape] layer] updateRenderInView:nil];
@@ -585,6 +617,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	NSAutoreleasePool *pool;
 	int pointFlag;
 	BOOL editRadius;
+	
+	NSPoint previousPosition;
+	float previousRadius;
 	
 	float d1, d2;
 	
@@ -643,6 +678,13 @@ static double distanceBetween(NSPoint a, NSPoint b)
 		}
 	}
 	
+	if(pointFlag == 1){
+		previousPosition = [self gradientStartingPoint];
+		previousRadius = [self gradientStartingRadius];
+	}else{ // pointFlag == 2
+		previousPosition = [self gradientEndingPoint];
+		previousRadius = [self gradientEndingRadius];
+	}
 	
 	
 	[[self shape] setIsEditing:YES];
@@ -685,6 +727,23 @@ static double distanceBetween(NSPoint a, NSPoint b)
 			break;
 		}
 	}
+	
+	if(pointFlag == 1){
+		if(editRadius){
+			[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientStartingRadius:previousRadius];
+		}else{
+			[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientStartingPoint:previousPosition];
+		}
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}else{
+		if(editRadius){
+			[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientEndingRadius:previousRadius];
+		}else{
+			[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientEndingPoint:previousPosition];
+		}
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+	}
+	
 	[[self shape] setIsEditing:NO];
 	
 	[[[self shape] layer] updateRenderInView:nil];

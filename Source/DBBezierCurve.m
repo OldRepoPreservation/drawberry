@@ -618,7 +618,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			{   
 				if(controlPointIndex == 1){ // point also on cp 1
 					// get the nearest one
-					controlPointIndex = (distanceBetween(p, _points[i].controlPoint1) <= distanceBetween(p, _points[i].controlPoint2) ) ? 1 : 2;
+					controlPointIndex = (distanceBetween(p, _points[i].controlPoint1) < distanceBetween(p, _points[i].controlPoint2) ) ? 1 : 2;
 				}else{
 					controlPointIndex = 2;
 				}
@@ -627,7 +627,13 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		if(DBPointIsOnKnobAtPointZoom(point, _points[i].point,[view zoom])) // priority to the main control point
 		{   
 			if(([theEvent modifierFlags] & NSShiftKeyMask) && controlPointIndex != -1){
-				// if shift pressed then select cp 1 or 2
+				if(_points[i].subPathStart){
+					// select cp 1
+					controlPointIndex = 1;
+				}else if(i == _pointCount-1 || _points[i+1].subPathStart){ // end of the path
+					// select cp 2
+					controlPointIndex = 2;
+				}
 			}else{
 				controlPointIndex = 0;
 			}
@@ -771,7 +777,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	            if([theEvent modifierFlags] & NSAlternateKeyMask){
 
 				}else if([theEvent modifierFlags] & NSControlKeyMask ){
-					NSLog(@"toto");
 					_points[i].controlPoint2 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
 				}else{
 					if(!NSEqualPoints(_points[i].point, _points[i].controlPoint1) && !NSEqualPoints(_points[i].point, _points[i].controlPoint2) && !NSEqualPoints(oldPoint, _points[i].point)){
@@ -788,8 +793,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 						rotatedPoint.x += curvePoint.x;
 						rotatedPoint.y += curvePoint.y;
 						_points[i].controlPoint2 = rotatedPoint;
-					}else{
-						NSLog(@"tata");
 					}
 				}
 			}else if(controlPointIndex == 2){  

@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEF0310EC1F99003D6E84</string>
+						<string>6C9DEF2010ECC1E9003D6E84</string>
 						<key>history</key>
 						<array>
 							<string>6C9DEEC710EAE927003D6E84</string>
@@ -242,24 +242,24 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>6C9DEEC910EAE927003D6E84</string>
+				<string>6C9DEF1310ECBF75003D6E84</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>DBPolyline.m</string>
+				<string>DBBezierCurve.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>6C9DEECA10EAE927003D6E84</string>
+						<string>6C9DEF1410ECBF75003D6E84</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>DBPolyline.m</string>
+						<string>DBBezierCurve.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEF0410EC1F99003D6E84</string>
+						<string>6C9DEF2110ECC1E9003D6E84</string>
 						<key>history</key>
 						<array>
-							<string>6C9DEECB10EAE927003D6E84</string>
+							<string>6C9DEF1510ECBF75003D6E84</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -271,11 +271,11 @@
 			<key>Geometry</key>
 			<dict>
 				<key>Frame</key>
-				<string>{{0, 20}, {715, 660}}</string>
+				<string>{{0, 20}, {749, 631}}</string>
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>231 177 715 701 0 0 1440 878 </string>
+				<string>260 206 749 672 0 0 1440 878 </string>
 			</dict>
 		</dict>
 	</array>
@@ -409,7 +409,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C9DEF0210EC1F99003D6E84</string>
+										<string>6C9DEF1F10ECC1E9003D6E84</string>
 										<key>history</key>
 										<array>
 											<string>6CCD46BA0FB4D38E00256EBC</string>
@@ -890,7 +890,7 @@
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6CA9624A0E4B21800018CF07</string>
 		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
-		<string>6C9DEEC910EAE927003D6E84</string>
+		<string>6C9DEF1310ECBF75003D6E84</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>6C9DEE9810EADFCB003D6E84</string>
 	</array>
@@ -911,8 +911,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -935,6 +933,8 @@
 							<string>318pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

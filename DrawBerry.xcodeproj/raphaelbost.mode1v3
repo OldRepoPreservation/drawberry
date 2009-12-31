@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEF2010ECC1E9003D6E84</string>
+						<string>6C9DEF3310ECC56F003D6E84</string>
 						<key>history</key>
 						<array>
 							<string>6C9DEEC710EAE927003D6E84</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>6C9DEF2110ECC1E9003D6E84</string>
+						<string>6C9DEF3410ECC56F003D6E84</string>
 						<key>history</key>
 						<array>
 							<string>6C9DEF1510ECBF75003D6E84</string>
@@ -409,7 +409,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C9DEF1F10ECC1E9003D6E84</string>
+										<string>6C9DEF3210ECC56F003D6E84</string>
 										<key>history</key>
 										<array>
 											<string>6CCD46BA0FB4D38E00256EBC</string>
@@ -890,8 +890,8 @@
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6CA9624A0E4B21800018CF07</string>
 		<string>/Users/raphaelbost/Bazaar/DrawBerry/DrawBerry.xcodeproj</string>
-		<string>6C9DEF1310ECBF75003D6E84</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>6C9DEF1310ECBF75003D6E84</string>
 		<string>6C9DEE9810EADFCB003D6E84</string>
 	</array>
 	<key>WindowString</key>

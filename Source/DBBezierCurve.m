@@ -595,8 +595,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	NSSize previousSize, newSize;
 	NSAutoreleasePool *pool;
 	float xOffset, yOffset;
+	BOOL keepAngle;
 	
 	didEdit = NO;
+	keepAngle = YES;
 	
 	canConvert = [view isKindOfClass:[DBDrawingView class]];
    
@@ -627,6 +629,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		if(DBPointIsOnKnobAtPointZoom(point, _points[i].point,[view zoom])) // priority to the main control point
 		{   
 			if(([theEvent modifierFlags] & NSShiftKeyMask) && controlPointIndex != -1){
+				keepAngle = NO;
 				if(_points[i].subPathStart){
 					// select cp 1
 					controlPointIndex = 1;
@@ -644,7 +647,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 
    	}
 	
-	if(i >= _pointCount)
+	if(i >= _pointCount) // no cp found
 	{
 		if([theEvent modifierFlags] & NSAlternateKeyMask){
 		 	// add a point 
@@ -736,7 +739,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 					if(distanceBetween(point, _points[i].point)<=2){
 						_points[i].controlPoint1 = _points[i].point; 
 						_points[i].hasControlPoint1 = NO;
-						NSLog(@"very near");
+						keepAngle = NO;
 					}else{
 						_points[i].controlPoint1 = point; 
 						_points[i].hasControlPoint1 = YES; 					
@@ -746,7 +749,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 					if(distanceBetween(point, _points[i].point)<=2){
 						_points[i].controlPoint2 = _points[i].point; 
 						_points[i].hasControlPoint2 = NO; 
-						NSLog(@"very near");
+						keepAngle = NO;
 					}else{
 						_points[i].controlPoint2 = point; 
 						_points[i].hasControlPoint2 = YES; 	
@@ -757,7 +760,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 					break;
 			}       
         
-
+			if([theEvent modifierFlags] & NSControlKeyMask){
+				keepAngle = YES;
+			}
+			
 			if(controlPointIndex == 0){
 				float deltaX, deltaY;
 
@@ -774,8 +780,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				float angle;			
 				curvePoint = _points[i].point;
             
-	            if([theEvent modifierFlags] & NSAlternateKeyMask){
-
+	            if([theEvent modifierFlags] & NSAlternateKeyMask || !keepAngle){
+					// do not change the other cp position
 				}else if([theEvent modifierFlags] & NSControlKeyMask ){
 					_points[i].controlPoint2 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
 				}else{
@@ -801,7 +807,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				float angle;			
 				curvePoint = _points[i].point;
             
-	            if([theEvent modifierFlags] & NSAlternateKeyMask){
+	            if([theEvent modifierFlags] & NSAlternateKeyMask || !keepAngle){
 			
 				}else if([theEvent modifierFlags] & NSControlKeyMask){
 	            	_points[i].controlPoint1 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);

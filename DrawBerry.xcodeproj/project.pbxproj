@@ -239,17 +239,11 @@
 		6C9334050FA4587E007197B6 /* DBDonateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9334040FA4587E007197B6 /* DBDonateWindowController.m */; };
 		6C9334280FA45BF7007197B6 /* DBDonatePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */; };
 		6C9334870FA47F3D007197B6 /* Donate.webloc in Resources */ = {isa = PBXBuildFile; fileRef = 6C9334860FA47F3D007197B6 /* Donate.webloc */; };
-		6C9679C70ECF244F007AB553 /* GradientPanelFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */; };
-		6C9679DE0ECF2532007AB553 /* GradientPanelFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */; };
-		6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
-		6CA3B1BF0E5C3A9700BFCA59 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
-		6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */; };
 		6CA3B1D00E5C3F6700BFCA59 /* action_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */; };
 		6CAC18A00E28C4B7007FD7D8 /* DBColorSwatches.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CAC189E0E28C4B7007FD7D8 /* DBColorSwatches.nib */; };
 		6CAEAB980FABA8AB00F700AD /* DBMagnifyingGlassBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAEAB970FABA8AB00F700AD /* DBMagnifyingGlassBackground.m */; };
 		6CB068780E44A93200B92FE4 /* DBShapeCollectionDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */; };
 		6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 6CB4DFA90E5B1D2F008CBB3A /* Help */; };
-		6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB6C6F10E587BF500800D7E /* Sparkle.framework */; };
 		6CBF843D0C5642D800F9554F /* UndoLoc.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CBF843C0C5642D800F9554F /* UndoLoc.strings */; };
 		6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCAE8290C1084A300F71D77 /* QuartzCore.framework */; };
 		6CDC49060C4D79BD00F3128F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CDC49050C4D79BD00F3128F /* Localizable.strings */; };
@@ -257,6 +251,12 @@
 		6CF0DEEB0BD29982006B58F8 /* DBTools.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF0DEE90BD29982006B58F8 /* DBTools.nib */; };
 		6CF78B0B0FA5016F00CC00FB /* DBDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */; };
 		6CF835DC0BC819080058CCFA /* DBInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF835DA0BC819080058CCFA /* DBInspector.nib */; };
+		6CFD12E411E7BFB500140138 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
+		6CFD12E811E7BFBE00140138 /* GradientPanelFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */; };
+		6CFD12EA11E7BFBE00140138 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E911E7BFBE00140138 /* Sparkle.framework */; };
+		6CFD132611E7BFC300140138 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
+		6CFD132711E7BFC300140138 /* GradientPanelFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */; };
+		6CFD132811E7BFC300140138 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E911E7BFBE00140138 /* Sparkle.framework */; };
 		6CFFD2C20C9452A1006F85FB /* DBMagnifyingGlass.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CFFD2C00C9452A1006F85FB /* DBMagnifyingGlass.nib */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
@@ -272,9 +272,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6C9679DE0ECF2532007AB553 /* GradientPanelFramework.framework in CopyFiles */,
-				6CA3B1C00E5C3A9B00BFCA59 /* BGHUDAppKit.framework in CopyFiles */,
-				6C9947380E588CB10009CCA0 /* Sparkle.framework in CopyFiles */,
+				6CFD132611E7BFC300140138 /* BGHUDAppKit.framework in CopyFiles */,
+				6CFD132711E7BFC300140138 /* GradientPanelFramework.framework in CopyFiles */,
+				6CFD132811E7BFC300140138 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,8 +654,6 @@
 		6C9334270FA45BF7007197B6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBDonatePanel.nib; sourceTree = "<group>"; };
 		6C93342A0FA45C14007197B6 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBDonatePanel.nib; sourceTree = "<group>"; };
 		6C9334860FA47F3D007197B6 /* Donate.webloc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Donate.webloc; sourceTree = "<group>"; };
-		6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanelFramework.framework; path = ../../Code/GradientPanel/build/Release/GradientPanelFramework.framework; sourceTree = SOURCE_ROOT; };
-		6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = ../../Code/BGHUDAppKit.framework; sourceTree = SOURCE_ROOT; };
 		6CA3B1CF0E5C3F6700BFCA59 /* action_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_white.png; sourceTree = "<group>"; };
 		6CAC189F0E28C4B7007FD7D8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
 		6CAC18A30E28C4D4007FD7D8 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBColorSwatches.nib; sourceTree = "<group>"; };
@@ -663,7 +661,6 @@
 		6CAEAB970FABA8AB00F700AD /* DBMagnifyingGlassBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBMagnifyingGlassBackground.m; path = Source/DBMagnifyingGlassBackground.m; sourceTree = "<group>"; };
 		6CB068770E44A93200B92FE4 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
 		6CB4DFA90E5B1D2F008CBB3A /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Help; path = Ressource/Help; sourceTree = "<group>"; };
-		6CB6C6F10E587BF500800D7E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../Code/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		6CBF84380C5642D400F9554F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UndoLoc.strings; sourceTree = "<group>"; };
 		6CBF843E0C5642DD00F9554F /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/UndoLoc.strings; sourceTree = "<group>"; };
 		6CCAE8290C1084A300F71D77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
@@ -675,6 +672,9 @@
 		6CF78B090FA5016F00CC00FB /* DBDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBDocumentController.h; path = Source/DBDocumentController.h; sourceTree = "<group>"; };
 		6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBDocumentController.m; path = Source/DBDocumentController.m; sourceTree = "<group>"; };
 		6CF835DB0BC819080058CCFA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBInspector.nib; sourceTree = "<group>"; };
+		6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = Ressource/Frameworks/BGHUDAppKit.framework; sourceTree = "<group>"; };
+		6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanelFramework.framework; path = Ressource/Frameworks/GradientPanelFramework.framework; sourceTree = "<group>"; };
+		6CFD12E911E7BFBE00140138 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Ressource/Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		6CFFD2C10C9452A1006F85FB /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBMagnifyingGlass.nib; sourceTree = "<group>"; };
 		6CFFD2C30C9452D0006F85FB /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBMagnifyingGlass.nib; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -688,9 +688,9 @@
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */,
-				6CB6C6F20E587BF500800D7E /* Sparkle.framework in Frameworks */,
-				6CA3B1BF0E5C3A9700BFCA59 /* BGHUDAppKit.framework in Frameworks */,
-				6C9679C70ECF244F007AB553 /* GradientPanelFramework.framework in Frameworks */,
+				6CFD12E411E7BFB500140138 /* BGHUDAppKit.framework in Frameworks */,
+				6CFD12E811E7BFBE00140138 /* GradientPanelFramework.framework in Frameworks */,
+				6CFD12EA11E7BFBE00140138 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,11 +700,11 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C9679C60ECF244F007AB553 /* GradientPanelFramework.framework */,
-				6CA3B1BE0E5C3A9700BFCA59 /* BGHUDAppKit.framework */,
-				6CB6C6F10E587BF500800D7E /* Sparkle.framework */,
 				6CCAE8290C1084A300F71D77 /* QuartzCore.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */,
+				6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */,
+				6CFD12E911E7BFBE00140138 /* Sparkle.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -1872,18 +1872,10 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_5 = "\"$(SRCROOT)/../OpenHUD/build/Debug\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_7 = "\"$(SRCROOT)/../OpenHUD/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_8 = "\"$(SRCROOT)/../OpenHUD/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/..\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Code/BGAppKit/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Code\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../Code/GradientPanel/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Ressource/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1921,6 +1913,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_10 = "\"$(SRCROOT)/../../Code\"";
@@ -1936,6 +1929,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code/BGAppKit/build/Release\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Code\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Code/GradientPanel/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Ressource/Frameworks\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;

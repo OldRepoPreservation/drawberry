@@ -8,6 +8,7 @@
 
 #import "DBDrawingView+ShapeManagement.h"
 
+#import "DBContextualDataSourceController.h"
 
 #import "DBDocument.h"
 

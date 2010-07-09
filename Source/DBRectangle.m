@@ -518,9 +518,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)applyTransform:(NSAffineTransform *)at
 {
-	NSLog(NSStringFromPoint(_point1));
 	_point1 = [at transformPoint:_point1];
-	NSLog(NSStringFromPoint(_point1));
 	_point2 = [at transformPoint:_point2];
 	_point3 = [at transformPoint:_point3];
 	_point4 = [at transformPoint:_point4];

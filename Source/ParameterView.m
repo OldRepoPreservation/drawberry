@@ -108,7 +108,7 @@ static void format_floating_point_number(float v, int before, int after, char *s
         lastFloatValue = f;
         // update the parallel readout field
         format_floating_point_number(slider_to_readout_value(f, dataType), beforeDecimal, afterDecimal, str);
-        [readoutTextField setStringValue:[NSString stringWithCString:str]];
+        [readoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
         // update the filter (using undo-compatible glue code)
         [master setFilter:filter value:[slider objectValue] forKey:key];
 //		NSLog(@"master : %@", m);
@@ -1036,7 +1036,7 @@ static void transform_to_standard_fields(CIVector *t, float *scale, float *angle
         lastScaleFloatValue = f;
         // update the parallel readout field
         format_floating_point_number(slider_to_readout_value(f, scaleDataType), 4, 2, str);
-        [scaleReadoutTextField setStringValue:[NSString stringWithCString:str]];
+        [scaleReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
         t = [filter valueForKey:key];
         if ([t isKindOfClass:[NSAffineTransform class]])
         {
@@ -1149,7 +1149,7 @@ static void transform_to_standard_fields(CIVector *t, float *scale, float *angle
         lastAngleFloatValue = f;
         // update the parallel readout field
         format_floating_point_number(slider_to_readout_value(f, angleDataType), 3, 1, str);
-        [angleReadoutTextField setStringValue:[NSString stringWithCString:str]];
+        [angleReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
         t = [filter valueForKey:key];
         if ([t isKindOfClass:[NSAffineTransform class]])
         {
@@ -1262,7 +1262,7 @@ static void transform_to_standard_fields(CIVector *t, float *scale, float *angle
         lastStretchFloatValue = f;
         // update the parallel readout field
         format_floating_point_number(slider_to_readout_value(f, stretchDataType), 4, 2, str);
-        [stretchReadoutTextField setStringValue:[NSString stringWithCString:str]];
+        [stretchReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
         t = [filter valueForKey:key];
         if ([t isKindOfClass:[NSAffineTransform class]])
         {
@@ -1375,7 +1375,7 @@ static void transform_to_standard_fields(CIVector *t, float *scale, float *angle
         lastSkewFloatValue = f;
         // update the parallel readout field
         format_floating_point_number(slider_to_readout_value(f, skewDataType), 4, 2, str);
-        [skewReadoutTextField setStringValue:[NSString stringWithCString:str]];
+        [skewReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
         t = [filter valueForKey:key];
         if ([t isKindOfClass:[NSAffineTransform class]])
         {
@@ -1633,7 +1633,7 @@ NSString *unInterCap(NSString *s)
     [readoutTextField setTarget:self];
     [readoutTextField setAction:@selector(readoutTextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readoutTextField setStringValue:[NSString stringWithCString:str]];
+    [readoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text readout to 9 point
     c = [readoutTextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -1798,7 +1798,7 @@ NSString *unInterCap(NSString *s)
     [readout1TextField setTarget:self];
     [readout1TextField setAction:@selector(readout1TextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readout1TextField setStringValue:[NSString stringWithCString:str]];
+    [readout1TextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readout1TextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -1815,7 +1815,7 @@ NSString *unInterCap(NSString *s)
     [readout2TextField setTarget:self];
     [readout2TextField setAction:@selector(readout2TextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readout2TextField setStringValue:[NSString stringWithCString:str]];
+    [readout2TextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readout2TextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -1832,7 +1832,7 @@ NSString *unInterCap(NSString *s)
     [readout3TextField setTarget:self];
     [readout3TextField setAction:@selector(readout3TextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readout3TextField setStringValue:[NSString stringWithCString:str]];
+    [readout3TextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readout3TextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -1849,7 +1849,7 @@ NSString *unInterCap(NSString *s)
     [readout4TextField setTarget:self];
     [readout4TextField setAction:@selector(readout4TextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readout4TextField setStringValue:[NSString stringWithCString:str]];
+    [readout4TextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readout4TextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -1924,7 +1924,7 @@ NSString *unInterCap(NSString *s)
     [readout1TextField setTarget:self];
     [readout1TextField setAction:@selector(readout1TextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readout1TextField setStringValue:[NSString stringWithCString:str]];
+    [readout1TextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readout1TextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -1941,7 +1941,7 @@ NSString *unInterCap(NSString *s)
     [readout2TextField setTarget:self];
     [readout2TextField setAction:@selector(readout2TextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readout2TextField setStringValue:[NSString stringWithCString:str]];
+    [readout2TextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readout2TextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -2025,7 +2025,7 @@ NSString *unInterCap(NSString *s)
     [scaleReadoutTextField setTarget:self];
     [scaleReadoutTextField setAction:@selector(scaleReadoutTextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(scale_default, scaleDataType), 4, 2, str);
-    [scaleReadoutTextField setStringValue:[NSString stringWithCString:str]];
+    [scaleReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [scaleReadoutTextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -2065,7 +2065,7 @@ NSString *unInterCap(NSString *s)
     [angleReadoutTextField setTarget:self];
     [angleReadoutTextField setAction:@selector(angleReadoutTextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(angle_default, angleDataType), 3, 1, str);
-    [angleReadoutTextField setStringValue:[NSString stringWithCString:str]];
+    [angleReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [angleReadoutTextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -2105,7 +2105,7 @@ NSString *unInterCap(NSString *s)
     [stretchReadoutTextField setTarget:self];
     [stretchReadoutTextField setAction:@selector(stretchReadoutTextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(stretch_default, stretchDataType), 4, 2, str);
-    [stretchReadoutTextField setStringValue:[NSString stringWithCString:str]];
+    [stretchReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [stretchReadoutTextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -2145,7 +2145,7 @@ NSString *unInterCap(NSString *s)
     [skewReadoutTextField setTarget:self];
     [skewReadoutTextField setAction:@selector(skewReadoutTextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(skew_default, skewDataType), 4, 2, str);
-    [skewReadoutTextField setStringValue:[NSString stringWithCString:str]];
+    [skewReadoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [skewReadoutTextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];
@@ -2469,7 +2469,7 @@ NSString *unInterCap(NSString *s)
     [readoutTextField setTarget:self];
     [readoutTextField setAction:@selector(textReadoutTextFieldChanged:)];
     format_floating_point_number(slider_to_readout_value(def, dataType), beforeDecimal, afterDecimal, str);
-    [readoutTextField setStringValue:[NSString stringWithCString:str]];
+    [readoutTextField setStringValue:[NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
     // set text label to 9 point
     c = [readoutTextField cell];
     [c setFont:[NSFont fontWithName:[[c font] fontName] size:9]];

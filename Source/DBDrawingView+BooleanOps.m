@@ -6,6 +6,8 @@
 //  Copyright 2008 Raphael Bost. All rights reserved.
 //
 
+#import "DBContextualDataSourceController.h"
+
 #import "DBDrawingView.h"
 #import "DBDrawingView+BooleanOps.h"
 #import "DBDrawingView+ShapeManagement.h"

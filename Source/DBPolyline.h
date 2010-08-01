@@ -6,6 +6,17 @@
 //  Copyright 2007 Raphael Bost. All rights reserved.
 //
 
+
+/*
+ *	This class is kept for backward compatibility
+ *	Its main purpose is to convert an encoded DBPolyline object into a DBBezierPath object
+ *
+ */
+
+
+
+
+
 #import "DBShape.h"
 
 typedef struct _DBPolylinePoint {

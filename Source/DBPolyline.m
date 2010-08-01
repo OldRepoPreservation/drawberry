@@ -84,6 +84,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	return self;
 }
 
+/*
 - (id)initWithCoder:(NSCoder *)decoder
 {
 	self = [super initWithCoder:decoder];
@@ -113,6 +114,45 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	
 	return self;
 }   
+*/
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+	DBBezierCurve *curve;
+	
+	
+	
+	_pointCount = [decoder decodeIntForKey:@"Point count"];
+	_lineIsClosed = [decoder decodeBoolForKey:@"Close Path"];
+	
+	NSArray *array;
+	array = [decoder decodeObjectForKey:@"Points"];
+	_points = malloc(_pointCount*sizeof(DBPolylinePoint));
+	
+	NSEnumerator *e = [array objectEnumerator];
+	NSString *pointString;
+	NSNumber *num;
+	int i = 0;
+    
+	
+	while((pointString = [e nextObject])){
+		_points[i].point = NSPointFromString(pointString);
+		num = [e nextObject];
+		_points[i].closePath = [num boolValue];
+		num = [e nextObject];
+		_points[i].subPathStart = [num boolValue];
+		i ++;
+	}
+	
+	[self updatePath];
+	
+	curve = [[DBBezierCurve alloc] initWithBezierPath:[self path]];
+
+	[self autorelease];
+	
+	return curve;
+}
+
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {

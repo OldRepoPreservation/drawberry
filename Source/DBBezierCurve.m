@@ -208,6 +208,14 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	return newPoints;
 }
 
+@interface DBBezierCurve (Private)
+
+- (BOOL)_createPolylineWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+- (BOOL)_createCurveWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+
+
+@end
+
 @implementation DBBezierCurve
 
 - (id)init
@@ -439,7 +447,165 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	[array release];
 }
 
-- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view option:(int)option
+{
+
+	switch (option) {
+		case 0:
+			return [self _createCurveWithEvent:theEvent inView:view];
+			break;
+		case 1:
+			return [self _createPolylineWithEvent:theEvent inView:view];
+			break;
+
+		default:
+			return NO;
+			break;
+	}
+}   
+
+// create a simple polyline (no way to get curvy) but the user can change it
+- (BOOL)_createPolylineWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+{
+	NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+	NSAutoreleasePool *pool;
+	BOOL mouseOutside = NO;
+	if(!NSPointInRect(point, [view bounds])){
+		return NO;
+	}
+	if([view isKindOfClass:[DBDrawingView class]])
+	{		
+		point = [view pointSnapedToGrid:point];
+		point = [view canevasCoordinatesFromViewCoordinates:point];
+	}
+	
+	
+	[_path release];
+	_path = nil;
+	
+	_points = malloc(2*sizeof(DBCurvePoint));
+	_points[0] = DBMakeCurvePoint(point);
+	_points[1] = DBMakeCurvePoint(point);
+	
+	
+//	_points[0].point = point;
+//	_points[1].point = point; 
+	
+//	_points[0].closePath = _points[1].closePath = NO;
+	_points[0].subPathStart = YES;
+	_points[1].subPathStart = NO;
+	
+	_pointCount = 2;
+	
+	_lineIsClosed = NO;
+	
+	[view setNeedsDisplay:YES];
+		
+	while(YES){
+		pool = [[NSAutoreleasePool alloc] init];
+		
+		theEvent = [[view window] nextEventMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSMouseMovedMask)];
+		[view moveMouseRulerMarkerWithEvent:theEvent];
+		
+		if([theEvent window] && [theEvent window] != [view window]){
+			_lineIsClosed = NO;
+			_pointCount--;
+			_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+			[pool release];
+			break;   							
+			
+		}
+		
+        point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
+		
+		
+		mouseOutside = !NSPointInRect(point, [view bounds]);
+		
+		if([view isKindOfClass:[DBDrawingView class]])
+		{
+			point = [view pointSnapedToGrid:point];
+			point = [view canevasCoordinatesFromViewCoordinates:point];
+		}
+		
+		if(distanceBetween(point, _points[0].point) <= 7/[(DBDrawingView *)view zoom]){ // 7 pixels on screen
+			point = _points[0].point;
+		}else{
+			
+    	}
+		////NSLog(@"add point to polyline");
+  		if([theEvent type] == NSLeftMouseDown || [theEvent type] == NSRightMouseDown){
+    	  	if(DBPointIsOnKnobAtPointZoom(point,_points[0].point,[view zoom])){
+				_lineIsClosed = YES;
+				_pointCount--;
+				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+				_points[_pointCount-1].closePath = YES;
+				_points[_pointCount-1].subPathStart = NO;
+				[pool release];
+				break;
+			}
+	        
+			if(mouseOutside){
+				_lineIsClosed = NO;
+				_pointCount--;
+				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+				[pool release];
+				break;   							
+			}
+			
+	 		if([theEvent clickCount] > 1 || !NSPointInRect(point, [view bounds])){
+				_lineIsClosed = NO;
+				_pointCount--;
+				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+				[pool release];
+				break;
+			}
+			
+			_pointCount++;
+			
+			_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+			
+			_points[_pointCount-2] = DBMakeCurvePoint(point);
+			_points[_pointCount-1] = DBMakeCurvePoint(point);
+			_points[_pointCount-1].closePath = NO;
+			_points[_pointCount-1].subPathStart = NO;
+			
+			[self updatePath];
+			[view setNeedsDisplay:YES];
+			
+			
+			if(([theEvent modifierFlags] & NSControlKeyMask) || [theEvent type] == NSRightMouseDown)
+			{   
+				_lineIsClosed = NO;
+				_pointCount--;
+				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+				[pool release];                    
+				break;
+			}
+		}else if([theEvent type] == NSMouseMoved){ 
+			_points[_pointCount-1] = DBMakeCurvePoint(point);
+			
+			[self updatePath];
+			[view setNeedsDisplay:YES];			 
+		}
+   		[pool release];
+	}
+	
+	
+	[self updatePath];
+	
+	_bounds = [_path bounds];
+	_boundsSize = _bounds.size;
+	
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+	[_stroke updateStrokeForPath:_path]; 
+	
+	[_layer updateRenderInView:view];
+	
+	return (_pointCount > 1);
+	
+}
+
+- (BOOL)_createCurveWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {
 	NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSPoint controlPoint;
@@ -456,12 +622,12 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 	[_path release];
 	_path = nil;
-	 
+	
 	_points = malloc(sizeof(DBCurvePoint));
 	_points[0] = DBMakeCurvePoint(point);
 	_points[0].subPathStart = YES;
 	_pointCount = 1;
-     
+	
 	_lineIsClosed = NO;
 	
 	[view setNeedsDisplay:YES];
@@ -475,7 +641,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		point = [view convertPoint:[theEvent locationInWindow] fromView:nil];  		
         
 		[view moveMouseRulerMarkerWithEvent:theEvent];
-
+		
 		if([view isKindOfClass:[DBDrawingView class]])
 		{
 			point = [view pointSnapedToGrid:point];
@@ -484,12 +650,12 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		if(distanceBetween(point, _points[0].point) <= 7/[(DBDrawingView *)view zoom]){
 			point = _points[0].point;
 		}else{
-
+			
     	}
 		
 		if([theEvent type] == NSLeftMouseDown || [theEvent type] == NSRightMouseDown){
-
-		
+			
+			
 		  	if(DBPointIsOnKnobAtPointZoom(point,_points[0].point,[view zoom])){
 				shouldEndCreation = YES;
 			}
@@ -501,12 +667,12 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				[pool release];
 				break;
 			}
-
-//			_pointCount++;
-		
-//			_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
-		
-//			_points[_pointCount-2] = DBMakeCurvePoint(point);
+			
+			//			_pointCount++;
+			
+			//			_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+			
+			//			_points[_pointCount-2] = DBMakeCurvePoint(point);
 			_points[_pointCount-1] = DBMakeCurvePoint(point);
             
 		 	if(([theEvent modifierFlags] & NSControlKeyMask) || [theEvent type] == NSRightMouseDown)
@@ -518,8 +684,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				break;
 			}
         }else if([theEvent type] == NSLeftMouseDragged || [theEvent type] == NSLeftMouseUp){ 
-		// control points
-
+			// control points
+			
 	        controlPoint = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 			point = _points[_pointCount-1].point;
 			
@@ -539,7 +705,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				controlPointSet = YES;
 				_points[_pointCount-1].hasControlPoints = YES;
 				_points[_pointCount-1].hasControlPoint1 = YES;
-
+				
 				if(_pointCount-1 != 0){ // not creating the first point
 					_points[_pointCount-1].hasControlPoint2 = YES;
 				}
@@ -548,7 +714,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				_points[0].hasControlPoint2 = YES;
 				_pointCount--;
 				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
-			
+				
 				_points[_pointCount-1].closePath = YES;
 				[pool release];
 				break;
@@ -560,13 +726,13 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				
 				_points[_pointCount-1] = DBMakeCurvePoint(point);				
 			}
-
+			
 			//_points[_pointCount-1] = _points[_pointCount-2];
 	    }else if([theEvent type] == NSMouseMoved){
  			_points[_pointCount-1] = DBMakeCurvePoint(point);
 		}
-
-//		[_layer updateRenderInView:view];
+		
+		//		[_layer updateRenderInView:view];
 		[self updatePath];		
 		[view setNeedsDisplay:YES];  
  		
@@ -581,8 +747,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 	_bounds = [_path bounds];
 	
-	return (_pointCount > 1);
-}   
+	return (_pointCount > 1);	
+}
 
 - (BOOL)editWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
 {

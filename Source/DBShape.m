@@ -464,10 +464,24 @@ static NSBezierPath *__knob = nil;
 {
 	[_fills addObject:aFill];
 	[aFill setShape:self];
+
+	[[[self undoManager] prepareWithInvocationTarget:self] removeFill:aFill];
+	if(![[self undoManager] isUndoing]){
+		[[self undoManager] setActionName:NSLocalizedString(@"Add Fill", nil)];
+	}else{
+		[[self undoManager] setActionName:NSLocalizedString(@"Delete Fill", nil)];
+	}   
 }
 
 - (void)insertFill:(DBFill *)aFill atIndex:(unsigned int)i 
 {
+	[[[self undoManager] prepareWithInvocationTarget:self] removeFillAtIndex:i];
+	if(![[self undoManager] isUndoing]){
+		[[self undoManager] setActionName:NSLocalizedString(@"Add Fill", nil)];
+	}else{
+		[[self undoManager] setActionName:NSLocalizedString(@"Delete Fill", nil)];
+	}   
+	
 	[_fills insertObject:aFill atIndex:i];
 	[aFill setShape:self];
 }
@@ -484,11 +498,25 @@ static NSBezierPath *__knob = nil;
 
 - (void)removeFillAtIndex:(unsigned int)i
 {
+	[[[self undoManager] prepareWithInvocationTarget:self] insertFill:[self fillAtIndex:i] atIndex:i];
+	if([[self undoManager] isUndoing]){
+		[[self undoManager] setActionName:NSLocalizedString(@"Add Fill", nil)];
+	}else{
+		[[self undoManager] setActionName:NSLocalizedString(@"Delete Fill", nil)];
+	}   
+	
 	[_fills removeObjectAtIndex:i];
 }
 
 - (void)removeFill:(DBFill *)aFill
 {
+	[[[self undoManager] prepareWithInvocationTarget:self] addFill:aFill];
+	if([[self undoManager] isUndoing]){
+		[[self undoManager] setActionName:NSLocalizedString(@"Add Fill", nil)];
+	}else{
+		[[self undoManager] setActionName:NSLocalizedString(@"Delete Fill", nil)];
+	}   
+	
 	[_fills removeObject:aFill];
 }
 
@@ -504,6 +532,7 @@ static NSBezierPath *__knob = nil;
 
 - (void)setFills:(NSArray *)newFills
 {
+	NSLog(@"set fills");
 	[_fills setArray:newFills];
 	[_fills makeObjectsPerformSelector:@selector(setShape:) withObject:self];
 	[self strokeUpdated];
@@ -529,7 +558,7 @@ static NSBezierPath *__knob = nil;
 }
 
 #pragma mark Edition and Creation
-- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view option:(int)option
 {
 	return NO;
 }

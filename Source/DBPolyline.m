@@ -142,7 +142,7 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	[array release];
 }
 
-- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view option:(int)option
 {
 	NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSAutoreleasePool *pool;

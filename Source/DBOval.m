@@ -45,7 +45,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[encoder encodeObject:NSStringFromPoint(_point4) forKey:@"Fourth Point"];
 }
 
-- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view option:(int)option
 {
 	NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSPoint previousLoc, vec;

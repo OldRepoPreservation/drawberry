@@ -177,7 +177,8 @@ enum {
 	switch([self selectedTool]){
 		case DBRectTool :			class = [DBRectangle class]; break;
 		case DBOvalTool :   		class = [DBOval class];	break;
-		case DBPolylineTool :   	class = [DBPolyline class]; break;
+//		case DBPolylineTool :   	class = [DBPolyline class]; break;
+		case DBPolylineTool :   	class = [DBBezierCurve class]; break;
 		case DBLineTool :   		class = [DBLine class]; break;
 		case DBBezierCurveTool :   	class = [DBBezierCurve class]; break;
 		case DBTextTool :   		class = [DBText class]; break;
@@ -323,5 +324,25 @@ enum {
 		}
 		[[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"magGlassPanel Opened"];
 	}
+}
+
+#pragma mark Shape Creation
+
+- (DBShape *)intializeNewShapeWithCurrentTool
+{
+	Class class = [self shapeClassForSelectedTool];
+	
+	DBShape * shape = [[class alloc] init];
+	
+	return shape;
+}
+
+- (BOOL)createShape:(DBShape *)shape withEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+{
+	int option = 0;
+	if ([self selectedTool] == DBPolylineTool) {
+		option = 1;
+	}
+	return [shape createWithEvent:theEvent inView:view option:option];
 }
 @end

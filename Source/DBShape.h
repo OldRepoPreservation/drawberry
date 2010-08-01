@@ -88,7 +88,7 @@ enum {
 - (NSRect)bounds;
 - (float)zoom;
 
-- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view option:(int)option;
 - (BOOL)editWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
 - (BOOL)canEdit;
 

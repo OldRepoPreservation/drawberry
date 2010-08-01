@@ -11,6 +11,8 @@
 extern NSString *DBSelectedToolDidChangeNotification;
 extern NSString *DBToolDidCreateShapeNotification;
 
+@class DBShape, DBDrawingView;
+
 @interface DBToolsController : NSWindowController {
 	IBOutlet	NSMatrix *_toolButtons;
 	IBOutlet    NSMatrix *_inspectorSelector;
@@ -24,4 +26,8 @@ extern NSString *DBToolDidCreateShapeNotification;
 
 - (void)registerForOpenNotifications;
 - (void)registerForCloseNotifications;
+
+#pragma mark Shape Creation
+- (DBShape *)intializeNewShapeWithCurrentTool;
+- (BOOL)createShape:(DBShape *)shape withEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view;
 @end

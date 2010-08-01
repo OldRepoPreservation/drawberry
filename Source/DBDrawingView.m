@@ -638,7 +638,8 @@
 	 
 		return;
 	}
- 	shape = [[theClass alloc] init];
+// 	shape = [[theClass alloc] init];
+	shape = [[DBToolsController sharedToolsController] intializeNewShapeWithCurrentTool];
  	[currentLayer setTempShape:shape];
 //	[currentLayer addShape:shape];
 	
@@ -647,8 +648,9 @@
 	_editingShape = shape;
 
 			
-	if([shape createWithEvent:theEvent inView:self])
-    {
+//	if([shape createWithEvent:theEvent inView:self option:0])
+	if([[DBToolsController sharedToolsController] createShape:shape withEvent:theEvent inView:self])
+	{
 		// select the shape 
 		[currentLayer addShape:shape];
 		[self selectShape:shape];

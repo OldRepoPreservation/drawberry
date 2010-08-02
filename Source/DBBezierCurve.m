@@ -585,14 +585,16 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			_points[_pointCount-1] = DBMakeCurvePoint(point);
 			
 			[self updatePath];
+			[self updateBounds];
+			
 			[view setNeedsDisplay:YES];			 
 		}
    		[pool release];
 	}
 	
-	
 	[self updatePath];
-	
+	[self updateBounds];
+
 	_bounds = [_path bounds];
 	_boundsSize = _bounds.size;
 	
@@ -733,7 +735,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
 		
 		//		[_layer updateRenderInView:view];
-		[self updatePath];		
+		[self updatePath];	
+		[self updateBounds];
+
 		[view setNeedsDisplay:YES];  
  		
 		[pool release];
@@ -1328,10 +1332,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
  
 - (void)drawInView:(DBDrawingView *)view rect:(NSRect)rect
 {
-	if(!NSIsEmptyRect(rect) && !NSIntersectsRect(rect, _bounds) && !NSIsEmptyRect(_bounds)){
+	if(NSIsEmptyRect(rect) || !NSIntersectsRect(rect, _bounds) || NSIsEmptyRect(_bounds)){
 		return;
 	}
-
+	
    	if([[NSGraphicsContext currentContext] isKindOfClass:[NSBitmapGraphicsContext class]]){
 		[_shadow reverseShadowOffsetHeight];
 	}

@@ -621,7 +621,6 @@
 
 - (void)createShapeOfClass:(Class)theClass withEvent:(NSEvent *)theEvent 
 {
-	//NSLog(@"create");
 	[[self layerController] beginEditing];
 	
 	DBLayer *currentLayer;
@@ -638,17 +637,13 @@
 	 
 		return;
 	}
-// 	shape = [[theClass alloc] init];
-	shape = [[DBToolsController sharedToolsController] intializeNewShapeWithCurrentTool];
- 	[currentLayer setTempShape:shape];
-//	[currentLayer addShape:shape];
-	
 
-//	[self startEditingShape:shape];
+	shape = [[DBToolsController sharedToolsController] intializeNewShapeWithCurrentTool];
+
+	[currentLayer setTempShape:shape];	
+
 	_editingShape = shape;
 
-			
-//	if([shape createWithEvent:theEvent inView:self option:0])
 	if([[DBToolsController sharedToolsController] createShape:shape withEvent:theEvent inView:self])
 	{
 		// select the shape 
@@ -659,11 +654,6 @@
 	}else{
 //    	[currentLayer removeShape:shape];
 	}     
-//	[currentLayer setTempShape:nil];
-	
-	
-//	[[self layerController] endEditing];
-
 	
 	[currentLayer updateRenderInView:self];
 	

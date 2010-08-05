@@ -37,15 +37,25 @@
 "Rotate" = "Rotate";
 "Edit" = "Edit";
 "Edit Fill" = "Edit Fill";
+"Add Fill" = "Add Fill";
+"Delete Fill" = "Delete Fill";
 "Base Image" = "Base Image";
 "Convert" = "Convert";
 "Raise" = "Raise";
 "Lower" = "Lower";
+"Change Fill Mode" = "Changer le type de remplissage";
+"Change Fill Name" = "Change Fill Name";
+"Change Fill Color" = "Change Fill Color";
+"Change Fill Gradient" = "Change Fill Gradient";
+"Change Fill Image" = "Change Fill Image";
+"Change Image Fill Mode" = "Change Image Fill Mode";
+"Add Layer" = "Add layer";
+"Remove Layer" = "Remove layer";
 
 "Union" = "Union";
 "Diff" = "Difference";
 "Intersection" = "Intersection";
-"XOR" = "exclusive OR";
+"XOR" = "Exclusive OR";
 
 "Shape collection import desc" = "Add the shape collection named %@ containing %d shapes ?";
 "Collection already exists" = "Collection %@ already exists"

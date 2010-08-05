@@ -37,10 +37,20 @@
 "Rotate" = "Rotation";
 "Edit" = "Editer";
 "Edit Fill" = "Editer le remplissage";
+"Add Fill" = "Ajouter un remplissage";
+"Delete Fill" = "Supprimer un remplissage";
 "Base Image" = "Image de base";
 "Convert" = "Convertir";
 "Raise" = "Monter";
 "Lower" = "Descendre";
+"Change Fill Mode" = "Change le type de remplissage";
+"Change Fill Name" = "Changer le nom du remplissage";
+"Change Fill Color" = "Changer la couleur du remplissage";
+"Change Fill Gradient" = "Changer le dégradé du remplissage";
+"Change Fill Image" = "Changer l'image du remplissage";
+"Change Image Fill Mode" = "Changer le mode de remplissage de l'image";
+"Add Layer" = "Ajouter un calque";
+"Remove Layer" = "Supprimer le calque";
 
 "Union" = "Union";
 "Diff" = "Différence";

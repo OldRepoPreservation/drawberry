@@ -81,6 +81,15 @@
 {
 	[_layers insertObjects:layersArray atIndexes:indexes];
 	[layersArray makeObjectsPerformSelector:@selector(setLayerController:) withObject:self];
+
+	
+	DBUndoManager *undoMngr = [[[NSDocumentController sharedDocumentController] currentDocument] specialUndoManager]; 
+	[[undoMngr prepareWithInvocationTarget:self] removeLayersAtIndexes:indexes];
+	 if(![undoMngr isUndoing]){
+		 [undoMngr setActionName:NSLocalizedString(@"Add Layer", nil)];
+	 }else{
+		 [undoMngr setActionName:NSLocalizedString(@"Remove Layer", nil)];	
+	 }
 }
 
 
@@ -100,6 +109,15 @@
 		_selectionIndex = ([_layers count]-2);
 	}
 
+	
+	DBUndoManager *undoMngr = [[[NSDocumentController sharedDocumentController] currentDocument] specialUndoManager]; 
+	[[undoMngr prepareWithInvocationTarget:self] insertLayers:[_layers objectsAtIndexes:indexes] atIndexes:indexes];
+	if(![undoMngr isUndoing]){
+		[undoMngr setActionName:NSLocalizedString(@"Remove Layer", nil)];
+	}else{
+		[undoMngr setActionName:NSLocalizedString(@"Add Layer", nil)];	
+	}
+	
 	[_layers removeObjectsAtIndexes:indexes];
 	
 }

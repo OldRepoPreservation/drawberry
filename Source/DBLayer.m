@@ -168,8 +168,9 @@
 }                     
 
 - (void)setTempShape:(DBShape *)aShape
-{
-	[aShape retain];
+{	
+	[aShape retain];	
+	
 	[_tempShape release];
 	_tempShape = aShape;
 	

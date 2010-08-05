@@ -14,4 +14,5 @@
 }
 - (BOOL)isReversed;
 - (void)setReversed:(BOOL)newIsReversed;
+- (void)add:(id)sender;
 @end

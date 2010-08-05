@@ -52,6 +52,7 @@
 							     options:NSKeyValueObservingOptionNew 
 							     context:nil];
 */	
+	
 }   
 
 - (void)dealloc
@@ -69,12 +70,19 @@
 	[aLayer setLayerController:self];
 }
 
-- (void)insertLayer:(DBLayer *)aLayer atIndex:(unsigned int)i 
+//- (void)insertObject:(DBLayer *)aLayer intLayersAtIndex:(unsigned int)i 
+//{
+////	NSLog(@"insert layer : %@ index : %d", aLayer,i);
+//	[_layers insertObject:aLayer atIndex:i];
+//	[aLayer setLayerController:self];
+//}
+
+- (void)insertLayers:(NSArray *)layersArray atIndexes:(NSIndexSet *)indexes 
 {
-//	NSLog(@"insert layer : %@ index : %d", aLayer,i);
-	[_layers insertObject:aLayer atIndex:i];
-	[aLayer setLayerController:self];
+	[_layers insertObjects:layersArray atIndexes:indexes];
+	[layersArray makeObjectsPerformSelector:@selector(setLayerController:) withObject:self];
 }
+
 
 - (DBLayer *)layerAtIndex:(unsigned int)i
 {
@@ -86,13 +94,25 @@
 	return [_layers indexOfObject:aLayer];
 }
 
-- (void)removeLayerAtIndex:(unsigned int)i
+- (void)removeLayersAtIndexes:(NSIndexSet *)indexes
 {
-	[_layers removeObjectAtIndex:i];
+	if ([indexes containsIndex:([_layers count]-1)] && _selectionIndex == ([_layers count]-1) ) {
+		_selectionIndex = ([_layers count]-2);
+	}
+
+	[_layers removeObjectsAtIndexes:indexes];
+	
 }
+
+//- (void)removeObjectFromLayersAtIndex:(NSUInteger)i
+//{
+//	[_layers removeObjectAtIndex:i];
+	
+//}
 
 - (void)removeLayer:(DBLayer *)aLayer
 {
+	NSLog(@"removeLayer");
 	[_layers removeObject:aLayer];
 }
 
@@ -278,8 +298,8 @@
  		[self willChangeValueForKey:@"layers"];
 //		id layer = [self layerAtIndex:index];
 		[layer retain];
-		[self removeLayer:layer];
-		[self insertLayer:layer atIndex:[_layers count]];	
+		[_layers removeObject:layer];
+		[_layers insertObject:layer atIndex:[_layers count]];
 		[self didChangeValueForKey:@"layers"];	
 		
 		[layer updateRenderInView:[self drawingView]]; 
@@ -308,8 +328,8 @@
 		[self willChangeValueForKey:@"layers"];
 //		id layer = [self layerAtIndex:index];
 		[layer retain];
-		[self removeLayer:layer];
-		[self insertLayer:layer atIndex:0];
+		[_layers removeObject:layer];
+		[_layers insertObject:layer atIndex:0];
 		[self didChangeValueForKey:@"layers"];
 		
 		[layer updateRenderInView:[self drawingView]]; 
@@ -532,10 +552,20 @@
 						change:(NSDictionary *)change 
 					   context:(void *)context
 {
-	[self updateLayersAndShapes];
-	[self updateLayersRender];
+//	[self updateLayersAndShapes];
+//	[self updateLayersRender];
 	
 //	[NSThread detachNewThreadSelector:@selector(updateLayersRender) toTarget:self withObject:nil];
+	
+	
+	if([[change objectForKey:NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeInsertion){
+//		NSLog(@"insertion %@", [_layers objectsAtIndexes: [change objectForKey:NSKeyValueChangeIndexesKey]]);
+	}else if([[change objectForKey:NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeRemoval){
+//		NSLog(@"removal %@",  [_layers objectsAtIndexes: [change objectForKey:NSKeyValueChangeIndexesKey]]);
+//		NSLog(@"removal %@",  [change objectForKey:NSKeyValueChangeOldKey]);
+			
+	}
+
 }
 
 - (BOOL)isEditing

@@ -21,11 +21,11 @@
 }
 
 - (void)addLayer:(DBLayer *)aLayer;
-- (void)insertLayer:(DBLayer *)aLayer atIndex:(unsigned int)i;
+- (void)insertLayers:(NSArray *)layersArray atIndexes:(NSIndexSet *)indexes;
 - (DBLayer *)layerAtIndex:(unsigned int)i;
 - (unsigned int)indexOfLayer:(DBLayer *)aLayer;
 - (void)removeLayer:(DBLayer *)aLayer;
-- (void)removeLayerAtIndex:(unsigned int)i;
+- (void)removeLayersAtIndexes:(NSIndexSet *)indexes;
 - (NSArray *)layers;
 - (void)setLayers:(NSArray *)newLayers;
 - (DBLayer *)previousLayer:(DBLayer *)layer;

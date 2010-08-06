@@ -238,6 +238,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 }
 - (void)setFillName:(NSString *)aName
 {
+	[[[_shape undoManager] prepareWithInvocationTarget:self] setFillName:[self fillName]];
+	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Name", nil)];		
+	
 	[aName retain];
 	[_fillName release];
 	_fillName = aName;
@@ -250,6 +253,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setFillMode:(int)newFillMode
 {
+	[[[_shape undoManager] prepareWithInvocationTarget:self] setFillMode:[self fillMode]];
+	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Mode", nil)];		
+
 	_fillMode = newFillMode;
 	
 	if(_fillMode == DBImageFillMode)
@@ -267,6 +273,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setImageFillMode:(int)newImageFillMode
 {
+	[[[_shape undoManager] prepareWithInvocationTarget:self] setImageFillMode:[self imageFillMode]];
+	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Image Fill Mode", nil)];		
+
 	_imageFillMode = newImageFillMode;
 	
 	[self resetImageDrawPoint];
@@ -296,6 +305,10 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setFillColor:(NSColor *)newFillColor
 {
+//	color panel continuous updates incompatible with undo (too many updates)
+//	[[[_shape undoManager] prepareWithInvocationTarget:self] setFillColor:[self fillColor]];
+//	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Color", nil)];		
+
 	[newFillColor retain];
 	[_fillColor release];
 	_fillColor = newFillColor;
@@ -309,6 +322,9 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setFillImage:(NSImage *)newFillImage
 {
+	[[[_shape undoManager] prepareWithInvocationTarget:self] setFillImage:[self fillImage]];
+	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Image", nil)];		
+
 	[newFillImage retain];
 	[_fillImage release];
 	_fillImage = newFillImage;
@@ -324,6 +340,10 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setGradient:(NSGradient *)newGradient
 {
+//	gradient panel continuous updates incompatible with undo (too many updates)
+//	[[[_shape undoManager] prepareWithInvocationTarget:self] setGradient:[self gradient]];
+//	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Gradient", nil)];		
+
 	[newGradient retain];
 	[_gradient release];
 	_gradient = newGradient;
@@ -349,6 +369,10 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (void)setGradientType:(GPGradientType)type
 {
+//	gradient panel continuous updates incompatible with undo (too many updates)	
+//	[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientType:[self gradientType]];
+//	[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Gradient", nil)];		
+
 	_grdType = type;
 	[_shape strokeUpdated];
 }
@@ -389,7 +413,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
 		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientStartingPoint:[self gradientStartingPoint]];
-		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Gradient", nil)];		
 	}
 	
 	_grdStartingPoint = newPoint;
@@ -405,7 +429,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
 		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientEndingPoint:[self gradientEndingPoint]];
-		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Gradient", nil)];		
 	}
 
 	_grdEndingPoint = newPoint;
@@ -421,7 +445,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
 		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientStartingRadius:[self gradientStartingRadius]];
-		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Gradient", nil)];		
 	}
 	
 	_grdStartingRadius = radius;
@@ -435,7 +459,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 {
 	if([[_shape undoManager] isUndoing] || [[_shape undoManager] isRedoing]){
 		[[[_shape undoManager] prepareWithInvocationTarget:self] setGradientEndingRadius:[self gradientEndingRadius]];
-		[[_shape undoManager] setActionName:NSLocalizedString(@"Edit Fill", nil)];		
+		[[_shape undoManager] setActionName:NSLocalizedString(@"Change Fill Gradient", nil)];		
 	}
 	
 	_grdEndingRadius = radius;

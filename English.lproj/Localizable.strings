@@ -41,8 +41,8 @@
 "Delete Fill" = "Delete Fill";
 "Base Image" = "Base Image";
 "Convert" = "Convert";
-"Raise" = "Raise";
-"Lower" = "Lower";
+"Raise Shapes" = "Raise Shapes";
+"Lower Shapes" = "Lower Shapes";
 "Change Fill Mode" = "Changer le type de remplissage";
 "Change Fill Name" = "Change Fill Name";
 "Change Fill Color" = "Change Fill Color";
@@ -51,6 +51,12 @@
 "Change Image Fill Mode" = "Change Image Fill Mode";
 "Add Layer" = "Add layer";
 "Remove Layer" = "Remove layer";
+"Change Layer Name" = "Change Layer Name";
+"Show Layer" = "Show Layer";
+"Hide Layer" = "Hide Layer";
+"Lock Layer" = "Lock Layer";
+"Unlock Layer" = "Unlock Layer";
+"Change Layer Blend Mode" = "Change Blend Mode";
 
 "Union" = "Union";
 "Diff" = "Difference";

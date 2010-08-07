@@ -234,20 +234,28 @@ NSString *DBShapePboardType = @"ShapePboardType";
 		return;
 	}   
 	
-	BOOL didChange;
-	didChange = NO;
+	NSMutableArray *raisedShapes;	
+	raisedShapes = [[NSMutableArray alloc] init];
 	
 	NSEnumerator *e = [[self selectedShapesLayers] objectEnumerator];
 	DBLayer * layer;
 
 	while((layer = [e nextObject])){
-		didChange = ([layer raiseShapes:shapes]) ? YES : didChange;
+		[raisedShapes addObjectsFromArray:[layer raiseShapes:shapes]];
 	}
 
-	if(didChange){
-	[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] lowerShapesInArray:shapes]; 
-	[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Raise", nil)];
+	if([raisedShapes count] > 0){
+		[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] lowerShapesInArray:raisedShapes];
+		
+		if(![[(DBDocument *)_document specialUndoManager] isUndoing]){
+			[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Raise Shapes", nil)];
+		}else {
+			[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Lower Shapes", nil)];	
+		}
+
 	}
+	
+	[raisedShapes release];
 }
 
 - (void)lowerSelectedShapes:(id)sender
@@ -263,17 +271,27 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	BOOL didChange;
 	didChange = NO;
 	
+	NSMutableArray *loweredShapes;	
+	loweredShapes = [[NSMutableArray alloc] init];
+
 	NSEnumerator *e = [[self selectedShapesLayers] objectEnumerator];
 	DBLayer * layer;
 
 	while((layer = [e nextObject])){
-		didChange = ([layer lowerShapes:shapes]) ? YES : didChange;
+		[loweredShapes addObjectsFromArray:[layer lowerShapes:shapes]];
 	}
 	
-	if(didChange){
-		[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] raiseShapes:shapes]; 
-		[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Lower", nil)];	
+	if([loweredShapes count] > 0){
+		[[[(DBDocument *)_document specialUndoManager] prepareWithInvocationTarget:self] raiseShapesInArray:loweredShapes]; 
+
+		if(![[(DBDocument *)_document specialUndoManager] isUndoing]){
+			[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Lower Shapes", nil)];	
+		}else{
+			[[(DBDocument *)_document specialUndoManager] setActionName:NSLocalizedString(@"Raise Shapes", nil)];
+		}
 	}
+	
+	[loweredShapes release];
 }
 
 - (void)alignLeft:(id)sender

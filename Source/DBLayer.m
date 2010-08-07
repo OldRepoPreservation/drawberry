@@ -126,6 +126,11 @@
 
 - (void)setName:(NSString *)oldName
 {
+	DBUndoManager *undo = [_layerController documentUndoManager];
+	[(DBLayer *)[undo prepareWithInvocationTarget:self] setName:[self name]];
+	[undo setActionName:NSLocalizedString(@"Change Layer Name", nil)];		
+
+	
 	[oldName retain];
 	[_name release];
 	_name = oldName;
@@ -336,6 +341,15 @@
 
 - (void)setVisible:(BOOL)newVisible
 {
+	DBUndoManager *undo = [_layerController documentUndoManager];
+	[(DBLayer *)[undo prepareWithInvocationTarget:self] setVisible:[self visible]];
+	
+	if(newVisible ^ [undo isUndoing]){
+		[undo setActionName:NSLocalizedString(@"Show Layer", nil)];
+	}else{
+		[undo setActionName:NSLocalizedString(@"Hide Layer", nil)];	
+	}
+	
 	if(_visible != newVisible){
 		_visible = newVisible;
 		[_layerController needsDisplay];
@@ -349,6 +363,16 @@
 
 - (void)setEditable:(BOOL)newEditable
 {
+	DBUndoManager *undo = [_layerController documentUndoManager];
+	[(DBLayer *)[undo prepareWithInvocationTarget:self] setEditable:[self editable]];
+	
+	if(newEditable ^ [undo isUndoing]){
+		[undo setActionName:NSLocalizedString(@"Unlock Layer", nil)];
+	}else{
+		[undo setActionName:NSLocalizedString(@"Lock Layer", nil)];	
+	}
+	
+	
 	_editable = newEditable;
 }
 
@@ -388,6 +412,11 @@
 
 - (void)setBlendMode:(int)newBlendMode
 {
+	DBUndoManager *undo = [_layerController documentUndoManager];
+	[(DBLayer *)[undo prepareWithInvocationTarget:self] setBlendMode:[self blendMode]];
+	[undo setActionName:NSLocalizedString(@"Change Layer Blend Mode", nil)];
+		
+	
 	_blendMode = newBlendMode;
 	[[_layerController drawingView] setNeedsDisplay:YES];
 }
@@ -447,58 +476,75 @@
 }
 #pragma mark Shape Hierarchy
 
-- (BOOL)lowerShapes:(NSArray *)shapes
+- (NSArray *)lowerShapes:(NSArray *)shapes // return the shapes that have really been lowered
 {
 	if(!_editable){
-		return NO;
+		return nil;
 	}        
 	
-	BOOL didChange = NO;
 	NSEnumerator *e = [shapes objectEnumerator];
 	DBShape * shape;
 	int index;
+	NSMutableArray *loweredShapes; // this array will record the shape that will really be moved
+	
+	loweredShapes = [[NSMutableArray alloc] init];
+	
 	while((shape = [e nextObject])){
 		index = [_shapes indexOfObject:shape];
 		
 		if(index == 0 || index == NSNotFound){
 			continue; // cannot lower the lowest shape
 		}else{
+			[loweredShapes addObject:shape];
 			[_shapes exchangeObjectAtIndex:index withObjectAtIndex:index-1];
-			didChange = YES;
 		}
 	}
 	
 	[self updateRenderInView:[[self layerController] drawingView]];
 	[[[self layerController] drawingView] setNeedsDisplay:YES];	
 
-	return didChange;
+//	if (didChange) {
+//		DBUndoManager *undo = [_layerController documentUndoManager];
+//		[(DBLayer *)[undo prepareWithInvocationTarget:self] raiseShapes:loweredShapes];
+//		[undo setActionName:NSLocalizedString(@"Lower Shapes", nil)];		
+//	}
+	
+	return [loweredShapes autorelease];
 }
 
-- (BOOL)raiseShapes:(NSArray *)shapes
+- (NSArray *)raiseShapes:(NSArray *)shapes // return the shapes that have really been raised
 {
 	if(!_editable){
-		return NO;
+		return nil;
 	}
 	
-	BOOL didChange = NO;
 	NSEnumerator *e = [shapes objectEnumerator];
 	DBShape * shape;
 	int index;
+	NSMutableArray *raisedShapes; // this array will record the shape that will really be moved
+
+	raisedShapes = [[NSMutableArray alloc] init];
 	while((shape = [e nextObject])){
 		index = [_shapes indexOfObject:shape];
 		
 		if(index == [self countOfShapes]-1 || index == NSNotFound){
 			continue; // cannot raise the higher shape
 		}else{
+			[raisedShapes addObject:shape];
 			[_shapes exchangeObjectAtIndex:index withObjectAtIndex:index+1];
-			didChange = YES;
 		}
 	}
 	
 	[self updateRenderInView:[[self layerController] drawingView]];
 	[[[self layerController] drawingView] setNeedsDisplay:YES];	
 	
-	return didChange;
+//	if (didChange) {
+//		DBUndoManager *undo = [_layerController documentUndoManager];
+//		[(DBLayer *)[undo prepareWithInvocationTarget:self] raiseShapes:raisedShapes];
+//		[undo setActionName:NSLocalizedString(@"Lower Shapes", nil)];		
+//	}
+	
+	return [raisedShapes autorelease];
 }
 
 #pragma mark Display

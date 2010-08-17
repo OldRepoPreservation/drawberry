@@ -893,12 +893,12 @@
 	
 	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	upleftCorner = [[_selectedShapes objectAtIndex:0] pointForKnob:UpperLeftKnob];
+
 	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
 
 	originOffset = NSMakePoint(previousLoc.x - upleftCorner.x, previousLoc.y - upleftCorner.y);
 
 	originLoc = previousLoc;
-//	upleftCorner = [self canevasCoordinatesFromViewCoordinates:upleftCorner];
 	
 	didMove = NO;
 	isEditable = YES;
@@ -919,14 +919,16 @@
 
 	   	currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         
+
 		currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
 
 		currentLoc.x -= originOffset.x;
 		currentLoc.y -= originOffset.y;
-		currentLoc = [self pointSnapedToGrid:currentLoc];
+		currentLoc = [self pointSnapedToGridInCanvas:currentLoc];
 		currentLoc.x += originOffset.x;
 		currentLoc.y += originOffset.y;
-		
+	
+
 		
 		deltaX = currentLoc.x - previousLoc.x;
 		deltaY = currentLoc.y - previousLoc.y;
@@ -1509,6 +1511,19 @@
     	point.y = /*_zoom**/(floor(((point.y/*/_zoom*/ - _canevasRect.origin.y) / (_zoom*_gridSpacing/_gridTickCount)) + 0.5) * (_zoom*_gridSpacing/_gridTickCount) + (_canevasRect.origin.y));
 	}
 
+	return point;
+}
+
+
+// same method as the previous one, but does the calculation in the canvas and not in the view
+- (NSPoint)pointSnapedToGridInCanvas:(NSPoint)point
+{
+	if((_snapToGrid && !([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) ) 
+	   || (!_snapToGrid && ([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) )){
+		point.x = (floor(((point.x / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) );
+    	point.y = (floor(((point.y / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) );
+	}
+	
 	return point;
 }
 

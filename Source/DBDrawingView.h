@@ -105,6 +105,7 @@
 - (NSPoint)canevasCoordinatesFromViewCoordinates:(NSPoint)point;
 - (NSPoint)viewCoordinatesFromCanevasCoordinates:(NSPoint)point;  
 - (NSPoint)pointSnapedToGrid:(NSPoint)point;
+- (NSPoint)pointSnapedToGridInCanvas:(NSPoint)point;
 
 - (NSAffineTransform *)appliedTransformation;
 #pragma mark Shape creation, selection and modification

@@ -83,9 +83,9 @@ static NSLayoutManager*		sharedDrawingLayoutManager()
 	[super dealloc];
 }
 
-- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view
+- (BOOL)createWithEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view option:(int)option
 {
-	BOOL result = [super createWithEvent:theEvent inView:view];
+	BOOL result = [super createWithEvent:theEvent inView:view option:0];
 	
 	[[self stroke] setStrokeMode:DBNoStrokeMode];
 	

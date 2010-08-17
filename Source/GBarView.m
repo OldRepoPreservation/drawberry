@@ -7,7 +7,7 @@
 //
 
 #import "GBarView.h"
-#import <GradientPanel/GradientPanel.h>
+//#import <GradientPanel/GradientPanel.h>
 
 #define GBarDisclosureButtonX 10.0f
 #define GBarCloseButtonMargin 15.0f

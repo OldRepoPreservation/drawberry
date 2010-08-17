@@ -140,7 +140,7 @@ What we have to do in the future (in function of milestone)
 
 - Version 0.9
 	
-	TODO : Replace the polyline by the bezier curve
+	DONE : Replace the polyline by the bezier curve
 	
 	TODO : Introduce a freehand tool
 
@@ -158,7 +158,17 @@ What we have to do in the future (in function of milestone)
 
 	TODO : Introduce a contextual menu
 
-	TODO : Almost all the actions must be undoable
+	TODO : Almost all the actions must be undoable    
+	
+	TODO : Add multiple strokes functionnality (just like fills)  
+	
+	FIXME : When converting a rectangl or an oval to a bezier curve, don't forget to add the shadow
+  	
+	FIXME : Rectangle conversion must now return a bezier curve and not a polyline
+	
+	TODO : Text on path improvemements
+	
+	FIXME : When importing an image, don't show all the undo things
 
 - Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES
 	

@@ -86,6 +86,6 @@
 
 - (DBUndoManager *)undoManager;
                                      
-- (BOOL)lowerShapes:(NSArray *)shapes;
-- (BOOL)raiseShapes:(NSArray *)shapes;
+- (NSArray *)lowerShapes:(NSArray *)shapes;
+- (NSArray *)raiseShapes:(NSArray *)shapes;
 @end

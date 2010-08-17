@@ -252,11 +252,11 @@
 		6CF78B0B0FA5016F00CC00FB /* DBDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */; };
 		6CF835DC0BC819080058CCFA /* DBInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF835DA0BC819080058CCFA /* DBInspector.nib */; };
 		6CFD12E411E7BFB500140138 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
-		6CFD12E811E7BFBE00140138 /* GradientPanelFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */; };
 		6CFD12EA11E7BFBE00140138 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E911E7BFBE00140138 /* Sparkle.framework */; };
 		6CFD132611E7BFC300140138 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
-		6CFD132711E7BFC300140138 /* GradientPanelFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */; };
 		6CFD132811E7BFC300140138 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E911E7BFBE00140138 /* Sparkle.framework */; };
+		6CFD13F911E7CBAF00140138 /* GradientPanelFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD13F811E7CBAF00140138 /* GradientPanelFramework.framework */; };
+		6CFD144711E7CBBA00140138 /* GradientPanelFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD13F811E7CBAF00140138 /* GradientPanelFramework.framework */; };
 		6CFFD2C20C9452A1006F85FB /* DBMagnifyingGlass.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CFFD2C00C9452A1006F85FB /* DBMagnifyingGlass.nib */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
@@ -272,8 +272,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6CFD144711E7CBBA00140138 /* GradientPanelFramework.framework in CopyFiles */,
 				6CFD132611E7BFC300140138 /* BGHUDAppKit.framework in CopyFiles */,
-				6CFD132711E7BFC300140138 /* GradientPanelFramework.framework in CopyFiles */,
 				6CFD132811E7BFC300140138 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,8 +673,8 @@
 		6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBDocumentController.m; path = Source/DBDocumentController.m; sourceTree = "<group>"; };
 		6CF835DB0BC819080058CCFA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBInspector.nib; sourceTree = "<group>"; };
 		6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = Ressource/Frameworks/BGHUDAppKit.framework; sourceTree = "<group>"; };
-		6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanelFramework.framework; path = Ressource/Frameworks/GradientPanelFramework.framework; sourceTree = "<group>"; };
 		6CFD12E911E7BFBE00140138 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Ressource/Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		6CFD13F811E7CBAF00140138 /* GradientPanelFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanelFramework.framework; path = Ressource/Frameworks/GradientPanelFramework.framework; sourceTree = "<group>"; };
 		6CFFD2C10C9452A1006F85FB /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBMagnifyingGlass.nib; sourceTree = "<group>"; };
 		6CFFD2C30C9452D0006F85FB /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBMagnifyingGlass.nib; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -689,8 +689,8 @@
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */,
 				6CFD12E411E7BFB500140138 /* BGHUDAppKit.framework in Frameworks */,
-				6CFD12E811E7BFBE00140138 /* GradientPanelFramework.framework in Frameworks */,
 				6CFD12EA11E7BFBE00140138 /* Sparkle.framework in Frameworks */,
+				6CFD13F911E7CBAF00140138 /* GradientPanelFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,10 +700,10 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CFD13F811E7CBAF00140138 /* GradientPanelFramework.framework */,
 				6CCAE8290C1084A300F71D77 /* QuartzCore.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 				6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */,
-				6CFD12E711E7BFBE00140138 /* GradientPanelFramework.framework */,
 				6CFD12E911E7BFBE00140138 /* Sparkle.framework */,
 			);
 			name = "Linked Frameworks";
@@ -1873,9 +1873,11 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Ressource/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../Code/GradientPanel/build/Release\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1914,6 +1916,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../Gradient Panel 1.1.1/Developer\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_10 = "\"$(SRCROOT)/../../Code\"";
@@ -1930,6 +1933,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Code\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Code/GradientPanel/build/Release\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Ressource/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../Code/GradientPanel/build/Release\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;

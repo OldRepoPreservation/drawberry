@@ -129,6 +129,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	_imageDrawPoint = [decoder decodePointForKey:@"Draw Point"];
 	
 	_grdType = [decoder decodeIntForKey:@"Gradient Type"];
+    _grdAngle = [decoder decodeFloatForKey:@"Gradient Angle"];
 	_grdStartingPoint = [decoder decodePointForKey:@"Starting Point"];
 	_grdEndingPoint = [decoder decodePointForKey:@"Ending Point"];
 	_grdStartingRadius = [decoder decodeFloatForKey:@"Starting Radius"];
@@ -149,6 +150,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[encoder encodePoint:_imageDrawPoint forKey:@"Draw Point"];
 	
 	[encoder encodeInt:_grdType forKey:@"Gradient Type"];
+    [encoder encodeFloat:_grdAngle forKey:@"Gradient Angle"];
 	[encoder encodePoint:_grdStartingPoint forKey:@"Starting Point"];
 	[encoder encodePoint:_grdEndingPoint forKey:@"Ending Point"];
 	[encoder encodeFloat:_grdStartingRadius forKey:@"Starting Radius"];

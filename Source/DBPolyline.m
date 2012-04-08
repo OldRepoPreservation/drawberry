@@ -146,7 +146,8 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	
 	[self updatePath];
 	
-	curve = [[DBBezierCurve alloc] initWithBezierPath:[self path]];
+	curve = [[DBBezierCurve alloc] initWithBezierPath:[self path]]; // for backward compatibility (transform all the polyline objects into bezier curves)
+    [curve setPolyline:YES];
 
 	[self autorelease];
 	

@@ -27,6 +27,8 @@ typedef struct _DBCurvePoints {
 	int _pointCount;
 	
 	BOOL _lineIsClosed;
+    
+    BOOL _isPolyline;
 	
 	NSBezierPath *_path;
 	NSBezierPath *_controlPointsPath;
@@ -51,6 +53,9 @@ typedef struct _DBCurvePoints {
 - (NSPoint)nearestPointOfPath:(NSPoint)point;
 
 - (void)setPoint:(DBCurvePoint)p atIndex:(int)i;
+
+- (BOOL)isPolyline;
+- (void)setPolyline:(BOOL)flag;
 
 - (void)insertPoint:(DBCurvePoint)point atIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next;
 - (void)removePointAtIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next;

@@ -230,7 +230,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 - (id)initWithBezierPath:(NSBezierPath *)path
 {
 	self = [self init];
-	
+
+	_isPolyline = NO; // by default assume it is a curve
+    
 	_pointCount = 1;
 	
 	int elementCount;
@@ -342,6 +344,8 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 {
 	self = [self init];
 	
+    _isPolyline = YES;
+    
 	_points = malloc(pCount*sizeof(DBCurvePoint));
 	
 	int i;
@@ -365,6 +369,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	            	
 	_pointCount = [decoder decodeIntForKey:@"Point count"];
 	_lineIsClosed = [decoder decodeBoolForKey:@"Close Path"];
+    _isPolyline = [decoder decodeBoolForKey:@"Polyline Flag"];
 
 	NSString *version;
 	version = [decoder decodeObjectForKey:@"Version"];
@@ -414,6 +419,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 	[encoder encodeInt:_pointCount forKey:@"Point count"];
 	[encoder encodeBool:_lineIsClosed forKey:@"Close Path"];
+    [encoder encodeBool:_isPolyline forKey:@"Polyline Flag"];
 	
 	// create an NSArray of NSValues and fill it with the points
 	
@@ -826,7 +832,13 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			int seg;
 			
 			nearestPoint = [self nearestPointOfPathToPoint:point bezSegment:&seg beforePoint:&beforePt afterPoint:&afterPt];    
-
+            
+            if(!_isPolyline){
+                nearestPoint.hasControlPoints=YES;
+                nearestPoint.hasControlPoint1=YES;
+                nearestPoint.hasControlPoint2=YES;
+            }
+            
 			if(seg != -1){
 //				[self insertPoint:nearestPoint atIndex:seg+1 previousPoint:_points[seg] nextPoint:_points[seg+1]];
 //				_points[seg].controlPoint1 = beforePt.controlPoint1;
@@ -1871,6 +1883,16 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
 }
 
+- (BOOL)isPolyline
+{
+    return _isPolyline;
+}
+
+- (void)setPolyline:(BOOL)flag
+{
+    _isPolyline = flag;
+}
+
 #pragma mark Points Selection
 - (void)deselectAllPoints
 {
@@ -2165,7 +2187,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		
 	 		before.controlPoint1 = bez1[1];
 	   		nearest.controlPoint2 = bez1[2];
-	 //   	nearest.point = bez1[3];
+	    	nearest.point = bez1[3];
 			nearest.controlPoint1 = bez2[1];
 			after.controlPoint2 = bez2[2];		
 		
@@ -2179,7 +2201,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		
 			before.controlPoint1 = bez1[1];
 			nearest.controlPoint2 = bez1[2];
-	//		nearest.point = bez1[3];
+			nearest.point = bez1[3];
 			nearest.controlPoint1 = bez2[1];
 			after.controlPoint2 = bez2[2];		
 		

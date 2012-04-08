@@ -158,7 +158,9 @@ What we have to do in the future (in function of milestone)
 	
 	FIXME : When converting a rectangl or an oval to a bezier curve, don't forget to add the shadow
   	
-	FIXME : Rectangle conversion must now return a bezier curve and not a polyline     
+	FIXED : Rectangle conversion must now return a bezier curve and not a polyline   
+	
+	FIXME : Problems when adding new points to an existing line  
 	
 	FIXED : Save the gradient orientation
 	
@@ -166,7 +168,8 @@ What we have to do in the future (in function of milestone)
 	
 	FIXME : When importing an image, don't show all the undo things 
 	
-	TODO : Edit the rounded rectangle edges separatly
+	TODO : Edit the rounded rectangle edges separatly  
+	
 
 - Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES (really ??)
 	
@@ -174,7 +177,10 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : The performances are very bad when multiple objects are displayed
     
-	TODO : New Inspectors
+	TODO : New Inspectors  
+	
+	FIXME : CoreImage Layers
+   
 
 - After that
 	  

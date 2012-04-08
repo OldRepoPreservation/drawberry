@@ -142,15 +142,9 @@ What we have to do in the future (in function of milestone)
 	
 	DONE : Replace the polyline by the bezier curve
 	
-	TODO : Introduce a freehand tool
-
 	TODO : Improve the contextual bar
 
 	TODO : Improve help and translate it in French
-
-	TODO : New Inspectors
-
-	TODO : Add a vectorization plug-in 
 
 	TODO : Improve the layer inspector
 
@@ -160,19 +154,27 @@ What we have to do in the future (in function of milestone)
 
 	TODO : Almost all the actions must be undoable    
 	
-	TODO : Add multiple strokes functionnality (just like fills)  
+	TODO : Add multiple strokes functionnality (just like fills) (to 1.0 version ??)  
 	
 	FIXME : When converting a rectangl or an oval to a bezier curve, don't forget to add the shadow
   	
-	FIXME : Rectangle conversion must now return a bezier curve and not a polyline
+	FIXME : Rectangle conversion must now return a bezier curve and not a polyline     
+	
+	FIXED : Save the gradient orientation
 	
 	TODO : Text on path improvemements
 	
-	FIXME : When importing an image, don't show all the undo things
+	FIXME : When importing an image, don't show all the undo things 
+	
+	TODO : Edit the rounded rectangle edges separatly
 
-- Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES
+- Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES (really ??)
+	
+	TODO : Introduce a freehand tool
 	
 	TODO : The performances are very bad when multiple objects are displayed
+    
+	TODO : New Inspectors
 
 - After that
 	  
@@ -184,4 +186,7 @@ What we have to do in the future (in function of milestone)
 	-	TODO : Magnify a other part than just under the glass
 	-	DONE : A curved zoom slider
   		
-	TODO : LinkBack support
+	TODO : LinkBack support (really necessary ?)   
+	
+	TODO : Add a vectorization plug-in 
+	

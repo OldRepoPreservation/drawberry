@@ -54,3 +54,9 @@ French.lproj/DBTools~.nib
 French.lproj/DBUndo~.nib
 French.lproj/MainMenu~.nib
 .DS_Store
+*.mod1v3
+*.mode1v3
+*.xcworkspace
+xcuserdata
+*.pbxuser
+*.perspective

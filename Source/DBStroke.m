@@ -108,6 +108,7 @@
     
    	[stroke setText:[[[self text] copy] autorelease]];
 	[stroke setTextOffset:[self textOffset]];
+    [stroke setFlipText:[self flipText]];
 
 	return stroke;
 } 
@@ -138,6 +139,7 @@
 	
 	_text = [[decoder decodeObjectForKey:@"Stroke Text"] retain];
 	_textOffset = [decoder decodeFloatForKey:@"Text Offset"];
+    _flipText = [decoder decodeBoolForKey:@"Flip Text"];
 	
 	
 	return self;
@@ -167,6 +169,7 @@
 
 	[encoder encodeObject:_text forKey:@"Stroke Text"];
 	[encoder encodeFloat:_textOffset forKey:@"Text Offset"];
+    [encoder encodeBool:_flipText forKey:@"Flip Text"];
 }
 
 #pragma mark Accessors

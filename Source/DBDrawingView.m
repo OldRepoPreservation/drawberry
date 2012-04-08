@@ -913,10 +913,14 @@
    	
 	while(YES){
 
+		theEvent = [[self window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+        
+		if ([theEvent type] == NSLeftMouseUp) { // do not do anything when mouse is up (cf. bug #622282)
+            break;
+        }
+
   	 	pool = [[NSAutoreleasePool alloc] init];
   	 		
-		theEvent = [[self window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
-
 	   	currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         
 
@@ -924,7 +928,7 @@
 
 		currentLoc.x -= originOffset.x;
 		currentLoc.y -= originOffset.y;
-		currentLoc = [self pointSnapedToGridInCanvas:currentLoc];
+		currentLoc = [self pointSnapedToGrid:currentLoc];
 		currentLoc.x += originOffset.x;
 		currentLoc.y += originOffset.y;
 	
@@ -974,9 +978,6 @@
 		
 	 	[pool release];
 
-		if ([theEvent type] == NSLeftMouseUp) {
-            break;
-        }
 	}
 	
 	  
@@ -1520,8 +1521,8 @@
 {
 	if((_snapToGrid && !([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) ) 
 	   || (!_snapToGrid && ([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) )){
-		point.x = (floor(((point.x / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) );
-    	point.y = (floor(((point.y / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) );
+		point.x = floor(((point.x / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) );
+    	point.y = floor(((point.y / (_gridSpacing/_gridTickCount)) + 0.5) * (_gridSpacing/_gridTickCount) );
 	}
 	
 	return point;

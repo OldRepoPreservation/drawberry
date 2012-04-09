@@ -197,13 +197,20 @@ static DBInspectorController *_sharedInspectorController = nil;
 
 - (IBAction)shadowAction:(id)sender
 {
-	id shadow;
-	shadow = [_shadowController content];
-	
-	[shadow setValue:[_shadowControl valueForKey:@"shadowOffsetWidth"] forKey:@"shadowOffsetWidth"];
-	[shadow setValue:[_shadowControl valueForKey:@"shadowOffsetHeight"] forKey:@"shadowOffsetHeight"];
-	[shadow setValue:[_shadowControl valueForKey:@"shadowBlurRadius"] forKey:@"shadowBlurRadius"];
-	[shadow setValue:[_shadowControl valueForKey:@"shadowColor"] forKey:@"shadowColor"];
+    id shadow;
+    shadow = [_shadowController content];
+
+	if(sender == _shadowControl){ // update the shadows infos	
+        [shadow setValue:[_shadowControl valueForKey:@"shadowOffsetWidth"] forKey:@"shadowOffsetWidth"];
+        [shadow setValue:[_shadowControl valueForKey:@"shadowOffsetHeight"] forKey:@"shadowOffsetHeight"];
+        [shadow setValue:[_shadowControl valueForKey:@"shadowBlurRadius"] forKey:@"shadowBlurRadius"];
+        [shadow setValue:[_shadowControl valueForKey:@"shadowColor"] forKey:@"shadowColor"];
+    }else{ // update the shadow control
+        [_shadowControl setValue:[shadow valueForKey:@"shadowOffsetWidth"] forKey:@"shadowOffsetWidth"];
+        [_shadowControl setValue:[shadow valueForKey:@"shadowOffsetHeight"] forKey:@"shadowOffsetHeight"];
+        [_shadowControl setValue:[shadow valueForKey:@"shadowBlurRadius"] forKey:@"shadowBlurRadius"];
+        [_shadowControl setValue:[shadow valueForKey:@"shadowColor"] forKey:@"shadowColor"];
+    }
 }
 
 - (IBAction)flipText:(id)sender

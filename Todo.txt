@@ -168,7 +168,9 @@ What we have to do in the future (in function of milestone)
 	
 	FIXME : When importing an image, don't show all the undo things 
 	
-	TODO : Edit the rounded rectangle edges separatly  
+	TODO : Edit the rounded rectangle edges separatly      
+	
+	FIXME : Relocalize inspectors in French
 	
 
 - Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES (really ??)

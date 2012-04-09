@@ -54,7 +54,7 @@
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSScrollView" id="985458100">
 							<reference key="NSNextResponder" ref="546144345"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<array class="NSMutableArray" key="NSSubviews">
 								<object class="NSClipView" id="96204721">
 									<reference key="NSNextResponder" ref="985458100"/>
@@ -203,7 +203,7 @@
 						</object>
 						<object class="NSButton" id="61035230">
 							<reference key="NSNextResponder" ref="546144345"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{-1, 9}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="546144345"/>
 							<reference key="NSWindow"/>
@@ -225,7 +225,7 @@
 						</object>
 						<object class="NSButton" id="582651570">
 							<reference key="NSNextResponder" ref="546144345"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{21, 9}, {125, 25}}</string>
 							<reference key="NSSuperview" ref="546144345"/>
 							<reference key="NSWindow"/>
@@ -247,7 +247,7 @@
 						</object>
 						<object class="NSButton" id="470117644">
 							<reference key="NSNextResponder" ref="546144345"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{143, 9}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="546144345"/>
 							<reference key="NSWindow"/>
@@ -269,7 +269,7 @@
 						</object>
 						<object class="NSButton" id="749868281">
 							<reference key="NSNextResponder" ref="546144345"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{165, 9}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="546144345"/>
 							<reference key="NSWindow"/>

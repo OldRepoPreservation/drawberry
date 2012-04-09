@@ -223,6 +223,7 @@
 		6C415A3C0D722AFA0014A6BB /* DBContextualViews.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C415A3A0D722AFA0014A6BB /* DBContextualViews.nib */; };
 		6C4A9DA30FD3D8B900CA2CBD /* DBSVGStringParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A9DA20FD3D8B900CA2CBD /* DBSVGStringParser.m */; };
 		6C4A9E7C0FD4260000CA2CBD /* rsvg-path.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A9E7A0FD4260000CA2CBD /* rsvg-path.c */; };
+		6C4D5156153344D400866009 /* DBInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4D5158153344D400866009 /* DBInspector.xib */; };
 		6C51136F0C310DE20084EF60 /* DBFilterPalette.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C51136D0C310DE20084EF60 /* DBFilterPalette.nib */; };
 		6C5DF1650C57AAC400429CF4 /* DBUndo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5DF1630C57AAC400429CF4 /* DBUndo.xib */; };
 		6C6909BB0FA7818600F10440 /* DBTemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6909BA0FA7818600F10440 /* DBTemplateManager.m */; };
@@ -250,7 +251,6 @@
 		6CEFC9090E2F9B550057CDED /* DBShapeLibrary.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFC9070E2F9B550057CDED /* DBShapeLibrary.nib */; };
 		6CF0DEEB0BD29982006B58F8 /* DBTools.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF0DEE90BD29982006B58F8 /* DBTools.nib */; };
 		6CF78B0B0FA5016F00CC00FB /* DBDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */; };
-		6CF835DC0BC819080058CCFA /* DBInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF835DA0BC819080058CCFA /* DBInspector.nib */; };
 		6CFD12E411E7BFB500140138 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
 		6CFD12EA11E7BFBE00140138 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E911E7BFBE00140138 /* Sparkle.framework */; };
 		6CFD132611E7BFC300140138 /* BGHUDAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
@@ -616,6 +616,8 @@
 		6C4A9DA20FD3D8B900CA2CBD /* DBSVGStringParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSVGStringParser.m; path = Source/DBSVGStringParser.m; sourceTree = "<group>"; };
 		6C4A9E7A0FD4260000CA2CBD /* rsvg-path.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "rsvg-path.c"; path = "Source/rsvg-path.c"; sourceTree = "<group>"; };
 		6C4A9E7B0FD4260000CA2CBD /* rsvg-path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rsvg-path.h"; path = "Source/rsvg-path.h"; sourceTree = "<group>"; };
+		6C4D5157153344D400866009 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBInspector.xib; sourceTree = "<group>"; };
+		6C4D515A1533455000866009 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBInspector.xib; sourceTree = "<group>"; };
 		6C51136E0C310DE20084EF60 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBFilterPalette.xib; sourceTree = "<group>"; };
 		6C5DF1640C57AAC400429CF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBUndo.xib; sourceTree = "<group>"; };
 		6C5DF1680C57AAD200429CF4 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBUndo.xib; sourceTree = "<group>"; };
@@ -644,7 +646,6 @@
 		6C8445040C4C1FA400FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBFilterPalette.xib; sourceTree = "<group>"; };
 		6C8445080C4C1FC900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBDocument.nib; sourceTree = "<group>"; };
 		6C84450C0C4C1FDE00FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6C84450F0C4C1FE600FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBInspector.nib; sourceTree = "<group>"; };
 		6C84451A0C4C243900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBTools.xib; sourceTree = "<group>"; };
 		6C84451F0C4C245900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBPreferences.nib; sourceTree = "<group>"; };
 		6C874F1D0E473D2500933F02 /* French */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
@@ -670,7 +671,6 @@
 		6CF0DEEA0BD29982006B58F8 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBTools.xib; sourceTree = "<group>"; };
 		6CF78B090FA5016F00CC00FB /* DBDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBDocumentController.h; path = Source/DBDocumentController.h; sourceTree = "<group>"; };
 		6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBDocumentController.m; path = Source/DBDocumentController.m; sourceTree = "<group>"; };
-		6CF835DB0BC819080058CCFA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBInspector.nib; sourceTree = "<group>"; };
 		6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BGHUDAppKit.framework; path = Ressource/Frameworks/BGHUDAppKit.framework; sourceTree = "<group>"; };
 		6CFD12E911E7BFBE00140138 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Ressource/Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		6CFD13F811E7CBAF00140138 /* GradientPanelFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientPanelFramework.framework; path = Ressource/Frameworks/GradientPanelFramework.framework; sourceTree = "<group>"; };
@@ -792,7 +792,6 @@
 				2A37F4B4FDCFA73011CA2CEA /* DBDocument.nib */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
-				6CF835DA0BC819080058CCFA /* DBInspector.nib */,
 				6CF0DEE90BD29982006B58F8 /* DBTools.nib */,
 				6C8443D40C4C0A6400FFA2FF /* DBPreferences.nib */,
 				6CDC49050C4D79BD00F3128F /* Localizable.strings */,
@@ -804,6 +803,7 @@
 				6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */,
 				6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */,
 				6C74952915324DAD000EF4D7 /* DBLayers.xib */,
+				6C4D5158153344D400866009 /* DBInspector.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1434,7 +1434,6 @@
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2E0486D014006FF6A4 /* DBDocument.nib in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
-				6CF835DC0BC819080058CCFA /* DBInspector.nib in Resources */,
 				6CF0DEEB0BD29982006B58F8 /* DBTools.nib in Resources */,
 				6C51136F0C310DE20084EF60 /* DBFilterPalette.nib in Resources */,
 				6C8443D60C4C0A6400FFA2FF /* DBPreferences.nib in Resources */,
@@ -1568,6 +1567,7 @@
 				6C34EBA40FAA4A5900F9C3C6 /* prefs.General.tiff in Resources */,
 				6C34EBA50FAA4A5900F9C3C6 /* prefs.Templates.tiff in Resources */,
 				6C74952715324DAD000EF4D7 /* DBLayers.xib in Resources */,
+				6C4D5156153344D400866009 /* DBInspector.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1739,6 +1739,15 @@
 			name = DBContextualViews.nib;
 			sourceTree = "<group>";
 		};
+		6C4D5158153344D400866009 /* DBInspector.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C4D5157153344D400866009 /* English */,
+				6C4D515A1533455000866009 /* French */,
+			);
+			name = DBInspector.xib;
+			sourceTree = "<group>";
+		};
 		6C51136D0C310DE20084EF60 /* DBFilterPalette.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1836,15 +1845,6 @@
 				6C84451A0C4C243900FFA2FF /* French */,
 			);
 			name = DBTools.nib;
-			sourceTree = "<group>";
-		};
-		6CF835DA0BC819080058CCFA /* DBInspector.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6CF835DB0BC819080058CCFA /* English */,
-				6C84450F0C4C1FE600FFA2FF /* French */,
-			);
-			name = DBInspector.nib;
 			sourceTree = "<group>";
 		};
 		6CFFD2C00C9452A1006F85FB /* DBMagnifyingGlass.nib */ = {

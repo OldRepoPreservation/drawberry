@@ -57,10 +57,10 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSWindowTemplate" id="316192225">
-				<int key="NSWindowStyleMask">8223</int>
+				<int key="NSWindowStyleMask">8351</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{81, 192}, {283, 357}}</string>
-				<int key="NSWTFlags">611844096</int>
+				<int key="NSWTFlags">-1535639552</int>
 				<string key="NSWindowTitle">Layers</string>
 				<string key="NSWindowClass">GCollapsePanel</string>
 				<nil key="NSViewClass"/>
@@ -72,7 +72,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSButton" id="566816927">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{237, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -98,7 +98,7 @@
 						</object>
 						<object class="NSButton" id="1018065551">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{259, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -120,7 +120,7 @@
 						</object>
 						<object class="NSButton" id="470780160">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{183, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -142,7 +142,7 @@
 						</object>
 						<object class="NSButton" id="464774158">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{161, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -164,7 +164,7 @@
 						</object>
 						<object class="NSButton" id="1062346364">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{139, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -186,7 +186,7 @@
 						</object>
 						<object class="NSButton" id="644834559">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{205, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -208,7 +208,7 @@
 						</object>
 						<object class="NSButton" id="441590886">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">290</int>
 							<string key="NSFrame">{{35, 19}, {107, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -230,7 +230,7 @@
 						</object>
 						<object class="NSButton" id="260729530">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{227, 19}, {13, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -252,7 +252,7 @@
 						</object>
 						<object class="NSButton" id="539736133">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{-1, 19}, {39, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -278,7 +278,7 @@
 						</object>
 						<object class="NSPopUpButton" id="112289720">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">290</int>
 							<string key="NSFrame">{{106, 69}, {124, 22}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -514,7 +514,7 @@
 						</object>
 						<object class="NSTextField" id="773084392">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{17, 74}, {90, 14}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -548,7 +548,7 @@
 						</object>
 						<object class="NSTextField" id="218588060">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">260</int>
 							<string key="NSFrame">{{55, 52}, {52, 14}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -566,7 +566,7 @@
 						</object>
 						<object class="NSTextField" id="924387765">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{234, 54}, {33, 14}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -655,7 +655,7 @@
 						</object>
 						<object class="NSSlider" id="284191026">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">258</int>
 							<string key="NSFrame">{{109, 52}, {118, 15}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
@@ -678,7 +678,7 @@
 						</object>
 						<object class="NSScrollView" id="656087424">
 							<reference key="NSNextResponder" ref="67604286"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">274</int>
 							<object class="NSMutableArray" key="NSSubviews">
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSClipView" id="736159185">

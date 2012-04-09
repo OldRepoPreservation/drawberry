@@ -94,6 +94,7 @@ NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 
 - (void)mouseDragged:(NSEvent *)event
 {
+    [super mouseDragged:event];
 	if(_draggedObject){
 		NSImage *image;
 		NSPoint point;

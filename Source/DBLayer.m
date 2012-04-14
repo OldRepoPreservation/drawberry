@@ -21,9 +21,23 @@
 + (void)initialize
 {
 	[self exposeBinding:@"name"];
-	[self setKeys:[NSArray arrayWithObject:@"alpha"] triggerChangeNotificationsForDependentKey:@"opacity"]; 
 	
 //	[[DBUndoStack class] poseAsClass:[_NSUndoStack class]];
+}
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    NSSet *affectingKeys = nil;
+    
+    if ([key isEqualToString:@"opacity"]){
+        affectingKeys = [NSSet setWithObject:@"alpha"];
+    }
+    
+    keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    
+    return keyPaths;
 }
 
 + (NSArray *)layersWithShapes:(NSArray *)shapes

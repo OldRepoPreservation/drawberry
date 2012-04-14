@@ -62,13 +62,27 @@
 
 + (void)initialize
 {
-	[self setKeys:[NSArray arrayWithObject:@"zoom"] triggerChangeNotificationsForDependentKey:@"zoomExponent"];
-	[self setKeys:[NSArray arrayWithObject:@"zoom"] triggerChangeNotificationsForDependentKey:@"zoomPercentage"];
-	[self setKeys:[NSArray arrayWithObjects:@"zoom",@"canevasSize",nil] triggerChangeNotificationsForDependentKey:@"zoomedCanevasSize"];
-
 	[self exposeBinding:@"selectShape"];
 }
 
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    NSSet *affectingKeys = nil;
+
+    if ([key isEqualToString:@"zoomExponent"]){
+        affectingKeys = [NSSet setWithObject:@"zoom"];
+    }else if ([key isEqualToString:@"zoomPercentage"]){
+        affectingKeys = [NSSet setWithObject:@"zoom"];
+    }else if ([key isEqualToString:@"zoomedCanevasSize"]){
+        affectingKeys = [NSSet setWithObjects:@"zoom", @"canevasSize",nil];
+
+    }
+    keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+
+    return keyPaths;
+}
 - (id)initWithFrame:(NSRect)frame 
 {
     self = [super initWithFrame:frame];

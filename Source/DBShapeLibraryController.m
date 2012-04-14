@@ -77,7 +77,7 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
     applicationSupportFolder = [DBShapeLibraryController applicationSupportFolder];
     
     if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
-        [fileManager createDirectoryAtPath:applicationSupportFolder attributes:nil];
+        [fileManager createDirectoryAtPath:applicationSupportFolder withIntermediateDirectories:NO attributes:nil error:NULL];
     }
 	    
 	if(![[self selectedCollection] writeAtomically:NO]){
@@ -106,7 +106,7 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 	if ( [fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ){
 //		[fileManager changeCurrentDirectoryPath:applicationSupportFolder];
 		
-		files = [fileManager directoryContentsAtPath:applicationSupportFolder];
+		files = [fileManager contentsOfDirectoryAtPath:applicationSupportFolder error:NULL];
 		
 		e = [files objectEnumerator];		
 		
@@ -124,7 +124,7 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 	}
 	
 	if([fileManager fileExistsAtPath:builtInCollectionFolder isDirectory:NULL]){
-		files = [fileManager directoryContentsAtPath:builtInCollectionFolder];
+		files = [fileManager contentsOfDirectoryAtPath:builtInCollectionFolder error:NULL];
 		
 		e = [files objectEnumerator];		
 		

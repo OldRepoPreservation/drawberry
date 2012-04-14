@@ -21,8 +21,24 @@
 @implementation DBStroke
 + (void)initialize
 {
-	[self setKeys:[NSArray arrayWithObject:@"strokeMode"] triggerChangeNotificationsForDependentKey:@"needsColor"];
-	[self setKeys:[NSArray arrayWithObject:@"strokeMode"] triggerChangeNotificationsForDependentKey:@"needsPatternImage"];
+
+}
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    NSSet *affectingKeys = nil;
+    
+    if ([key isEqualToString:@"needsColor"]){
+        affectingKeys = [NSSet setWithObject:@"strokeMode"];
+    }else if ([key isEqualToString:@"needsPatternImage"]){
+        affectingKeys = [NSSet setWithObject:@"strokeMode"];
+    }
+    
+    keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    
+    return keyPaths;
 }
 
 - (id)initWithShape:(DBShape *)shape

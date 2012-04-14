@@ -25,8 +25,16 @@
 	[self exposeBinding:@"selectionIndex"];
 	[self exposeBinding:@"reverseSelectionIndex"];
 	[self exposeBinding:@"reverseSelectionIndexes"];
-	[self setKeys:[NSArray arrayWithObject:@"selectionIndex"] triggerChangeNotificationsForDependentKey:@"reverseSelectionIndex"];
-	[self setKeys:[NSArray arrayWithObject:@"selectionIndex"] triggerChangeNotificationsForDependentKey:@"reverseSelectionIndexes"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingReverseSelectionIndex
+{
+    return [NSSet setWithObject:@"selectionIndex"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingReverseSelectionIndexes
+{
+    return [NSSet setWithObject:@"selectionIndex"];
 }
 
 - (id)init

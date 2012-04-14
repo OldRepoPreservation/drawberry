@@ -52,9 +52,25 @@ static double distanceBetween(NSPoint a, NSPoint b)
 #pragma mark Initializations & Co
 + (void)initialize
 {
-	[self setKeys:[NSArray arrayWithObject:@"fillMode"] triggerChangeNotificationsForDependentKey:@"needsColor"];
-	[self setKeys:[NSArray arrayWithObject:@"fillMode"] triggerChangeNotificationsForDependentKey:@"needsImage"];
-	[self setKeys:[NSArray arrayWithObject:@"fillMode"] triggerChangeNotificationsForDependentKey:@"needsGradient"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    NSSet *affectingKeys = nil;
+    
+    if ([key isEqualToString:@"needsColor"]){
+        affectingKeys = [NSSet setWithObject:@"fillMode"];
+    }else if ([key isEqualToString:@"needsImage"]){
+        affectingKeys = [NSSet setWithObject:@"fillMode"];
+    }else if ([key isEqualToString:@"needsGradient"]){
+        affectingKeys = [NSSet setWithObject:@"fillMode"];
+    }
+    
+    keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKeys];
+    
+    return keyPaths;
 }
 
 - (id)init

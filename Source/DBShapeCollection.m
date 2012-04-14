@@ -191,7 +191,7 @@
     applicationSupportFolder = [DBShapeCollection applicationSupportFolder];
     
     if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
-        [fileManager createDirectoryAtPath:applicationSupportFolder attributes:nil];
+        [fileManager createDirectoryAtPath:applicationSupportFolder withIntermediateDirectories:NO attributes:nil error:NULL];
     }
 
 	return [NSString stringWithFormat:@"%@/%@.dblib",applicationSupportFolder,[self name]];
@@ -220,7 +220,7 @@
     fileManager = [NSFileManager defaultManager];
 	
 	if([fileManager fileExistsAtPath:[self filename]]){
-		return [fileManager removeFileAtPath:[self filename] handler:nil];
+		return [fileManager removeItemAtPath:[self filename] error:NULL];
 	}
 	
 	return YES;

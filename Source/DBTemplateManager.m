@@ -106,7 +106,7 @@ NSString *DBTemplateMenuDidChangeNotification = @"DBTemplateMenuDidChangeNotific
     applicationSupportFolder = [DBTemplateManager applicationSupportFolder];
     
     if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
-        [fileManager createDirectoryAtPath:applicationSupportFolder attributes:nil];
+        [fileManager createDirectoryAtPath:applicationSupportFolder withIntermediateDirectories:NO attributes:nil error:NULL];
     }
 	
 	path = [applicationSupportFolder stringByAppendingPathComponent:@"Templates.plist"];

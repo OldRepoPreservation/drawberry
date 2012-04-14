@@ -1,4 +1,4 @@
-/* Inspectors*/
+/* Inspectors */
 "Grid" = "Grid";
 "Page" = "Page";
 "Rulers" = "Rulers";
@@ -64,7 +64,7 @@
 "XOR" = "Exclusive OR";
 
 "Shape collection import desc" = "Add the shape collection named %@ containing %d shapes ?";
-"Collection already exists" = "Collection %@ already exists"
+"Collection already exists" = "Collection %@ already exists";
 "Exiting name alert" = "Name already given";
 "Exiting name alert desc" = "Another shape collection has already this name. Please choose another one";
 

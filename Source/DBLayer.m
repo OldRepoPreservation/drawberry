@@ -325,7 +325,6 @@
 //	rectShape = [[DBRectangle alloc] initWithRect:NSMakeRect(50,50,50,50)];
 	rectShape = [[DBRectangle alloc] initWithRect:rect];
 	
-	[self addShape:rectShape];
 
 	[rectShape updatePath];
 	[rectShape updateBounds];
@@ -341,6 +340,8 @@
 	[[rectShape stroke] setStrokeMode:DBNoStrokeMode];
 	
 	[fill release];
+
+	[self addShape:rectShape];
 	[rectShape release];
 
 	

@@ -166,7 +166,7 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : Text on path improvemements
 	
-	FIXME : When importing an image, don't show all the undo things 
+	FIXED : When importing an image, don't show all the undo things 
 	
 	TODO : Edit the rounded rectangle edges separatly      
 	

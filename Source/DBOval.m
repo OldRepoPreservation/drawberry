@@ -367,7 +367,10 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	[path closePath];
 	shape = [[DBBezierCurve alloc] initWithBezierPath:path];		
 	
-	
+    [shape setStroke:[[[self stroke] copy] autorelease]];
+    [shape setShadow:[[[self shadow] copy] autorelease]];
+    [shape setFills:[[[NSArray alloc] initWithArray:[self fills] copyItems:YES] autorelease]];
+
 	return shape;
 }
 

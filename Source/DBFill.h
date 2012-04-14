@@ -28,7 +28,7 @@ typedef enum {
 @class DBShape, DBTextContainer,DBDrawingView;
 
 
-@interface DBFill : NSObject <NSCoding>{
+@interface DBFill : NSObject <NSCoding,NSCopying>{
 	int _fillMode;
 	int _imageFillMode;
 	

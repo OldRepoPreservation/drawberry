@@ -10,7 +10,7 @@
 
 @class DBShape;
 
-@interface DBShadow : NSShadow {	
+@interface DBShadow : NSShadow <NSCoding,NSCopying>{	
 	DBShape *_shape;
 	BOOL _enabled;
 }

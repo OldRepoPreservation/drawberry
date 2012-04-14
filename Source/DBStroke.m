@@ -84,7 +84,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	DBStroke *stroke = [[DBStroke alloc] init];
+	DBStroke *stroke = [[DBStroke allocWithZone:zone] init];
 	
 	[stroke setStrokeMode:[self strokeMode]];
 	[stroke setLineWidth:[self lineWidth]];

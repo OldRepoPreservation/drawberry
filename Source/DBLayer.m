@@ -69,7 +69,7 @@
 	DBLayer *layer;
 	NSArray *shapesCopy;
 	
-	layer = [[DBLayer alloc] initWithName:[self name]];
+	layer = [[DBLayer allocWithZone:zone] initWithName:[self name]];
 	
 	shapesCopy = [[NSArray alloc] initWithArray:[self shapes] copyItems:YES];
 	[layer setShapes:shapesCopy];

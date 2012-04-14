@@ -209,6 +209,19 @@ static NSBezierPath *__knob = nil;
 	[super dealloc];
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    DBShape *shape = [[[self class] allocWithZone:zone] init]; // implemented for all subclasses, the is not necessarly DBShape 
+    
+    [shape setStroke:[[[self stroke] copyWithZone:zone] autorelease]];
+    [shape setShadow:[[[self shadow] copyWithZone:zone] autorelease]];
+    [shape setFills:[[[NSArray allocWithZone:zone] initWithArray:[self fills] copyItems:YES] autorelease]];
+
+    [shape setRotation:[self rotation]];
+    
+    return shape;
+}
+
 #pragma mark NSCoding
 - (id)initWithCoder:(NSCoder *)decoder
 {
@@ -459,6 +472,19 @@ static NSBezierPath *__knob = nil;
 	_stroke = newStroke;
 	[_stroke setShape:self];
 }    
+
+- (DBShadow *)shadow
+{
+    return _shadow;
+}
+
+- (void)setShadow:(DBShadow *)newShadow
+{
+    [newShadow retain];
+    [_shadow release];
+    _shadow = newShadow;
+    [_shadow setShape:self];
+}
 
 - (void)addFill:(DBFill *)aFill
 {

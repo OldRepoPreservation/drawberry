@@ -27,7 +27,7 @@ typedef enum {
 }DBArrowStyle;
 #endif
 
-@interface DBStroke : NSObject {
+@interface DBStroke : NSObject <NSCoding,NSCopying>{
 	BOOL _stroke;
 	
 	int _strokeMode;

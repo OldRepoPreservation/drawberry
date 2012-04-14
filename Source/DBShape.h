@@ -32,7 +32,7 @@ enum {
     LowerRightKnob,
 };
 
-@interface DBShape : NSObject <NSCoding>{
+@interface DBShape : NSObject <NSCoding,NSCopying>{
 	DBLayer *_layer;
 	DBStroke *_stroke;
 	DBFill *_fill;
@@ -75,6 +75,9 @@ enum {
 
 - (DBStroke *)stroke;
 - (void)setStroke:(DBStroke *)newStroke;
+
+- (DBShadow *)shadow;
+- (void)setShadow:(DBShadow *)newShadow;
 
 - (void)addFill:(DBFill *)aFill;
 - (void)insertFill:(DBFill *)aFill atIndex:(unsigned int)i;

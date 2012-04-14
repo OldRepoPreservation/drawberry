@@ -99,17 +99,26 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	DBFill *fill = [[DBFill alloc] init];
+	DBFill *fill = [[DBFill allocWithZone:zone] init];
+    
+    [fill setFillName:[self fillName]];
 	
-	[fill setFillMode:[self fillMode]];
 	[fill setFillMode:[self fillMode]];
 
 	[fill setFillColor:[[[self fillColor] copy] autorelease]];
 	[fill setFillImage:[[[self fillImage] copy] autorelease]];
 	[fill setGradient:[[[self gradient] copy] autorelease]];
 
+    [fill setImageFillMode:[self imageFillMode]];
 	[fill setImageDrawPoint:[self imageDrawPoint]];
 	[fill setImageCenterPoint:[self imageCenterPoint]];
+    
+    [fill setGradientType:[self gradientType]];
+    [fill setGradientAngle:[self gradientAngle]];
+    [fill setGradientStartingPoint:[self gradientStartingPoint]];
+    [fill setGradientStartingRadius:[self gradientStartingRadius]];
+    [fill setGradientEndingPoint:[self gradientEndingPoint]];
+    [fill setGradientEndingRadius:[self gradientEndingRadius]];
 	 	
 	return fill;
 }

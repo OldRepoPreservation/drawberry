@@ -55,6 +55,15 @@
 	[encoder encodeBool:_enabled forKey:@"Enabled"];
 }                                                   
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    DBShadow *shadow = [super copyWithZone:zone];
+    
+    [shadow setEnabled:[self enabled]];
+    
+    return shadow;
+}
+
 - (void)set
 {
 	if(_enabled){

@@ -156,11 +156,11 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : Add multiple strokes functionnality (just like fills) (to 1.0 version ??)  
 	
-	FIXME : When converting a rectangl or an oval to a bezier curve, don't forget to add the shadow
+	FIXED : When converting a rectangle or an oval to a bezier curve, don't forget to add the shadow
   	
 	FIXED : Rectangle conversion must now return a bezier curve and not a polyline   
 	
-	FIXME : Problems when adding new points to an existing line  
+	FIXED : Problems when adding new points to an existing line  
 	
 	FIXED : Save the gradient orientation
 	

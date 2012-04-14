@@ -86,7 +86,7 @@
 {
 	DBShapeCollection *collection;
 	
-	collection = [[DBShapeCollection alloc] initWithName:[NSString stringWithFormat:@"%@ - %@",[self name],NSLocalizedString(@"Copy",nil),nil]];
+	collection = [[DBShapeCollection allocWithZone:zone] initWithName:[NSString stringWithFormat:@"%@ - %@",[self name],NSLocalizedString(@"Copy",nil),nil]];
 	                 
 	NSData *data;
 	

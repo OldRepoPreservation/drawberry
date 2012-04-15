@@ -58,6 +58,37 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	}
 }
 
+- (IBAction)duplicate:(id)sender
+{
+    [self duplicateSelectedShapes];
+}
+
+- (void)duplicateSelectedShapes
+{
+	NSData *data;
+	NSArray *duplicatedShapes;                                                       
+	DBLayer *layer;
+    
+	data = [NSKeyedArchiver archivedDataWithRootObject:_selectedShapes];
+	
+	duplicatedShapes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	[duplicatedShapes makeObjectsPerformSelector:@selector(setLayer:) withObject:nil];
+	
+	NSEnumerator *e = [duplicatedShapes objectEnumerator];
+	DBShape * shape;
+    
+	while((shape = [e nextObject])){
+		[shape moveByX:10.0 byY:10.0];
+	}
+	
+	layer = [[self layerController] selectedLayer];
+	[layer addShapes:duplicatedShapes];
+	[layer updateRenderInView:self];
+	[self setNeedsDisplay:YES];	
+	
+}
+
+
 - (void)writeShapes:(NSArray *)shapes toPasteboard:(NSPasteboard *)pb
 {
 	[pb declareTypes:[NSArray arrayWithObject:DBShapePboardType] owner:self];

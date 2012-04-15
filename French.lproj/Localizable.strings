@@ -68,7 +68,9 @@
 "Exiting name alert" = "Nom déjà donné";
 "Exiting name alert desc" = "Une autre collection possède déjà ce nom. Veulliez en choisir un autre";
 
-"Copy" = "Copie";
+"Copy" = "Copier";
+"Cut" = "Couper";
+"Paste" = "Coller";
 
 "List editor" = "Editer la liste ...";
 "Untitled" = "Sans Titre";
@@ -79,3 +81,19 @@
 "Untitled" = "Sans titre";
 "Unable to save document" = "Impossible de sauvegarder le document";
 "Save error recovery" = "DrawBerry ne peut pas sauvegarder ce format. \nExportez ce fichier ou enregistrer le en tant que document DrawBerry avec Enregistrer Sous...";
+
+/* Contextual Menu */
+"Duplicate" = "Dupliquer";
+"Delete" = "Supprimer";
+
+"Left" = "Gauche";     
+"Center" = "Centre"; 
+"Right"  = "Droite";  
+"Top" = "Haut";
+"Middle" = "Milieu";    
+"Bottom" = "Bas"; 
+
+"Align ..." = "Aligner ...";
+"Boolean Ops" = "Opérations booléennes";
+
+

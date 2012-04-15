@@ -185,7 +185,9 @@ What we have to do in the future (in function of milestone)
     
 	TODO : New Inspectors  
 	
-	FIXME : CoreImage Layers
+	FIXME : CoreImage Layers 
+	
+	TODO : Clones
    
 
 - After that

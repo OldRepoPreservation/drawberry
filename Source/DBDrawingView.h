@@ -131,8 +131,6 @@
 - (NSArray *)selectedShapes;
 - (NSArray *)selectedShapesLayers;
 
-- (void)duplicateSelectedShapes;
-
 #pragma mark Search Shapes
 
 - (NSSet *)shapesInRect:(NSRect)rect;

@@ -14,6 +14,11 @@ extern NSString *DBShapePboardType;
 
 - (IBAction)delete:(id)sender;
 - (void)deleteSelectedShapes;
+
+- (IBAction)duplicate:(id)sender;
+- (void)duplicateSelectedShapes;
+
+
 - (void)writeShapes:(NSArray *)shapes toPasteboard:(NSPasteboard *)pb;
 - (NSArray *)shapesFromPasteboard:(NSPasteboard *)pb;
 - (void)convertSelectedShapesToBezier;                                                                           

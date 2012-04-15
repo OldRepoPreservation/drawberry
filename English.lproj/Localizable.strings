@@ -69,6 +69,8 @@
 "Exiting name alert desc" = "Another shape collection has already this name. Please choose another one";
 
 "Copy" = "Copy";
+"Cut" = "Cut";
+"Paste" = "Paste";
 
 "List editor" = "Editer the list ...";
 "Untitled" = "Untitled";
@@ -79,3 +81,19 @@
 "Untitled" = "Untitled";
 "Unable to save document" = "Unable to save document";
 "Save error recovery" = "DrawBerry can not save this file format. \nExport this file or save it as a DrawBerry document using Save As...";
+
+/* Contextual Menu */
+"Duplicate" = "Duplicate";
+"Delete" = "Delete";
+
+"Left" = "Left";     
+"Center" = "Center"; 
+"Right"  = "Right";  
+"Top" = "Top";
+"Middle" = "Middle";    
+"Bottom" = "Bottom";    
+  
+"Align ..." = "Align ...";
+"Boolean Ops" = "Boolean Operations";
+
+

@@ -247,6 +247,7 @@
 		6CB4DFDE0E5B1D2F008CBB3A /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 6CB4DFA90E5B1D2F008CBB3A /* Help */; };
 		6CBF843D0C5642D800F9554F /* UndoLoc.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CBF843C0C5642D800F9554F /* UndoLoc.strings */; };
 		6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCAE8290C1084A300F71D77 /* QuartzCore.framework */; };
+		6CCE9286153B480500A49667 /* DBDrawingView+ContextualMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE9285153B480500A49667 /* DBDrawingView+ContextualMenu.m */; };
 		6CDC49060C4D79BD00F3128F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CDC49050C4D79BD00F3128F /* Localizable.strings */; };
 		6CEFC9090E2F9B550057CDED /* DBShapeLibrary.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFC9070E2F9B550057CDED /* DBShapeLibrary.nib */; };
 		6CF0DEEB0BD29982006B58F8 /* DBTools.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF0DEE90BD29982006B58F8 /* DBTools.nib */; };
@@ -664,6 +665,8 @@
 		6CBF84380C5642D400F9554F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UndoLoc.strings; sourceTree = "<group>"; };
 		6CBF843E0C5642DD00F9554F /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/UndoLoc.strings; sourceTree = "<group>"; };
 		6CCAE8290C1084A300F71D77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		6CCE9284153B480400A49667 /* DBDrawingView+ContextualMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DBDrawingView+ContextualMenu.h"; path = "Source/DBDrawingView+ContextualMenu.h"; sourceTree = "<group>"; };
+		6CCE9285153B480500A49667 /* DBDrawingView+ContextualMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBDrawingView+ContextualMenu.m"; path = "Source/DBDrawingView+ContextualMenu.m"; sourceTree = "<group>"; };
 		6CDC48FE0C4D751400F3128F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6CDC49070C4D79C300F3128F /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6CEFC9080E2F9B550057CDED /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBShapeLibrary.xib; sourceTree = "<group>"; };
@@ -1095,6 +1098,8 @@
 				6C129D5D0E54EC1600AD5C61 /* DBDrawingView+TextEditing.m */,
 				6C129D5E0E54EC1600AD5C61 /* DBDrawingView+Undo.h */,
 				6C129D5F0E54EC1600AD5C61 /* DBDrawingView+Undo.m */,
+				6CCE9284153B480400A49667 /* DBDrawingView+ContextualMenu.h */,
+				6CCE9285153B480500A49667 /* DBDrawingView+ContextualMenu.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1688,6 +1693,7 @@
 				6C412BCF102E232A009F12DD /* nE.cpp in Sources */,
 				6C412BD3102E2345009F12DD /* vectorisation.cpp in Sources */,
 				6C412BD6102E236C009F12DD /* DBPolylineTransformation.mm in Sources */,
+				6CCE9286153B480500A49667 /* DBDrawingView+ContextualMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

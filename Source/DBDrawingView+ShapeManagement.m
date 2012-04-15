@@ -26,6 +26,10 @@ NSString *DBShapePboardType = @"ShapePboardType";
 
 @implementation DBDrawingView (ShapeManagement)
 
+- (IBAction)delete:(id)sender
+{
+    [self deleteSelectedShapes];
+}
 - (void)deleteSelectedShapes
 {
 	NSEnumerator *e = [_selectedShapes objectEnumerator];

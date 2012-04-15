@@ -151,6 +151,8 @@ What we have to do in the future (in function of milestone)
 	TODO : Groups
 
 	TODO : Introduce a contextual menu
+	
+	TODO : Add a "rotate" mode alternating with "resize" mode when clicking on a shape (not double-clicking)
 
 	TODO : Almost all the actions must be undoable    
 	
@@ -168,7 +170,9 @@ What we have to do in the future (in function of milestone)
 	
 	FIXED : When importing an image, don't show all the undo things 
 	
-	TODO : Edit the rounded rectangle edges separatly      
+	TODO : Edit the rounded rectangle edges separatly
+	
+	FIXME : When a rectangle is rotated, the conversion to a bezier curve is not done properly      
 	
 	FIXME : Relocalize inspectors in French
 	

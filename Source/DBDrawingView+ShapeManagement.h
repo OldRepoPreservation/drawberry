@@ -12,6 +12,7 @@ extern NSString *DBShapePboardType;
 
 @interface DBDrawingView (ShapeManagement)
 
+- (IBAction)delete:(id)sender;
 - (void)deleteSelectedShapes;
 - (void)writeShapes:(NSArray *)shapes toPasteboard:(NSPasteboard *)pb;
 - (NSArray *)shapesFromPasteboard:(NSPasteboard *)pb;

@@ -791,6 +791,13 @@
 					[self resizeSelectedShapeWithEvent:theEvent knob:knob];
 				return; 	
 			}else{
+                
+                if([theEvent modifierFlags] & NSControlKeyMask){
+                    // show the contextual menu if necessary
+                    [self rightMouseDown:theEvent];
+                    return;
+                }
+                
 				// maybe shape under mouse but no knob under mouse so move layer related control points
 				
 				DBLayer *layer;

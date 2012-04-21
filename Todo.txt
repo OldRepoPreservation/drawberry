@@ -150,7 +150,7 @@ What we have to do in the future (in function of milestone)
 
 	TODO : Groups
 
-	TODO : Introduce a contextual menu
+	DONE : Introduce a contextual menu
 	
 	TODO : Add a "rotate" mode alternating with "resize" mode when clicking on a shape (not double-clicking)
 

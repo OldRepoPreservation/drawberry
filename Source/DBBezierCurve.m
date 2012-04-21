@@ -717,13 +717,37 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				if(_pointCount-1 != 0){ // not creating the first point
 					_points[_pointCount-1].hasControlPoint2 = YES;
 				}
+                
+                if (shouldEndCreation) {
+                    float factor = distanceBetween(point,_points[0].controlPoint1)/distanceBetween(point,controlPoint);
+                    _points[0].controlPoint1 = NSMakePoint(point.x + factor*(controlPoint.x-point.x), point.y + factor*(controlPoint.y-point.y));
+                    _points[0].hasControlPoint1 = YES;
+                    _points[_pointCount-1].hasControlPoint1 = NO;
+                }
 			}else if (shouldEndCreation) {
 				_points[0].controlPoint2 = NSMakePoint(2*point.x - controlPoint.x, 2*point.y - controlPoint.y);
 				_points[0].hasControlPoint2 = YES;
 				_pointCount--;
 				_points = realloc(_points,_pointCount*sizeof(DBCurvePoint));
+/*                _points[i].controlPoint2 = NSMakePoint(2*curvePoint.x - point.x, 2*curvePoint.y - point.y);
+
+                angle = DBAngleBetweenPoints(curvePoint,oldPoint,_points[i].controlPoint1);							
+                controlPoint = _points[i].controlPoint2;
 				
-				_points[_pointCount-1].closePath = YES;
+                controlPoint.x -= curvePoint.x;
+                controlPoint.y -= curvePoint.y;
+                
+                rotatedPoint.x = controlPoint.x*cos(angle)-controlPoint.y*sin(angle);
+                rotatedPoint.y = controlPoint.x*sin(angle)+controlPoint.y*cos(angle);
+				
+                
+                rotatedPoint.x += curvePoint.x;
+                rotatedPoint.y += curvePoint.y;
+                _points[i].controlPoint2 = rotatedPoint;
+
+                */
+				
+                _points[_pointCount-1].closePath = YES;
 				[pool release];
 				break;
 			}else { // create a new point
@@ -1386,6 +1410,9 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	view = [[[self layer] layerController] drawingView];
 	canConvert = [view isKindOfClass:[DBDrawingView class]];
 
+	[[NSColor lightGrayColor] set];
+	[_controlPointsPath stroke];	
+	
 	for( i = 0; i < _pointCount; i++ )
 	{    
 		
@@ -1421,19 +1448,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
    	
 	}
-	
-	[[NSColor lightGrayColor] set];
-	[_controlPointsPath stroke];	
-
-	/*	if(([_fill fillMode] == DBImageFillMode && [_fill imageFillMode] == DBDrawMode) ){
-	 p = [_fill imageDrawPoint];
-	 p.x *= [self zoom];
-	 p.x += _bounds.origin.x;
-	 p.y *= [self zoom];
-	 p.y += _bounds.origin.y;
-	 
-	 [[DBShape greenKnob] drawAtPoint:NSMakePoint(p.x-5.0,p.y-5.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];		
-	 }*/
 	
 	[super displayEditingKnobs];
 }

@@ -50,6 +50,9 @@
 - (IBAction)replace:(id)sender;
 - (IBAction)convert:(id)sender; 
 
+- (IBAction)hardenControlPoint:(id)sender;
+- (IBAction)softenControlPoint:(id)sender;
+
 - (IBAction)align:(id)sender;
 - (IBAction)vertAlign:(id)sender;
 

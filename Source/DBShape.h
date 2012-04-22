@@ -53,7 +53,9 @@ enum {
 + (void)drawGreenKnobAtPoint:(NSPoint)pt;
 + (void)drawWhiteKnobAtPoint:(NSPoint)pt;
 + (void)drawGrayKnobAtPoint:(NSPoint)pt;
++ (void)drawGraySquareKnobAtPoint:(NSPoint)pt;
 + (void)drawSelectedGrayKnobAtPoint:(NSPoint)pt;
++ (void)drawSelectedGraySquareKnobAtPoint:(NSPoint)pt;
 
 + (NSRect)enclosingRectForShapes:(NSArray *)shapes;
 
@@ -118,6 +120,8 @@ enum {
 - (BOOL)replaceInView:(DBDrawingView *)view;
 - (void)delete:(id)sender;
 - (void)addPoint:(id)sender;
+- (void)hardenControlPoint:(id)sender;
+- (void)softenControlPoint:(id)sender;
 
 - (void)moveCorner:(int)corner toPoint:(NSPoint)point;
 - (NSPoint)translationToCenterInRect:(NSRect)rect;

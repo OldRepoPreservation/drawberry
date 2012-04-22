@@ -10,6 +10,7 @@
 #import "DBLayer.h"
 
 static NSBezierPath *__knob = nil;
+static NSBezierPath *__squareKnob = nil;
 
 
 @implementation NSColor (InvertColor)
@@ -38,6 +39,19 @@ static NSBezierPath *__knob = nil;
 		[__knob appendBezierPathWithArcWithCenter:NSMakePoint(0,0) radius:4 startAngle:0 endAngle:360];
 	}
 	return __knob;
+}
+
++ (NSBezierPath *)squareKnob
+{
+	if(!__squareKnob){
+		__squareKnob = [[NSBezierPath alloc] init];
+        [__squareKnob moveToPoint:NSMakePoint(-4., -4.)];
+        [__squareKnob lineToPoint:NSMakePoint(4., -4.)];
+        [__squareKnob lineToPoint:NSMakePoint(4., 4.)];
+        [__squareKnob lineToPoint:NSMakePoint(-4., 4.)];
+        [__squareKnob closePath];
+	}
+	return __squareKnob;
 }
 
 + (void)drawBlueKnobAtPoint:(NSPoint)pt 
@@ -72,6 +86,22 @@ static NSBezierPath *__knob = nil;
 	[af release];
 }
 
++ (void)drawGraySquareKnobAtPoint:(NSPoint)pt 
+{
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	[[NSColor lightGrayColor] set];
+	[[self squareKnob] fill];
+	[[NSColor grayColor] set];
+	[[self squareKnob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
+}
+
 + (void)drawSelectedGrayKnobAtPoint:(NSPoint)pt 
 {
 	NSAffineTransform *af = [[NSAffineTransform alloc] init];
@@ -87,6 +117,27 @@ static NSBezierPath *__knob = nil;
 	
 	[[NSColor alternateSelectedControlColor] set];
 	[[self knob] stroke];
+	
+	[NSGraphicsContext restoreGraphicsState];
+	
+	[af release];
+}
+
++ (void)drawSelectedGraySquareKnobAtPoint:(NSPoint)pt 
+{
+	NSAffineTransform *af = [[NSAffineTransform alloc] init];
+	[af translateXBy:pt.x yBy:pt.y];
+	
+	NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor selectedControlColor] endingColor:[NSColor lightGrayColor]];
+    
+	[NSGraphicsContext saveGraphicsState];
+	[af concat];
+	
+	[gradient drawInBezierPath:[self squareKnob] relativeCenterPosition:NSZeroPoint];
+	[gradient release];
+	
+	[[NSColor alternateSelectedControlColor] set];
+	[[self squareKnob] stroke];
 	
 	[NSGraphicsContext restoreGraphicsState];
 	
@@ -986,6 +1037,16 @@ static NSBezierPath *__knob = nil;
 - (void)addPoint:(id)sender
 {
 	
+}
+
+- (void)hardenControlPoint:(id)sender
+{
+    
+}
+
+- (void)softenControlPoint:(id)sender
+{
+    
 }
 
 #pragma mark Fill and Stroke

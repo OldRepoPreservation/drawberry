@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C11105115445E120070C852 /* harden.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C11104F15445E120070C852 /* harden.png */; };
+		6C11105215445E120070C852 /* soften.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C11105015445E120070C852 /* soften.png */; };
 		6C129CA70E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CA50E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.m */; };
 		6C129CAA0E54E5FE00AD5C61 /* gpc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CA80E54E5FE00AD5C61 /* gpc.c */; };
 		6C129CAD0E54E60D00AD5C61 /* NSBezierPath+GPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C129CAB0E54E60D00AD5C61 /* NSBezierPath+GPC.m */; };
@@ -290,6 +292,8 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		6C11104F15445E120070C852 /* harden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = harden.png; sourceTree = "<group>"; };
+		6C11105015445E120070C852 /* soften.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soften.png; sourceTree = "<group>"; };
 		6C129CA40E54E5D400AD5C61 /* DBPrefKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPrefKeys.h; path = Source/DBPrefKeys.h; sourceTree = "<group>"; };
 		6C129CA50E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBDrawingView+BooleanOps.m"; path = "Source/DBDrawingView+BooleanOps.m"; sourceTree = "<group>"; };
 		6C129CA60E54E5EC00AD5C61 /* DBDrawingView+BooleanOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DBDrawingView+BooleanOps.h"; path = "Source/DBDrawingView+BooleanOps.h"; sourceTree = "<group>"; };
@@ -863,6 +867,8 @@
 				6C129EB80E54F64300AD5C61 /* transformOval.png */,
 				6C129EB90E54F64300AD5C61 /* transformRect.png */,
 				6C129EBA0E54F64300AD5C61 /* up-alt.png */,
+				6C11104F15445E120070C852 /* harden.png */,
+				6C11105015445E120070C852 /* soften.png */,
 			);
 			name = "Contextual Toolbar";
 			path = "Ressource/Contextual Toolbar";
@@ -1573,6 +1579,8 @@
 				6C34EBA50FAA4A5900F9C3C6 /* prefs.Templates.tiff in Resources */,
 				6C74952715324DAD000EF4D7 /* DBLayers.xib in Resources */,
 				6C4D5156153344D400866009 /* DBInspector.xib in Resources */,
+				6C11105115445E120070C852 /* harden.png in Resources */,
+				6C11105215445E120070C852 /* soften.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

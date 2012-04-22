@@ -185,6 +185,16 @@
 	
 }
 
+- (IBAction)hardenControlPoint:(id)sender
+{
+	[[_mainView editingShape] hardenControlPoint:sender];
+}
+
+- (IBAction)softenControlPoint:(id)sender
+{
+    [[_mainView editingShape] softenControlPoint:sender];
+}
+
 - (IBAction)replace:(id)sender
 {
 	BOOL success;

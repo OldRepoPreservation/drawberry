@@ -61,6 +61,9 @@ typedef struct _DBCurvePoints {
 - (void)removePointAtIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next;
 - (void)replacePoints:(DBCurvePoint *)points count:(int)count type:(int)replacingType;
 
+- (void)hardenPointsAtIndexesFirstControlPoint:(NSIndexSet *)is1 secondControlPoint:(NSIndexSet *)is2;
+- (void)softenPointsAtIndexesFirstControlPoint:(NSIndexSet *)is1 secondControlPoint:(NSIndexSet *)is2;
+
 - (void)deletePathBetween:(int)index1 and:(int)index2;
 - (NSBezierPath *)pathFragmentBetween:(int)index1 and:(int)index2;
 

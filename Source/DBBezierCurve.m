@@ -1442,10 +1442,18 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
 		
 		if([self pointAtIndexIsSelected:i]){
-			[DBShape drawSelectedGrayKnobAtPoint:p];
+            if (_points[i].hasControlPoint1 || _points[i].hasControlPoint2) {
+                [DBShape drawSelectedGrayKnobAtPoint:p];
+            }else{
+                [DBShape drawSelectedGraySquareKnobAtPoint:p];
+            }
 		}else{
-			[DBShape drawGrayKnobAtPoint:p];
-		}
+            if (_points[i].hasControlPoint1 || _points[i].hasControlPoint2) {
+                [DBShape drawGrayKnobAtPoint:p];
+            }else{
+                [DBShape drawGraySquareKnobAtPoint:p];
+            }
+        }
    	
 	}
 	
@@ -1549,10 +1557,16 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 
 	[_path moveToPoint:point];
-	[_controlPointsPath moveToPoint:controlPoint1];
-	[_controlPointsPath lineToPoint:point];
-	[_controlPointsPath lineToPoint:controlPoint2];
-		
+
+    if(_points[0].hasControlPoint1){
+        [_controlPointsPath moveToPoint:point];
+        [_controlPointsPath lineToPoint:controlPoint1];
+    }
+    if(_points[0].hasControlPoint2){
+        [_controlPointsPath moveToPoint:point];
+        [_controlPointsPath lineToPoint:controlPoint2];
+	}
+	
 	beginningPoint = 0;
 	
   	for( i = 1; i < _pointCount; i++ )
@@ -1570,10 +1584,15 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			controlPoint3 = [view viewCoordinatesFromCanevasCoordinates:controlPoint3];
 		}
 
-		[_controlPointsPath moveToPoint:controlPoint3];
-		[_controlPointsPath lineToPoint:point];
-		[_controlPointsPath lineToPoint:controlPoint2];			
-		
+        if(_points[i].hasControlPoint1){
+            [_controlPointsPath moveToPoint:point];
+            [_controlPointsPath lineToPoint:controlPoint3];                
+        }
+        if(_points[i].hasControlPoint2){
+            [_controlPointsPath moveToPoint:point];
+            [_controlPointsPath lineToPoint:controlPoint2];
+        }
+
 		if(_points[i].subPathStart){
 			[_path moveToPoint:point];
 			beginningPoint = i;
@@ -1595,9 +1614,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			{
 				controlPoint1 = [view viewCoordinatesFromCanevasCoordinates:controlPoint1];
 			}
-			[_controlPointsPath moveToPoint:controlPoint1];
-			[_controlPointsPath lineToPoint:point];
-			[_controlPointsPath lineToPoint:controlPoint2];
 			
 			
 			if(_points[i].closePath){
@@ -1907,6 +1923,15 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
     _isPolyline = flag;
 }
 
+- (void)setIsEditing:(BOOL)newIsEditing
+{
+    [super setIsEditing:newIsEditing];
+    
+    if(newIsEditing == NO){
+        [self deselectAllPoints];
+    }
+}
+
 #pragma mark Points Selection
 - (void)deselectAllPoints
 {
@@ -2052,6 +2077,53 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	}
 	
 	[self replacePoints:newPoints count:(_pointCount - [_selectedPoints count]) type:DBDeletionReplacingType];
+}
+
+- (void)hardenControlPoint:(id)sender
+{
+    NSMutableIndexSet *modifiedIndexes1 = [NSMutableIndexSet indexSet];
+    NSMutableIndexSet *modifiedIndexes2 = [NSMutableIndexSet indexSet];
+    
+    NSUInteger index=[_selectedPoints firstIndex];
+    
+    while(index != NSNotFound)
+    {
+        
+        if(_points[index].hasControlPoint1)
+            [modifiedIndexes1 addIndex:index];
+        
+        if(_points[index].hasControlPoint2)
+            [modifiedIndexes2 addIndex:index];
+        
+        index=[_selectedPoints indexGreaterThanIndex: index];
+    }
+ 
+    if([modifiedIndexes1 count] + [modifiedIndexes2 count] > 0)
+        [self hardenPointsAtIndexesFirstControlPoint:modifiedIndexes1 secondControlPoint:modifiedIndexes2];
+}
+
+- (void)softenControlPoint:(id)sender
+{
+    NSMutableIndexSet *modifiedIndexes1 = [NSMutableIndexSet indexSet];
+    NSMutableIndexSet *modifiedIndexes2 = [NSMutableIndexSet indexSet];
+    
+    NSUInteger index=[_selectedPoints firstIndex];
+    
+    while(index != NSNotFound)
+    {
+        
+        if(!_points[index].hasControlPoint1)
+            [modifiedIndexes1 addIndex:index];
+        
+        if(!_points[index].hasControlPoint2)
+            [modifiedIndexes2 addIndex:index];
+        
+        index=[_selectedPoints indexGreaterThanIndex: index];
+    }
+   
+    if([modifiedIndexes1 count] + [modifiedIndexes2 count] > 0)
+        [self softenPointsAtIndexesFirstControlPoint:modifiedIndexes1 secondControlPoint:modifiedIndexes2];
+
 }
 
 #pragma mark Point insertion routines
@@ -2313,6 +2385,81 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 	[_layer updateRenderInView:nil];
 	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+}
+
+#pragma mark Control Points Modification
+
+- (void)hardenPointsAtIndexesFirstControlPoint:(NSIndexSet *)is1 secondControlPoint:(NSIndexSet *)is2
+{
+   	DBUndoManager *undo = [self undoManager];
+	[[undo prepareWithInvocationTarget:self] softenPointsAtIndexesFirstControlPoint:is1 secondControlPoint:is2];
+	if(![undo isUndoing]){
+		[undo setActionName:NSLocalizedString(@"Harden Point", nil)];
+	}else{
+		[undo setActionName:NSLocalizedString(@"Soften Point", nil)];	
+	}
+ 
+    NSUInteger index=[is1 firstIndex];
+    
+    while(index != NSNotFound)
+    {   
+        _points[index].hasControlPoint1 = NO;
+        index=[is1 indexGreaterThanIndex: index];
+    }
+
+    index=[is2 firstIndex];
+    
+    while(index != NSNotFound)
+    {   
+        _points[index].hasControlPoint2 = NO;
+        index=[is2 indexGreaterThanIndex: index];
+    }
+    
+    [self updatePath];
+	[self updateBounds];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+	[_stroke updateStrokeForPath:_path]; 
+    
+	
+	[_layer updateRenderInView:nil];
+	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+}
+
+- (void)softenPointsAtIndexesFirstControlPoint:(NSIndexSet *)is1 secondControlPoint:(NSIndexSet *)is2
+{
+   	DBUndoManager *undo = [self undoManager];
+	[[undo prepareWithInvocationTarget:self] hardenPointsAtIndexesFirstControlPoint:is1 secondControlPoint:is2];
+	if(![undo isUndoing]){
+		[undo setActionName:NSLocalizedString(@"Soften Point", nil)];	
+	}else{
+		[undo setActionName:NSLocalizedString(@"Harden Point", nil)];
+	}
+    
+    NSUInteger index=[is1 firstIndex];
+    
+    while(index != NSNotFound)
+    {   
+        _points[index].hasControlPoint1 = YES;
+        index=[is1 indexGreaterThanIndex: index];
+    }
+    
+    index=[is2 firstIndex];
+    
+    while(index != NSNotFound)
+    {   
+        _points[index].hasControlPoint2 = YES;
+        index=[is2 indexGreaterThanIndex: index];
+    }
+    
+    [self updatePath];
+	[self updateBounds];
+	[_fills makeObjectsPerformSelector:@selector(updateFillForPath:) withObject:_path];
+	[_stroke updateStrokeForPath:_path]; 
+    
+	
+	[_layer updateRenderInView:nil];
+	[[[_layer layerController] drawingView] setNeedsDisplay:YES];
+    
 }
 
 #pragma mark Transform 

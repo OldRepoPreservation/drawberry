@@ -8,6 +8,7 @@
 
 #import "DBDrawingView+ContextualMenu.h"
 
+#import "DBShape.h"
 
 @implementation DBDrawingView (ContextualMenu)
 + (NSMenu *)defaultMenu {
@@ -55,6 +56,26 @@
 
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent {
 
+    if([theEvent modifierFlags] & NSControlKeyMask){
+        NSPoint p = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        p = [self canevasCoordinatesFromViewCoordinates:p];
+        DBShape *shapeUnderMouse;
+        shapeUnderMouse = [[self layerController] hitTest:p];
+
+        NSEnumerator *e = [_selectedShapes objectEnumerator];
+        DBShape * shape;
+        int knob = NoKnob;
+        
+        while((shape = [e nextObject])){
+            knob = [shape knobUnderPoint:p];
+            
+            if(knob != NoKnob){
+                return nil;
+            }
+        }
+    }
+    
+    
     NSMenu *menu = [[self class] defaultMenu];
     
     if([_selectedShapes count] > 1){

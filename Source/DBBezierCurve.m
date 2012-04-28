@@ -273,12 +273,20 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 //			NSLog(@"close path");
 			if(NSEqualPoints(_points[beginningPoint].point, _points[_pointCount-1].point)){
 //				NSLog(@"points egaux");
-				_points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
-				_points[beginningPoint].hasControlPoint2 = YES;
-
+                _points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
+                if([path elementAtIndex:(i-1)] == NSCurveToBezierPathElement){
+                    _points[beginningPoint].hasControlPoint2 = YES;
+                }else{
+                    _points[beginningPoint].hasControlPoint2 = NO;
+                }
 				_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
-				_pointCount--;	
-			}
+				_pointCount--;
+                _points[_pointCount-1].closePath = YES;
+			}else{
+                _points[beginningPoint].hasControlPoint2 = NO;
+                _points[_pointCount-1].hasControlPoint1 = NO;
+                _points[_pointCount-1].closePath = YES;
+            }
 			
 			_points[_pointCount-1].closePath = YES;
 		}else if(elementType == NSMoveToBezierPathElement){
@@ -327,13 +335,18 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 			
 	if(NSEqualPoints(_points[beginningPoint].point, _points[_pointCount-1].point)){
 		_points[beginningPoint].controlPoint2 = _points[_pointCount-1].controlPoint2;
-		_points[beginningPoint].hasControlPoint2 = YES;
+
+        if([path elementAtIndex:(_pointCount-1)] == NSCurveToBezierPathElement){
+            _points[beginningPoint].hasControlPoint2 = YES;
+        }else{
+            _points[beginningPoint].hasControlPoint2 = NO;
+        }
 		_points = removeCurvePointAtIndex(_pointCount-1,_points,_pointCount);
 		_pointCount--;
 		_points[_pointCount-1].closePath = YES;
 	}else{
 		_points[_pointCount-1].controlPoint1 = _points[_pointCount-1].point;
-//		_points[_pointCount-1].hasControlPoint2 = NO;
+		_points[_pointCount-1].hasControlPoint2 = NO;
 
 	}
 	

@@ -172,7 +172,7 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : Edit the rounded rectangle edges separatly
 	
-	FIXME : When a rectangle is rotated, the conversion to a bezier curve is not done properly      
+	FIXED : When a rectangle is rotated, the conversion to a bezier curve is not done properly      
 	
 	FIXME : Relocalize inspectors in French
 	

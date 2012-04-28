@@ -390,8 +390,11 @@ static double distanceBetween(NSPoint a, NSPoint b)
 	rect.origin = NSMakePoint(-rect.size.width/2.0, -rect.size.height/2.0);
 
 	[_path release];
-	_path = [NSBezierPath bezierPathWithRoundedRect:rect cornerRadius:distanceBetween(_point2, _radiusKnob)*zoom];
-	[_path retain];
+    if(distanceBetween(_point2, _radiusKnob) > 0)
+        _path = [NSBezierPath bezierPathWithRoundedRect:rect cornerRadius:distanceBetween(_point2, _radiusKnob)*zoom];
+	else
+        _path = [NSBezierPath bezierPathWithRect:rect];
+    [_path retain];
 	
 	transform = [[NSAffineTransform alloc] init];
 	[transform rotateByDegrees:_rotation];
@@ -488,37 +491,24 @@ static double distanceBetween(NSPoint a, NSPoint b)
 
 - (DBBezierCurve *)convertToBezierCurve
 {
-	DBBezierCurve *shape;
-	if(distanceBetween(_point2, _radiusKnob) == 0){
-		NSPoint points[4];
-		
-		points[0] = _point1;
-		points[1] = _point2;
-		points[2] = _point3;
-		points[3] = _point4;
-		
-		shape = [[DBBezierCurve alloc] initWithPolylinePoints:points count:4 closed:YES];
-	}else{
-		NSAffineTransform *af;
-
-		af = [[[[self layer] layerController] drawingView] appliedTransformation];
-		
-		if(af){
-			[af invert];
-			shape = [[DBBezierCurve alloc] initWithBezierPath:[af transformBezierPath:_path]];					
-		}else {
-			shape = [[DBBezierCurve alloc] initWithBezierPath:_path];		
-		}
-        
-	} 
+	DBShape *shape;
+	NSAffineTransform *af;
+	NSBezierPath *path;
+	
+	af = [[[[self layer] layerController] drawingView] appliedTransformation];
+	[af invert];
+	
+	path = [af transformBezierPath:_path];
+	[path closePath];
+	shape = [[DBBezierCurve alloc] initWithBezierPath:path];		
 	
     [shape setStroke:[[[self stroke] copy] autorelease]];
     [shape setShadow:[[[self shadow] copy] autorelease]];
     [shape setFills:[[[NSArray alloc] initWithArray:[self fills] copyItems:YES] autorelease]];
     
-    
 	return shape;
 }
+
 
 #pragma mark Transform 
 

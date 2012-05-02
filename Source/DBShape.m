@@ -8,6 +8,7 @@
 
 #import "DBShape.h"
 #import "DBLayer.h"
+#import "DBGroup.h"
 
 static NSBezierPath *__knob = nil;
 static NSBezierPath *__squareKnob = nil;
@@ -394,6 +395,34 @@ static NSBezierPath *__squareKnob = nil;
 		
 		if(![[_layer shapes] containsObject:self] && [_layer tempShape] != self){
 			[_layer addShape:self];
+		}
+  		[self release]; // it's done, let's release us
+	}
+}
+
+- (DBGroup *)group
+{
+	return _group;
+}
+
+- (void)setGroup:(DBGroup *)newGroup
+{
+	if(newGroup == nil){
+        if([[_group shapes] containsObject:self]){
+			[_group removeShape:self];
+		}
+        _group = nil;
+    }else if(_group != newGroup){
+        
+		[self retain]; // retain us because otherwise, we might be freed by the next line
+        
+		if([[_group shapes] containsObject:self]){
+			[_group removeShape:self];
+		}
+		_group = newGroup;
+		
+		if(![[_group shapes] containsObject:self]){
+			[_group addShape:self];
 		}
   		[self release]; // it's done, let's release us
 	}
@@ -1027,6 +1056,11 @@ static NSBezierPath *__squareKnob = nil;
 - (void)flipHorizontalyWithNewKnob:(int)knob
 {
 	
+}
+
+- (void)putPathInRect:(NSRect)newRect
+{
+    
 }
 
 - (void)delete:(id)sender

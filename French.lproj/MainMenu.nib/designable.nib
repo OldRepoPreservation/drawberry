@@ -701,6 +701,35 @@
 										</array>
 									</object>
 								</object>
+								<object class="NSMenuItem" id="433839111">
+									<reference key="NSMenu" ref="582668991"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="662941070"/>
+									<reference key="NSMixedImage" ref="917321628"/>
+								</object>
+								<object class="NSMenuItem" id="923723033">
+									<reference key="NSMenu" ref="582668991"/>
+									<string key="NSTitle">Grouper</string>
+									<string key="NSKeyEquiv">g</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="662941070"/>
+									<reference key="NSMixedImage" ref="917321628"/>
+								</object>
+								<object class="NSMenuItem" id="733962375">
+									<reference key="NSMenu" ref="582668991"/>
+									<string key="NSTitle">Dégrouper</string>
+									<string key="NSKeyEquiv">G</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="662941070"/>
+									<reference key="NSMixedImage" ref="917321628"/>
+								</object>
 							</array>
 						</object>
 					</object>
@@ -967,8 +996,8 @@
 										<bool key="NS.raise.underflow">YES</bool>
 										<bool key="NS.raise.dividebyzero">YES</bool>
 									</object>
-									<string key="NS.decimal">,</string>
-									<string type="base64-UTF8" key="NS.thousand">wqA</string>
+									<string key="NS.decimal">.</string>
+									<string key="NS.thousand">,</string>
 									<bool key="NS.hasthousands">NO</bool>
 									<bool key="NS.localized">NO</bool>
 									<bool key="NS.allowsfloats">NO</bool>
@@ -1045,8 +1074,8 @@
 										<bool key="NS.raise.underflow">YES</bool>
 										<bool key="NS.raise.dividebyzero">YES</bool>
 									</object>
-									<string key="NS.decimal">,</string>
-									<string type="base64-UTF8" key="NS.thousand">wqA</string>
+									<string key="NS.decimal">.</string>
+									<string key="NS.thousand">,</string>
 									<bool key="NS.hasthousands">NO</bool>
 									<bool key="NS.localized">NO</bool>
 									<bool key="NS.allowsfloats">NO</bool>
@@ -1829,6 +1858,22 @@
 					</object>
 					<int key="connectionID">388</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">groupSelectedShapes:</string>
+						<reference key="source" ref="941110288"/>
+						<reference key="destination" ref="923723033"/>
+					</object>
+					<int key="connectionID">393</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">ungroupSelection:</string>
+						<reference key="source" ref="941110288"/>
+						<reference key="destination" ref="733962375"/>
+					</object>
+					<int key="connectionID">398</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2279,6 +2324,9 @@
 							<reference ref="195415278"/>
 							<reference ref="985631617"/>
 							<reference ref="568423259"/>
+							<reference ref="923723033"/>
+							<reference ref="433839111"/>
+							<reference ref="733962375"/>
 						</array>
 						<reference key="parent" ref="978108184"/>
 					</object>
@@ -2700,6 +2748,21 @@
 						<reference key="object" ref="803005597"/>
 						<reference key="parent" ref="665487931"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">391</int>
+						<reference key="object" ref="923723033"/>
+						<reference key="parent" ref="582668991"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">392</int>
+						<reference key="object" ref="433839111"/>
+						<reference key="parent" ref="582668991"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">394</int>
+						<reference key="object" ref="733962375"/>
+						<reference key="parent" ref="582668991"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2915,12 +2978,25 @@
 				<boolean value="YES" key="340.ImportedFromIB2"/>
 				<string key="376.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="376.ImportedFromIB2"/>
+				<string key="379.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="380.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="381.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="382.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="383.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="384.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="385.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="387.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="387.ImportedFromIB2"/>
 				<string key="389.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="389.ImportedFromIB2"/>
 				<string key="390.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="390.ImportedFromIB2"/>
+				<string key="391.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="391.ImportedFromIB2"/>
+				<string key="392.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="392.ImportedFromIB2"/>
+				<string key="394.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="394.ImportedFromIB2"/>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="5.ImportedFromIB2"/>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2958,7 +3034,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">390</int>
+			<int key="maxID">398</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3065,6 +3141,7 @@
 						<string key="delete:">id</string>
 						<string key="diff:">id</string>
 						<string key="duplicate:">id</string>
+						<string key="hardenControlPoint:">id</string>
 						<string key="intersection:">id</string>
 						<string key="left:">id</string>
 						<string key="lower:">id</string>
@@ -3073,6 +3150,7 @@
 						<string key="removeControlPoint:">id</string>
 						<string key="replace:">id</string>
 						<string key="right:">id</string>
+						<string key="softenControlPoint:">id</string>
 						<string key="stopEditing:">id</string>
 						<string key="top:">id</string>
 						<string key="union:">id</string>
@@ -3112,6 +3190,10 @@
 							<string key="name">duplicate:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="hardenControlPoint:">
+							<string key="name">hardenControlPoint:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="intersection:">
 							<string key="name">intersection:</string>
 							<string key="candidateClassName">id</string>
@@ -3142,6 +3224,10 @@
 						</object>
 						<object class="IBActionInfo" key="right:">
 							<string key="name">right:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="softenControlPoint:">
+							<string key="name">softenControlPoint:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="stopEditing:">
@@ -3407,7 +3493,9 @@
 						<string key="delete:">id</string>
 						<string key="diffSelectedObjects:">id</string>
 						<string key="duplicate:">id</string>
+						<string key="groupSelectedShapes:">id</string>
 						<string key="intersectionSelectedObjects:">id</string>
+						<string key="ungroupSelection:">id</string>
 						<string key="unionSelectedObjects:">id</string>
 						<string key="xorSelectedObjects:">id</string>
 					</dictionary>
@@ -3432,8 +3520,16 @@
 							<string key="name">duplicate:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="groupSelectedShapes:">
+							<string key="name">groupSelectedShapes:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="intersectionSelectedObjects:">
 							<string key="name">intersectionSelectedObjects:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="ungroupSelection:">
+							<string key="name">ungroupSelection:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="unionSelectedObjects:">

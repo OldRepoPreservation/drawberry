@@ -11,6 +11,7 @@
 #import "DBContextualDataSourceController.h"
 
 #import "DBDocument.h"
+#import "DBGroupController.h"
 
 #import "DBLayer.h"
 #import "DBShape.h"
@@ -453,6 +454,63 @@ NSString *DBShapePboardType = @"ShapePboardType";
 		corner.x = [shape bounds].origin.x;
 		[shape moveCorner:0 toPoint:corner];
 	}	
+}
+
+#pragma mark Groups
+
+- (NSSet *)selectedShapesGroups
+{
+    NSMutableSet *groups = [[NSMutableSet alloc] init];
+
+    for (DBShape* shape in _selectedShapes) {
+        if ([shape group]) {
+            [groups addObject:[shape group]];
+        }
+    }
+    
+    return [groups autorelease];
+}
+
+- (NSSet *)selectedShapesWithAssociatedShapes
+{
+    NSMutableSet *shapes = [NSMutableSet set];
+    
+    [shapes addObjectsFromArray:_selectedShapes];
+    
+    for (DBShape* shape in _selectedShapes) {
+        if ([shape group]) {
+            [shapes addObjectsFromArray:[[shape group] shapes]];
+        }
+    }
+
+    
+    return shapes;
+}
+
+- (NSArray *)shapesWithoutGroups
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (DBShape *shape in _selectedShapes) {
+        if (![shape group]) {
+            [array addObject:shape];
+        }
+}
+    
+    return array;
+}
+
+- (IBAction)groupSelectedShapes:(id)sender
+{
+    [[_document groupController] addGroupWithShapes:_selectedShapes];
+    [self setNeedsDisplay:YES];
+}
+
+- (IBAction)ungroupSelection:(id)sender
+{
+    for (DBGroup *group in [self selectedShapesGroups]) {
+        [[_document groupController] ungroup:group];
+    }
 }
 @end
  

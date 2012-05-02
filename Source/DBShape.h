@@ -15,7 +15,6 @@
 #import "DBFill.h"
 #import "DBShadow.h"
 
-
 #define DBInsertionReplacingType 0
 #define DBDeletionReplacingType 1
 #define DBFragReplaceReplacingType 2
@@ -32,11 +31,15 @@ enum {
     LowerRightKnob,
 };
 
+@class DBGroup;
+
 @interface DBShape : NSObject <NSCoding,NSCopying>{
 	DBLayer *_layer;
 	DBStroke *_stroke;
 	DBFill *_fill;
 	DBShadow *_shadow;
+    
+    DBGroup *_group;
 	
 	NSMutableArray *_fills;
 	
@@ -66,6 +69,8 @@ enum {
 
 - (DBLayer *)layer;
 - (void)setLayer:(DBLayer *)aLayer;
+- (DBGroup *)group;
+- (void)setGroup:(DBGroup *)aGroup;
 
 - (BOOL)isEditing;
 - (void)setIsEditing:(BOOL)newIsEditing;
@@ -116,6 +121,7 @@ enum {
 
 - (void)flipVerticallyWithNewKnob:(int)knob;
 - (void)flipHorizontalyWithNewKnob:(int)knob;
+- (void)putPathInRect:(NSRect)newRect;
 
 - (BOOL)replaceInView:(DBDrawingView *)view;
 - (void)delete:(id)sender;

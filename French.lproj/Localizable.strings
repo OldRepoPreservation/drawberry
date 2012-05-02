@@ -57,6 +57,7 @@
 "Lock Layer" = "Vérrouiller le calque";
 "Unlock Layer" = "Dévérouiller le calque";
 "Change Layer Blend Mode" = "Modifier le mode de fusion";
+"Change Group Name" = "Modifier le nom du groupe";
 
 "Union" = "Union";
 "Diff" = "Différence";
@@ -96,4 +97,4 @@
 "Align ..." = "Aligner ...";
 "Boolean Ops" = "Opérations booléennes";
 
-
+"Group" = "Groupe";

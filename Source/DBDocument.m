@@ -11,6 +11,7 @@
 
 #import "DBDrawingView.h"
 #import "DBLayerController.h"
+#import "DBGroupController.h"
 #import "DBDrawingView+Exporting.h"
 #import "DBUndoManager.h"
 
@@ -69,6 +70,7 @@ static NSArray *_sharedUnitArray = nil;
         // If an error occurs here, send a [self release] message and return nil.
        
 		_undoMngr = [[DBUndoManager alloc] init];
+        _groupController = [[DBGroupController alloc] init];
 		_svgParser = nil;
     }
     return self;
@@ -276,6 +278,10 @@ static NSArray *_sharedUnitArray = nil;
 	return _layerController;
 }
 
+- (DBGroupController *)groupController
+{
+    return _groupController;
+}
 - (DBUndoManager *)specialUndoManager
 {
 	return _undoMngr;

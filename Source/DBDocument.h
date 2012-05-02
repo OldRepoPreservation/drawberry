@@ -12,10 +12,12 @@
 @class DBLayerController;
 @class DBUndoManager;
 @class DBSVGParser;
+@class DBGroupController;
 
 @interface DBDocument : NSDocument {
 	IBOutlet DBDrawingView *_drawingView;
 	IBOutlet DBLayerController *_layerController;
+    DBGroupController *_groupController;
 	
 	IBOutlet NSView *_exportAccessoryView;
 	IBOutlet NSPopUpButton *_exportFormatPopUp;
@@ -43,6 +45,7 @@
 
 - (DBDrawingView *)drawingView;
 - (DBLayerController *)layerController;
+- (DBGroupController *)groupController;
 
 - (IBAction)export:(id)sender;
 - (void)exportChooseFileDidEnd:(NSSavePanel*)sheet returnCode:(int)code contextInfo:(void*)contextInfo;

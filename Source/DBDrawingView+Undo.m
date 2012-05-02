@@ -11,6 +11,8 @@
 #import "DBShape.h"
 #import "DBUndoManager.h"
 
+#import "DBGroup.h"
+
 NSPoint DBInvertVector(NSPoint vect)
 {
 	return NSMakePoint(-vect.x, -vect.y);
@@ -51,6 +53,23 @@ NSPoint DBInvertVector(NSPoint vect)
 	[[[_document specialUndoManager] prepareWithInvocationTarget:self] resizeShape:shape withKnob:knob fromPoint:point toPoint:fromPoint]; 
 	[[_document specialUndoManager] setActionName:NSLocalizedString(@"Resize", nil)];
 		
+	[self setNeedsDisplay:YES];
+	
+}
+
+- (void)resizeGroup:(DBGroup *)group withKnob:(int)knob fromPoint:(NSPoint)fromPoint toPoint:(NSPoint)point
+{
+	knob = [group resizeByMovingKnob:knob fromPoint:fromPoint toPoint:point inView:self modifierFlags:0];
+	
+    for(DBLayer *layer in [group shapeLayers]){
+        [layer updateRenderInView:self];
+        [[self layerController] updateDependentLayers:layer];
+    }
+
+	
+	[[[_document specialUndoManager] prepareWithInvocationTarget:self] resizeGroup:group withKnob:knob fromPoint:point toPoint:fromPoint]; 
+	[[_document specialUndoManager] setActionName:NSLocalizedString(@"Resize", nil)];
+    
 	[self setNeedsDisplay:YES];
 	
 }

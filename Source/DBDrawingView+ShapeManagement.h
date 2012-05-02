@@ -43,4 +43,12 @@ extern NSString *DBShapePboardType;
 - (void)alignTop:(id)sender;
 - (void)alignMiddle:(id)sender;
 - (void)alignBottom:(id)sender;
+
+// Groups
+- (NSSet *)selectedShapesGroups;
+- (NSSet *)selectedShapesWithAssociatedShapes;
+- (NSArray *)shapesWithoutGroups;
+
+- (IBAction)groupSelectedShapes:(id)sender;
+- (IBAction)ungroupSelection:(id)sender;
 @end

@@ -29,6 +29,7 @@
 
 #import "DBShape.h"
 #import "DBLayer.h"
+#import "DBGroup.h"
 #import "DBCILayer.h"
 
 #import "DBMagnifyingView.h" 
@@ -255,9 +256,13 @@
 	}      
 	
 	if(!_isExporting){
-		[_selectedShapes makeObjectsPerformSelector:@selector(drawBounds)];
-		[_selectedShapes makeObjectsPerformSelector:@selector(displaySelectionKnobs)];
+        NSArray *standaloneShapes = [self shapesWithoutGroups];
+		[standaloneShapes makeObjectsPerformSelector:@selector(drawBounds)];
+		[standaloneShapes makeObjectsPerformSelector:@selector(displaySelectionKnobs)];
 		[_editingShape displayEditingKnobs];
+        
+        [[self selectedShapesGroups] makeObjectsPerformSelector:@selector(displayEnclosingRect)];
+        [[self selectedShapesGroups] makeObjectsPerformSelector:@selector(displaySelectionKnobs)];
 	}
 //	[_editingShape drawInView:self rect:NSZeroRect];
 	
@@ -694,18 +699,28 @@
 	isExtendingSelection = (([theEvent modifierFlags] & NSShiftKeyMask) ? YES : NO);
     
 	// search for knob
-	NSEnumerator *e = [_selectedShapes objectEnumerator];
+	NSEnumerator *e = [[self shapesWithoutGroups] objectEnumerator];
 	DBShape * shape;
+    DBGroup *group;
 	int knob = NoKnob;
 	
-	while((shape = [e nextObject])){
-		knob = [shape knobUnderPoint:p];
+    for(group in [self selectedShapesGroups]){ // check the groups first
+        knob = [group knobUnderPoint:p];
 		
 		if(knob != NoKnob){
 			break;
-		}
+		}   
+    }
+        
+    if(knob == NoKnob){
+        while((shape = [e nextObject])){ // and then the selected shapes
+            knob = [shape knobUnderPoint:p];
+            
+            if(knob != NoKnob){
+                break;
+            }
+        }
 	}
-	
 	//NSLog(@"shapeUnderMouse %@", shapeUnderMouse);
  
    	if(shapeUnderMouse && knob == NoKnob){
@@ -780,11 +795,15 @@
 		}
 */	  	
 		if(! isExtendingSelection){
-			[self deselectAllShapes];
-			[self stopEditingShape];
-			[self selectShape:shape];
 			
-			if(shape){
+			if(group){
+                [self resizeSelectedGroup:group withEvent:theEvent knob:knob];
+                return;
+            }else if(shape){
+                [self deselectAllShapes];
+                [self stopEditingShape];
+                [self selectShape:shape];
+
 				if([theEvent modifierFlags] & NSControlKeyMask)
 					[self rotateSelectedShapeWithEvent:theEvent];
 				else
@@ -902,10 +921,12 @@
 	BOOL isEditable;
 	NSAutoreleasePool *pool;
 
+    NSArray *shapesToMove;
 	NSEnumerator *e;
 	DBShape *shape;
 	 
-	enclosingRect = [DBShape enclosingRectForShapes:_selectedShapes];
+    shapesToMove = [[self selectedShapesWithAssociatedShapes] allObjects];
+	enclosingRect = [DBShape enclosingRectForShapes:shapesToMove];
 	
 //	[self deselectAllShapes];
 //	[self selectShape:[_selectedShapes objectAtIndex:0]];
@@ -913,7 +934,7 @@
 	[[self layerController] selectLayer:[[self selectedShape] layer]];
 	
 	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	upleftCorner = [[_selectedShapes objectAtIndex:0] pointForKnob:UpperLeftKnob];
+	upleftCorner = [[shapesToMove objectAtIndex:0] pointForKnob:UpperLeftKnob];
 
 	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
 
@@ -958,7 +979,7 @@
 		deltaX = currentLoc.x - previousLoc.x;
 		deltaY = currentLoc.y - previousLoc.y;
 		
-		e = [_selectedShapes objectEnumerator];
+		e = [shapesToMove objectEnumerator];
 	   
 	 	if(!isEditable){
 			[_eManager postErrorName:NSLocalizedString(@"Uneditable Layer",nil) description:NSLocalizedString(@"Uneditable Layer msg",nil)];
@@ -970,14 +991,15 @@
 			while((shape = [e nextObject])){
 				[shape moveByX:deltaX byY:deltaY];
 			}
-			didMove = YES;
+            
+ 			didMove = YES;
 			enclosingRect.origin.x += deltaX/**_zoom*/;
 			enclosingRect.origin.y += deltaY/**_zoom*/;
 //			[[self selectedShapesLayers] makeObjectsPerformSelector:@selector(updateRenderInView:) withObject:self];
 			[self setNeedsDisplay:YES];	
 		}
 		
-		[[self layerController] updateDependentLayers:[[self selectedShapesLayers] objectAtIndex:0]];
+		[[self layerController] updateDependentLayers:[shapesToMove objectAtIndex:0]];
 		
 		p = NSMakePoint(NSMinX(enclosingRect),NSMinY(enclosingRect));
 		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
@@ -1006,16 +1028,15 @@
 		[[self layerController] endEditing];
 		
 		[[self selectedShapesLayers] makeObjectsPerformSelector:@selector(updateRenderInView:) withObject:self];
-		[[self layerController] updateDependentLayers:[[self selectedShapesLayers] objectAtIndex:0]];
+		[[self layerController] updateDependentLayers:[shapesToMove objectAtIndex:0]];
 	
 		translactionVector.x = originLoc.x - currentLoc.x;
 		translactionVector.y = originLoc.y - currentLoc.y;
 		
 		// copy the selected shapes to an NSArray, so the array is not changed during execution
-		NSArray *translatedShapes = [_selectedShapes copy];
+		NSArray *translatedShapes = shapesToMove;
 		[[[_document specialUndoManager] prepareWithInvocationTarget:self] translateShapes:translatedShapes vector:translactionVector]; 
 		[[_document specialUndoManager] setActionName:NSLocalizedString(@"Move", nil)];
-		[translatedShapes release];
 	}
 	
 	[self setLeftMarkerLocation:-256e6];
@@ -1106,6 +1127,86 @@
 	[[[_document specialUndoManager] prepareWithInvocationTarget:self] resizeShape:selectedShape withKnob:knob fromPoint:[selectedShape pointForKnob:knob] toPoint:originLoc]; 
 	[[_document specialUndoManager] setActionName:NSLocalizedString(@"Resize", nil)];
 	   
+}
+
+- (void)resizeSelectedGroup:(DBGroup *)selectedGroup withEvent:(NSEvent *)theEvent knob:(int)knob
+{
+   	[[self layerController] beginEditing];
+    
+   	NSPoint previousLoc, currentLoc, originLoc;
+	NSPoint p;
+	NSRect groupBounds;
+	NSAutoreleasePool *pool;
+	int originKnob;
+    
+	previousLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+	previousLoc = [self pointSnapedToGrid:previousLoc];
+    
+	previousLoc = [self canevasCoordinatesFromViewCoordinates:previousLoc];
+    
+	currentLoc = previousLoc;
+	originLoc = currentLoc;
+	
+	originKnob = knob;
+	    
+ 	while(YES){
+		pool = [[NSAutoreleasePool alloc] init];
+		
+		theEvent = [[self window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+		currentLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        
+		currentLoc = [self pointSnapedToGrid:currentLoc];
+		currentLoc = [self canevasCoordinatesFromViewCoordinates:currentLoc];
+        
+		knob = [selectedGroup resizeByMovingKnob:knob fromPoint:previousLoc toPoint:currentLoc inView:self modifierFlags:[theEvent modifierFlags]];
+		[self setNeedsDisplay:YES];
+		previousLoc = currentLoc;
+        
+        
+        for(DBLayer *layer in [selectedGroup shapeLayers]){
+            [[self layerController] updateDependentLayers:layer];            
+        }
+		
+		groupBounds = [selectedGroup enclosingRect];
+		p = NSMakePoint(NSMinX(groupBounds),NSMinY(groupBounds));
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
+		[self setLeftMarkerLocation:p.x];
+		[self setUpMarkerLocation:p.y];
+        
+		p = NSMakePoint(NSMaxX(groupBounds),NSMaxY(groupBounds));
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
+		[self setRightMarkerLocation:p.x];
+		[self setDownMarkerLocation:p.y];
+		
+		p = NSMakePoint(NSMinX(groupBounds)+NSWidth(groupBounds)/2.0,NSMinY(groupBounds)+NSHeight(groupBounds)/2.0);
+		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
+		[self moveHorizMouseRulerMarkerToLocation:p.x+24.0];
+		[self moveVertMouseRulerMarkerToLocation:p.y];
+		
+		[pool release];
+		
+		if ([theEvent type] == NSLeftMouseUp) {
+            break;
+        }
+	}    
+	
+	[[self layerController] endEditing];
+    
+	[self setLeftMarkerLocation:-256e6];
+	[self setUpMarkerLocation:-256e6];
+   	[self setRightMarkerLocation:-256e6];
+	[self setDownMarkerLocation:-256e6];
+	
+	[self moveMouseRulerMarkerWithEvent:theEvent];
+	
+    for(DBLayer *layer in [selectedGroup shapeLayers]){
+        [layer updateRenderInView:self];
+        [[self layerController] updateDependentLayers:layer]; 
+    }
+	
+	[[[_document specialUndoManager] prepareWithInvocationTarget:self] resizeGroup:selectedGroup withKnob:knob fromPoint:[selectedGroup pointForKnob:knob] toPoint:originLoc]; 
+	[[_document specialUndoManager] setActionName:NSLocalizedString(@"Resize", nil)];
+    
 }
 
 - (void)rotateSelectedShapeWithEvent:(NSEvent *)theEvent
@@ -1439,7 +1540,7 @@
 		return [NSArray arrayWithObject:_editingShape];
 	}
 	
-	return [DBLayer layersWithShapes:_selectedShapes];
+	return [DBLayer layersWithShapes:[[self selectedShapesWithAssociatedShapes] allObjects]];
 }
 
 #pragma mark Searching for Shapes

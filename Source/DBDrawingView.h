@@ -15,6 +15,7 @@
 @class DBMagnifyingView;
 @class DBContextualDataSourceController;
 @class DBLayerController;
+@class DBGroup;
 
 @interface DBDrawingView : NSView {
 	NSRect _canevasRect;
@@ -115,6 +116,7 @@
 - (void)selectRectWithEvent:(NSEvent *)theEvent;
 - (void)resizeSelectedShapeWithEvent:(NSEvent *)theEvent knob:(int)knob;
 - (void)rotateSelectedShapeWithEvent:(NSEvent *)theEvent;
+- (void)resizeSelectedGroup:(DBGroup *)selectedGroup withEvent:(NSEvent *)theEvent knob:(int)knob;
 
 - (void)startEditingShape:(DBShape *)shape;
 - (void)stopEditingShape;

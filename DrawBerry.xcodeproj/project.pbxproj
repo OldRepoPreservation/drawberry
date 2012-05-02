@@ -215,6 +215,8 @@
 		6C129F700E54F64400AD5C61 /* tool-rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129F0D0E54F64300AD5C61 /* tool-rectangle.png */; };
 		6C129F710E54F64400AD5C61 /* tool-text.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129F0E0E54F64300AD5C61 /* tool-text.png */; };
 		6C129F720E54F64400AD5C61 /* tool-zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129F0F0E54F64300AD5C61 /* tool-zoom.png */; };
+		6C18F2BF154D898C00085806 /* DBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18F2BE154D898B00085806 /* DBGroup.m */; };
+		6C18F2C2154D8BB700085806 /* DBGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18F2C1154D8BB700085806 /* DBGroupController.m */; };
 		6C34EAE70FAA1F3700F9C3C6 /* UKPrefsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */; };
 		6C34EBA40FAA4A5900F9C3C6 /* prefs.General.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */; };
 		6C34EBA50FAA4A5900F9C3C6 /* prefs.Templates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C34EBA30FAA4A5900F9C3C6 /* prefs.Templates.tiff */; };
@@ -602,6 +604,10 @@
 		6C129F0D0E54F64300AD5C61 /* tool-rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-rectangle.png"; sourceTree = "<group>"; };
 		6C129F0E0E54F64300AD5C61 /* tool-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-text.png"; sourceTree = "<group>"; };
 		6C129F0F0E54F64300AD5C61 /* tool-zoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool-zoom.png"; sourceTree = "<group>"; };
+		6C18F2BD154D898B00085806 /* DBGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGroup.h; path = Source/DBGroup.h; sourceTree = "<group>"; };
+		6C18F2BE154D898B00085806 /* DBGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGroup.m; path = Source/DBGroup.m; sourceTree = "<group>"; };
+		6C18F2C0154D8BB700085806 /* DBGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGroupController.h; path = Source/DBGroupController.h; sourceTree = "<group>"; };
+		6C18F2C1154D8BB700085806 /* DBGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGroupController.m; path = Source/DBGroupController.m; sourceTree = "<group>"; };
 		6C34EAE50FAA1F3700F9C3C6 /* UKPrefsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKPrefsPanel.h; path = Source/UKPrefsPanel.h; sourceTree = "<group>"; };
 		6C34EAE60FAA1F3700F9C3C6 /* UKPrefsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKPrefsPanel.m; path = Source/UKPrefsPanel.m; sourceTree = "<group>"; };
 		6C34EBA20FAA4A5900F9C3C6 /* prefs.General.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = prefs.General.tiff; path = Ressource/Toolbar/prefs.General.tiff; sourceTree = "<group>"; };
@@ -1042,6 +1048,8 @@
 			children = (
 				6C129D380E54E9F100AD5C61 /* DBLayerController.h */,
 				6C129D390E54E9F100AD5C61 /* DBLayerController.m */,
+				6C18F2C0154D8BB700085806 /* DBGroupController.h */,
+				6C18F2C1154D8BB700085806 /* DBGroupController.m */,
 			);
 			name = "Objects Controller";
 			sourceTree = "<group>";
@@ -1135,6 +1143,8 @@
 				6C129D750E54EC7400AD5C61 /* DBFill.m */,
 				6C129D770E54EC8E00AD5C61 /* DBShadow.h */,
 				6C129D780E54EC8E00AD5C61 /* DBShadow.m */,
+				6C18F2BD154D898B00085806 /* DBGroup.h */,
+				6C18F2BE154D898B00085806 /* DBGroup.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1702,6 +1712,8 @@
 				6C412BD3102E2345009F12DD /* vectorisation.cpp in Sources */,
 				6C412BD6102E236C009F12DD /* DBPolylineTransformation.mm in Sources */,
 				6CCE9286153B480500A49667 /* DBDrawingView+ContextualMenu.m in Sources */,
+				6C18F2BF154D898C00085806 /* DBGroup.m in Sources */,
+				6C18F2C2154D8BB700085806 /* DBGroupController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

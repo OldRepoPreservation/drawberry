@@ -57,6 +57,7 @@
 "Lock Layer" = "Lock Layer";
 "Unlock Layer" = "Unlock Layer";
 "Change Layer Blend Mode" = "Change Blend Mode";
+"Change Group Name" = "Change Group Name";
 
 "Union" = "Union";
 "Diff" = "Difference";
@@ -96,4 +97,5 @@
 "Align ..." = "Align ...";
 "Boolean Ops" = "Boolean Operations";
 
+"Group" = "Group";
 

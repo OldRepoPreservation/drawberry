@@ -187,7 +187,9 @@ What we have to do in the future (in function of milestone)
 	
 	FIXME : CoreImage Layers 
 	
-	TODO : Clones
+	TODO : Clones                     
+	
+	TODO : Fill and stroke style libraries
    
 
 - After that

@@ -97,19 +97,25 @@
 
 - (void)removeShapeAtIndex:(unsigned int)i
 {
-    DBShape *aShape = [_shapes objectAtIndex:i];
+    DBShape *aShape = [[_shapes objectAtIndex:i] retain];
+	[_shapes removeObjectAtIndex:i];
+    
     if([aShape group] == self){
         [aShape setGroup:nil];
     }
-	[_shapes removeObjectAtIndex:i];
+    [aShape release];
 }
 
 - (void)removeShape:(DBShape *)aShape
 {
+    [aShape retain];
+	[_shapes removeObject:aShape];
+
     if([aShape group] == self){
         [aShape setGroup:nil];
     }
-	[_shapes removeObject:aShape];
+
+    [aShape release];
 }
 
 - (unsigned int)countOfShapes
@@ -119,7 +125,7 @@
 
 - (NSArray *)shapes
 {
-	return _shapes;
+	return [[_shapes copy] autorelease];
 }
 
 - (void)setShapes:(NSArray *)newShapes

@@ -90,7 +90,8 @@
 - (void)ungroup:(DBGroup *)group
 {
     if([_groups containsObject:group]){
-        for (DBShape *shape in [group shapes]) {
+        NSArray *shapes = [group shapes];
+        for (DBShape *shape in shapes) {
             [shape setGroup:nil];
         }
         

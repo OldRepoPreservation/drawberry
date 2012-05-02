@@ -810,7 +810,9 @@
 					[self resizeSelectedShapeWithEvent:theEvent knob:knob];
 				return; 	
 			}else{
-                
+                [self deselectAllShapes];
+                [self stopEditingShape];
+
                 if([theEvent modifierFlags] & NSControlKeyMask){
                     // show the contextual menu if necessary
                     [self rightMouseDown:theEvent];

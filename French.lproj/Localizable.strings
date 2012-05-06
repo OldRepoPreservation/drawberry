@@ -51,6 +51,8 @@
 "Change Image Fill Mode" = "Changer le mode de remplissage de l'image";
 "Add Layer" = "Ajouter un calque";
 "Remove Layer" = "Supprimer le calque";
+"Add Group" = "Ajouter un groupe";
+"Remove Group" = "Supprimer le groupe";
 "Change Layer Name" = "Modifier le nom du calque";
 "Show Layer" = "Afficher le calque";
 "Hide Layer" = "Masquer le calque";

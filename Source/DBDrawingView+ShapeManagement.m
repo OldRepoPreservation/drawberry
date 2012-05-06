@@ -508,9 +508,7 @@ NSString *DBShapePboardType = @"ShapePboardType";
 
 - (IBAction)ungroupSelection:(id)sender
 {
-    for (DBGroup *group in [self selectedShapesGroups]) {
-        [[_document groupController] ungroup:group];
-    }
+    [[_document groupController] ungroup:[[self selectedShapesGroups] allObjects]];
 }
 @end
  

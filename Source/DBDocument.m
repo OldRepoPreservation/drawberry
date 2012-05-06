@@ -71,6 +71,7 @@ static NSArray *_sharedUnitArray = nil;
        
 		_undoMngr = [[DBUndoManager alloc] init];
         _groupController = [[DBGroupController alloc] init];
+        [_groupController setDocument:self];
 		_svgParser = nil;
     }
     return self;

@@ -27,6 +27,16 @@
     [super dealloc];
 }
 
+- (DBDocument *)document
+{
+    return _document;
+}
+
+- (void)setDocument:(DBDocument *)doc
+{
+    _document = doc;
+}
+
 - (DBUndoManager *)documentUndoManager
 {
 	return [_document specialUndoManager];
@@ -42,14 +52,27 @@
 }
 - (void)addGroup:(DBGroup *)aGroup
 {
-    [_groups addObject:aGroup];
-    [aGroup setGroupController:self];
+    [self insertGroups:[NSArray arrayWithObject:aGroup] atIndexes:[NSIndexSet indexSetWithIndex:[_groups count]]];
 }
 
 - (void)insertGroups:(NSArray *)groupsArray atIndexes:(NSIndexSet *)indexes
 {
     [_groups insertObjects:groupsArray atIndexes:indexes];
 	[groupsArray makeObjectsPerformSelector:@selector(setGroupController:) withObject:self];
+    
+
+    DBUndoManager *undoMngr = [_document specialUndoManager]; 
+	[[undoMngr prepareWithInvocationTarget:self] removeGroupAtIndexes:indexes];
+    if(![undoMngr isUndoing]){
+        [undoMngr setActionName:NSLocalizedString(@"Add Group", nil)];
+    }else{
+        [undoMngr setActionName:NSLocalizedString(@"Remove Group", nil)];	
+    }
+    for (DBGroup *group in groupsArray) {
+        [group setShapesGroup];
+    }
+
+    [[_document drawingView] setNeedsDisplay:YES];
 
 }
 - (DBGroup *)groupAtIndex:(unsigned int)i
@@ -62,12 +85,25 @@
 }
 - (void)removeGroup:(DBGroup *)aGroup
 {
-    [_groups removeObject:aGroup];
+    [self removeGroupAtIndexes:[NSIndexSet indexSetWithIndex:[self indexOfGroup:aGroup]]];
 }
 
 - (void)removeGroupAtIndexes:(NSIndexSet *)indexes
 {
+    DBUndoManager *undoMngr = [_document specialUndoManager]; 
+	[[undoMngr prepareWithInvocationTarget:self] insertGroups:[_groups objectsAtIndexes:indexes] atIndexes:indexes];
+	if(![undoMngr isUndoing]){
+		[undoMngr setActionName:NSLocalizedString(@"Remove Group", nil)];
+	}else{
+		[undoMngr setActionName:NSLocalizedString(@"Add Group", nil)];	
+	}
+	
+
+    for (DBGroup *group in [_groups objectsAtIndexes:indexes]) {
+        [group unsetShapesGroup];
+    }
     [_groups removeObjectsAtIndexes:indexes];
+    [[_document drawingView] setNeedsDisplay:YES];
 }
 - (void)setGroups:(NSArray *)newGroups
 {
@@ -84,18 +120,44 @@
     [group addShapes:shapes];
     
     [self addGroup:group];
+
     [group release];
 }
 
-- (void)ungroup:(DBGroup *)group
+- (void)ungroup:(NSArray *)groups
+{
+    NSMutableIndexSet *is = [NSMutableIndexSet indexSet];
+    
+    for (DBGroup *g in groups) {
+        if([_groups containsObject:g]){
+            [is addIndex:[_groups indexOfObject:g]];
+        }
+    }
+    
+    [self removeGroupAtIndexes:is];
+}
+
+
+- (void)addShapes:(NSArray *)shapes toGroup:(DBGroup *)group
+{
+    if(![_groups containsObject:group]){
+        [self addGroup:group];
+    }
+    [group addShapes:shapes];
+}
+
+- (void)removeShapes:(NSArray *)shapes toGroup:(DBGroup *)group
 {
     if([_groups containsObject:group]){
-        NSArray *shapes = [group shapes];
+        
         for (DBShape *shape in shapes) {
-            [shape setGroup:nil];
+            [group removeShape:shape];
         }
         
-        [_groups removeObject:group];
+        if([group countOfShapes] == 0){
+            [_groups removeObject:group];
+        }
     }
 }
+
 @end

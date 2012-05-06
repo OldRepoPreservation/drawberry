@@ -407,25 +407,7 @@ static NSBezierPath *__squareKnob = nil;
 
 - (void)setGroup:(DBGroup *)newGroup
 {
-	if(newGroup == nil){
-        if([[_group shapes] containsObject:self]){
-			[_group removeShape:self];
-		}
-        _group = nil;
-    }else if(_group != newGroup){
-        
-		[self retain]; // retain us because otherwise, we might be freed by the next line
-        
-		if([[_group shapes] containsObject:self]){
-			[_group removeShape:self];
-		}
-		_group = newGroup;
-		
-		if(![[_group shapes] containsObject:self]){
-			[_group addShape:self];
-		}
-  		[self release]; // it's done, let's release us
-	}
+    _group = newGroup;
 }
 
 - (BOOL)isEditing

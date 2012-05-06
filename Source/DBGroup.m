@@ -76,6 +76,7 @@
 	while((shape = [e nextObject])){
 		[self addShape:shape];
 	}
+    [self setShapesGroup];
 }
 
 - (void)insertShape:(DBShape *)aShape atIndex:(unsigned int)i 
@@ -136,6 +137,19 @@
 	[_shapes makeObjectsPerformSelector:@selector(setGroup:) withObject:self];
 }
 
+- (void)setShapesGroup
+{
+    for (DBShape *shape in _shapes) {
+        [shape setGroup:self];
+    }
+}
+
+- (void)unsetShapesGroup
+{
+    for (DBShape *shape in _shapes) {
+        [shape setGroup:nil];
+    }
+}
 
 - (NSRect)enclosingRect
 {

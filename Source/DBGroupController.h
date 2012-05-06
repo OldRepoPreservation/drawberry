@@ -18,6 +18,8 @@
     DBDocument *_document;
 }
 
+- (DBDocument *)document;
+- (void)setDocument:(DBDocument *)doc;
 - (DBUndoManager *)documentUndoManager;
 
 
@@ -32,5 +34,5 @@
 - (void)setGroups:(NSArray *)newGroups;
 
 - (void)addGroupWithShapes:(NSArray *)shapes;
-- (void)ungroup:(DBGroup *)group;
+- (void)ungroup:(NSArray *)groups;
 @end

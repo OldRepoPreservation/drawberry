@@ -34,9 +34,12 @@
 - (unsigned int)indexOfShape:(DBShape *)aShape;
 - (void)removeShape:(DBShape *)aShape;
 - (void)removeShapeAtIndex:(unsigned int)i;
+- (unsigned int)countOfShapes;
 - (NSArray *)shapes;
 - (void)setShapes:(NSArray *)newShapes;
 
+- (void)setShapesGroup;
+- (void)unsetShapesGroup;
 
 - (NSArray *)shapeLayers;
 

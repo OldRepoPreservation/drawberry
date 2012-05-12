@@ -502,13 +502,19 @@ NSString *DBShapePboardType = @"ShapePboardType";
 
 - (IBAction)groupSelectedShapes:(id)sender
 {
-    [[_document groupController] addGroupWithShapes:_selectedShapes];
+    NSSet *groups = [self selectedShapesGroups];
+    if([groups count] == 0)
+        [[_document groupController] addGroupWithShapes:_selectedShapes];
+    else{
+        [[_document groupController] unionGroups:groups andAddShapes:[self shapesWithoutGroups]];
+    }
     [self setNeedsDisplay:YES];
 }
 
 - (IBAction)ungroupSelection:(id)sender
 {
     [[_document groupController] ungroup:[[self selectedShapesGroups] allObjects]];
+    [self setNeedsDisplay:YES];
 }
 @end
  

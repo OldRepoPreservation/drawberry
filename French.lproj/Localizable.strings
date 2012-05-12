@@ -53,6 +53,7 @@
 "Remove Layer" = "Supprimer le calque";
 "Add Group" = "Ajouter un groupe";
 "Remove Group" = "Supprimer le groupe";
+"Union Groups" = "Unir les groupes";
 "Change Layer Name" = "Modifier le nom du calque";
 "Show Layer" = "Afficher le calque";
 "Hide Layer" = "Masquer le calque";

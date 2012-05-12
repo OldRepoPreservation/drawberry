@@ -119,6 +119,13 @@
     [aShape release];
 }
 
+- (void)removeShapes:(NSArray *)shapes
+{
+    for (DBShape *s in shapes) {
+        [self removeShape:s];
+    }
+}
+
 - (unsigned int)countOfShapes
 {
 	return [_shapes count];

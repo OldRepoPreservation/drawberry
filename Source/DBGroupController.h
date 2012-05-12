@@ -34,5 +34,9 @@
 - (void)setGroups:(NSArray *)newGroups;
 
 - (void)addGroupWithShapes:(NSArray *)shapes;
+- (void)unionGroups:(NSSet *)groups andAddShapes:(NSArray *)shapes;
+- (void)unionGroups:(NSSet *)groups andShapes:(NSArray *)shapes toGroup:(DBGroup *)uGroup;
+- (void)diffGroups:(NSSet *)groups andShapes:(NSArray *)shapes ofGroup:(DBGroup *)uGroup;
+
 - (void)ungroup:(NSArray *)groups;
 @end

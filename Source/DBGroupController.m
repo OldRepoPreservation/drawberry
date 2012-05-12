@@ -44,7 +44,7 @@
 
 - (NSArray *)groups
 {
-    return _groups;
+    return [_groups copy]; // return an immutable copy
 }
 - (int)countOfGroups
 {
@@ -124,6 +124,62 @@
     [group release];
 }
 
+- (void)unionGroups:(NSSet *)groups andAddShapes:(NSArray *)shapes
+{
+    DBGroup *topGroup = nil;
+    NSMutableSet *otherGroups = [groups mutableCopy];
+    
+    for (DBGroup *g in _groups) {
+        if([groups containsObject:g]){
+            if (!topGroup) {
+                topGroup = g;
+                break;
+            }
+        }
+    }
+    if(!topGroup)
+        return;
+    
+    [otherGroups removeObject:topGroup];
+
+    [self unionGroups:otherGroups andShapes:shapes toGroup:topGroup];
+    
+    [otherGroups release];
+}
+
+- (void)unionGroups:(NSSet *)groups andShapes:(NSArray *)shapes toGroup:(DBGroup *)uGroup
+{
+    DBUndoManager *undoMngr = [_document specialUndoManager]; 
+	[[undoMngr prepareWithInvocationTarget:self] diffGroups:groups andShapes:shapes ofGroup:uGroup];
+    [undoMngr setActionName:NSLocalizedString(@"Union Group", nil)]; // no reciprocate action 
+
+    for (DBGroup *g in groups) {
+        if ([_groups containsObject:g]) {
+            [uGroup addShapes:[g shapes]];
+        }
+    }
+    
+    [uGroup addShapes:shapes];
+}
+
+- (void)diffGroups:(NSSet *)groups andShapes:(NSArray *)shapes ofGroup:(DBGroup *)uGroup
+{
+    DBUndoManager *undoMngr = [_document specialUndoManager]; 
+	[[undoMngr prepareWithInvocationTarget:self] unionGroups:groups andShapes:shapes toGroup:uGroup];
+    [undoMngr setActionName:NSLocalizedString(@"Union Groups", nil)]; // no reciprocate action  	
+	
+    
+    for (DBGroup *g in groups) {
+        if ([_groups containsObject:g]) {
+            [uGroup removeShapes:[g shapes]];
+            [g setShapesGroup];
+        }
+    }
+    
+    [uGroup removeShapes:shapes];
+
+}
+
 - (void)ungroup:(NSArray *)groups
 {
     NSMutableIndexSet *is = [NSMutableIndexSet indexSet];
@@ -157,6 +213,13 @@
         if([group countOfShapes] == 0){
             [_groups removeObject:group];
         }
+    }
+}
+
+- (void) removeShapeOfGroups:(NSArray *)groups toGroup:(DBGroup *)group
+{
+    for (DBGroup *g in groups) {
+        [self removeShapeOfGroups:[g shapes] toGroup:group];
     }
 }
 

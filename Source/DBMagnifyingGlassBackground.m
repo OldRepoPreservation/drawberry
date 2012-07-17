@@ -52,6 +52,7 @@
 	
 	[NSGraphicsContext restoreGraphicsState];
 
+    [background release];
 	[circle release];
 	[back release];
 }

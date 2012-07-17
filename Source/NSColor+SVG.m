@@ -16,7 +16,7 @@
 NSString * DBHexStringFromInt(int input)
 {
 	int a,b;
-	char aChar, bChar;
+	char aChar ='0', bChar='0';
 	
 	a = input%16;
 	b = ((int) input/16) %16;

@@ -44,7 +44,7 @@
 
 - (NSArray *)groups
 {
-    return [_groups copy]; // return an immutable copy
+    return [[_groups copy] autorelease]; // return an immutable copy
 }
 - (int)countOfGroups
 {
@@ -137,13 +137,11 @@
             }
         }
     }
-    if(!topGroup)
-        return;
-    
-    [otherGroups removeObject:topGroup];
-
-    [self unionGroups:otherGroups andShapes:shapes toGroup:topGroup];
-    
+    if(topGroup){
+        [otherGroups removeObject:topGroup];
+        
+        [self unionGroups:otherGroups andShapes:shapes toGroup:topGroup];
+    }
     [otherGroups release];
 }
 

@@ -334,7 +334,7 @@ enum {
 	
 	DBShape * shape = [[class alloc] init];
 	
-	return shape;
+	return [shape autorelease];
 }
 
 - (BOOL)createShape:(DBShape *)shape withEvent:(NSEvent *)theEvent inView:(DBDrawingView *)view

@@ -134,7 +134,7 @@ NSString *DBShapePboardType = @"ShapePboardType";
 	while((shape = [e nextObject])){
 		if([shape isKindOfClass:[DBRectangle class]] || [shape isKindOfClass:[DBOval class]]){
 			[shapesToConvert addObject:shape];
-			[convertedShapes addObject:[[(DBRectangle *)shape convertToBezierCurve] autorelease]];
+			[convertedShapes addObject:[[(DBRectangle *)shape convertToBezierCurve] retain]];
 		}
 	}
 	

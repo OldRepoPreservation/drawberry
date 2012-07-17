@@ -696,11 +696,10 @@ DBPolylinePoint * removePointAtIndex( int index, DBPolylinePoint *points, int po
 	view = [[[self layer] layerController] drawingView];
 	canConvert = [view isKindOfClass:[DBDrawingView class]];
 
-  	path = [[NSBezierPath bezierPath] retain];
-
+    point = points[0].point;
 	if(canConvert)
 	{
-		point = [view viewCoordinatesFromCanevasCoordinates:points[0].point];
+		point = [view viewCoordinatesFromCanevasCoordinates:point];
 	}
 
 	[path moveToPoint:point]; 

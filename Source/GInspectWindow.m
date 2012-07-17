@@ -225,6 +225,8 @@ const float _barHeight = 18;
 	frame.size.width = maxWidth;
 	frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 
+    [viewsToRemove release];
+    
 	[self setFrame:frame display:YES animate:YES];
 }
 
@@ -367,6 +369,7 @@ const float _barHeight = 18;
 //	[addedBarView setCollapsed:flag];
 	 //[_bckgrd setFrameOrigin:NSMakePoint(0,20)];
 	
+    [addedBarView release];
 }
 
 - (void)removeView:(NSView *)removedView

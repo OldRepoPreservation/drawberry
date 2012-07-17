@@ -506,7 +506,7 @@ static double distanceBetween(NSPoint a, NSPoint b)
     [shape setShadow:[[[self shadow] copy] autorelease]];
     [shape setFills:[[[NSArray alloc] initWithArray:[self fills] copyItems:YES] autorelease]];
     
-	return shape;
+	return [shape autorelease];
 }
 
 

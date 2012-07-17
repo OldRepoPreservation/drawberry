@@ -70,6 +70,8 @@
 		}
 	}
 	
+    [dict release];
+    
 	return self; 
 }
 
@@ -211,6 +213,8 @@
 
 	result = [dict writeToFile:[self filename] atomically:flag];
 	
+    [dict release];
+    
 	return result;
 }
 

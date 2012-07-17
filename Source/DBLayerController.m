@@ -383,10 +383,8 @@
 	{
 		[reversedInd addIndex:(layerCount - 1 - indexBuffer[i])];
 	}
-	
-	free(indexes);
-	
-	return [indexes autorelease];
+		
+	return [reversedInd autorelease];
 }   
 
 - (void)moveRowsAtIndex:(int)oldIndex toIndex:(int)newIndex reversed:(BOOL)flag

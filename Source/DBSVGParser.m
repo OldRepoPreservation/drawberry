@@ -162,7 +162,7 @@
 			[rectPolyline applyTransform:af];
 			[_currentLayer addShape:rectPolyline];
 			
-			[rectPolyline release];
+//			[rectPolyline release];
 		}else{
 			[_currentLayer addShape:rect];
 		}
@@ -197,6 +197,7 @@
 		[bezierCurve release];
 	}
 	
+    [newAttr release];
 	[af release];
 }
 

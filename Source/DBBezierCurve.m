@@ -362,9 +362,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	_points = malloc(pCount*sizeof(DBCurvePoint));
 	
 	int i;
-	
-	i = 0;
-	
+		
 	for (i = 0; i < pCount; i++) {
 		_points[i] = DBMakeCurvePoint(points[i]);
 	}
@@ -2017,8 +2015,10 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				
 				newPoints[i+addedPoints].controlPoint1 = bez1[1];
 				newPoint.controlPoint2 = bez1[2];
+                newPoint.hasControlPoint2 = YES;
 				newPoint.point = bez1[3];
 				newPoint.controlPoint1 = bez2[1];
+                newPoint.hasControlPoint1 = YES;
 				newPoint.subPathStart = NO;
 				newPoint.closePath = NO;
 				newPoints[i+addedPoints+1].controlPoint2 = bez2[2];
@@ -2040,9 +2040,11 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 				newPoints[i+addedPoints].closePath = NO;
 
 				newPoint.controlPoint2 = bez1[2];
-				newPoint.point = bez1[3];
+                newPoint.hasControlPoint2 = YES;
+                newPoint.point = bez1[3];
 				newPoint.controlPoint1 = bez2[1];
-				newPoint.subPathStart = NO;
+                newPoint.hasControlPoint1 = YES;
+                newPoint.subPathStart = NO;
 				newPoint.closePath = YES;
 				newPoints[newSubPathStart].controlPoint2 = bez2[2];
 				
@@ -2312,16 +2314,6 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	*afterPt = after; 
 	
 	return nearest;
-}
-
-- (NSPoint)nearestPointOfPath:(NSPoint)point
-{
-	NSPoint *pathPoints;
-	int count;
-	
-//	pathPoints = [self cutPathInSegmentCount:&count];
-	
-	return nearestPointInArray(pathPoints,count,point);
 }
 
 - (void)removePointAtIndex:(int)index previousPoint:(DBCurvePoint)previous nextPoint:(DBCurvePoint)next

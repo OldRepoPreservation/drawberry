@@ -22,7 +22,7 @@
 @implementation DBFilterStackDataSource
 - (void)awakeFromNib
 {
-	[[_filtersTableView tableColumnWithIdentifier:@"Filters"] setDataCell: [[ViewCell alloc] init]];
+	[[_filtersTableView tableColumnWithIdentifier:@"Filters"] setDataCell: [[[ViewCell alloc] init] autorelease]];
 	[[NSApp delegate] addObserver:self 
 				forKeyPath:@"currentLayerController" 
 				   options:NSKeyValueObservingOptionNew 

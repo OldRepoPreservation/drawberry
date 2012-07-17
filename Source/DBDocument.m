@@ -106,8 +106,10 @@ static NSArray *_sharedUnitArray = nil;
 																	NSLocalizedString(@"Save error recovery",nil),NSLocalizedRecoverySuggestionErrorKey,
 																	nil];
 		
-		*outError = [NSError errorWithDomain:@"DrawBerry Error" code:0 userInfo:errorUserInfo];
-		return NO;
+		if(*outError != NULL)
+            *outError = [NSError errorWithDomain:@"DrawBerry Error" code:0 userInfo:errorUserInfo];
+		
+        return NO;
 	}
 	
 	NSData *data;

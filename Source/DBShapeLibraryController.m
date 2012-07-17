@@ -377,6 +377,7 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 			[_collectionView reloadData];
 			[_matrix reloadData];
 		}
+        [collection release];
 		
 	}
 }

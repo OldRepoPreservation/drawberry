@@ -50,7 +50,7 @@ typedef struct _DBCurvePoints {
 - (BOOL)pointAtIndexIsSelected:(int)index; 
 
 - (DBCurvePoint)nearestPointOfPathToPoint:(NSPoint)point bezSegment:(int *)seg beforePoint:(DBCurvePoint *)beforePt afterPoint:(DBCurvePoint *)afterPt;
-- (NSPoint)nearestPointOfPath:(NSPoint)point;
+//- (NSPoint)nearestPointOfPath:(NSPoint)point;
 
 - (void)setPoint:(DBCurvePoint)p atIndex:(int)i;
 

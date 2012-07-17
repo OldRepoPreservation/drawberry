@@ -14,7 +14,7 @@
 	NSColor *_secondColor;
 	
 	NSRect* _rectList;
-	int _rectNumbers;
+	NSInteger _rectNumbers;
 }
 - (NSColor *)firstColor;
 - (void)setFirstColor:(NSColor *)color;

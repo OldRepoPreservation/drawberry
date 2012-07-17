@@ -21,7 +21,7 @@
 	NSPoint _menuClickLocation;
 }
 - (void)updateGradientLine;
-- (void)updateLocationForStop:(GPColorStopWell *)well deltaPos:(float)deltaPos;
+- (void)updateLocationForStop:(GPColorStopWell *)well deltaPos:(CGFloat)deltaPos;
 - (void)setColor:(NSColor *)color forStop:(GPColorStopWell *)well;
 
 - (void)addColorStopAtLocation:(CGFloat)location;

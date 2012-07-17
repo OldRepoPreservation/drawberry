@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "DBMatrix.h"
 
 @interface GPGradientShelfController : NSObject {
 	NSMutableArray *_gradients;
-	IBOutlet NSMatrix *_matrix;
+	IBOutlet DBMatrix *_matrix;
 }
 - (void)readGradientShelf;
 - (void)writeGradientShelf;

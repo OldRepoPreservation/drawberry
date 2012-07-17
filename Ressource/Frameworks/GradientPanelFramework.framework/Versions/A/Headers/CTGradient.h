@@ -17,8 +17,8 @@ typedef enum _GPGradientType {
 
 typedef struct _CTGradientElement 
 	{
-	float red, green, blue, alpha;
-	float position;
+	CGFloat red, green, blue, alpha;
+	CGFloat position;
 	
 	struct _CTGradientElement *nextElement;
 	} CTGradientElement;
@@ -56,23 +56,23 @@ typedef enum  _CTBlendingMode
 + (id)rainbowGradient;
 + (id)hydrogenSpectrumGradient;
 
-- (CTGradient *)gradientWithAlphaComponent:(float)alpha;
+- (CTGradient *)gradientWithAlphaComponent:(CGFloat)alpha;
 
-- (CTGradient *)addColorStop:(NSColor *)color atPosition:(float)position;	//positions given relative to [0,1]
-- (CTGradient *)removeColorStopAtIndex:(unsigned)index;
-- (CTGradient *)removeColorStopAtPosition:(float)position;
+- (CTGradient *)addColorStop:(NSColor *)color atPosition:(CGFloat)position;	//positions given relative to [0,1]
+- (CTGradient *)removeColorStopAtIndex:(NSUInteger)index;
+- (CTGradient *)removeColorStopAtPosition:(CGFloat)position;
 
 - (CTGradientBlendingMode)blendingMode;
-- (NSColor *)colorStopAtIndex:(unsigned)index;
-- (NSColor *)colorAtPosition:(float)position;
+- (NSColor *)colorStopAtIndex:(NSUInteger)index;
+- (NSColor *)colorAtPosition:(CGFloat)position;
 
 
 - (void)drawSwatchInRect:(NSRect)rect;
-- (void)fillRect:(NSRect)rect angle:(float)angle;					//fills rect with axial gradient
+- (void)fillRect:(NSRect)rect angle:(CGFloat)angle;					//fills rect with axial gradient
 																	//	angle in degrees
 - (void)radialFillRect:(NSRect)rect;								//fills rect with radial gradient
 																	//  gradient from center outwards
-- (void)fillBezierPath:(NSBezierPath *)path angle:(float)angle;
+- (void)fillBezierPath:(NSBezierPath *)path angle:(CGFloat)angle;
 - (void)radialFillBezierPath:(NSBezierPath *)path;
 
 @end
@@ -82,13 +82,13 @@ typedef enum  _CTBlendingMode
 - (void)setBlendingMode:(CTGradientBlendingMode)mode;
 - (void)addElement:(CTGradientElement*)newElement;
 
-- (CTGradientElement *)elementAtIndex:(unsigned)index;
+- (CTGradientElement *)elementAtIndex:(NSUInteger)index;
 - (int)numberOfElements;
-- (CTGradientElement)removeElementAtIndex:(unsigned)index;
-- (CTGradientElement)removeElementAtPosition:(float)position;
-- (void)setPosition:(float)loc forElementAtIndex:(int)index;
+- (CTGradientElement)removeElementAtIndex:(NSUInteger)index;
+- (CTGradientElement)removeElementAtPosition:(CGFloat)position;
+- (void)setPosition:(float)loc forElementAtIndex:(NSInteger)index;
 
-- (int)elementIndexForPosition:(float)position;
+- (int)elementIndexForPosition:(CGFloat)position;
 @end
 
 @interface CTGradient (BGHUDAppKit)

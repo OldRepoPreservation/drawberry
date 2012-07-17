@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CTGradient.h";
+#import "CTGradient.h"
 
 @interface GPGradientWell : NSControl {
 

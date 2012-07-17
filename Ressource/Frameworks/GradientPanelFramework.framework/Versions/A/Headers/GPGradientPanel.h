@@ -19,7 +19,7 @@
 	IBOutlet GPController *_gradientController;
 	
 }
-+ (id)sharedGradientPanel;
++ (GPGradientPanel *)sharedGradientPanel;
 - (id)delegate;
 - (void)setDelegate:(id)del;
 

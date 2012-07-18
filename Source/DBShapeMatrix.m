@@ -104,12 +104,17 @@ NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 		point = [self convertPoint:[event locationInWindow] fromView:nil];
 		
 		image = [[NSImage alloc] initWithSize:[self cellSize]];
-		[image setFlipped:NO];
 		
 		[self getRow:&row column:&col ofCell:_draggedCell];
 		cellFrame = [self cellFrameAtRow:row column:col];
-		
-		[image lockFocus];
+
+		if(NSAppKitVersionNumber <= NSAppKitVersionNumber10_5_3){
+            [image setFlipped:YES]; //deprecated in 10.6
+            [image lockFocus];
+        }else{
+            [image lockFocusFlipped:YES];
+        }
+        
 		NSAffineTransform *at;
 		at = [NSAffineTransform transform];
 		[at translateXBy:-cellFrame.origin.x yBy:-cellFrame.origin.y];

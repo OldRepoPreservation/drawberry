@@ -354,7 +354,6 @@
 												<reference key="NSHScroller" ref="927344588"/>
 												<reference key="NSContentView" ref="548311464"/>
 												<reference key="NSHeaderClipView" ref="837846871"/>
-												<reference key="NSCornerView" ref="417817219"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 											<object class="NSButton" id="258713644">
@@ -509,7 +508,7 @@
 																<string key="NSFrameSize">{453, 202}</string>
 																<reference key="NSSuperview" ref="739245764"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="704271190"/>
+																<reference key="NSNextKeyView" ref="25138599"/>
 																<string key="NSClassName">DBShapeLibEditingView</string>
 																<string key="NSExtension">NSView</string>
 															</object>
@@ -551,7 +550,7 @@
 												<string key="NSFrame">{{0, 19}, {454, 201}}</string>
 												<reference key="NSSuperview" ref="589659883"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="25138599"/>
+												<reference key="NSNextKeyView" ref="739245764"/>
 												<int key="NSsFlags">64</int>
 												<reference key="NSVScroller" ref="25138599"/>
 												<reference key="NSHScroller" ref="75132236"/>
@@ -563,7 +562,6 @@
 												<string key="NSFrame">{{381, 0}, {73, 21}}</string>
 												<reference key="NSSuperview" ref="589659883"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="420294699">
 													<int key="NSCellFlags">67239424</int>
@@ -1183,6 +1181,14 @@
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="28.ImportedFromIB2"/>
 				<string key="32.CustomClassName">DDDAnimatedTabView</string>
+				<object class="NSMutableDictionary" key="32.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">InitialTabViewItem</string>
+					<object class="IBInitialTabViewItemAttribute" key="NS.object.0">
+						<string key="name">InitialTabViewItem</string>
+						<reference key="object" ref="252931072"/>
+						<reference key="initialTabViewItem" ref="117218836"/>
+					</object>
+				</object>
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="32.ImportedFromIB2"/>
 				<string key="33.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>

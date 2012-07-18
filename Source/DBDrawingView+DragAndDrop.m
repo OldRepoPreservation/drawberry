@@ -79,9 +79,8 @@
 			[shape updateBounds];
 
 			point = [self convertPoint:[sender draggingLocation] fromView:nil];
-			point.x -= [shape bounds].size.width /2;
-			point.y -= [shape bounds].size.height /2;
-			[shape moveByX:point.x byY:point.y];			
+
+            [shape moveCorner:5 toPoint:point]; // put the center point of the shape at the drop point
 		}
 		
 		[layer updateRenderInView:self];

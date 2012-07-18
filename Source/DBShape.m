@@ -497,7 +497,8 @@ static NSBezierPath *__squareKnob = nil;
 		case 1 : ; break; // upper left
 		case 2 : point.y -= [self bounds].size.height ; break; // lower left
 		case 3 : point.x -= [self bounds].size.width ; break;  // upper right
-		case 4 : point.x -= [self bounds].size.width; point.y -= [self bounds].size.height ; break;
+		case 4 : point.x -= [self bounds].size.width; point.y -= [self bounds].size.height ; break; // lower right
+        case 5 : point.x -= [self bounds].size.width/2; point.y -= [self bounds].size.height/2 ; break;// center point
 	}
 	
 	[self moveByX:point.x-ulCorner.x byY:point.y-ulCorner.y];

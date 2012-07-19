@@ -1546,6 +1546,18 @@
 	return [DBLayer layersWithShapes:[[self selectedShapesWithAssociatedShapes] allObjects]];
 }
 
+- (void)selectAll:(id)sender
+{
+	[self willChangeValueForKey:@"selectedShape"];
+    [_selectedShapes removeAllObjects];
+
+    for (DBLayer *l in [[self layerController] layers]) {
+        [_selectedShapes addObjectsFromArray:[l shapes]];
+    }
+	[self didChangeValueForKey:@"selectedShape"];
+	[self setNeedsDisplay:YES];    
+}
+
 #pragma mark Searching for Shapes
 - (NSArray *)allShapes
 {

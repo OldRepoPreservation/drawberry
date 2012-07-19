@@ -666,7 +666,7 @@
 	if([[DBToolsController sharedToolsController] createShape:shape withEvent:theEvent inView:self])
 	{
 		// select the shape 
-		[currentLayer addShape:shape];
+		[currentLayer addShape:[shape retain]]; // retain it because it causes otherwise a bug when undoing the shape creation
 		[self selectShape:shape];
 		[_dataSourceController updateSelection];
  		

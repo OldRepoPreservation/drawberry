@@ -148,7 +148,7 @@ What we have to do in the future (in function of milestone)
 
 	TODO : Improve the layer inspector
 
-	TODO : Groups
+	DONE : Groups
 
 	DONE : Introduce a contextual menu
 	

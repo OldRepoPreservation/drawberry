@@ -1481,7 +1481,17 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	
 	test = [_path containsPoint:point];
 	DBDrawingView *view = [[_layer layerController] drawingView];
-	
+    
+    if (!test) { // check whether the hit point is near to the past
+        int bez;
+        [self nearestPointOfPathToPoint:point bezSegment:&bez beforePoint:NULL afterPoint:NULL];
+        
+        if (bez != -1) {
+            return YES;
+        }
+    }
+    
+
     if(!test){
 		int i;
 		NSPoint p;
@@ -1520,6 +1530,7 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
 		
 	}
+    
      
 //	NSLog(@"test : %@, %@", NSStringFromPoint(point), NSStringFromRect(_bounds));
   
@@ -2155,9 +2166,18 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 	          
 	nearest = DBMakeCurvePoint(NSMakePoint(NSNotFound, NSNotFound));
 	
-	before = *beforePt;
-	after = *afterPt;
-	
+    if (beforePt != NULL) {
+        before = *beforePt;
+    }else{
+        before = _points[0];
+    }
+    
+    if (afterPt != NULL) {
+        after = *afterPt;
+    }else{
+        before = _points[_pointCount-1];
+    }
+    
 	nearestDist = 100.0 ; // 10 pixels tolerance
 
 	
@@ -2309,9 +2329,12 @@ DBCurvePoint * removeCurvePointAtIndex( int index, DBCurvePoint *points, int poi
 		}
 	}
 
-  	*seg = index;
-	*beforePt = before;
-	*afterPt = after; 
+    if(seg != NULL)
+        *seg = index;
+    if(beforePt != NULL)
+        *beforePt = before;
+    if(afterPt != NULL)
+        *afterPt = after; 
 	
 	return nearest;
 }

@@ -463,6 +463,12 @@
     }
  
 }
+
+- (NSString *)description 
+{
+    return [NSString stringWithFormat:@"%@ ; name : %@ ; shapes %@",[super description],[self name], _shapes];
+
+}
 @end
 
 NSRect DBNewRectWhenResizing(NSRect originalRect,NSRect originalContainer, NSRect newContainer)

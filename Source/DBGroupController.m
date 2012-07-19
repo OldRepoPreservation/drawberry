@@ -12,6 +12,11 @@
 
 @implementation DBGroupController
 
++ (void)initialize
+{
+    [self exposeBinding:@"groups"];
+}
+
 - (id)init
 {
     self = [super init];
@@ -57,6 +62,7 @@
 
 - (void)insertGroups:(NSArray *)groupsArray atIndexes:(NSIndexSet *)indexes
 {
+    [self willChangeValueForKey:@"groups"];
     [_groups insertObjects:groupsArray atIndexes:indexes];
 	[groupsArray makeObjectsPerformSelector:@selector(setGroupController:) withObject:self];
     
@@ -72,6 +78,7 @@
         [group setShapesGroup];
     }
 
+    [self didChangeValueForKey:@"groups"];
     [[_document drawingView] setNeedsDisplay:YES];
 
 }
@@ -85,11 +92,14 @@
 }
 - (void)removeGroup:(DBGroup *)aGroup
 {
+    [self willChangeValueForKey:@"groups"];
     [self removeGroupAtIndexes:[NSIndexSet indexSetWithIndex:[self indexOfGroup:aGroup]]];
+    [self didChangeValueForKey:@"groups"];
 }
 
 - (void)removeGroupAtIndexes:(NSIndexSet *)indexes
 {
+    [self willChangeValueForKey:@"groups"];
     DBUndoManager *undoMngr = [_document specialUndoManager]; 
 	[[undoMngr prepareWithInvocationTarget:self] insertGroups:[_groups objectsAtIndexes:indexes] atIndexes:indexes];
 	if(![undoMngr isUndoing]){
@@ -103,12 +113,16 @@
         [group unsetShapesGroup];
     }
     [_groups removeObjectsAtIndexes:indexes];
+
+    [self didChangeValueForKey:@"groups"];
     [[_document drawingView] setNeedsDisplay:YES];
 }
 - (void)setGroups:(NSArray *)newGroups
 {
+    [self willChangeValueForKey:@"groups"];
     [_groups setArray:newGroups];
 	[_groups makeObjectsPerformSelector:@selector(setGroupController:) withObject:self];
+    [self didChangeValueForKey:@"groups"];
 
 }
 
@@ -119,13 +133,16 @@
     
     [group addShapes:shapes];
     
+    [self willChangeValueForKey:@"groups"];
     [self addGroup:group];
+    [self didChangeValueForKey:@"groups"];
 
     [group release];
 }
 
 - (void)unionGroups:(NSSet *)groups andAddShapes:(NSArray *)shapes
 {
+    [self willChangeValueForKey:@"groups"];
     DBGroup *topGroup = nil;
     NSMutableSet *otherGroups = [groups mutableCopy];
     
@@ -143,39 +160,44 @@
         [self unionGroups:otherGroups andShapes:shapes toGroup:topGroup];
     }
     [otherGroups release];
+    [self didChangeValueForKey:@"groups"];
 }
 
 - (void)unionGroups:(NSSet *)groups andShapes:(NSArray *)shapes toGroup:(DBGroup *)uGroup
 {
+    [self willChangeValueForKey:@"groups"];
     DBUndoManager *undoMngr = [_document specialUndoManager]; 
 	[[undoMngr prepareWithInvocationTarget:self] diffGroups:groups andShapes:shapes ofGroup:uGroup];
     [undoMngr setActionName:NSLocalizedString(@"Union Group", nil)]; // no reciprocate action 
-
+    
     for (DBGroup *g in groups) {
         if ([_groups containsObject:g]) {
             [uGroup addShapes:[g shapes]];
         }
     }
     
+    [_groups removeObjectsInArray:[groups allObjects]];
     [uGroup addShapes:shapes];
+    [self didChangeValueForKey:@"groups"];
 }
 
 - (void)diffGroups:(NSSet *)groups andShapes:(NSArray *)shapes ofGroup:(DBGroup *)uGroup
 {
+    [self willChangeValueForKey:@"groups"];
     DBUndoManager *undoMngr = [_document specialUndoManager]; 
 	[[undoMngr prepareWithInvocationTarget:self] unionGroups:groups andShapes:shapes toGroup:uGroup];
     [undoMngr setActionName:NSLocalizedString(@"Union Groups", nil)]; // no reciprocate action  	
 	
     
     for (DBGroup *g in groups) {
-        if ([_groups containsObject:g]) {
-            [uGroup removeShapes:[g shapes]];
-            [g setShapesGroup];
-        }
+        [uGroup removeShapes:[g shapes]];
+        [g setShapesGroup];
     }
     
     [uGroup removeShapes:shapes];
-
+    [_groups addObjectsFromArray:[groups allObjects]];
+    
+    [self didChangeValueForKey:@"groups"];
 }
 
 - (void)ungroup:(NSArray *)groups

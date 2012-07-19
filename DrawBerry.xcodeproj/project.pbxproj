@@ -233,6 +233,8 @@
 		6C6909BB0FA7818600F10440 /* DBTemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6909BA0FA7818600F10440 /* DBTemplateManager.m */; };
 		6C690A380FA8F9CC00F10440 /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C690A370FA8F9CC00F10440 /* Templates.plist */; };
 		6C74952715324DAD000EF4D7 /* DBLayers.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C74952915324DAD000EF4D7 /* DBLayers.xib */; };
+		6C78646515B8490500FD538D /* DBGroupsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C78646415B8490500FD538D /* DBGroupsWindowController.m */; };
+		6C78646715B8492600FD538D /* DBGroups.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C78646615B8492600FD538D /* DBGroups.xib */; };
 		6C7EF3660FACFD380034860F /* DBGrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7EF3650FACFD380034860F /* DBGrip.m */; };
 		6C8083CA0FE2F735007D6E75 /* NSAffineTransform+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8083C90FE2F735007D6E75 /* NSAffineTransform+SVG.m */; };
 		6C8083D50FE2F9B1007D6E75 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8083D40FE2F9B1007D6E75 /* NSString+Extensions.m */; };
@@ -636,6 +638,9 @@
 		6C6909BA0FA7818600F10440 /* DBTemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBTemplateManager.m; path = Source/DBTemplateManager.m; sourceTree = "<group>"; };
 		6C690A370FA8F9CC00F10440 /* Templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Templates.plist; path = Ressource/Templates/Templates.plist; sourceTree = "<group>"; };
 		6C74952815324DAD000EF4D7 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBLayers.xib; sourceTree = "<group>"; };
+		6C78646315B8490500FD538D /* DBGroupsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGroupsWindowController.h; path = Source/DBGroupsWindowController.h; sourceTree = "<group>"; };
+		6C78646415B8490500FD538D /* DBGroupsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGroupsWindowController.m; path = Source/DBGroupsWindowController.m; sourceTree = "<group>"; };
+		6C78646615B8492600FD538D /* DBGroups.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBGroups.xib; sourceTree = "<group>"; };
 		6C7EF3640FACFD380034860F /* DBGrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGrip.h; path = Source/DBGrip.h; sourceTree = "<group>"; };
 		6C7EF3650FACFD380034860F /* DBGrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGrip.m; path = Source/DBGrip.m; sourceTree = "<group>"; };
 		6C8083C80FE2F735007D6E75 /* NSAffineTransform+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAffineTransform+SVG.h"; path = "Source/NSAffineTransform+SVG.h"; sourceTree = "<group>"; };
@@ -817,6 +822,7 @@
 				6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */,
 				6C74952915324DAD000EF4D7 /* DBLayers.xib */,
 				6C4D5158153344D400866009 /* DBInspector.xib */,
+				6C78646615B8492600FD538D /* DBGroups.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1073,6 +1079,8 @@
 				6C9334040FA4587E007197B6 /* DBDonateWindowController.m */,
 				6C6909B90FA7818600F10440 /* DBTemplateManager.h */,
 				6C6909BA0FA7818600F10440 /* DBTemplateManager.m */,
+				6C78646315B8490500FD538D /* DBGroupsWindowController.h */,
+				6C78646415B8490500FD538D /* DBGroupsWindowController.m */,
 			);
 			name = "Window Controllers";
 			sourceTree = "<group>";
@@ -1591,6 +1599,7 @@
 				6C4D5156153344D400866009 /* DBInspector.xib in Resources */,
 				6C11105115445E120070C852 /* harden.png in Resources */,
 				6C11105215445E120070C852 /* soften.png in Resources */,
+				6C78646715B8492600FD538D /* DBGroups.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1714,6 +1723,7 @@
 				6CCE9286153B480500A49667 /* DBDrawingView+ContextualMenu.m in Sources */,
 				6C18F2BF154D898C00085806 /* DBGroup.m in Sources */,
 				6C18F2C2154D8BB700085806 /* DBGroupController.m in Sources */,
+				6C78646515B8490500FD538D /* DBGroupsWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

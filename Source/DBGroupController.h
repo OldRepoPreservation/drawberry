@@ -15,6 +15,8 @@
 @private
     NSMutableArray *_groups;
     
+    NSUInteger _newGroupIndex;
+    
     DBDocument *_document;
 }
 

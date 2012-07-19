@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         _groups = [[NSMutableArray alloc] init];
+        _newGroupIndex = 1;
     }
     
     return self;
@@ -129,7 +130,7 @@
 
 - (void)addGroupWithShapes:(NSArray *)shapes
 {
-    DBGroup *group = [[DBGroup alloc] init];
+    DBGroup *group = [[DBGroup alloc] initWithName:[NSString stringWithFormat:@"%@ %d",NSLocalizedString(@"Group", nil),_newGroupIndex++]];
     
     [group addShapes:shapes];
     

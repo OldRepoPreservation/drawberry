@@ -954,7 +954,7 @@
 		isEditable = [layer editable];
 	}        
 	
-    NSLog(@"selected groups %@",[self selectedShapesGroups]);
+//    NSLog(@"selected groups %@",[self selectedShapesGroups]);
    	
 	while(YES){
 

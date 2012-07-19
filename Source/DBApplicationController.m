@@ -14,6 +14,7 @@
 #import "DBToolsController.h"
 #import "DBPrefController.h" 
 #import "DBUndoUIController.h"
+#import "DBGroupsWindowController.h"
 
 
 #import "DBDocument.h"
@@ -36,8 +37,9 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 {
 	[self exposeBinding:@"currentDrawingView"];
 	[self exposeBinding:@"currentLayerController"];
-
-
+	[self exposeBinding:@"currentGroupController"];
+    
+    
 	NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
    	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:DBToolSelectorMode];
    	[defaultValues setObject:[NSNumber numberWithInt:2] forKey:DBUnitName];
@@ -57,9 +59,9 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
-
+    
 	[defaultValues release];
-
+    
 }     
 
 
@@ -76,26 +78,26 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification { 
 	
-
+    
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBLayerWindowOpened]){
 		[[DBLayerWindowController sharedLayerWindowController] showWindow:self];
 	}
 	
 	[[DBInspectorController sharedInspectorController] loadWindow];
-
+    
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBViewInspectorOpened]){
 		[[[DBInspectorController sharedInspectorController] viewInspector] makeKeyAndOrderFront:self];
 	}else{
 		[[[DBInspectorController sharedInspectorController] viewInspector] orderOut:self];
 	}
-
+    
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBObjectInspectorOpened]){
 		[[[DBInspectorController sharedInspectorController] objectInspector] makeKeyAndOrderFront:self];
 	}else {
 		[[[DBInspectorController sharedInspectorController] objectInspector] orderOut:self];
-
+        
 	}
-
+    
 	
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBMagGlassPanelOpened]){
 		[[DBMagnifyingController sharedMagnifyingController] showWindow:self];
@@ -111,35 +113,38 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	}else {
 		[[DBColorSwatchController sharedColorSwatchController] close];
 	}
-
+    
 	
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBShapeLibraryOpened]){
 		[[DBShapeLibraryController sharedShapeLibraryController] showWindow:self];
 	}else {
 		[[DBShapeLibraryController sharedShapeLibraryController] close];
 	}
-
+    
 	
 	[[DBToolsController sharedToolsController] showWindow:self];
-
+    
+    [[DBGroupsWindowController sharedGroupsWindowController] showWindow:self];
 	
 	[_donationController showDonateWindowIfNecessary];
 }  
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
-/*   	[self willChangeValueForKey:@"currentDrawingView"];
-	[self didChangeValueForKey:@"currentDrawingView"];                                                    
- */ 
+    /*   	[self willChangeValueForKey:@"currentDrawingView"];
+     [self didChangeValueForKey:@"currentDrawingView"];                                                    
+     */ 
 	[self performSelector:@selector(willChangeValueForKey:) withObject:@"currentDrawingView" afterDelay:FLT_MIN];
 	[self performSelector:@selector(didChangeValueForKey:) withObject:@"currentDrawingView" afterDelay:FLT_MIN];
 	[self performSelector:@selector(willChangeValueForKey:) withObject:@"currentLayerController" afterDelay:FLT_MIN];
 	[self performSelector:@selector(didChangeValueForKey:) withObject:@"currentLayerController" afterDelay:FLT_MIN];
+	[self performSelector:@selector(willChangeValueForKey:) withObject:@"currentGroupController" afterDelay:FLT_MIN];
+	[self performSelector:@selector(didChangeValueForKey:) withObject:@"currentGroupController" afterDelay:FLT_MIN];
 	
 	[self performSelector:@selector(postCurrentDocChangedNotification) withObject:nil afterDelay:FLT_MIN];
 	[self performSelector:@selector(setMagnyfiedView) withObject:nil afterDelay:FLT_MIN];
 }
-              
+
 - (void)setMagnyfiedView
 {
 	[[DBMagnifyingController sharedMagnifyingView] setSource:[self currentDrawingView]];
@@ -153,13 +158,15 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 		[self performSelector:@selector(didChangeValueForKey:) withObject:@"currentDrawingView" afterDelay:FLT_MIN];
 		[self performSelector:@selector(willChangeValueForKey:) withObject:@"currentLayerController" afterDelay:FLT_MIN];
 		[self performSelector:@selector(didChangeValueForKey:) withObject:@"currentLayerController" afterDelay:FLT_MIN];
-	
+        [self performSelector:@selector(willChangeValueForKey:) withObject:@"currentGroupController" afterDelay:FLT_MIN];
+        [self performSelector:@selector(didChangeValueForKey:) withObject:@"currentGroupController" afterDelay:FLT_MIN];
+        
 		[self performSelector:@selector(postCurrentDocChangedNotification) withObject:nil afterDelay:FLT_MIN];
 		
 		[self performSelector:@selector(setMagnyfiedView) withObject:nil afterDelay:FLT_MIN];
 	}
 }
- 
+
 - (void)postCurrentDocChangedNotification
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:DBCurrentDocumentDidChange object:[[NSDocumentController sharedDocumentController] currentDocument]];
@@ -169,12 +176,14 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 }
 - (void)windowDidBecomeMain:(NSNotification *)aNotification
 {                
-//	NSLog(@"main : %@",[[NSDocumentController sharedDocumentController] documentForWindow:[aNotification object]]);
+    //	NSLog(@"main : %@",[[NSDocumentController sharedDocumentController] documentForWindow:[aNotification object]]);
 	[self willChangeValueForKey:@"currentDrawingView"];
 	[self didChangeValueForKey:@"currentDrawingView"];
 	[self willChangeValueForKey:@"currentLayerController"];
 	[self didChangeValueForKey:@"currentLayerController"];
-
+	[self willChangeValueForKey:@"currentGroupController"];
+	[self didChangeValueForKey:@"currentGroupController"];
+    
 	[[NSNotificationCenter defaultCenter] postNotificationName:DBCurrentDocumentDidChange object:[[NSDocumentController sharedDocumentController] currentDocument]];
 	[[DBMagnifyingController sharedMagnifyingView] setSource:[self currentDrawingView]];
 }
@@ -187,7 +196,7 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	}
 	
 	id current = [(DBDocument *)[[NSDocumentController sharedDocumentController] currentDocument] drawingView];
-		
+    
 	if(!current)
 	{
 		current = [(DBDocument *)[[NSDocumentController sharedDocumentController] documentForWindow:[NSApp mainWindow]] drawingView];		
@@ -202,12 +211,29 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	{
 		return nil;
 	}
-
+    
 	id current = [(DBDocument *)[[NSDocumentController sharedDocumentController] currentDocument] layerController];
-		
+    
 	if(!current)
 	{
 		current = [(DBDocument *)[[NSDocumentController sharedDocumentController] documentForWindow:[NSApp mainWindow]] layerController];		
+	}
+	
+	return current;
+} 
+
+- (DBGroupController *)currentGroupController
+{              
+	if(![[[NSDocumentController sharedDocumentController] currentDocument] isKindOfClass:[DBDocument class]])
+	{
+		return nil;
+	}
+    
+	id current = [(DBDocument *)[[NSDocumentController sharedDocumentController] currentDocument] groupController];
+    
+	if(!current)
+	{
+		current = [(DBDocument *)[[NSDocumentController sharedDocumentController] documentForWindow:[NSApp mainWindow]] groupController];		
 	}
 	
 	return current;

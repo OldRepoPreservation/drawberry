@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class DBDrawingView, DBLayerController;
+@class DBDrawingView, DBLayerController, DBGroupController;
 @class DBDonateWindowController;
 
 extern NSString *DBCurrentDocumentDidChange;
@@ -18,6 +18,7 @@ extern NSString *DBCurrentDocumentDidChange;
 }
 - (DBDrawingView *)currentDrawingView; 
 - (DBLayerController *)currentLayerController;
+- (DBGroupController *)currentGroupController;
 - (IBAction)showInspector:(id)sender;
 - (IBAction)showShapeInspector:(id)sender;
 - (IBAction)showPrefs:(id)sender;

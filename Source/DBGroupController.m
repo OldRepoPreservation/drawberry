@@ -96,6 +96,7 @@
     [self willChangeValueForKey:@"groups"];
     [self removeGroupAtIndexes:[NSIndexSet indexSetWithIndex:[self indexOfGroup:aGroup]]];
     [self didChangeValueForKey:@"groups"];
+    [[_document drawingView] setNeedsDisplay:YES];
 }
 
 - (void)removeGroupAtIndexes:(NSIndexSet *)indexes
@@ -125,6 +126,7 @@
 	[_groups makeObjectsPerformSelector:@selector(setGroupController:) withObject:self];
     [self didChangeValueForKey:@"groups"];
 
+    [[_document drawingView] setNeedsDisplay:YES];
 }
 
 

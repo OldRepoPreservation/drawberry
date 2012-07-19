@@ -802,6 +802,35 @@
 									<reference key="NSOnImage" ref="701612159"/>
 									<reference key="NSMixedImage" ref="987510495"/>
 								</object>
+								<object class="NSMenuItem" id="482044271">
+									<reference key="NSMenu" ref="815563982"/>
+									<string key="NSTitle">Show Layers</string>
+									<string key="NSKeyEquiv">l</string>
+									<int key="NSKeyEquivModMask">1572864</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="701612159"/>
+									<reference key="NSMixedImage" ref="987510495"/>
+								</object>
+								<object class="NSMenuItem" id="310741605">
+									<reference key="NSMenu" ref="815563982"/>
+									<string key="NSTitle">Show Groups</string>
+									<string key="NSKeyEquiv">g</string>
+									<int key="NSKeyEquivModMask">1572864</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="701612159"/>
+									<reference key="NSMixedImage" ref="987510495"/>
+								</object>
+								<object class="NSMenuItem" id="494904340">
+									<reference key="NSMenu" ref="815563982"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="701612159"/>
+									<reference key="NSMixedImage" ref="987510495"/>
+								</object>
 								<object class="NSMenuItem" id="279197606">
 									<reference key="NSMenu" ref="815563982"/>
 									<string key="NSTitle">Show Color Panel</string>
@@ -1901,6 +1930,22 @@
 					</object>
 					<int key="connectionID">549</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showGroupsPanel:</string>
+						<reference key="source" ref="51744255"/>
+						<reference key="destination" ref="310741605"/>
+					</object>
+					<int key="connectionID">555</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showLayersPanel:</string>
+						<reference key="source" ref="51744255"/>
+						<reference key="destination" ref="482044271"/>
+					</object>
+					<int key="connectionID">556</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1966,6 +2011,9 @@
 							<reference ref="466643867"/>
 							<reference ref="796437394"/>
 							<reference ref="754384009"/>
+							<reference ref="494904340"/>
+							<reference ref="482044271"/>
+							<reference ref="310741605"/>
 						</array>
 						<reference key="parent" ref="356996333"/>
 					</object>
@@ -2790,6 +2838,21 @@
 						<reference key="object" ref="970449067"/>
 						<reference key="parent" ref="2817660"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">550</int>
+						<reference key="object" ref="494904340"/>
+						<reference key="parent" ref="815563982"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">551</int>
+						<reference key="object" ref="482044271"/>
+						<reference key="parent" ref="815563982"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">553</int>
+						<reference key="object" ref="310741605"/>
+						<reference key="parent" ref="815563982"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3026,6 +3089,12 @@
 				<boolean value="YES" key="544.ImportedFromIB2"/>
 				<string key="547.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="547.ImportedFromIB2"/>
+				<string key="550.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="550.ImportedFromIB2"/>
+				<string key="551.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="551.ImportedFromIB2"/>
+				<string key="553.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="553.ImportedFromIB2"/>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="56.ImportedFromIB2"/>
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3061,7 +3130,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">549</int>
+			<int key="maxID">556</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3070,7 +3139,9 @@
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="showColorSwatches:">id</string>
+						<string key="showGroupsPanel:">id</string>
 						<string key="showInspector:">id</string>
+						<string key="showLayersPanel:">id</string>
 						<string key="showPrefs:">id</string>
 						<string key="showShapeInspector:">id</string>
 						<string key="showShapeLibrary:">id</string>
@@ -3081,8 +3152,16 @@
 							<string key="name">showColorSwatches:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="showGroupsPanel:">
+							<string key="name">showGroupsPanel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="showInspector:">
 							<string key="name">showInspector:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showLayersPanel:">
+							<string key="name">showLayersPanel:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showPrefs:">

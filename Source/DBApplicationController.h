@@ -25,6 +25,8 @@ extern NSString *DBCurrentDocumentDidChange;
 - (IBAction)showUndoPanel:(id)sender;
 - (IBAction)showColorSwatches:(id)sender;
 - (IBAction)showShapeLibrary:(id)sender;
+- (IBAction)showGroupsPanel:(id)sender;
+- (IBAction)showLayersPanel:(id)sender;
 
 - (NSWindow *)layerWindow;
 - (NSWindow *)viewInspector;
@@ -33,6 +35,7 @@ extern NSString *DBCurrentDocumentDidChange;
 - (NSWindow *)undoWindow;
 - (NSWindow *)colorSwatchesWindow;
 - (NSWindow *)shapeLibraryWindow;
+- (NSWindow *)groupsWindow;
 
 - (void)postCurrentDocChangedNotification;
 @end

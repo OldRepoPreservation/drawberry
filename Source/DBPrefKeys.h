@@ -14,6 +14,7 @@
 #define DBViewInspectorOpened @"viewInspector Opened"
 #define DBObjectInspectorOpened @"objectInspector Opened"
 #define DBLayerWindowOpened @"layerWindow Opened"
+#define DBGroupsWindowOpened @"groupWindow Opened"
 #define DBMagGlassPanelOpened @"magGlassPanel Opened"
 #define DBUndoWindowOpened @"undoWindow Opened"
 #define DBColorSwatchOpened @"colorSwatch Opened"

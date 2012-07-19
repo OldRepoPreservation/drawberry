@@ -52,6 +52,7 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
    	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBViewInspectorOpened];
    	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBObjectInspectorOpened];
    	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBLayerWindowOpened];
+   	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBGroupsWindowOpened];
    	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBMagGlassPanelOpened];
    	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:DBUndoWindowOpened];
 	[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DBColorSwatchOpened];
@@ -82,7 +83,7 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBLayerWindowOpened]){
 		[[DBLayerWindowController sharedLayerWindowController] showWindow:self];
 	}
-	
+    
 	[[DBInspectorController sharedInspectorController] loadWindow];
     
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBViewInspectorOpened]){
@@ -98,6 +99,12 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
         
 	}
     
+    if([[NSUserDefaults standardUserDefaults] boolForKey:DBGroupsWindowOpened]){
+        [[DBGroupsWindowController sharedGroupsWindowController] showWindow:self];
+	}else{
+        [[DBGroupsWindowController sharedGroupsWindowController] close];
+    }
+
 	
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DBMagGlassPanelOpened]){
 		[[DBMagnifyingController sharedMagnifyingController] showWindow:self];
@@ -124,8 +131,6 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	
 	[[DBToolsController sharedToolsController] showWindow:self];
     
-    [[DBGroupsWindowController sharedGroupsWindowController] showWindow:self];
-	
 	[_donationController showDonateWindowIfNecessary];
 }  
 
@@ -258,6 +263,16 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 	[[DBUndoUIController sharedUndoUIController] showWindow:self];
 }
 
+- (IBAction)showGroupsPanel:(id)sender
+{
+    [[DBGroupsWindowController sharedGroupsWindowController] showWindow:self];
+}
+
+- (IBAction)showLayersPanel:(id)sender
+{
+    [[DBLayerWindowController sharedLayerWindowController] showWindow:self];
+}
+
 - (IBAction)showColorSwatches:(id)sender
 {
 	[[DBColorSwatchController sharedColorSwatchController] showWindow:self];
@@ -301,4 +316,10 @@ NSString *DBCurrentDocumentDidChange = @"Current document did change";
 {
 	return [[DBShapeLibraryController sharedShapeLibraryController] window];
 }
+
+- (NSWindow *)groupsWindow
+{
+	return [[DBGroupsWindowController sharedGroupsWindowController] window];
+}
+
 @end

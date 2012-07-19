@@ -119,7 +119,12 @@ enum {
 											 selector:@selector(inspectorWindowWillOpen:) 
 												 name:NSWindowDidBecomeKeyNotification 
 											   object:[[NSApp delegate] shapeLibraryWindow]];
-	
+
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillOpen:) 
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:[[NSApp delegate] groupsWindow]];
+
 }
 
 - (void)registerForCloseNotifications
@@ -157,7 +162,12 @@ enum {
 											 selector:@selector(inspectorWindowWillClose:) 
 												 name:NSWindowWillCloseNotification 
 											   object:[[NSApp delegate] shapeLibraryWindow]];
-	
+
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(inspectorWindowWillClose:) 
+												 name:NSWindowWillCloseNotification 
+											   object:[[NSApp delegate] groupsWindow]];
+
 }
 
 - (IBAction)selectToolAction:(id)sender
@@ -217,7 +227,11 @@ enum {
 	}else if(window == [[NSApp delegate] shapeLibraryWindow]){
 		tag = 6;
 		key = DBShapeLibraryOpened;
+	}else if(window == [[NSApp delegate] groupsWindow]){
+		tag = 7;
+		key = DBGroupsWindowOpened;
 	}           
+           
 	
 	
 	if(key){
@@ -240,16 +254,16 @@ enum {
 	
 	if(window == [[NSApp delegate] viewInspector]){
 		tag = 0;
-		key = @"viewInspector Opened";
+		key = DBViewInspectorOpened;
 	}else if(window == [[NSApp delegate] objectInspector]){
 		tag = 1;
-		key = @"objectInspector Opened";
+		key = DBObjectInspectorOpened;
 	}else if(window == [[NSApp delegate] layerWindow]){
 		tag = 2;
-		key = @"layerWindow Opened";
+		key = DBLayerWindowOpened;
 	}else if(window == [[NSApp delegate] magnifyWindow]){
 		tag = 3;
-		key = @"magGlassPanel Opened";
+		key = DBMagGlassPanelOpened;
 	}else if(window == [[NSApp delegate] undoWindow]){
 		tag = 4;
 		key = DBUndoWindowOpened;
@@ -259,6 +273,9 @@ enum {
 	}else if(window == [[NSApp delegate] shapeLibraryWindow]){
 		tag = 6;
 		key = DBShapeLibraryOpened;
+	}else if(window == [[NSApp delegate] groupsWindow]){
+		tag = 7;
+		key = DBGroupsWindowOpened;
 	}           
 	
 	

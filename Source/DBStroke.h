@@ -154,6 +154,8 @@ typedef enum {
 - (void)setFlipText:(BOOL)newFlipText;
 - (int)textPosition;
 - (void)setTextPosition:(int)newTextPosition;
+- (NSTextAlignment)textAlignment;
+- (void)setTextAlignment:(NSTextAlignment)newTextAlignment;
 // stroke
 - (void)updateStrokeForPath:(NSBezierPath *)drawPath;
 - (void)strokePath:(NSBezierPath *)drawPath;

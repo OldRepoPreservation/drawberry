@@ -443,6 +443,8 @@
 	
 	[_textPath release];
 	_textPath = nil ;
+    
+    [self setTextAlignment:[self textAlignment]];
 	[_shape strokeUpdated];
 }
 
@@ -485,7 +487,7 @@
 
 - (void)setTextPosition:(int)newTextPosition
 {
-	_textPosition = newTextPosition;
+    _textPosition = newTextPosition;
 	[_shape strokeUpdated];
 }
 

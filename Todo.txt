@@ -152,8 +152,6 @@ What we have to do in the future (in function of milestone)
 
 	DONE : Introduce a contextual menu
 	
-	TODO : Add a "rotate" mode alternating with "resize" mode when clicking on a shape (not double-clicking)
-
 	TODO : Almost all the actions must be undoable    
 	
 	TODO : Add multiple strokes functionnality (just like fills) (to 1.0 version ??)  
@@ -166,6 +164,8 @@ What we have to do in the future (in function of milestone)
 	
 	FIXED : Save the gradient orientation
 	
+	FIXED : Text on path bug fixes
+
 	TODO : Text on path improvemements
 	
 	FIXED : When importing an image, don't show all the undo things 
@@ -205,4 +205,6 @@ What we have to do in the future (in function of milestone)
 	TODO : LinkBack support (really necessary ?)   
 	
 	TODO : Add a vectorization plug-in 
+	
+	TODO : Add a "rotate" mode alternating with "resize" mode when clicking on a shape (not double-clicking)  ???
 	

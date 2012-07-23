@@ -47,7 +47,7 @@ typedef struct {
 - (void)				drawStringOnPath:(NSString*) str;
 - (void)				drawStringOnPath:(NSString*) str attributes:(NSDictionary*) attrs;
 
-- (NSBezierPath*)		bezierPathWithTextOnPath:(NSAttributedString*) str yOffset:(float) dy;
+- (NSBezierPath*)       bezierPathWithTextOnPath:(NSAttributedString*) str locationOffset:(float)dloc yOffset:(float) dy;
 - (NSBezierPath*)		bezierPathWithStringOnPath:(NSString*) str;
 - (NSBezierPath*)		bezierPathWithStringOnPath:(NSString*) str attributes:(NSDictionary*) attrs;
 @end

@@ -69,6 +69,7 @@ typedef enum {
 	NSMutableAttributedString *_text;
 	NSBezierPath *_textPath;
 	float _textOffset;
+    float _locationOffsetFrac;
 	BOOL _flipText;
 	int _textPosition;
 	NSTextAlignment _textAlignment;
@@ -156,6 +157,8 @@ typedef enum {
 - (void)setTextPosition:(int)newTextPosition;
 - (NSTextAlignment)textAlignment;
 - (void)setTextAlignment:(NSTextAlignment)newTextAlignment;
+- (float)locationOffsetFrac;
+- (void)setLocationOffsetFrac:(float)frac;
 // stroke
 - (void)updateStrokeForPath:(NSBezierPath *)drawPath;
 - (void)strokePath:(NSBezierPath *)drawPath;

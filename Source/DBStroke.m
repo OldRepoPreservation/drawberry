@@ -155,6 +155,7 @@
 	
 	_text = [[decoder decodeObjectForKey:@"Stroke Text"] retain];
 	_textOffset = [decoder decodeFloatForKey:@"Text Offset"];
+	_locationOffsetFrac = [decoder decodeFloatForKey:@"Location Offset"];
     _flipText = [decoder decodeBoolForKey:@"Flip Text"];
 	
 	
@@ -185,6 +186,7 @@
 
 	[encoder encodeObject:_text forKey:@"Stroke Text"];
 	[encoder encodeFloat:_textOffset forKey:@"Text Offset"];
+	[encoder encodeFloat:_locationOffsetFrac forKey:@"Location Offset"];
     [encoder encodeBool:_flipText forKey:@"Flip Text"];
 }
 
@@ -521,6 +523,18 @@
 }
 
 
+- (float)locationOffsetFrac
+{
+    return _locationOffsetFrac;
+}
+
+- (void)setLocationOffsetFrac:(float)frac
+{
+    _locationOffsetFrac = MAX(MIN(frac, 1.),-1); // to ensure the fraction is beetween -1 and 1
+    
+    [_shape strokeUpdated];
+}
+
 # pragma mark  Drawing the path
 
 - (void)updateStrokeForPath:(NSBezierPath *)drawPath
@@ -528,12 +542,14 @@
 	NSBezierPath *path = drawPath;
 	
 	[_textPath release];
+    
+    float locationOffset = ((_textAlignment == NSRightTextAlignment)?(-1):(1))*[path length]*_locationOffsetFrac;
 	
 	if(_text && ![[_text string] isEqualTo:@""]){
 		if(_flipText){
- 			_textPath = [[path bezierPathByReversingPath] bezierPathWithTextOnPath:_text yOffset:_textOffset];
+ 			_textPath = [[path bezierPathByReversingPath] bezierPathWithTextOnPath:_text locationOffset:locationOffset yOffset:_textOffset];
 		}else{
-			_textPath = [path bezierPathWithTextOnPath:_text yOffset:_textOffset];
+			_textPath = [path bezierPathWithTextOnPath:_text locationOffset:locationOffset yOffset:_textOffset];
 		}
 	}else{
 		_textPath = nil;

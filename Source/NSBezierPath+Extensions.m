@@ -254,7 +254,7 @@
 
 - (void)drawTextOnPath:(NSAttributedString*) str yOffset:(float) dy
 {
-	NSBezierPath* textPath = [self bezierPathWithTextOnPath:str yOffset:dy];
+	NSBezierPath* textPath = [self bezierPathWithTextOnPath:str locationOffset:0 yOffset:dy];
 	
 	// render the text path using the foreground colour and shadow of the attributed string
 	
@@ -317,7 +317,7 @@
 }
 
 
-- (NSBezierPath*)bezierPathWithTextOnPath:(NSAttributedString*) str yOffset:(float) dy
+- (NSBezierPath*)bezierPathWithTextOnPath:(NSAttributedString*) str locationOffset:(float)dloc yOffset:(float) dy
 {
 	// returns a new path consisting of the glyphs laid out along the current path from <str>
 	
@@ -372,12 +372,12 @@
 		float half = gbr.size.width * 0.5f;
 		
 		// if the character width is zero or -ve, skip it - some control glyphs appear to need  suppressing in this way
-		
-		if ( gbr.size.width > 0 )
+		// also check that we are on the path
+		if ( gbr.size.width > 0 && layoutLocation.x + half + dloc >= 0)
 		{
 			// get a shortened path that starts at the character location
 			
-			temp = [self bezierPathByTrimmingFromLength:layoutLocation.x + half];
+			temp = [self bezierPathByTrimmingFromLength:layoutLocation.x+ half +dloc];
 			
 			// if no more room on path, stop laying glyphs (will not normally occur as glyph range is set to one line)
 			
@@ -424,7 +424,7 @@
 - (NSBezierPath*)bezierPathWithStringOnPath:(NSString*) str attributes:(NSDictionary*) attrs
 {
 	NSAttributedString* as = [[NSAttributedString alloc] initWithString:str attributes:attrs];
-	NSBezierPath*		np = [self bezierPathWithTextOnPath:as yOffset:0];
+	NSBezierPath*		np = [self bezierPathWithTextOnPath:as locationOffset:0 yOffset:0];
 	[as release];
 	return np;
 }

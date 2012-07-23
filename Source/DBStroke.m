@@ -450,6 +450,12 @@
 	[_shape strokeUpdated];
 }
 
+- (void)clearText
+{
+    [self setText:nil];
+}
+
+
 - (float)textOffset
 {
 	return _textOffset;

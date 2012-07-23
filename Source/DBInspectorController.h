@@ -54,6 +54,7 @@
 - (IBAction)chooseFillImage:(id)sender;
 - (IBAction)shadowAction:(id)sender;
 - (IBAction)flipText:(id)sender;
+- (IBAction)clearText:(id)sender;
 
 - (IBAction)takeGradientFrom:(id)sender;
 

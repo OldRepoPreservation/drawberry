@@ -218,6 +218,11 @@ static DBInspectorController *_sharedInspectorController = nil;
 	[[_strokeController content] setValue:[NSNumber numberWithBool:NO] forKey:@"toggleFlipText"];
 }
 
+- (IBAction)clearText:(id)sender
+{
+    [[_strokeController content] clearText];
+}
+
 - (IBAction)takeGradientFrom:(id)sender
 {
 	[(DBFill *)[[_fillsController selectedObjects] objectAtIndex:0] setGradient:[(GPGradientWell *)_fillGradientWell gradient]];

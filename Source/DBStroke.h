@@ -149,6 +149,7 @@ typedef enum {
 // text
 - (NSAttributedString *)text;
 - (void)setText:(NSAttributedString *)aValue;
+- (void)clearText;
 - (float)textOffset;
 - (void)setTextOffset:(float)newTextOffset;
 - (BOOL)flipText;

@@ -21,6 +21,8 @@
 	
 	NSButton *_disclosureButton;  
 	
+    CGFloat _defaultWidth;
+
 #ifdef SHOW_CLOSE_BUTTON   	
 	NSButton *_closeButton;    
 #endif
@@ -39,6 +41,7 @@
 - (void)setAssociatedView:(NSView *)view;
 
 - (float)minWidth;
+- (CGFloat)defaultWidth;
 
 - (NSString *)autosaveString;
 - (void)upateCollapse;

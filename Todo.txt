@@ -101,7 +101,7 @@ What we have to do in the future (in function of milestone)
 	
 	DONE : Color swatch (with drag & drop)
 
-	DONE : A shape panel with predefinded shapes (don't open it at startup)
+	DONE : A shape panel with predefined shapes (don't open it at startup)
 		
 	DONE : Write a great help
 	
@@ -154,7 +154,7 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : Almost all the actions must be undoable    
 	
-	TODO : Add multiple strokes functionnality (just like fills) (to 1.0 version ??)  
+	TODO : Add multiple strokes functionality (just like fills) (to 1.0 version ??)  
 	
 	FIXED : When converting a rectangle or an oval to a bezier curve, don't forget to add the shadow
   	
@@ -166,15 +166,17 @@ What we have to do in the future (in function of milestone)
 	
 	FIXED : Text on path bug fixes
 
-	TODO : Text on path improvemements
+	TODO : Text on path improvements
 	
 	FIXED : When importing an image, don't show all the undo things 
 	
-	TODO : Edit the rounded rectangle edges separatly
+	TODO : Edit the rounded rectangle edges separately
 	
 	FIXED : When a rectangle is rotated, the conversion to a bezier curve is not done properly      
 	
 	FIXME : Relocalize inspectors in French
+	
+	TODO : Stretch the inspectors views when necessary 
 	
 
 - Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES (really ??)

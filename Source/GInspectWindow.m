@@ -161,6 +161,26 @@ const float _barHeight = 18;
 	
 }
 
+- (float)computeWidth
+{
+	float maxWidth = _widthWhenClosed;
+    
+	NSEnumerator *e = [_views objectEnumerator];
+	NSView *view;
+	GBarView *barView;
+	
+	// calculate maxWidth
+	while ((barView = [e nextObject])) {
+		if (![barView isCollapsed]) {
+			view = [barView associatedView];
+			maxWidth = MAX(maxWidth, [barView defaultWidth]);
+		}
+		maxWidth = MAX(maxWidth, [barView minWidth]);
+	}
+	
+    return maxWidth;
+}
+
 - (void)updateViewList
 {
 	float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
@@ -168,7 +188,8 @@ const float _barHeight = 18;
 	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
-	float maxWidth = _widthWhenClosed;
+	float maxWidth = [self computeWidth];
+
 	NSMutableArray *viewsToRemove = [[NSMutableArray alloc] init];
 	
 	NSEnumerator *enumerator = [[[self contentView] subviews] objectEnumerator];
@@ -182,18 +203,9 @@ const float _barHeight = 18;
 	
 	[viewsToRemove makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	
-	NSEnumerator *e = [_views objectEnumerator];
+	NSEnumerator *e;
 	GBarView *barView;
 	NSRect vFrame;
-	
-	// calculate maxWidth
-	while ((barView = [e nextObject])) {
-		if (![barView isCollapsed]) {
-			view = [barView associatedView];
-			maxWidth = MAX(maxWidth, [view frame].size.width);
-		}
-		maxWidth = MAX(maxWidth, [barView minWidth]);
-	}
 	
 	e = [_views reverseObjectEnumerator];
 	
@@ -237,21 +249,13 @@ const float _barHeight = 18;
 	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
-	float maxWidth = _widthWhenClosed;
+	float maxWidth = [self computeWidth];
 	
-	NSEnumerator *e = [_views objectEnumerator];
+	NSEnumerator *e;
 	NSView *view;
 	GBarView *barView;
 	NSRect vFrame;
-	
-	while ((barView = [e nextObject])) {
-		if (![barView isCollapsed]) {
-			view = [barView associatedView];
-			maxWidth = MAX(maxWidth, [view frame].size.width);
-		}
-		maxWidth = MAX(maxWidth, [barView minWidth]);
-	}
-	
+		
 	e = [_views reverseObjectEnumerator];
 	
 	while ((barView = [e nextObject])) {
@@ -267,7 +271,8 @@ const float _barHeight = 18;
 		vFrame = NSMakeRect(0,accumulatedHeight,maxWidth,_barHeight+1);
 		
 		accumulatedHeight += _barHeight ;
-	}
+        [barView setAutoresizingMask:NSViewMinYMargin];
+    }
 	             
 	//[_bckgrd setFrameOrigin:NSMakePoint(0,20)];
 	
@@ -286,6 +291,7 @@ const float _barHeight = 18;
 	
 	GBarView *addedBarView = [[GBarView alloc] initWithFrame:NSMakeRect(0,0,[self frame].size.width,_barHeight)];
 	[addedBarView setAssociatedView:addedView];
+    [addedView setAutoresizesSubviews:YES];
 	[addedBarView setTitle:NSLocalizedString(title,nil)];
 	[addedBarView setIdentifier:title];
 	
@@ -313,22 +319,12 @@ const float _barHeight = 18;
 	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
-	float maxWidth = _widthWhenClosed;
+	float maxWidth = [self computeWidth];
 	
-	NSEnumerator *e = [_views objectEnumerator];
+	NSEnumerator *e;
 	NSView *view;
 	GBarView *barView;
 	NSRect vFrame;
-	
-	// calculate maxWidth
-	while ((barView = [e nextObject])) {
-		if (![barView isCollapsed]) {
-			view = [barView associatedView];
-			maxWidth = MAX(maxWidth, [view frame].size.width);
-		}
-		maxWidth = MAX(maxWidth, [barView minWidth]);
-	}
-	
 	
 	e = [_views reverseObjectEnumerator];
 	
@@ -341,7 +337,7 @@ const float _barHeight = 18;
 			vFrame.size = [view frame].size;
 			
 			accumulatedHeight += vFrame.size.height;
-			[view setAutoresizingMask:NSViewMinYMargin];
+			[view setAutoresizingMask:(NSViewMinYMargin|NSViewWidthSizable)];
 		}
 		vFrame = NSMakeRect(0,accumulatedHeight,maxWidth,_barHeight+1);
 		[barView setFrameSize:vFrame.size];
@@ -401,22 +397,12 @@ const float _barHeight = 18;
 	float accumulatedHeight = GBaseHeight;
 	
 	float oldHeight = [self frame].size.height;
-	float maxWidth = _widthWhenClosed;
+	float maxWidth = [self computeWidth];
 	
-	e = [_views objectEnumerator];
 	NSView *view;
 	GBarView *barView;
 	NSRect vFrame;
 	int i = 0;
-	
-	// calculate maxWidth
-	while ((barView = [e nextObject])) {
-		if (![barView isCollapsed]) {
-			view = [barView associatedView];
-			maxWidth = MAX(maxWidth, [view frame].size.width);
-		}
-		maxWidth = MAX(maxWidth, [barView minWidth]);
-	}
 	
 	e = [_views objectEnumerator];
 	
@@ -431,9 +417,9 @@ const float _barHeight = 18;
 			accumulatedHeight += vFrame.size.height;
 			
 			if (i < indexOfRemovedView) {
-				[view setAutoresizingMask:NSViewMinYMargin];
+                [view setAutoresizingMask:(NSViewMinYMargin|NSViewWidthSizable)];
 			}else{
-				[view setAutoresizingMask:NSViewMaxYMargin];
+                [view setAutoresizingMask:(NSViewMaxYMargin|NSViewWidthSizable)];
 			}
 		}
 		vFrame = NSMakeRect(0,accumulatedHeight,maxWidth,_barHeight+1);
@@ -475,22 +461,14 @@ const float _barHeight = 18;
 		float accumulatedHeight = GBaseHeight;
 		
 		float oldHeight = [self frame].size.height;
-		float maxWidth = _widthWhenClosed;
+		float maxWidth = [self computeWidth];
 		
-		NSEnumerator * e = [_views objectEnumerator];
+		NSEnumerator * e;
 		NSView *view;
 		GBarView *barView;
 		NSRect vFrame;
 		int i = 0;
 		
-		// calculate maxWidth
-		while ((barView = [e nextObject])) {
-			if (![barView isCollapsed]) {
-				view = [barView associatedView];
-				maxWidth = MAX(maxWidth, [view frame].size.width);
-			}
-			maxWidth = MAX(maxWidth, [barView minWidth]);
-		}
 		[removedView removeFromSuperview];
 		e = [_views objectEnumerator];
 		
@@ -505,9 +483,9 @@ const float _barHeight = 18;
 				accumulatedHeight += vFrame.size.height;
 				
 				if (i < indexOfRemovedView) {
-				    [view setAutoresizingMask:NSViewMinYMargin];
+                    [view setAutoresizingMask:(NSViewMinYMargin|NSViewWidthSizable)];
 				}else{
-				    [view setAutoresizingMask:NSViewMaxYMargin];
+                    [view setAutoresizingMask:(NSViewMaxYMargin|NSViewWidthSizable)];
 				}
 			}
 			vFrame = NSMakeRect(0,accumulatedHeight,maxWidth,_barHeight+1);
@@ -545,23 +523,14 @@ const float _barHeight = 18;
 		float viewNewOrigin = 0;
 		
 		float oldHeight = [self frame].size.height;
-		float maxWidth = _widthWhenClosed;
+		float maxWidth = [self computeWidth];
 		
-		NSEnumerator * e = [_views objectEnumerator];
+		NSEnumerator * e;
 		NSView *view;
 		GBarView *barView;
 		NSRect vFrame;
 		int i = 0;
-		
-		// calculate maxWidth
-		while ((barView = [e nextObject])) {
-			if (![barView isCollapsed]) {
-				view = [barView associatedView];
-				maxWidth = MAX(maxWidth, [view frame].size.width);
-			}
-			maxWidth = MAX(maxWidth, [barView minWidth]);
-		}
-		
+				
 		e = [_views objectEnumerator];
 		
 		while ((barView = [e nextObject])) {
@@ -576,9 +545,9 @@ const float _barHeight = 18;
 				accumulatedHeight += vFrame.size.height;
 				
 				if (i < indexOfRemovedView) {
-					[view setAutoresizingMask:NSViewMinYMargin];
+                    [view setAutoresizingMask:(NSViewMinYMargin|NSViewWidthSizable)];
 				}else{
-					[view setAutoresizingMask:NSViewMaxYMargin];
+                    [view setAutoresizingMask:(NSViewMaxYMargin|NSViewWidthSizable)];
 				}
 			}
 			vFrame = NSMakeRect(0,accumulatedHeight,maxWidth,_barHeight+1);

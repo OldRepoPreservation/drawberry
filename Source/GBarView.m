@@ -189,6 +189,9 @@
 {
 	[_associatedView release];
 	_associatedView = [view retain];
+
+
+    _defaultWidth = [_associatedView frame].size.width;
 }
 
 - (BOOL)isCollapsed { return _isCollapsed;}
@@ -230,6 +233,11 @@
 	float width = GBarTitleX + GBarCloseButtonMargin + 14 + [_title sizeWithAttributes:nil].width;
 	
 	return width;
+}
+
+- (CGFloat)defaultWidth
+{
+    return _defaultWidth;
 }
 
 - (NSString *)description

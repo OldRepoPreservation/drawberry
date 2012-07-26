@@ -176,7 +176,7 @@ What we have to do in the future (in function of milestone)
 	
 	FIXME : Relocalize inspectors in French
 	
-	TODO : Stretch the inspectors views when necessary 
+	DONE : Stretch the inspectors views when necessary 
 	
 
 - Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES (really ??)

@@ -217,10 +217,11 @@ const float _barHeight = 18;
 			vFrame.origin.y = accumulatedHeight;
 			vFrame.size = [view frame].size;
 			
-			[view setFrame:vFrame];
 			
 			[[self contentView] addSubview:view];
-			
+
+            [view setFrame:vFrame];
+
 			accumulatedHeight += vFrame.size.height;
 		}
 		vFrame = NSMakeRect(0,accumulatedHeight,maxWidth,_barHeight+1);
@@ -355,12 +356,14 @@ const float _barHeight = 18;
 	
 	[self setFrame:frame display:YES animate:YES];
 	
-//	[[self contentView] addSubview:[addedBarView associatedView]];
-//	[[self contentView] addSubview:addedBarView];
+	[[self contentView] addSubview:[addedBarView associatedView]];
+	[[self contentView] addSubview:addedBarView];
 	
-	
+
 	[addedBarView setFrameOrigin:NSMakePoint(0,[[addedBarView associatedView] frame].size.height)];
+    [[addedBarView associatedView] setAutoresizingMask:(NSViewMinYMargin|NSViewWidthSizable)];
 	[[addedBarView associatedView] setFrameOrigin:NSZeroPoint];
+    [[addedBarView associatedView] setFrameSize:NSMakeSize(maxWidth,[[addedBarView associatedView] frame].size.height)];
 	
 //	[addedBarView setCollapsed:flag];
 	 //[_bckgrd setFrameOrigin:NSMakePoint(0,20)];
@@ -514,7 +517,7 @@ const float _barHeight = 18;
 		
 	}else {
 		
-		NSView *removedView = [[n object] associatedView];
+		NSView *addedView = [[n object] associatedView];
 		int indexOfRemovedView = [_views indexOfObject:[n object]];
 		
 		float titleBarHeight = [self frame].size.height - [[self contentView] frame].size.height;
@@ -584,10 +587,12 @@ const float _barHeight = 18;
 		frame.origin.y -= (accumulatedHeight+titleBarHeight - oldHeight);
 		
 		[self setFrame:frame display:YES animate:__acceptNotif];
-
-		[removedView setFrameOrigin:NSMakePoint(0,viewNewOrigin)];
-		[[self contentView] addSubview:removedView];
 		
+        [[self contentView] addSubview:addedView];
+        
+        [addedView setFrameOrigin:NSMakePoint(0,viewNewOrigin)];
+        [addedView setFrameSize:NSMakeSize(maxWidth,[addedView frame].size.height)];
+
 	}
 	
 	//[_bckgrd setFrameOrigin:NSMakePoint(0,20)];

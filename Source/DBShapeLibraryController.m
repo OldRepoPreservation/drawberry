@@ -355,6 +355,7 @@ static DBShapeLibraryController *_sharedShapeLibraryController = nil;
 	if(![[self selectedCollection] editable])
 		return;
 		
+    [[self selectedCollection] removeStorage];
   	[_shapeCollections removeObject:[self selectedCollection]];
 	[self sortCollections];
 

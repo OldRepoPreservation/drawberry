@@ -11,6 +11,7 @@
 //#import "DBFill.h"
 //#import "DBDocument.h"
 #import "DBShape.h"
+#import "DBRectangle.h"
 
 
 @implementation DBDrawingView (DragAndDrop) 
@@ -39,7 +40,7 @@
 		if(shape){
 			return NSDragOperationLink;
 		}
-		return NSDragOperationNone;
+		return NSDragOperationCopy;
 	}
 	return NSDragOperationNone;
 }
@@ -134,10 +135,55 @@
 			}
 
 			
-		}
+		}else{
+            NSImage *image;
+            
+			image = [[NSImage alloc] initWithPasteboard:[sender draggingPasteboard]];
+
+            [self dropImage:image atPoint:[self convertPoint:[sender draggingLocation] fromView:nil]];
+            [image release];
+            return YES;
+            
+        }
 		return NO;		
 	}
 	
 	return NO;
+}
+
+- (void)dropImage:(NSImage *)image atPoint:(NSPoint)dropPoint
+{
+    DBRectangle *rectShape;
+    NSRect rect;
+    
+    rect.size = [image size];
+    rect.origin = dropPoint;
+    rect.origin.x -= rect.size.width / 2;
+	rect.origin.y -= rect.size.height / 2;
+
+    rectShape = [[DBRectangle alloc] initWithRect:rect];
+	
+    
+	[rectShape updatePath];
+	[rectShape updateBounds];
+	
+	DBFill *fill;
+	
+	fill = [[DBFill alloc] initWithShape:rectShape];
+	[rectShape addFill:fill];
+	
+	[[rectShape fillAtIndex:0] setFillMode:DBImageFillMode];
+	[[rectShape fillAtIndex:0] setImageFillMode:DBDrawMode];
+	[[rectShape fillAtIndex:0] setFillImage:image];
+	[[rectShape stroke] setStrokeMode:DBNoStrokeMode];
+	
+	[fill release];
+    
+	[[[self layerController] selectedLayer] addShape:rectShape];
+
+    [rectShape release];
+
+    [[[self layerController] selectedLayer] updateRenderInView:self];
+    [self setNeedsDisplay:YES];
 }
 @end

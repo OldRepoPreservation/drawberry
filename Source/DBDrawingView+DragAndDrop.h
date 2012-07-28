@@ -11,5 +11,5 @@
 
 
 @interface DBDrawingView (DragAndDrop) 
-
+- (void)dropImage:(NSImage *)image atPoint:(NSPoint)dropPoint;
 @end

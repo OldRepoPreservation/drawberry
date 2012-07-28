@@ -195,7 +195,6 @@
 		6C129F5C0E54F64400AD5C61 /* VertRulerKnob.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EF70E54F64300AD5C61 /* VertRulerKnob.tiff */; };
 		6C129F5D0E54F64400AD5C61 /* VertUpRulerKnob.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EF80E54F64300AD5C61 /* VertUpRulerKnob.tiff */; };
 		6C129F5E0E54F64400AD5C61 /* zoom.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EF90E54F64300AD5C61 /* zoom.tiff */; };
-		6C129F5F0E54F64400AD5C61 /* Polygons.dblib in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EFB0E54F64300AD5C61 /* Polygons.dblib */; };
 		6C129F600E54F64400AD5C61 /* Stars.dblib in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EFC0E54F64300AD5C61 /* Stars.dblib */; };
 		6C129F610E54F64400AD5C61 /* insp_document_norm.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EFE0E54F64300AD5C61 /* insp_document_norm.png */; };
 		6C129F620E54F64400AD5C61 /* insp_document_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C129EFF0E54F64300AD5C61 /* insp_document_sel.png */; };
@@ -244,6 +243,7 @@
 		6C825D930EFD60C6006057AB /* DKGeometryUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825D910EFD60C6006057AB /* DKGeometryUtilities.m */; };
 		6C825DE10EFD62C5006057AB /* NSBezierPath+Editing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C825DE00EFD62C5006057AB /* NSBezierPath+Editing.m */; };
 		6C8443D60C4C0A6400FFA2FF /* DBPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8443D40C4C0A6400FFA2FF /* DBPreferences.nib */; };
+		6C8CD27915C45E9900DE8BE6 /* Polygons.dblib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8CD27815C45E9900DE8BE6 /* Polygons.dblib */; };
 		6C9334050FA4587E007197B6 /* DBDonateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9334040FA4587E007197B6 /* DBDonateWindowController.m */; };
 		6C9334280FA45BF7007197B6 /* DBDonatePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */; };
 		6C9334870FA47F3D007197B6 /* Donate.webloc in Resources */ = {isa = PBXBuildFile; fileRef = 6C9334860FA47F3D007197B6 /* Donate.webloc */; };
@@ -587,7 +587,6 @@
 		6C129EF70E54F64300AD5C61 /* VertRulerKnob.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = VertRulerKnob.tiff; sourceTree = "<group>"; };
 		6C129EF80E54F64300AD5C61 /* VertUpRulerKnob.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = VertUpRulerKnob.tiff; sourceTree = "<group>"; };
 		6C129EF90E54F64300AD5C61 /* zoom.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = zoom.tiff; sourceTree = "<group>"; };
-		6C129EFB0E54F64300AD5C61 /* Polygons.dblib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Polygons.dblib; sourceTree = "<group>"; };
 		6C129EFC0E54F64300AD5C61 /* Stars.dblib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Stars.dblib; sourceTree = "<group>"; };
 		6C129EFE0E54F64300AD5C61 /* insp_document_norm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = insp_document_norm.png; sourceTree = "<group>"; };
 		6C129EFF0E54F64300AD5C61 /* insp_document_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = insp_document_sel.png; sourceTree = "<group>"; };
@@ -667,6 +666,7 @@
 		6C84451A0C4C243900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBTools.xib; sourceTree = "<group>"; };
 		6C84451F0C4C245900FFA2FF /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBPreferences.nib; sourceTree = "<group>"; };
 		6C874F1D0E473D2500933F02 /* French */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/DBShapeCollectionDocument.nib; sourceTree = "<group>"; };
+		6C8CD27815C45E9900DE8BE6 /* Polygons.dblib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Polygons.dblib; sourceTree = "<group>"; };
 		6C9334030FA4587E007197B6 /* DBDonateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBDonateWindowController.h; path = Source/DBDonateWindowController.h; sourceTree = "<group>"; };
 		6C9334040FA4587E007197B6 /* DBDonateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBDonateWindowController.m; path = Source/DBDonateWindowController.m; sourceTree = "<group>"; };
 		6C9334270FA45BF7007197B6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DBDonatePanel.nib; sourceTree = "<group>"; };
@@ -968,7 +968,7 @@
 		6C129EFA0E54F64300AD5C61 /* Shape Collections */ = {
 			isa = PBXGroup;
 			children = (
-				6C129EFB0E54F64300AD5C61 /* Polygons.dblib */,
+				6C8CD27815C45E9900DE8BE6 /* Polygons.dblib */,
 				6C129EFC0E54F64300AD5C61 /* Stars.dblib */,
 			);
 			name = "Shape Collections";
@@ -1570,7 +1570,6 @@
 				6C129F5C0E54F64400AD5C61 /* VertRulerKnob.tiff in Resources */,
 				6C129F5D0E54F64400AD5C61 /* VertUpRulerKnob.tiff in Resources */,
 				6C129F5E0E54F64400AD5C61 /* zoom.tiff in Resources */,
-				6C129F5F0E54F64400AD5C61 /* Polygons.dblib in Resources */,
 				6C129F600E54F64400AD5C61 /* Stars.dblib in Resources */,
 				6C129F610E54F64400AD5C61 /* insp_document_norm.png in Resources */,
 				6C129F620E54F64400AD5C61 /* insp_document_sel.png in Resources */,
@@ -1603,6 +1602,7 @@
 				6C11105215445E120070C852 /* soften.png in Resources */,
 				6C78646715B8492600FD538D /* DBGroups.xib in Resources */,
 				6C56639F15C362BE00056DE5 /* DBShapeCollectionDocument.nib in Resources */,
+				6C8CD27915C45E9900DE8BE6 /* Polygons.dblib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

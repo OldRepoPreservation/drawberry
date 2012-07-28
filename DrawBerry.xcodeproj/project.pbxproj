@@ -229,6 +229,7 @@
 		6C4A9E7C0FD4260000CA2CBD /* rsvg-path.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A9E7A0FD4260000CA2CBD /* rsvg-path.c */; };
 		6C4D5156153344D400866009 /* DBInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4D5158153344D400866009 /* DBInspector.xib */; };
 		6C51136F0C310DE20084EF60 /* DBFilterPalette.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6C51136D0C310DE20084EF60 /* DBFilterPalette.nib */; };
+		6C56639F15C362BE00056DE5 /* DBShapeCollectionDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */; };
 		6C5DF1650C57AAC400429CF4 /* DBUndo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5DF1630C57AAC400429CF4 /* DBUndo.xib */; };
 		6C6909BB0FA7818600F10440 /* DBTemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6909BA0FA7818600F10440 /* DBTemplateManager.m */; };
 		6C690A380FA8F9CC00F10440 /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C690A370FA8F9CC00F10440 /* Templates.plist */; };
@@ -255,7 +256,7 @@
 		6CCAE82A0C1084A300F71D77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCAE8290C1084A300F71D77 /* QuartzCore.framework */; };
 		6CCE9286153B480500A49667 /* DBDrawingView+ContextualMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE9285153B480500A49667 /* DBDrawingView+ContextualMenu.m */; };
 		6CDC49060C4D79BD00F3128F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CDC49050C4D79BD00F3128F /* Localizable.strings */; };
-		6CEFC9090E2F9B550057CDED /* DBShapeLibrary.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFC9070E2F9B550057CDED /* DBShapeLibrary.nib */; };
+		6CEFC9090E2F9B550057CDED /* DBShapeLibrary.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEFC9070E2F9B550057CDED /* DBShapeLibrary.xib */; };
 		6CF0DEEB0BD29982006B58F8 /* DBTools.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6CF0DEE90BD29982006B58F8 /* DBTools.nib */; };
 		6CF78B0B0FA5016F00CC00FB /* DBDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF78B0A0FA5016F00CC00FB /* DBDocumentController.m */; };
 		6CFD12E411E7BFB500140138 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFD12E311E7BFB500140138 /* BGHUDAppKit.framework */; };
@@ -632,6 +633,7 @@
 		6C4D5157153344D400866009 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBInspector.xib; sourceTree = "<group>"; };
 		6C4D515A1533455000866009 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBInspector.xib; sourceTree = "<group>"; };
 		6C51136E0C310DE20084EF60 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBFilterPalette.xib; sourceTree = "<group>"; };
+		6C56639E15C362BE00056DE5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBShapeLibrary.xib; sourceTree = "<group>"; };
 		6C5DF1640C57AAC400429CF4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBUndo.xib; sourceTree = "<group>"; };
 		6C5DF1680C57AAD200429CF4 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBUndo.xib; sourceTree = "<group>"; };
 		6C6909B90FA7818600F10440 /* DBTemplateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBTemplateManager.h; path = Source/DBTemplateManager.h; sourceTree = "<group>"; };
@@ -684,7 +686,6 @@
 		6CCE9285153B480500A49667 /* DBDrawingView+ContextualMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBDrawingView+ContextualMenu.m"; path = "Source/DBDrawingView+ContextualMenu.m"; sourceTree = "<group>"; };
 		6CDC48FE0C4D751400F3128F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6CDC49070C4D79C300F3128F /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6CEFC9080E2F9B550057CDED /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBShapeLibrary.xib; sourceTree = "<group>"; };
 		6CEFC98C0E2F9F3E0057CDED /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/DBShapeLibrary.xib; sourceTree = "<group>"; };
 		6CF0DEEA0BD29982006B58F8 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DBTools.xib; sourceTree = "<group>"; };
 		6CF78B090FA5016F00CC00FB /* DBDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBDocumentController.h; path = Source/DBDocumentController.h; sourceTree = "<group>"; };
@@ -817,7 +818,7 @@
 				6CFFD2C00C9452A1006F85FB /* DBMagnifyingGlass.nib */,
 				6C415A3A0D722AFA0014A6BB /* DBContextualViews.nib */,
 				6CAC189E0E28C4B7007FD7D8 /* DBColorSwatches.nib */,
-				6CEFC9070E2F9B550057CDED /* DBShapeLibrary.nib */,
+				6CEFC9070E2F9B550057CDED /* DBShapeLibrary.xib */,
 				6CB068760E44A93200B92FE4 /* DBShapeCollectionDocument.nib */,
 				6C9334260FA45BF7007197B6 /* DBDonatePanel.nib */,
 				6C74952915324DAD000EF4D7 /* DBLayers.xib */,
@@ -1444,6 +1445,7 @@
 				French,
 				German,
 				fr,
+				en,
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* DrawBerry */;
 			projectDirPath = "";
@@ -1472,7 +1474,7 @@
 				6CFFD2C20C9452A1006F85FB /* DBMagnifyingGlass.nib in Resources */,
 				6C415A3C0D722AFA0014A6BB /* DBContextualViews.nib in Resources */,
 				6CAC18A00E28C4B7007FD7D8 /* DBColorSwatches.nib in Resources */,
-				6CEFC9090E2F9B550057CDED /* DBShapeLibrary.nib in Resources */,
+				6CEFC9090E2F9B550057CDED /* DBShapeLibrary.xib in Resources */,
 				6CB068780E44A93200B92FE4 /* DBShapeCollectionDocument.nib in Resources */,
 				6C129E520E54F25100AD5C61 /* Shape Collections in Resources */,
 				6C129E620E54F2B800AD5C61 /* ai.icns in Resources */,
@@ -1600,6 +1602,7 @@
 				6C11105115445E120070C852 /* harden.png in Resources */,
 				6C11105215445E120070C852 /* soften.png in Resources */,
 				6C78646715B8492600FD538D /* DBGroups.xib in Resources */,
+				6C56639F15C362BE00056DE5 /* DBShapeCollectionDocument.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1865,13 +1868,13 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		6CEFC9070E2F9B550057CDED /* DBShapeLibrary.nib */ = {
+		6CEFC9070E2F9B550057CDED /* DBShapeLibrary.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6CEFC9080E2F9B550057CDED /* English */,
 				6CEFC98C0E2F9F3E0057CDED /* French */,
+				6C56639E15C362BE00056DE5 /* English */,
 			);
-			name = DBShapeLibrary.nib;
+			name = DBShapeLibrary.xib;
 			sourceTree = "<group>";
 		};
 		6CF0DEE90BD29982006B58F8 /* DBTools.nib */ = {

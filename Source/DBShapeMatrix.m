@@ -77,7 +77,12 @@ NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 	frame = [self  frame];
 	int rows, cols;
 	cols = [self numberOfColumns];
-	rows = ceil([_dataSource numberOfObjects] / ((float)cols));
+
+    if([self enclosingScrollView]){
+		cols = MAX(cols,ceilf([[self enclosingScrollView] contentSize].width / ([self cellSize].height+[self intercellSpacing].width)) );
+	}
+
+    rows = ceil([_dataSource numberOfObjects] / ((float)cols));
     
 	if([self enclosingScrollView]){
 		rows = MAX(rows,ceilf([[self enclosingScrollView] contentSize].height / ([self cellSize].height+[self intercellSpacing].height)) );
@@ -136,5 +141,15 @@ NSString *DBSelectedCellDidChange = @"Selected Cell did change";
 		
 		[image release];
 	}
+}
+
+- (void)setFrame:(NSRect)frameRect
+{
+    NSRect oldRect = [self frame];
+    [super setFrame:frameRect];
+    
+    if (!NSEqualRects(frameRect, oldRect)) {
+        [self updateWindowSize];
+    }
 }
 @end

@@ -142,8 +142,6 @@ What we have to do in the future (in function of milestone)
 	
 	DONE : Replace the polyline by the bezier curve
 	
-	TODO : Improve the contextual bar
-
 	TODO : Improve help and translate it in French
 
 	TODO : Improve the layer inspector
@@ -151,11 +149,7 @@ What we have to do in the future (in function of milestone)
 	DONE : Groups
 
 	DONE : Introduce a contextual menu
-	
-	TODO : Almost all the actions must be undoable    
-	
-	TODO : Add multiple strokes functionality (just like fills) (to 1.0 version ??)  
-	
+			
 	FIXED : When converting a rectangle or an oval to a bezier curve, don't forget to add the shadow
   	
 	FIXED : Rectangle conversion must now return a bezier curve and not a polyline   
@@ -169,9 +163,7 @@ What we have to do in the future (in function of milestone)
 	TODO : Text on path improvements
 	
 	FIXED : When importing an image, don't show all the undo things 
-	
-	TODO : Edit the rounded rectangle edges separately
-	
+		
 	FIXED : When a rectangle is rotated, the conversion to a bezier curve is not done properly      
 	
 	FIXME : Relocalize inspectors in French
@@ -179,13 +171,19 @@ What we have to do in the future (in function of milestone)
 	DONE : Stretch the inspectors views when necessary 
 	
 
-- Version 1.0 : Performance update : DO NOT MAKE SOME BIG CHANGES (really ??)
+- Version 1.0 :
+	
+	TODO : Add multiple strokes functionality (just like fills) (to 1.0 version ??)  
 	
 	TODO : Introduce a freehand tool
+	
+	TODO : Almost all the actions must be undoable    
 	
 	TODO : The performances are very bad when multiple objects are displayed
     
 	TODO : New Inspectors  
+	
+	TODO : Improve the contextual bar
 	
 	FIXME : CoreImage Layers 
 	

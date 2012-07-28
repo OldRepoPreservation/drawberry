@@ -102,7 +102,6 @@
 							<string key="NSFrame">{{259, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="450770083">
 								<int key="NSCellFlags">-2080244224</int>
@@ -666,7 +665,7 @@
 											<string key="NSFrameSize">{268, 256}</string>
 											<reference key="NSSuperview" ref="736159185"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="112892377"/>
+											<reference key="NSNextKeyView" ref="357555817"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="_NSCornerView" key="NSCornerView">
 												<nil key="NSNextResponder"/>
@@ -889,7 +888,7 @@
 							<string key="NSFrame">{{-1, 99}, {285, 258}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="357555817"/>
+							<reference key="NSNextKeyView" ref="736159185"/>
 							<int key="NSsFlags">18</int>
 							<reference key="NSVScroller" ref="112892377"/>
 							<reference key="NSHScroller" ref="357555817"/>
@@ -907,10 +906,9 @@
 				<string key="NSMaxSize">{1e+13, 1e+13}</string>
 			</object>
 			<object class="NSButton" id="223682538">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">265</int>
 				<string key="NSFrameSize">{16, 18}</string>
-				<reference key="NSSuperview"/>
 				<bool key="NSEnabled">YES</bool>
 				<object class="NSButtonCell" key="NSCell" id="195992062">
 					<int key="NSCellFlags">67239424</int>
@@ -1261,6 +1259,22 @@
 						</object>
 					</object>
 					<int key="connectionID">127</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_layersTableView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="821188741"/>
+					</object>
+					<int key="connectionID">130</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dataSource</string>
+						<reference key="source" ref="821188741"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">131</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2016,7 +2030,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">129</int>
+			<int key="maxID">131</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

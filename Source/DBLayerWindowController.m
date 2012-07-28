@@ -37,14 +37,15 @@ static DBLayerWindowController *_sharedLayerWindowController = nil;
 - (void)awakeFromNib
 {
 	[[self window] setFrameAutosaveName:@"layerWindow"];
-//	[[self window] setHUDStyle:OHProStyle];
 
 	[_layersArrayController addObserver:self 
 							 forKeyPath:@"selectedObjects" 
 							    options:NSKeyValueObservingOptionNew 
-							    context:nil]; 						
-
+							    context:nil]; 		
+    
     [_layersTableView registerForDraggedTypes:[NSArray arrayWithObject:@"DBLayerDragType"]];
+    [_layersTableView setDraggingSourceOperationMask:(NSDragOperationCopy|NSDragOperationMove) forLocal:YES];
+    [_layersTableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
 							
 }
  
@@ -93,7 +94,15 @@ static DBLayerWindowController *_sharedLayerWindowController = nil;
 	[_layersArrayController setSelectionIndex:0];
 } 
  
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+    return 0;
+}
 
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+    return nil;
+}
 - (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard*)pboard
 {
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];

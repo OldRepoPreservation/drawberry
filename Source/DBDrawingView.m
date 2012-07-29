@@ -177,7 +177,8 @@
 	[self updateRulerUnits];
 	
 	[self registerForDraggedTypes:[NSArray arrayWithObjects:NSColorPboardType, DBShapePboardType,NSTIFFPboardType,NSPDFPboardType,
-															NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, nil]];
+															NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, 
+                                   DBLayerPboardType,nil]];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unitDidChange:) name:DBDidChangeUnitNotificationName object:nil];
 	

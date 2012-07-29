@@ -18,6 +18,7 @@
 #import "DBDocument.h"
 #import "DBDrawingView.h"
 
+NSString *DBLayerPboardType = @"LayerPboardType";
 
 @implementation DBLayerController 
 + (void)initialize
@@ -104,6 +105,11 @@
 - (DBLayer *)layerAtIndex:(unsigned int)i
 {
 	return [_layers objectAtIndex:i];
+}
+
+- (NSArray *)layersAtIndexes:(NSIndexSet *)is
+{
+    return [_layers objectsAtIndexes:is];
 }
 
 - (unsigned int)indexOfLayer:(DBLayer *)aLayer

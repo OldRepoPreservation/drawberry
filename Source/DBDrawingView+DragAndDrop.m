@@ -28,7 +28,7 @@
 	NSString *type;
 	
 	type = [[sender draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:NSColorPboardType, DBShapePboardType,NSTIFFPboardType,NSPDFPboardType,
-																NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, nil]];
+																NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType,DBLayerPboardType, nil]];
 	
 	if([type isEqualToString:DBShapePboardType]){
 		return NSDragOperationCopy;
@@ -41,7 +41,9 @@
 			return NSDragOperationLink;
 		}
 		return NSDragOperationCopy;
-	}
+	}else if([type isEqualToString:DBLayerPboardType]){
+        return NSDragOperationCopy;
+    }
 	return NSDragOperationNone;
 }
 
@@ -52,7 +54,7 @@
 	NSString *type;
 	
 	type = [[sender draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObjects:NSColorPboardType, DBShapePboardType,NSTIFFPboardType,NSPDFPboardType,
-																NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, nil]];
+																NSPostScriptPboardType,NSPICTPboardType, NSFilenamesPboardType, DBLayerPboardType,nil]];
 
 	if([type isEqualToString:DBShapePboardType]){
 		NSData *pbData;
@@ -146,7 +148,24 @@
             
         }
 		return NO;		
-	}
+	}else 	if([type isEqualToString:DBLayerPboardType]){
+        DBLayer *layer;
+        
+        NSData* rowData = [[sender draggingPasteboard] dataForType:DBLayerPboardType];
+        NSArray* layers = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+        
+        [[self layerController] insertLayers:layers atIndexes:[NSIndexSet indexSetWithIndex:0]];
+        
+        [[self layerController] updateLayersAndShapes];
+        [[self layerController] updateShapesBounds];
+        
+        [[self layerController] updateLayersRender];
+        [self setNeedsDisplay:YES];
+        
+        NSLog(@"new layers %@",[[self layerController] layers]);
+        return YES;
+
+    }
 	
 	return NO;
 }

@@ -11,6 +11,8 @@
 @class DBLayer,DBShape;
 @class DBDocument, DBDrawingView, DBUndoManager;
 
+extern NSString *DBLayerPboardType;
+
 @interface DBLayerController : NSObject {
 	NSMutableArray	*_layers;
 	
@@ -23,6 +25,7 @@
 - (void)addLayer:(DBLayer *)aLayer;
 - (void)insertLayers:(NSArray *)layersArray atIndexes:(NSIndexSet *)indexes;
 - (DBLayer *)layerAtIndex:(unsigned int)i;
+- (NSArray *)layersAtIndexes:(NSIndexSet *)is;
 - (unsigned int)indexOfLayer:(DBLayer *)aLayer;
 - (void)removeLayer:(DBLayer *)aLayer;
 - (void)removeLayersAtIndexes:(NSIndexSet *)indexes;

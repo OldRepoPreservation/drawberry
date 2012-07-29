@@ -15,6 +15,9 @@
 
 static DBLayerWindowController *_sharedLayerWindowController = nil;
 
+
+NSString *DBLayerIndexesPboardType = @"LayerIndexesPboardType";
+
 @class DBLayer;
 
 @implementation DBLayerWindowController
@@ -43,7 +46,7 @@ static DBLayerWindowController *_sharedLayerWindowController = nil;
 							    options:NSKeyValueObservingOptionNew 
 							    context:nil]; 		
     
-    [_layersTableView registerForDraggedTypes:[NSArray arrayWithObject:@"DBLayerDragType"]];
+    [_layersTableView registerForDraggedTypes:[NSArray arrayWithObject:DBLayerPboardType]];
     [_layersTableView setDraggingSourceOperationMask:(NSDragOperationCopy|NSDragOperationMove) forLocal:YES];
     [_layersTableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
 							
@@ -106,8 +109,10 @@ static DBLayerWindowController *_sharedLayerWindowController = nil;
 - (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard*)pboard
 {
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:@"DBLayerDragType"] owner:self];
-    [pboard setData:data forType:@"DBLayerDragType"];
+    [pboard declareTypes:[NSArray arrayWithObjects:DBLayerIndexesPboardType,DBLayerPboardType,nil] owner:self];
+    [pboard setData:data forType:DBLayerIndexesPboardType];
+    data = [NSKeyedArchiver archivedDataWithRootObject:[[_layersArrayController arrangedObjects] objectsAtIndexes:rowIndexes]];
+    [pboard setData:data forType:DBLayerPboardType];
 
 	return YES;
 }
@@ -125,7 +130,7 @@ static DBLayerWindowController *_sharedLayerWindowController = nil;
 - (BOOL)tableView:(NSTableView *)aTableView acceptDrop:(id <NSDraggingInfo>)info row:(int)row dropOperation:(NSTableViewDropOperation)operation
 {
     NSPasteboard* pboard = [info draggingPasteboard];
-    NSData* rowData = [pboard dataForType:@"DBLayerDragType"];
+    NSData* rowData = [pboard dataForType:DBLayerIndexesPboardType];
     NSIndexSet* rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     
 //    int dragRow = [rowIndexes firstIndex];

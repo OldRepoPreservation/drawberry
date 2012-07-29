@@ -10,6 +10,8 @@
 
 @class DBLayer;
 
+extern NSString *DBLayerIndexesPboardType;
+
 @interface DBLayerWindowController : NSWindowController {
 	IBOutlet NSArrayController *_layersArrayController;
 	IBOutlet NSTableView *_layersTableView;

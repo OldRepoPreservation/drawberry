@@ -36,6 +36,7 @@
      
 - (NSString *)name;
 - (void)setName:(NSString *)aValue;
+- (void)changeToCopiedName;
 
 - (void)addShape:(DBShape *)aShape;
 - (void)addShapes:(NSArray *)someShapes;

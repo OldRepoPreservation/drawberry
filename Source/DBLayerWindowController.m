@@ -142,4 +142,59 @@ NSString *DBLayerIndexesPboardType = @"LayerIndexesPboardType";
 	
 	return YES;
 }
+
+- (IBAction)copyLayers:(id)sender
+{
+ 
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[[_layersArrayController arrangedObjects] objectsAtIndexes:[_layersTableView selectedRowIndexes]]];
+    NSPasteboard *pboard = [NSPasteboard generalPasteboard];
+    [pboard declareTypes:[NSArray arrayWithObject:DBLayerPboardType] owner:self];
+    [pboard setData:data forType:DBLayerPboardType];
+}
+
+- (IBAction)pasteLayers:(id)sender
+{
+    NSPasteboard *pboard = [NSPasteboard generalPasteboard];
+    
+    
+    NSData* rowData = [pboard dataForType:DBLayerPboardType];
+    
+    if (rowData) {
+        NSArray* layers = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+        [layers makeObjectsPerformSelector:@selector(changeToCopiedName)];
+        
+        [_layersArrayController insertObjects:layers atArrangedObjectIndexes:[_layersArrayController selectionIndexes]];
+        
+        DBLayerController *lc = [[NSApp delegate] currentLayerController]; 
+
+        [lc updateLayersAndShapes];
+        [lc updateShapesBounds];
+        [lc updateLayersRender];
+        
+        [(NSView *)[[NSApp delegate] currentDrawingView] setNeedsDisplay:YES];
+
+    }else{
+        NSBeep();
+    }
+
+}
+
+- (IBAction)duplicateLayers:(id)sender
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[[_layersArrayController arrangedObjects] objectsAtIndexes:[_layersTableView selectedRowIndexes]]];
+    
+    NSArray* layers = [NSKeyedUnarchiver unarchiveObjectWithData:data]; // to perform deep copy
+    [layers makeObjectsPerformSelector:@selector(changeToCopiedName)];
+    
+    [_layersArrayController insertObjects:layers atArrangedObjectIndexes:[_layersArrayController selectionIndexes]];
+    
+    DBLayerController *lc = [[NSApp delegate] currentLayerController]; 
+    
+    [lc updateLayersAndShapes];
+    [lc updateShapesBounds];
+    [lc updateLayersRender];
+    
+    [(NSView *)[[NSApp delegate] currentDrawingView] setNeedsDisplay:YES];
+    
+}
 @end

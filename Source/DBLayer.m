@@ -150,6 +150,15 @@
 	_name = oldName;
 }
 
+- (void)changeToCopiedName
+{
+    NSString *locCopy = NSLocalizedString(@"Copy String", nil);
+    
+    NSString *newName = [[NSString alloc] initWithFormat:@"%@ - %@",_name,locCopy,nil];
+    
+    [_name release];
+    _name = newName;
+}
 - (void)addShape:(DBShape *)aShape
 {
 	[_shapes addObject:aShape];

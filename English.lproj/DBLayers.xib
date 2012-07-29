@@ -102,6 +102,7 @@
 							<string key="NSFrame">{{259, 19}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="450770083">
 								<int key="NSCellFlags">-2080244224</int>
@@ -665,7 +666,7 @@
 											<string key="NSFrameSize">{268, 256}</string>
 											<reference key="NSSuperview" ref="736159185"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="357555817"/>
+											<reference key="NSNextKeyView" ref="112892377"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="_NSCornerView" key="NSCornerView">
 												<nil key="NSNextResponder"/>
@@ -888,7 +889,7 @@
 							<string key="NSFrame">{{-1, 99}, {285, 258}}</string>
 							<reference key="NSSuperview" ref="67604286"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="736159185"/>
+							<reference key="NSNextKeyView" ref="357555817"/>
 							<int key="NSsFlags">18</int>
 							<reference key="NSVScroller" ref="112892377"/>
 							<reference key="NSHScroller" ref="357555817"/>
@@ -936,6 +937,43 @@
 				<string key="NSTitle">Menu</string>
 				<object class="NSMutableArray" key="NSMenuItems">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="NSMenuItem" id="211839953">
+						<reference key="NSMenu" ref="799145703"/>
+						<string key="NSTitle">Copy</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="714613064"/>
+						<reference key="NSMixedImage" ref="720397830"/>
+					</object>
+					<object class="NSMenuItem" id="95526955">
+						<reference key="NSMenu" ref="799145703"/>
+						<string key="NSTitle">Paste</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="714613064"/>
+						<reference key="NSMixedImage" ref="720397830"/>
+					</object>
+					<object class="NSMenuItem" id="256420428">
+						<reference key="NSMenu" ref="799145703"/>
+						<string key="NSTitle">Duplicate</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="714613064"/>
+						<reference key="NSMixedImage" ref="720397830"/>
+					</object>
+					<object class="NSMenuItem" id="900574309">
+						<reference key="NSMenu" ref="799145703"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="714613064"/>
+						<reference key="NSMixedImage" ref="720397830"/>
+					</object>
 					<object class="NSMenuItem" id="919303240">
 						<reference key="NSMenu" ref="799145703"/>
 						<string key="NSTitle">Add a layer</string>
@@ -945,19 +983,9 @@
 						<reference key="NSOnImage" ref="714613064"/>
 						<reference key="NSMixedImage" ref="720397830"/>
 					</object>
-					<object class="NSMenuItem" id="911432425">
+					<object class="NSMenuItem" id="627696454">
 						<reference key="NSMenu" ref="799145703"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<string key="NSTitle">Add a Core Image filter ...</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSKeyEquivModMask">1048576</int>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="714613064"/>
-						<reference key="NSMixedImage" ref="720397830"/>
-					</object>
-					<object class="NSMenuItem" id="194391262">
-						<reference key="NSMenu" ref="799145703"/>
-						<string key="NSTitle">Remove layer</string>
+						<string key="NSTitle">Remove the layer</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
@@ -1035,14 +1063,6 @@
 						<reference key="destination" ref="316192225"/>
 					</object>
 					<int key="connectionID">104</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">addCILayer:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="911432425"/>
-					</object>
-					<int key="connectionID">105</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1139,22 +1159,6 @@
 						</object>
 					</object>
 					<int key="connectionID">116</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">add:</string>
-						<reference key="source" ref="442269598"/>
-						<reference key="destination" ref="919303240"/>
-					</object>
-					<int key="connectionID">117</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">remove:</string>
-						<reference key="source" ref="442269598"/>
-						<reference key="destination" ref="194391262"/>
-					</object>
-					<int key="connectionID">118</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1275,6 +1279,54 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">131</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">copyLayers:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="211839953"/>
+					</object>
+					<int key="connectionID">138</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">pasteLayers:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="95526955"/>
+					</object>
+					<int key="connectionID">139</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">duplicateLayers:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="256420428"/>
+					</object>
+					<int key="connectionID">140</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">add:</string>
+						<reference key="source" ref="442269598"/>
+						<reference key="destination" ref="919303240"/>
+					</object>
+					<int key="connectionID">141</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">remove:</string>
+						<reference key="source" ref="442269598"/>
+						<reference key="destination" ref="627696454"/>
+					</object>
+					<int key="connectionID">142</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menu</string>
+						<reference key="source" ref="821188741"/>
+						<reference key="destination" ref="799145703"/>
+					</object>
+					<int key="connectionID">143</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1509,27 +1561,15 @@
 						<reference key="object" ref="799145703"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="194391262"/>
-							<reference ref="911432425"/>
+							<reference ref="211839953"/>
+							<reference ref="95526955"/>
+							<reference ref="256420428"/>
+							<reference ref="900574309"/>
 							<reference ref="919303240"/>
+							<reference ref="627696454"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Menu (Menu)</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">34</int>
-						<reference key="object" ref="194391262"/>
-						<reference key="parent" ref="799145703"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">36</int>
-						<reference key="object" ref="911432425"/>
-						<reference key="parent" ref="799145703"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">37</int>
-						<reference key="object" ref="919303240"/>
-						<reference key="parent" ref="799145703"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">55</int>
@@ -1783,6 +1823,36 @@
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Shared Application</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">132</int>
+						<reference key="object" ref="211839953"/>
+						<reference key="parent" ref="799145703"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">133</int>
+						<reference key="object" ref="95526955"/>
+						<reference key="parent" ref="799145703"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">134</int>
+						<reference key="object" ref="256420428"/>
+						<reference key="parent" ref="799145703"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">135</int>
+						<reference key="object" ref="900574309"/>
+						<reference key="parent" ref="799145703"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">136</int>
+						<reference key="object" ref="919303240"/>
+						<reference key="parent" ref="799145703"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">137</int>
+						<reference key="object" ref="627696454"/>
+						<reference key="parent" ref="799145703"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1801,6 +1871,17 @@
 					<string>12.CustomClassName</string>
 					<string>12.IBPluginDependency</string>
 					<string>13.IBPluginDependency</string>
+					<string>132.IBPluginDependency</string>
+					<string>132.ImportedFromIB2</string>
+					<string>133.IBPluginDependency</string>
+					<string>133.ImportedFromIB2</string>
+					<string>134.IBPluginDependency</string>
+					<string>134.ImportedFromIB2</string>
+					<string>135.IBPluginDependency</string>
+					<string>136.IBPluginDependency</string>
+					<string>136.ImportedFromIB2</string>
+					<string>137.IBPluginDependency</string>
+					<string>137.ImportedFromIB2</string>
 					<string>14.CustomClassName</string>
 					<string>14.IBPluginDependency</string>
 					<string>15.IBPluginDependency</string>
@@ -1826,12 +1907,6 @@
 					<string>3.NSWindowTemplate.visibleAtLaunch</string>
 					<string>33.IBPluginDependency</string>
 					<string>33.ImportedFromIB2</string>
-					<string>34.IBPluginDependency</string>
-					<string>34.ImportedFromIB2</string>
-					<string>36.IBPluginDependency</string>
-					<string>36.ImportedFromIB2</string>
-					<string>37.IBPluginDependency</string>
-					<string>37.ImportedFromIB2</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.ImportedFromIB2</string>
@@ -1916,6 +1991,17 @@
 					<string>BGHUDButtonCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<boolean value="YES"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<boolean value="YES"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<boolean value="YES"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<boolean value="YES"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<boolean value="YES"/>
 					<string>BGHUDButtonCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1937,12 +2023,6 @@
 					<string>BGHUDPopUpButtonCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2030,7 +2110,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">131</int>
+			<int key="maxID">143</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2099,13 +2179,19 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addCILayer:</string>
+							<string>copyLayers:</string>
+							<string>duplicateLayers:</string>
 							<string>lowerAtBottomSelectedLayer:</string>
 							<string>lowerSelectedLayer:</string>
+							<string>pasteLayers:</string>
 							<string>raiseAtTopSelectedLayer:</string>
 							<string>raiseSelectedLayer:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2118,8 +2204,11 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addCILayer:</string>
+							<string>copyLayers:</string>
+							<string>duplicateLayers:</string>
 							<string>lowerAtBottomSelectedLayer:</string>
 							<string>lowerSelectedLayer:</string>
+							<string>pasteLayers:</string>
 							<string>raiseAtTopSelectedLayer:</string>
 							<string>raiseSelectedLayer:</string>
 						</object>
@@ -2130,11 +2219,23 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">copyLayers:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">duplicateLayers:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">lowerAtBottomSelectedLayer:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">lowerSelectedLayer:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pasteLayers:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

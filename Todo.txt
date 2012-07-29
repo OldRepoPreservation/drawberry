@@ -144,7 +144,7 @@ What we have to do in the future (in function of milestone)
 	
 	TODO : Improve help and translate it in French
 
-	TODO : Improve the layer inspector
+	DONE : Improve the layer inspector
 
 	DONE : Groups
 

@@ -26,4 +26,9 @@ extern NSString *DBLayerIndexesPboardType;
 - (IBAction)raiseAtTopSelectedLayer:(id)sender;
 - (IBAction)lowerAtBottomSelectedLayer:(id)sender;
 - (IBAction)addCILayer:(id)sender;
+
+- (IBAction)copyLayers:(id)sender;
+- (IBAction)pasteLayers:(id)sender;
+- (IBAction)duplicateLayers:(id)sender;
+
 @end

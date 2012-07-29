@@ -162,7 +162,6 @@
         [[self layerController] updateLayersRender];
         [self setNeedsDisplay:YES];
         
-        NSLog(@"new layers %@",[[self layerController] layers]);
         return YES;
 
     }

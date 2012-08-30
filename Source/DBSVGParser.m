@@ -112,7 +112,7 @@
 	NSArray *styleArray, *elementArray;              
 	
 	if(styleString){      
-		[newAttr removeObjectForKey:@"syle"];
+		[newAttr removeObjectForKey:@"style"];
 		
 		styleArray = [styleString componentsSeparatedByString:@";"];
 		

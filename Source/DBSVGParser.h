@@ -10,7 +10,7 @@
 
 @class DBLayer;
 
-@interface DBSVGParser : NSObject {
+@interface DBSVGParser : NSObject <NSXMLParserDelegate> {
 	NSXMLParser *_parser;
 	NSMutableArray *_parsedLayers;
 	

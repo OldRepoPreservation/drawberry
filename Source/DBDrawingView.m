@@ -1106,7 +1106,7 @@
 		
 		p = NSMakePoint(NSMinX(shapeBounds)+NSWidth(shapeBounds)/2.0,NSMinY(shapeBounds)+NSHeight(shapeBounds)/2.0);
 		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
-		[self moveHorizMouseRulerMarkerToLocation:p.x+24.0];
+		[self moveHorizMouseRulerMarkerToLocation:p.x];
 		[self moveVertMouseRulerMarkerToLocation:p.y];
 		
 		[pool release];
@@ -1184,7 +1184,7 @@
 		
 		p = NSMakePoint(NSMinX(groupBounds)+NSWidth(groupBounds)/2.0,NSMinY(groupBounds)+NSHeight(groupBounds)/2.0);
 		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
-		[self moveHorizMouseRulerMarkerToLocation:p.x+24.0];
+		[self moveHorizMouseRulerMarkerToLocation:p.x];
 		[self moveVertMouseRulerMarkerToLocation:p.y];
 		
 		[pool release];
@@ -1263,7 +1263,7 @@
 		
 		p = NSMakePoint(NSMinX(shapeBounds)+NSWidth(shapeBounds)/2.0,NSMinY(shapeBounds)+NSHeight(shapeBounds)/2.0);
 		p = [self rulerLocationWithPoint:NSMakePoint(p.x*[self zoom], p.y*[self zoom])];
-		[self moveHorizMouseRulerMarkerToLocation:p.x+24.0];
+		[self moveHorizMouseRulerMarkerToLocation:p.x];
 		[self moveVertMouseRulerMarkerToLocation:p.y];
 		
 //		[[selectedShape layer] updateRenderInView:self];

@@ -46,10 +46,10 @@ static NSBezierPath *__squareKnob = nil;
 {
 	if(!__squareKnob){
 		__squareKnob = [[NSBezierPath alloc] init];
-        [__squareKnob moveToPoint:NSMakePoint(-4., -4.)];
-        [__squareKnob lineToPoint:NSMakePoint(4., -4.)];
-        [__squareKnob lineToPoint:NSMakePoint(4., 4.)];
-        [__squareKnob lineToPoint:NSMakePoint(-4., 4.)];
+        [__squareKnob moveToPoint:NSMakePoint(-3.5, -3.5)];
+        [__squareKnob lineToPoint:NSMakePoint(3.5, -3.5)];
+        [__squareKnob lineToPoint:NSMakePoint(3.5, 3.5)];
+        [__squareKnob lineToPoint:NSMakePoint(-3.5, 3.5)];
         [__squareKnob closePath];
 	}
 	return __squareKnob;
